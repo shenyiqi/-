@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShareDataDemo</title>
+</head>
+<body>
+    <h2>ShareDataDemo</h2>
+    <div>
+        使用html.action引入分部视图
+        @Html.Action("PartialViewDate") 
+    </div>
+    <div>
+        直接使用分部视图
+        @Html.Partial("DateTimePartialViewDate")
+    </div>
+</body>
+</html>

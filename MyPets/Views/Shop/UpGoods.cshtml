@@ -1,0 +1,344 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>发布商品</title>
+    <script src="~/Content/Admin/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/Baike/js/bootstrap-select.js"></script>
+    <link href="~/Content/Baike/css/bootstrap-select.css" rel="stylesheet" />
+    
+    <link href="~/Content/Admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="~/Content/Shop/css/basic.css" rel="stylesheet" />
+
+    <link href="~/Content/Shop/css/custom.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <script type="text/javascript">
+    $(window).on('load', function () {
+        $('.selectpicker').selectpicker({
+            'selectedText': '搜索'
+        });
+        //$('.selectpicker').selectpicker('hide');
+    });
+    </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">店铺名</a>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="btn btn-info" title="新留言"><b>30 </b><i class="fa fa-envelope-o fa-2x"></i></a>
+                    <a href="#" class="btn btn-primary" title="新订单"><b>40 </b><i class="fa fa-bars fa-2x"></i></a>
+                    <a href="#" class="btn btn-danger" title="退出"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+                </div>
+            </nav>
+            <!-- /. NAV TOP  -->
+            <nav class="navbar-default navbar-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="main-menu">
+                        <li>
+                            <div class="user-img-div">
+                                <img src="~/Content/Shop/img/backgrounds/1.jpg" class="img-thumbnail" />
+                                <div class="inner-text">
+                                    ShopKeeper
+                                    <br />
+                                    <small>ShopKeeper Name</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-desktop "></i>我的货架<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="~/Shop/UpGoods"><i class="fa fa-toggle-on"></i>狗狗商品</a>
+                                </li>
+                                <li>
+                                    <a href="~/Shop/UpGoods"><i class="fa fa-bell "></i>猫猫商品</a>
+                                </li>
+                                <li>
+                                    <a href="~/Shop/UpGoods"><i class="fa fa-circle-o "></i>奇趣小宠</a>
+                                </li>
+                                <li>
+                                    <a href="~/Shop/UpGoods"><i class="fa fa-code "></i>水族市场</a>
+                                </li>
+                                <li>
+                                    <a href="~/Shop/UpGoods"><i class="fa fa-bug "></i>爬虫用品</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-yelp "></i>发布商品<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#"><i class="fa fa-send "></i>普通商品</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-recycle "></i>促销商品</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-edit "></i>用户留言</a>
+
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-anchor"></i>用户订单</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sign-in "></i>商品评论</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap "></i>待定<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#"><i class="fa fa-bicycle "></i>Second Level Link</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-flask "></i>Second Level Link</a>
+                                </li>
+                                <li>
+                                    <a href="#">Second Level Link<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="#"><i class="fa fa-plus "></i>Third Level Link</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-comments-o "></i>Third Level Link</a>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="blank.html"><i class="fa fa-square-o "></i>返回首页</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </nav>
+            <!-- /. NAV SIDE  页面内容 其它为布局部分 -->
+            <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">发布商品</h1>
+                        <h1 class="page-subhead-line">下面是发布界面，请按照顺序完成上传步骤</h1>
+
+                    </div>
+                </div>
+                <!-- /. ROW  上传页面在此-->
+                @using (Html.BeginForm("UpGoods","Shop",FormMethod.Post,new { id = "UpGoodsForm", enctype = "multipart/form-data" }))
+                {
+                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-info"> @*从这里开始*@
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="txtname">商品名</label>
+                                    <input type="text" class="form-control" id="txtname" name="txtname" placeholder="Goods Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtprice">价格</label>
+                                    <input type="text" class="form-control" id="txtprice" name="txtprice" placeholder="Goods Price">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtdescribe">描述</label>
+                                    <input type="text" class="form-control" id="txtdescribe" name="txtdescribe" placeholder="Goods Describe">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtstock">库存</label>
+                                    <input type="text" class="form-control" id="txtstock" name="txtstock" placeholder="Goods Stock">
+                                </div>
+                                <br /><hr />
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="col-sm-4"><label for="selectseries">系列名</label></div>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" id="selectseries" name="selectseries">
+                                                    <option>狗狗商品</option>
+                                                    <option>猫猫商品</option>
+                                                    <option>奇趣小宠</option>
+                                                    <option>水族市场</option>
+                                                    <option>爬虫用品</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                             <div class="col-sm-4"><label for="selecttype">类别名</label></div>
+                                             <div class="col-sm-8">
+                                                <select class="form-control" id="selecttype" name="selecttype">
+                                                        <option>粮食</option>
+                                                        <option>罐头</option>
+                                                        <option>零食</option>
+                                                        <option>医疗</option>
+                                                        <option>保健</option>
+                                                        <option>沐浴露</option>
+                                                        <option>日用品</option>
+                                                        <option>玩具</option>
+                                                        <option>衣服</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        <div class="col-md-4">
+                                                 <div class="col-sm-4"><label for="selectdetailtype">详细名</label></div>
+                                                 <div class="col-sm-8">
+                                                    <select class="selectpicker bla bla bli" id="selectdetailtype" name="selectdetailtype" data-live-search="true">
+                                                        <optgroup label="粮食" data-icon="icon-ok">
+                                                            <option>离乳期狗粮</option>
+                                                            <option>幼犬粮</option>
+                                                            <option>成犬粮</option>
+                                                            <option>老犬粮</option>
+                                                            <option>全犬粮</option>
+                                                            <option>幼猫粮</option>
+                                                            <option>成猫粮</option>
+                                                            <option>老猫粮</option>
+                                                            <option>全猫粮</option>
+                                                            <option>其它</option>
+                                                        </optgroup>
+                                                        <optgroup label="罐头" data-icon="icon-ok">
+                                                            <option>成犬</option>
+                                                            <option>幼犬</option>
+                                                            <option>成猫湿粮</option>
+                                                            <option>幼猫湿粮</option>
+                                                            <option>其它</option>
+                                                        </optgroup>
+                                                        <optgroup label="零食" data-icon="icon-ok">
+                                                            <option>肉质零食</option>
+                                                            <option>咬骨咬胶</option>
+                                                            <option>奶质零食</option>
+                                                            <option>饼干素食</option>
+                                                            <option>猫草/猫条</option>
+                                                            <option>果冻</option>
+                                                            <option>猫咪洁牙零食</option>
+                                                            <option>其它</option>
+                                                        </optgroup>
+                                                        <optgroup label="医疗" data-icon="icon-ok">
+                                                            <option>体内驱虫</option>
+                                                            <option>体外驱虫</option>
+                                                            <option>口腔修复</option>
+                                                            <option>眼部护理</option>
+                                                            <option>耳道清洁</option>
+                                                            <option>体内病菌感染</option>
+                                                            <option>皮肤问题</option>
+                                                            <option>其它</option>
+                                                        </optgroup>
+                                                        <optgroup label="保健" data-icon="icon-ok">
+                                                            <option>美发护肤</option>
+                                                            <option>补钙强骨</option>
+                                                            <option>微量矿物</option>
+                                                            <option>调整肠胃</option>
+                                                            <option>综合营养</option>
+                                                            <option>其它</option>
+                                                        </optgroup>
+                                                        <optgroup label="沐浴露" data-icon="icon-ok">
+                                                            <option>幼犬专用</option>
+                                                            <option>幼猫专用</option>
+                                                            <option>护毛素</option>
+                                                            <option>特色毛发</option>
+                                                            <option>干洗粉</option>
+                                                            <option>稀释瓶</option>
+                                                            <option>其它</option>
+                                                        </optgroup>
+                                                        <optgroup label="日用品" data-icon="icon-ok">
+                                                            <option>器具系列</option>
+                                                            <option>牵引系列</option>
+                                                            <option>出行装备</option>
+                                                            <option>排便用品</option>
+                                                            <option>环境清洁</option>
+                                                            <option>狗狗训练</option>
+                                                            <option>猫砂系列</option>
+                                                            <option>其它</option>
+                                                        </optgroup>
+                                                        <optgroup label="玩具" data-icon="icon-ok">
+                                                            <option>休闲玩具</option>
+                                                            <option>益智诱导</option>
+                                                            <option>互动玩具</option>
+                                                            <option>磨牙玩具</option>
+                                                            <option>猫爬架</option>
+                                                            <option>猫抓板</option>
+                                                            <option>猫薄荷玩具</option>
+                                                            <option>其它</option>
+                                                        </optgroup>
+                                                        <optgroup label="衣服" data-icon="icon-ok">
+                                                            <option>宠物服装</option>
+                                                            <option>犬窝</option>
+                                                            <option>猫窝</option>
+                                                            <option>毛垫/毯子</option>
+                                                            <option>鞋子/帽子</option>
+                                                            <option>其它</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <br /><hr />
+                                <div class="form-group">
+                                    <label for="txtimg1">图片1</label>
+                                    <div id="preview">
+                                        <input type="file" id="txtimg1" name="txtimg1" onchange="previewimg(this)">
+                                    </div>
+                                    <p class="help-block">选择图片</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtimg2">图片2</label>
+                                    <input type="file" id="txtimg2" name="txtimg2">
+                                    <p class="help-block">选择图片</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtimg3">图片3</label>
+                                    <input type="file" id="txtimg3" name="txtimg3">
+                                    <p class="help-block">选择图片</p>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtimg4">图片4</label>
+                                    <input type="file" id="txtimg4" name="txtimg4">
+                                    <p class="help-block">选择图片</p>
+                                </div>
+                                <br /><hr />
+                                <div style="text-align:center">
+                                    <input type="submit" value="确认发布" class="btn btn-default">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <div id="footer-sec">
+        &copy; 2017 YourCompany | More Templates <a href="#" target="_blank" title="宠物之家">宠物之家</a> - Collect from <a href="#" title="网页模板" target="_blank">江西师大</a>
+    </div>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <script src="~/Content/Shop/js/jquery.metisMenu.js"></script>
+    
+    <script src="~/Content/Shop/js/custom.js"></script>
+  
+    </body>
+    </html>
+

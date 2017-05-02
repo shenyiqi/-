@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script type="text/javascript">
+    $(function () {
+        //设置视频容器大小
+        winResize();
+        $(window).resize(function () {
+            winResize();
+        });
+        //初始化视频容器
+        initCKPlayer('video-box', '$!{Model.Address}', '/Scripts/ckplayer/ckplayer.swf');
+    });
+    //改变大小函数
+    function winResize() {
+        if ($(".section").width() == 1180) {
+            $(".video-box").width(840);
+            $(".video-box").height(473);
+        } else {
+            $(".video-box").width(601);
+            $(".video-box").height(338);
+        }
+    }
+    //初始化视频播放器需配合ckplayer.js使用
+    function initCKPlayer(boxId, videoSrc, playerSrc) {
+        var flashvars = {
+            f: videoSrc,
+            c: 0,
+            loaded: 'loadedHandler'
+        };
+        var video = [videoSrc];
+        CKobject.embed(playerSrc, boxId, 'video_v1', '100%', '100%', false, flashvars, video);
+    }
+</script>
+<h2>Index</h2>
+<div class="video-box" id="video-box"> @*网页播放*@
+    <embed src="http://jccq.cn/Engine/VideoView?id=f929f21a-1c17-42ff-8c7e-0b96278359c0" style="width:800px;height:400px;" />
+</div>
+<input type="file" id="file" onchange="onInputFileChange()"> @*上传播放*@
+<video id="audio_id" controls autoplay loop src="~/Videos/bd.mp4" width="400" height="400" >
+    
+</video>
+<script>
+    function onInputFileChange() {
+         var file = document.getElementById('file').files[0];
+         var url = URL.createObjectURL(file);
+         console.log(url);
+         document.getElementById("audio_id").src = url;
+        }
+    </script>
+
+<video width="400" height="400"  controls="controls" loop="loop"> @*直接播放*@
+    <source src="~/Videos/bd.mp4"/>
+</video>

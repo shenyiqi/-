@@ -1,0 +1,108 @@
+﻿@model MyPets.Model.UserInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>重置密码</title>
+    <link href="~/Content/Register/css/css.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // $(".nav li:eq(2) a:first").addClass("navCur")
+            //验证手机 邮箱 
+            $(".selyz").change(function () {
+                var selval = $(this).find("option:selected").val();
+                if (selval == "0") {
+                    $(".sel-yzsj").show()
+                    $(".sel-yzyx").hide()
+                }
+                else if (selval == "1") {
+                    $(".sel-yzsj").hide()
+                    $(".sel-yzyx").show()
+                }
+            })
+        });
+
+        $(function () {
+            $("#btnphone").click(function () {
+                alert("要开通短信接口");
+            })
+        });
+        $(function () {
+            $("#btnclick").click(function () {
+                var useremail = $("#email").val();
+                if (useremail == "") {
+                    alert("请输入验证码");
+                }
+            })
+        })
+    </script>
+    <style>
+        .clears{
+            height:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="web-width">
+            <div class="for-liucheng">
+                <div class="liulist for-cur"></div>
+                <div class="liulist for-cur"></div>
+                <div class="liulist"></div>
+                <div class="liulist"></div>
+                <div class="liutextbox">
+                    <div class="liutext for-cur"><em>1</em><br /><strong>填写账户名</strong></div>
+                    <div class="liutext for-cur"><em>2</em><br /><strong>验证身份</strong></div>
+                    <div class="liutext"><em>3</em><br /><strong>设置新密码</strong></div>
+                    <div class="liutext"><em>4</em><br /><strong>完成</strong></div>
+                </div>
+            </div><!--for-liucheng/-->
+            <form action="RebackPwdStep2" method="post" class="forget-pwd">
+
+                <dl>
+                    <dt>验证方式：</dt>
+                    <dd>
+                        <select class="selyz">
+                            <option value="0">已验证手机</option>
+                            <option value="1">已验证邮箱</option>
+                        </select>
+                    </dd>
+                </dl>
+                <div class="clears"></div>
+                <dl>
+                    <dt>用户名：</dt>
+                    <dd><input type="text" value="@Session["ValidateUserName"]"/></dd>
+                </dl>
+                <div class="clears"></div>
+                <dl class="sel-yzsj">
+                    <dt>已验证手机：</dt>
+                    <dd>@Html.TextBoxFor(u => u.UserPhone, htmlAttributes: new { @readonly = "readonly" })</dd>
+                </dl>
+                <div class="clears"></div>
+                <dl class="sel-yzsj">
+                    <dt>手机校验码：</dt>
+                    <dd><input type="text" id="mobile" /> <button id="btnphone" type="button" onclick="getCode()">获取短信验证码</button></dd>
+                </dl>
+                <div class="clears"></div>
+                <dl class="sel-yzyx">
+                    <dt>已验证邮箱：</dt>
+                    <dd>@Html.TextBoxFor(u => u.UserEmail, htmlAttributes: new { @readonly = "readonly" })</dd>
+                </dl>
+                <div class="clears"></div>
+                <dl class="sel-yzyx">
+                    <dt>邮箱校验码：</dt>
+                    <dd><input type="text" id="email" name="email"/> <button id="btnemail" type="button">@Html.ActionLink("获取邮箱验证码","SendEmail")</button></dd>
+                </dl>
+                <br />
+                <div class="subtijiao"><input type="submit" value="提交"  id="btnclick"/></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

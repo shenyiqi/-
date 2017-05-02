@@ -1,0 +1,205 @@
+﻿@model MyPets.Model.Baike
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>发布宠物百科</title>
+    <meta name="description" content="">
+    <meta name="author" content="templatemo">
+    <script src="~/Content/Admin/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/Baike/js/bootstrap-select.js"></script>
+    <link href="~/Content/Baike/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="~/Content/Admin/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/Admin/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin/css/templatemo-style.css" rel="stylesheet" />
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckfinder/ckfinder.js"></script>
+    <script src="~/ckfinder/config.js"></script>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <script type="text/javascript">
+    $(window).on('load', function () {
+        $('.selectpicker').selectpicker({
+            'selectedText': 'cat'
+        });
+        // $('.selectpicker').selectpicker('hide');
+    });
+    </script>
+    <script type="text/javascript">
+    $(function () {
+        CKEDITOR.replace('Bcontent');
+    });
+    </script>
+
+</head>
+<body>
+    <!-- Left column -->
+    <div class="templatemo-flex-row">
+        <div class="templatemo-sidebar">
+            <header class="templatemo-site-header">
+                <div class="square"></div>
+                <h1>管理员</h1>
+            </header>
+            <div class="profile-photo-container">
+                <img src="/Content/Admin/images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">
+                <div class="profile-photo-overlay"></div>
+            </div>
+            <div class="mobile-menu-icon">
+                <i class="fa fa-bars"></i>
+            </div>
+            <nav class="templatemo-left-nav">
+                <ul>
+                    <li><a href="#" class="active"><i class="fa fa-home fa-fw"></i>功能入口</a></li>
+                    <li><a href="#"><i class="fa fa-bar-chart fa-fw"></i>用户管理</a></li>
+                    <li><a href="#"><i class="fa fa-database fa-fw"></i>店铺管理</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>订单管理</a></li>
+                    <li><a href="#"><i class="fa fa-users fa-fw"></i>留言管理</a></li>
+                    <li><a href="#"><i class="fa fa-sliders fa-fw"></i>帖子管理</a></li>
+                    <li><a href="#"><i class="fa fa-eject fa-fw"></i>退出</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Main content -->
+        @using (Html.BeginForm(new { enctype = "multipart/form-data" }))
+        {
+            <div class="templatemo-content col-1 light-gray-bg">
+                <div class="templatemo-top-nav-container">
+                    <div class="row">
+                        <nav class="templatemo-top-nav col-lg-12 col-md-12">
+                            <ul class="text-uppercase">
+                                <li><a href="" class="active">管理页面</a></li>
+                                <li>@Html.ActionLink("发布百科", "Baike")</li>
+                                <li><a href="#">广告管理</a></li>
+                                <li><a href="#">待定</a></li>
+                                <li><a href="#">待定</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="templatemo-content-container">
+                    <div class="templatemo-content-widget white-bg">
+                        <h2 class="margin-bottom-10">发布宠物百科</h2>
+                        <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="txttitle">标题</label>
+                                    <input type="text" class="form-control" id="txttitle" name="txttitle" placeholder="Title" style="width:350px;">
+                                </div>
+                                &nbsp;&nbsp;&nbsp;
+                                <div class="form-group">
+                                    <label for="id_select">类别</label>
+                                    <select id="id_select" name="id_select" class="selectpicker bla bla bli" data-live-search="true">
+                                        <optgroup label="狗狗--" data-subtext="饲养" data-icon="icon-ok">
+                                            <option>准备养狗</option>
+                                            <option>幼犬</option>
+                                            <option>成犬</option>
+                                            <option>老年犬</option>
+                                            <option>狗交配</option>
+                                            <option>狗感冒</option>
+                                            <option>狗皮肤病</option>
+                                            <option>狗掉毛</option>
+                                            <option>狗呕吐</option>
+                                            <option>狗不能吃的</option>
+                                            <option>狗贫血</option>
+                                            <option>狗狗发抖</option>
+                                            <option>狗吃药</option>
+                                            <option>狗狗发烧</option>
+                                        </optgroup>
+                                        <optgroup label="狗狗--" data-subtext="美容" data-icon="icon-ok">
+                                            <option>狗洗澡</option>
+                                            <option>狗护毛</option>
+                                            <option>狗修毛</option>
+                                            <option>狗泪痕</option>
+                                            <option>狗虱子</option>
+                                        </optgroup>
+                                        <optgroup label="狗狗--" data-subtext="用品" data-icon="icon-ok">
+                                            <option>狗粮</option>
+                                            <option>狗厕所</option>
+                                            <option>狗狗衣服</option>
+                                            <option>狗咬胶</option>
+                                        </optgroup>
+                                        <optgroup label="狗狗--" data-subtext="训练" data-icon="icon-ok">
+                                            <option>训练狗大小</option>
+                                            <option>训练狗护主</option>
+                                            <option>训练狗不咬</option>
+                                            <option>训练狗不叫</option>
+                                        </optgroup>
+                                        <optgroup label="猫猫--" data-subtext="饲养" data-icon="icon-ok">
+                                            <option>准备养猫</option>
+                                            <option>幼猫</option>
+                                            <option>成猫</option>
+                                            <option>老年猫</option>
+                                            <option>猫繁殖</option>
+                                            <option>猫掉毛</option>
+                                            <option>猫癣</option>
+                                            <option>老年猫</option>
+                                            <option>猫的寿命</option>
+                                            <option>猫不能吃的</option>
+                                        </optgroup>
+                                        <optgroup label="猫猫--" data-subtext="美容" data-icon="icon-ok">
+                                            <option>猫洗澡</option>
+                                            <option>猫护毛</option>
+                                            <option>猫修毛</option>
+                                            <option>猫泪痕</option>
+                                        </optgroup>
+                                        <optgroup label="猫猫--" data-subtext="用品" data-icon="icon-ok">
+                                            <option>猫粮</option>
+                                            <option>猫厕所</option>
+                                            <option>猫爬架</option>
+                                        </optgroup>
+                                        <optgroup label="猫猫--" data-subtext="训练" data-icon="icon-ok">
+                                            <option>训练猫大小</option>
+                                            <option>训练猫上马</option>
+                                            <option>训练猫不上</option>
+                                            <option>训练猫不闹</option>
+                                        </optgroup>
+                                        <optgroup label="奇趣--" data-subtext="小宠" data-icon="icon-ok">
+                                            <option>水族箱</option>
+                                            <option>观赏鱼繁殖</option>
+                                            <option>养龟</option>
+                                            <option>鸟类</option>
+                                            <option>仓鼠乐园</option>
+                                            <option>训练兔子</option>
+                                            <option>宠物兔吃什么</option>
+                                            <option>宠物兔用品</option>
+                                            <option>兔粮</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <br /><br />
+                                <div class="form-group">
+                                    <label for="txtimg">图片</label>
+                                    <input type="file" id="txtimg" name="txtimg">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtdescribe">描述</label>
+                                    <input type="text" class="form-control" id="txtdescribe" name="txtdescribe" placeholder="Describe" style="width:500px;">
+                                </div>
+                        </div> 
+                        <br />
+                        <div>
+                            <textarea id="Bcontent" name="Bcontent"></textarea>
+                        </div>
+                        <br />
+                            <button type="submit" class="btn btn-default">确认发布</button>
+                      </div>
+                    </div>
+                    <footer class="text-right">
+                        <p>
+                            Copyright &copy; 2017 Company Name
+                            | More Templates <a href="#" target="_blank" title="宠物之家">宠物之家</a> - Collect from <a href="#" title="网页模板" target="_blank">江西师大</a>
+                        </p>
+                    </footer>
+                </div>
+        }
+    </div>
+    <!-- JS -->
+    <script src="~/Content/Admin/js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
+    
+</body>
+</html>

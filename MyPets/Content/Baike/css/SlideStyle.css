@@ -1,0 +1,329 @@
+﻿
+/*轮播图1*/
+
+ .slide_x {
+            overflow: hidden;
+            position: relative;
+            /*margin: 30px auto;*/
+            width: 300px; /*改宽高*/
+            height: 350px;
+            border: 1px solid #777;
+            background: #000;
+        }
+
+            .slide_x a {
+                color: #eee;
+                text-decoration: none;
+            }
+
+            .slide_x .box {
+                overflow: hidden;
+                position: relative;
+                width: 300px; /*改宽高*/
+                height: 350px;
+            }
+
+            .slide_x .list {
+                overflow: hidden;
+                width: 9999px;
+            }
+
+                .slide_x .list li {
+                    float: left;
+                    position: relative;
+                    width: 300px; /*改宽高*/
+                    list-style:none;
+                }
+
+                .slide_x .list img {
+                    vertical-align: top;
+                }
+
+                .slide_x .list p {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 115px; /*内容高度*/
+                    color: #eee;
+                    font: 12px/24px "\5b8b\4f53";
+                    text-indent: 12px;
+                    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99000000',endColorstr='#99000000');
+                    background: rgba(0,0,0,0.6);
+                }
+
+            .slide_x .btn {
+                overflow: hidden;
+                position: absolute;
+                bottom: 4px;
+                right: 6px;
+            }
+
+                .slide_x .btn li {
+                    float: left;
+                    width: 16px;
+                    height: 16px;
+                    margin: 0 0 0 10px;
+                    border-radius: 2px;
+                    background: #eee;
+                    color: #333;
+                    font: 11px/16px Tahoma;
+                    text-align: center;
+                    cursor: pointer;
+                    list-style:none;
+                }
+
+
+                .slide_x .btn .selected {
+                    background: #f30;
+                    color: #fff;
+                }
+
+            .slide_x .minus,
+            .slide_x .plus {
+                position: absolute;
+                top: 110px;
+                width: 40px;
+                height: 50px;
+                background-image: url(../Content/Baike/img/control.png);
+                background-repeat: no-repeat;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .slide_x .minus {
+                left: 0;
+                background-position: 0 0;
+            }
+
+            .slide_x .plus {
+                right: 0;
+                background-position: -40px 0;
+            }
+
+            .slide_x .minus:hover {
+                background-position: 0 -50px;
+            }
+
+            .slide_x .plus:hover {
+                background-position: -40px -50px;
+            }
+       /*轮播图2*/
+        .slide_x1 {
+            overflow: hidden;
+            position: relative;
+            /*margin: 30px auto;*/
+            width: 300px; /*改宽高*/
+            height: 350px;
+            border: 1px solid #777;
+            background: #000;
+        }
+
+            .slide_x1 a {
+                color: #eee;
+                text-decoration: none;
+            }
+
+            .slide_x1 .box {
+                overflow: hidden;
+                position: relative;
+                width: 300px; /*改宽高*/
+                height: 350px;
+            }
+
+            .slide_x1 .list {
+                overflow: hidden;
+                width: 9999px;
+            }
+
+                .slide_x1 .list li {
+                    float: left;
+                    position: relative;
+                    width: 300px; /*改宽高*/
+                    list-style:none;
+                }
+
+                .slide_x1 .list img {
+                    vertical-align: top;
+                }
+
+                .slide_x1 .list p {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 115px; /*内容高度*/
+                    color: #eee;
+                    font: 12px/24px "\5b8b\4f53";
+                    text-indent: 12px;
+                    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99000000',endColorstr='#99000000');
+                    background: rgba(0,0,0,0.6);
+                }
+
+            .slide_x1 .btn {
+                overflow: hidden;
+                position: absolute;
+                bottom: 4px;
+                right: 6px;
+            }
+
+                .slide_x1 .btn li {
+                    float: left;
+                    width: 16px;
+                    height: 16px;
+                    margin: 0 0 0 10px;
+                    border-radius: 2px;
+                    background: #eee;
+                    color: #333;
+                    font: 11px/16px Tahoma;
+                    text-align: center;
+                    cursor: pointer;
+                     list-style:none;
+                }
+
+
+                .slide_x1 .btn .selected {
+                    background: #f30;
+                    color: #fff;
+                }
+
+            .slide_x1 .minus,
+            .slide_x1 .plus {
+                position: absolute;
+                top: 110px;
+                width: 40px;
+                height: 50px;
+                background-image: url(../Content/Baike/img/control.png);
+                background-repeat: no-repeat;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .slide_x1 .minus {
+                left: 0;
+                background-position: 0 0;
+            }
+
+            .slide_x1 .plus {
+                right: 0;
+                background-position: -40px 0;
+            }
+
+            .slide_x1 .minus:hover {
+                background-position: 0 -50px;
+            }
+
+            .slide_x1 .plus:hover {
+                background-position: -40px -50px;
+            }
+
+
+
+            /*轮播图3*/
+             .slide_x2 {
+            overflow: hidden;
+            position: relative;
+            /*margin: 30px auto;*/
+            width: 300px; /*改宽高*/
+            height: 350px;
+            border: 1px solid #777;
+            background: #000;
+        }
+
+            .slide_x2 a {
+                color: #eee;
+                text-decoration: none;
+            }
+
+            .slide_x2 .box {
+                overflow: hidden;
+                position: relative;
+                width: 300px; /*改宽高*/
+                height: 350px;
+            }
+
+            .slide_x2 .list {
+                overflow: hidden;
+                width: 9999px;
+            }
+
+                .slide_x2 .list li {
+                    float: left;
+                    position: relative;
+                    width: 300px; /*改宽高*/
+                     list-style:none;
+                }
+
+                .slide_x2 .list img {
+                    vertical-align: top;
+                }
+
+                .slide_x2 .list p {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 115px; /*内容高度*/
+                    color: #eee;
+                    font: 12px/24px "\5b8b\4f53";
+                    text-indent: 12px;
+                    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99000000',endColorstr='#99000000');
+                    background: rgba(0,0,0,0.6);
+                }
+
+            .slide_x2 .btn {
+                overflow: hidden;
+                position: absolute;
+                bottom: 4px;
+                right: 6px;
+            }
+
+                .slide_x2 .btn li {
+                    float: left;
+                    width: 16px;
+                    height: 16px;
+                    margin: 0 0 0 10px;
+                    border-radius: 2px;
+                    background: #eee;
+                    color: #333;
+                    font: 11px/16px Tahoma;
+                    text-align: center;
+                    cursor: pointer;
+                     list-style:none;
+                }
+
+
+                .slide_x2 .btn .selected {
+                    background: #f30;
+                    color: #fff;
+                }
+
+            .slide_x2 .minus,
+            .slide_x2 .plus {
+                position: absolute;
+                top: 110px;
+                width: 40px;
+                height: 50px;
+                background-image: url(../Content/Baike/img/control.png);
+                background-repeat: no-repeat;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .slide_x2 .minus {
+                left: 0;
+                background-position: 0 0;
+            }
+
+            .slide_x2 .plus {
+                right: 0;
+                background-position: -40px 0;
+            }
+
+            .slide_x2 .minus:hover {
+                background-position: 0 -50px;
+            }
+
+            .slide_x2 .plus:hover {
+                background-position: -40px -50px;
+            }

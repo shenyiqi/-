@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<script src="~/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/ckfinder/ckfinder.js"></script>
+<script src="~/ckfinder/config.js"></script>*@
+<script type="text/javascript">
+    $(function () {
+        CKEDITOR.replace('content');
+    });
+</script>
+<style>
+
+</style>
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+<div>
+    <textarea id="content" name="content"></textarea>
+</div>

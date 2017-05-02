@@ -1,0 +1,484 @@
+﻿@{
+    Layout = null;
+}
+@model IEnumerable<MyPets.Model.Baike>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/Baike/css/style.css" rel="stylesheet" />
+    <link href="~/Content/Admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Baike/css/SlideStyle.css" rel="stylesheet" />
+    <style>
+        /*************菜单栏*************/
+        .index_top {
+            height: 50px;
+            background: #EE5533;
+            color: white;
+            font-size: 18px;
+        }
+
+            .index_top a {
+                height: 50px;
+                color: white;
+                line-height: 50px;
+                margin: 0 auto;
+                padding: 0 17px;
+                text-align: center;
+                text-decoration: none;
+                display: block;
+                float: left;
+            }
+
+            .index_top .part2 a:hover {
+                background: #7B0;
+            }
+
+        .index_top {
+            background: #9C3;
+        }
+
+        p {
+            line-height: 16px;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .dog_tit {
+            border-bottom: 3px solid #9C3;
+            position: relative;
+            height: 54px;
+        }
+
+        .dog_tit_r {
+            font: 16px/44px "Microsoft YaHei";
+            color: #999;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .dog_tit h2 {
+            font: 24px/44px "Microsoft YaHei";
+            color: #fff;
+            width: 156px;
+            height: 44px;
+            background: #9C3;
+            text-align: center;
+            position: absolute;
+            line-height: 44px;
+            left: 37px;
+            bottom: 0;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="row" style="border-bottom:1px solid #a5a0a0;line-height:50px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">@Html.ActionLink("宠物之家", "", "")</div>
+        <div class="col-md-1">@Html.ActionLink("宠物商城","","")</div > 
+        <div class="col-md-1">@Html.ActionLink("宠物论坛","","")</div>
+        <div class="col-md-1" style="border-bottom:2px solid #9C3"><a href="javascript:;">宠物百科</a></div>
+        <div class="col-md-5"></div>
+        <div class="col-md-1">@Html.ActionLink("登录","","")|@Html.ActionLink("注册","","")</div>
+        <div class="col-md-1"></div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-2">
+            <img src="~/Content/Shop/img/logo.png" />
+        </div>
+        <div class="input-group col-md-5" style="width: 500px; margin-top: 20px; margin-right: 20%;">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="请输入文章/词条/关键字" style="border-color:#ff0000;height:46px;">
+                <span class="input-group-btn">
+                    <input class="btn btn-danger btn-lg" type="submit" value="搜索">
+                </span>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <br />
+    <div class="index_top">
+        <div class="row part2">
+            <div class="col-md-2"></div>
+            <a href="#" class="col-md-1">首页</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("狗狗", "ShowSeries", new { series = "狗系列" }) </a>
+            <a href="#" class="col-md-1">@Html.ActionLink("猫咪", "ShowSeries", new { series = "猫系列" })</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("小宠", "ShowSeries", new { series = "小宠系列" })</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("水族", "ShowSeries", new { series = "水族系列" })</a>
+            <div class="col-md-5"></div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
+            <div class="pgmiddle">
+                <div id="example">
+                    <div id="ribbon_1"></div>
+                    <div id="ribbon_2"></div>
+                    <div id="slides">
+                        <div class="scroimg" style="left:0px;">
+                            <a href="#"><img src="~/Content/Baike/img/ad2.jpg" width="950" height="350" alt="img"></a>
+                        </div>
+                        <div class="scrotext" style="bottom:0px;">
+                            <h4><a href="#">干货分享——养犬新手必看知识合集</a></h4>
+                            <p>初养宠物犬，更多的新手饲主有着的是一种迷茫。因为狗狗是花了大价钱买来的，所以对待起来也不可能那么的随便。九层之台、起于累...</p>
+                        </div>
+                        <div class="scroimg" style="left: -950px;">
+                            <a href="#"><img width="950" height="350" alt="img" src="~/Content/Baike/img/ad3.jpg"></a>
+                        </div>
+                        <div class="scrotext" style="bottom: -950px;">
+                            <h4><a href="#">你说我像饼？偶可是热带鱼之王七彩神仙！</a></h4>
+                            <p>七彩神仙鱼的辨识度很高，远远看去像块铁饼的就是了。七彩神仙可不是一般的观赏鱼，它是大名鼎鼎的热带鱼之王！！</p>
+                        </div><div class="scroimg" style="left: -950px;">
+                            <a href="#"><img width="950" height="350" alt="img" src="~/Content/Baike/img/ad4.jpg"></a>
+                        </div>
+                        <div class="scrotext" style="bottom:-950px;">
+                            <h4><a href="#">爱猫无国界：各国猫文化大盘点</a></h4>
+                            <p>一方水土养一方喵，想不想在日本繁华的猫街沾沾招财猫的福气？或是在雨后的浪漫法兰西和你心目中的那只喵来场旷世绝恋？快上车，...</p>
+                        </div><div class="scroimg" style="left:-950px;">
+                            <a href="#"><img width="950" height="350" alt="img" src="~/Content/Baike/img/ad5.jpg"></a>
+                        </div>
+                        <div class="scrotext" style="bottom:-950px;">
+                            <h4><a href="#">宠物夏季饲养全攻略</a></h4>
+                            <p>夏天对于各种宠物来说都是一个无比难熬的季节。但是主人们请不要担心，万能的波奇小编来啦。我们给大家支支招，学习一点消夏小知...</p>
+                        </div><div class="scroimg" style="left:-950px;">
+                            <a href="#"><img width="950" height="350" alt="img" src="~/Content/Baike/img/ad1.jpg"></a>
+                        </div>
+                        <div class="scrotext" style="bottom: -950px;">
+                            <h4><a href="#">第一期“波奇宠物”专家团在线问诊活动开始啦！</a></h4>
+                            <p>养宠有疑惑？撩个专家压压惊吧！</p>
+                        </div>
+                    </div>
+                    <span id="prev"></span>
+                    <span id="next"></span>
+                    <div id="pagination">
+                        <span onclick="gopaly(0)" onfocus="this.blur();" class="current"></span>
+                        <span onclick="gopaly(1)" onfocus="this.blur();"></span>
+                        <span onclick="gopaly(2)" onfocus="this.blur();"></span>
+                        <span onclick="gopaly(3)" onfocus="this.blur();"></span>
+                        <span onclick="gopaly(4)" onfocus="this.blur();"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" style="background-color:rgba(246, 244, 207, 0.90);">
+            <div class="row" style="margin-top:10px;">
+                <div class="col-sm-3">
+                    <img src="~/Content/Baike/img/Football_64px_555219_easyicon.net.png" class="img img-circle" />
+                </div>
+                <div class="col-sm-9">
+                    <h4>宠物大全</h4>
+                    <p>在这里，我们用相知与它结缘</p>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="~/Content/Baike/img/Football_64px_555219_easyicon.net.png" class="img img-circle" />
+                </div>
+                <div class="col-sm-9" style="margin-bottom:30px;">
+                    <h4>宠物饲养</h4>
+                    <p>在这里，我们用安全伴它成长</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="~/Content/Baike/img/Football_64px_555219_easyicon.net.png" class="img img-circle" />
+                </div>
+                <div class="col-sm-9">
+                    <h4>宠物训练</h4>
+                    <p>在这里，我们用鼓励伴它同行</p>
+                </div>
+            </div>
+            <br />
+            <div class="row" style="margin-bottom:10px;">
+                <div class="col-sm-3">
+                    <img src="~/Content/Baike/img/Football_64px_555219_easyicon.net.png" class="img img-circle" />
+                </div>
+                <div class="col-sm-9">
+                    <h4>宠物医疗</h4>
+                    <p>在这里，我们用呵护保它健康</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="dog_tit col-md-10">
+            <h2>狗狗百科</h2>
+            <div class="dog_tit_r">
+                @Html.ActionLink("狗狗饲养", "ShowType",new {BaiekType = "狗狗饲养" })&nbsp;&nbsp;|&nbsp;&nbsp;
+                @Html.ActionLink("狗狗训练", "ShowType",new {BaiekType = "狗狗训练" })&nbsp;&nbsp;|&nbsp;&nbsp;
+                @Html.ActionLink("狗狗医疗", "ShowType",new {BaiekType = "狗狗医疗" })
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div> @*狗百科*@
+    <br />
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <div id="slide_x1" class="slide_x">
+                <div class="box">
+                    <ul class="list">
+                        <li style="margin-right:-40px;">
+                            <a href="#"><img src="~/Content/Baike/img/ad1.jpg" width="300" height="350" style="margin-left:-40px;"></a>
+                            <p style="margin-left:-40px;">
+                                <strong>酶与益生菌对于狗狗有何作用</strong><br />
+                                其实狗狗身体本身就会存在各式各样的酶，来帮助机体消化以及吸收营养。不过随着某些食物摄入量地减少，某些酶的活性就会变得越来...[<a href="#" target="_blank">详细</a>]
+                            </p>
+                        </li>
+                        <li>
+                            <a href="#"><img src="~/Content/Baike/img/ad2.jpg" width="300" height="350"></a>
+                            <p>
+                                <stong>犬体外寄生虫会诱发出哪些疾病</stong><br />
+                                为狗狗做好驱虫工作不只是为了防止某些寄生虫对我们的健康造成影响，更主要的是因为寄生虫对于狗狗的危害来的更大，而且寄生虫不...[<a href="#" target="_blank">详细</a>]
+                            </p>
+                        </li>
+                        <li>
+                            <a href="#"><img src="~/Content/Baike/img/ad3.jpg" width="300" height="350"></a>
+                            <p>
+                                <strong>维生素过量对狗狗有何危害</strong><br />
+                                维生素是维持狗狗生长发育以及正常生理的必要物质，合理地为狗狗补充维生素能够有效地增强狗狗的抵抗力，并在一定程度上防止狗狗...[<a href="#" target="_blank">详细</a>]
+                            </p>
+                        </li>
+                        <li><a href="#"><img src="~/Content/Baike/img/ad4.jpg" width="300" height="350"></a><p>站长素材4</p></li>
+                        <li><a href="#"><img src="~/Content/Baike/img/ad5.jpg" width="300" height="350"></a><p>站长素材5</p></li>
+                    </ul>
+                </div>
+                <ul class="btn">
+                    <li class="b_1 selected">1</li>
+                    <li class="b_2">2</li>
+                    <li class="b_3">3</li>
+                    <li class="b_4">4</li>
+                    <li class="b_5">5</li>
+                </ul>
+                <div class="plus"></div>
+                <div class="minus"></div>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-left:-50px;">
+            <div class="row" style="height:350px;">
+                @foreach (MyPets.Model.Baike a in ViewData["dog"] as List<MyPets.Model.Baike>)
+                {
+                    <table class="col-md-6" style="height:100px;margin-bottom:20px;">
+                        <tr>
+                            <td><img src="@a.BaikeImg" style="width:150px;height:100px;" alt="img" /></td>
+                            <td>@Html.ActionLink(@a.BaikeTitle,"Show", new { id = a.BaikeId })</td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
+    <div class="col-md-3">
+        @foreach (MyPets.Model.Baike a in ViewData["dogtitle"] as List<MyPets.Model.Baike>)
+        {
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;">@Html.ActionLink(@a.BaikeTitle, "Show", new { id=a.BaikeId })</div>
+        }
+    </div>
+    <div class="col-md-1"></div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="dog_tit col-md-10">
+            <h2>狗狗百科</h2>
+            <div class="dog_tit_r">
+                <a href="#" target="_blank">狗狗饲养</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="#" target="_blank">狗狗训练</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="#" target="_blank">狗狗医疗</a>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>  @*猫百科*@
+    <br />
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <div id="slide_x2" class="slide_x1">
+                <div class="box">
+                    <ul class="list">
+                        <li style="margin-right:-40px;">
+                            <a href="#"><img src="~/Content/Baike/img/ad1.jpg" width="300" height="350" style="margin-left:-40px;"></a>
+                            <p style="margin-left:-40px;">
+                                <strong>酶与益生菌对于狗狗有何作用</strong><br />
+                                其实狗狗身体本身就会存在各式各样的酶，来帮助机体消化以及吸收营养。不过随着某些食物摄入量地减少，某些酶的活性就会变得越来...[<a href="#" target="_blank">详细</a>]
+                            </p>
+                        </li>
+                        <li>
+                            <a href="#"><img src="~/Content/Baike/img/ad2.jpg" width="300" height="350"></a>
+                            <p>
+                                <stong>犬体外寄生虫会诱发出哪些疾病</stong><br />
+                                为狗狗做好驱虫工作不只是为了防止某些寄生虫对我们的健康造成影响，更主要的是因为寄生虫对于狗狗的危害来的更大，而且寄生虫不...[<a href="#" target="_blank">详细</a>]
+                            </p>
+                        </li>
+                        <li>
+                            <a href="#"><img src="~/Content/Baike/img/ad3.jpg" width="300" height="350"></a>
+                            <p>
+                                <strong>维生素过量对狗狗有何危害</strong><br />
+                                维生素是维持狗狗生长发育以及正常生理的必要物质，合理地为狗狗补充维生素能够有效地增强狗狗的抵抗力，并在一定程度上防止狗狗...[<a href="#" target="_blank">详细</a>]
+                            </p>
+                        </li>
+                        <li><a href="#"><img src="~/Content/Baike/img/ad4.jpg" width="300" height="350"></a><p>站长素材4</p></li>
+                        <li><a href="#"><img src="~/Content/Baike/img/ad5.jpg" width="300" height="350"></a><p>站长素材5</p></li>
+                    </ul>
+                </div>
+                <ul class="btn">
+                    <li class="b_1 selected">1</li>
+                    <li class="b_2">2</li>
+                    <li class="b_3">3</li>
+                    <li class="b_4">4</li>
+                    <li class="b_5">5</li>
+                </ul>
+                <div class="plus"></div>
+                <div class="minus"></div>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-left:-50px;width:auto;">
+            <table style="height:350px;">
+                <tr>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                </tr>
+
+                <tr>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                </tr>
+                <tr>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="dog_tit col-md-10">
+            <h2>狗狗百科</h2>
+            <div class="dog_tit_r">
+                <a href="#" target="_blank">狗狗饲养</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="#" target="_blank">狗狗训练</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="#" target="_blank">狗狗医疗</a>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>  @*小宠爬虫水族百科*@
+    <br />
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <div id="slide_x3" class="slide_x2">
+                <div class="box">
+                    <ul class="list">
+                        <li style="margin-right:-40px;">
+                            <a href="#"><img src="~/Content/Baike/img/ad1.jpg" width="300" height="350" style="margin-left:-40px;"></a>
+                            <p style="margin-left:-40px;">
+                                <strong>酶与益生菌对于狗狗有何作用</strong><br />
+                                其实狗狗身体本身就会存在各式各样的酶，来帮助机体消化以及吸收营养。不过随着某些食物摄入量地减少，某些酶的活性就会变得越来...[<a href="#" target="_blank">详细</a>]
+                            </p>
+                        </li>
+                        <li>
+                            <a href="#"><img src="~/Content/Baike/img/ad2.jpg" width="300" height="350"></a>
+                            <p>
+                                <stong>犬体外寄生虫会诱发出哪些疾病</stong><br />
+                                为狗狗做好驱虫工作不只是为了防止某些寄生虫对我们的健康造成影响，更主要的是因为寄生虫对于狗狗的危害来的更大，而且寄生虫不...[<a href="#" target="_blank">详细</a>]
+                            </p>
+                        </li>
+                        <li>
+                            <a href="#"><img src="~/Content/Baike/img/ad3.jpg" width="300" height="350"></a>
+                            <p>
+                                <strong>维生素过量对狗狗有何危害</strong><br />
+                                维生素是维持狗狗生长发育以及正常生理的必要物质，合理地为狗狗补充维生素能够有效地增强狗狗的抵抗力，并在一定程度上防止狗狗...[<a href="#" target="_blank">详细</a>]
+                            </p>
+                        </li>
+                        <li><a href="#"><img src="~/Content/Baike/img/ad4.jpg" width="300" height="350"></a><p>站长素材4</p></li>
+                        <li><a href="#"><img src="~/Content/Baike/img/ad5.jpg" width="300" height="350"></a><p>站长素材5</p></li>
+                    </ul>
+                </div>
+                <ul class="btn">
+                    <li class="b_1 selected">1</li>
+                    <li class="b_2">2</li>
+                    <li class="b_3">3</li>
+                    <li class="b_4">4</li>
+                    <li class="b_5">5</li>
+                </ul>
+                <div class="plus"></div>
+                <div class="minus"></div>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-left:-50px;width:auto;">
+            <table style="height:350px;">
+                <tr>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                </tr>
+
+                <tr>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                </tr>
+                <tr>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
+                    <td>贵宾眼屎多是怎么回事</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <script src="~/Content/Admin/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/Baike/js/slides.js"></script>
+    <script src="~/Content/Baike/js/jquery.cxslide.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        $(".slide_x").cxSlide({ plus: true, minus: true });
+        $(".slide_x1").cxSlide({ plus: true, minus: true });
+        $(".slide_x2").cxSlide({ plus: true, minus: true });
+    </script>
+</body>
+</html>

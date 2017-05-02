@@ -1,0 +1,249 @@
+﻿@model MyPets.Model.UserInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <style>
+        .topTitle {
+            margin-left: -90px;
+        }
+
+            .topTitle h3 {
+                color: #808080;
+            }
+
+        .bodyContent {
+            border: solid 1px rgba(179, 183, 187, 0.97);
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .remember {
+            line-height: 14px;
+            height: 14px;
+        }
+    </style>
+    <link href="~/Content/Register/css/basic.css" rel="stylesheet" />
+    <link href="~/Content/Register/css/Style.css" rel="stylesheet" />
+    <link href="~/Content/Admin/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/Admin/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            $("#status").fadeOut();
+            $("#preloader").delay(350).fadeOut("slow");
+        })
+        $(function () {
+            $("input[type=file]").change(function () { $(this).parents(".uploader").find(".filename").val($(this).val()); });
+            $("input[type=file]").each(function () {
+                if ($(this).val() == "") { $(this).parents(".uploader").find(".filename").val("No file selected..."); }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"><img src="~/Content/Shop/img/logo.png" /></div>
+        <div class="col-md-1 topTitle"><h3>用户注册</h3></div>
+        <div class="col-md-8"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 bodyContent">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="~/Content/Register/img/login.jpg" />
+                </div>
+                <div class="col-sm-6">
+                    <div class="page">
+                        <div class="main">
+                            @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { id = "RegisterForm", enctype = "multipart/form-data" }))
+                            {
+                                <div class="item item-username">
+                                    @Html.TextBoxFor(u => u.UserName, htmlAttributes: new { @class = "txt-input txt-username", @placeholder = "请输入用户名" })
+                                    @Html.ValidationMessageFor(u => u.UserName)
+                                    <b class="input-close" style="display: none;"></b>
+                                </div>
+                                <div class="item item-username">
+                                    @Html.TextBoxFor(u => u.UserEmail, htmlAttributes: new { @class = "txt-input txt-username", @placeholder = "请输入邮箱" })
+                                    @Html.ValidationMessageFor(u => u.UserEmail)
+                                    <b class="input-close" style="display:none;"></b>
+                                </div>
+                                <div class="item item-username">
+                                    <div class="uploader orange">
+                                        <div class="uploader orange">
+                                            <input type="text" class="filename" readonly="readonly" style="width:370px;height:40px;" />
+                                            <input type="button" name="file" class="button" value="选择头像" style="height:40px;" />
+                                            <input type="file" size="60"name="file" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item item-password">
+                                    @Html.TextBoxFor(u => u.UserPwd, htmlAttributes: new { @class = "txt-input txt-password ciphertext", @placeholder = "请输入密码" })
+                                    @Html.ValidationMessageFor(u => u.UserPwd)
+                                    <input id="ptext" class="txt-input txt-password plaintext" type="text" placeholder="请输入密码" style="display: none;" name="ptext">
+                                    <b class="tp-btn btn-off"></b>
+                                </div>
+                                <div class="item item-password">
+                                    @Html.TextBoxFor(u => u.ConfirmPwd, htmlAttributes: new { @class = "txt-input txt-password_PwdTwo ciphertext_PwdTwo", @placeholder = "确认密码" })
+                                    @Html.ValidationMessageFor(u=>u.ConfirmPwd)
+                                    <input id="ptext_PwdTwo" class="txt-input txt-password_PwdTwo plaintext_PwdTwo" type="text" placeholder="确认密码" style="display: none;" name="ptext_PwdTwo">
+                                    <b class="tp-btn_PwdTwo btn-off_PwdTwo"></b>
+                                </div>
+                                <div class="item item-captcha">
+                                    <input type="checkbox" class="choose" checked="checked" />
+                                    <label class="remember"><a href="javascript:;">我已阅读相关用户协议说明及版权声明</a></label>
+                                </div>
+                                <div class="ui-btn-wrap">
+                                       <input class="ui-btn-lg ui-btn-primary" value="用户注册" type="submit" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="footer">
+        <nav>
+            <ul class="footer_menu">
+                <li>
+                    <a href="tel:13888888888">
+                        <img src="~/Content/Register/img/plugmenu1.png">
+                        <label>联系我们</label>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/Register/img/plugmenu4.png">
+                        <label>宠物百科</label>
+                    </a>
+                </li>
+                <li class="home"><a href="#"></a></li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/Register/img/plugmenu3.png">
+                        <label>促销专区</label>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/Register/img/plugmenu2.png">
+                        <label>搜索商品</label>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $(".input-close").hide();
+            displayPwd();
+            displayPwd_PwdTwo();
+            remember();
+            showActionError();
+            autoHeight_login();
+            dispValidateCode();
+            displayClearBtn();
+            setTimeout(displayClearBtn, 200); //延迟显示,应对浏览器记住密码
+        });
+
+        //是否显示清除按钮
+        function displayClearBtn() {
+            if (document.getElementById("username").value != '') {
+                $("#username").siblings(".input-close").show();
+            }
+            if (document.getElementById("password").value != '') {
+                $(".ciphertext").siblings(".input-close").show();
+            }
+            if (document.getElementById("password_PwdTwo").value != '') {
+                $(".ciphertext_PwdTwo").siblings(".input-close").show();
+            }
+        }
+
+        //清除input内容
+        $('.input-close').click(function (e) {
+            $(e.target).parent().find(":input").val("");
+            $(e.target).hide();
+            $($(e.target).parent().find(":input")).each(function (i) {
+                if (this.id == "ptext" || this.id == "password") {
+                    $("#password").val('');
+                    $("#ptext").val('');
+                }
+                if (this.id == "ptext_PwdTwo" || this.id == "password_PwdTwo") {
+                    $("#password_PwdTwo").val('');
+                    $("#ptext_PwdTwo").val('');
+                }
+            });
+        });
+
+        //设置password字段的值
+        $('.txt-password').bind('input', function () {
+            $('#password').val($(this).val());
+        });
+        $('.txt-password_PwdTwo').bind('input', function () {
+            $('#password_PwdTwo').val($(this).val());
+        });
+
+        //显隐密码切换
+        function displayPwd() {
+            $(".tp-btn").toggle(
+              function () {
+                  $(this).addClass("btn-on");
+                  var textInput = $(this).siblings(".plaintext");
+                  var pwdInput = $(this).siblings(".ciphertext");
+                  pwdInput.hide();
+                  textInput.val(pwdInput.val()).show().focusEnd();
+              },
+              function () {
+                  $(this).removeClass("btn-on");
+                  var textInput = $(this).siblings(".plaintext");
+                  var pwdInput = $(this).siblings(".ciphertext");
+                  textInput.hide();
+                  pwdInput.val(textInput.val()).show().focusEnd();
+              }
+            );
+        }
+        //显隐密码切换
+        function displayPwd_PwdTwo() {
+            $(".tp-btn_PwdTwo").toggle(
+              function () {
+                  $(this).addClass("btn-on_PwdTwo");
+                  var textInput = $(this).siblings(".plaintext_PwdTwo");
+                  var pwdInput = $(this).siblings(".ciphertext_PwdTwo");
+                  pwdInput.hide();
+                  textInput.val(pwdInput.val()).show().focusEnd();
+              },
+              function () {
+                  $(this).removeClass("btn-on_PwdTwo");
+                  var textInput = $(this).siblings(".plaintext_PwdTwo");
+                  var pwdInput = $(this).siblings(".ciphertext_PwdTwo");
+                  textInput.hide();
+                  pwdInput.val(textInput.val()).show().focusEnd();
+              }
+            );
+        }
+
+        //监控用户输入
+        $(":input").bind('input propertychange', function () {
+            if ($(this).val() != "") {
+                $(this).siblings(".input-close").show();
+            } else {
+                $(this).siblings(".input-close").hide();
+            }
+        });
+    </script>
+</body>
+</html>
