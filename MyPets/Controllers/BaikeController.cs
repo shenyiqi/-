@@ -47,6 +47,7 @@ namespace MyPets.Controllers
         }
         public ActionResult Search(string txtBaikeTitle)//显示搜索的百科
         {
+
             ViewBag.search = txtBaikeTitle;
             var baike = BaikeServices.LoadEntities(b => b.BaikeTitle == txtBaikeTitle).ToList();
             ViewData["baike"] = baike;
