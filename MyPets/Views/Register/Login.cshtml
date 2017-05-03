@@ -195,10 +195,6 @@
                                     @Html.ValidationMessageFor(m => m.UserName)
                                     <b class="input-close" style="display: none;"></b>
                                 </div>
-                                @*<div class="item item-username">
-                                    @Html.TextBoxFor(m => m.UserEmail, htmlAttributes: new { @class = "txt-input txt-username", @placeholder = "请输入邮箱" })
-                                    @Html.ValidationMessageFor(m => m.UserEmail)
-                                </div>*@
                                 <div class="item item-password">
                                     @Html.TextBoxFor(m => m.UserPwd, htmlAttributes: new { @class = "txt-input txt-password ciphertext", @placeholder = "请输入密码", @type = "password" })
                                     @Html.ValidationMessageFor(m => m.UserPwd)
@@ -215,9 +211,9 @@
                                 <div class="item item-username">
                                     <p class="row_title"></p>
                                     <p class="row top2">
-                                        <input type="checkbox" class="choose" checked="checked" />
+                                        <input type="checkbox" class="choose" checked="checked" name="remembername" />
                                         <label class="remember">记住我</label>
-                                        <a class="note">@Html.ActionLink("忘记密码?", "RebackPwd")</a>
+                                        <a class="note">@Html.ActionLink("忘记密码?", "RebackPwdStep1")</a>
                                     </p>
                                 </div>
                                 <div class="ui-btn-wrap"><a id="btnlogin" class="ui-btn-lg ui-btn-primary" href="javascript:document.getElementById('loginForm').submit()">用户登录</a> </div>
