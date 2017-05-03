@@ -41,13 +41,13 @@ namespace MyPets.Controllers
             {
                 //if (ModelState.IsValid)
                 //{
-                var users = UserInfoServices.LoadEntities(o => o.UserName == user.UserName & o.UserPwd == user.UserPwd).FirstOrDefault();
+                var users = UserInfoServices.LoadEntities(o => o.UserName == user.UserName && o.UserPwd == user.UserPwd).FirstOrDefault();
                 if (users != null)
                 {
                     //以下代码将权限保存到Session
                     // var current_user = db.Users.Where(o => o.UserName == user.UserName).FirstOrDefault();;alert('登录成功!返回首页!');
                     HttpContext.Session["UserName"] = users.UserName;
-                    RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
                     //return Content("<script>window.location.href='/Baike/Index'</script>");
 
                 }
@@ -60,7 +60,6 @@ namespace MyPets.Controllers
             {
                 return Content(ex.Message);
             }
-            return View();
         }
         [HttpGet]
         public ActionResult Register() //注册
