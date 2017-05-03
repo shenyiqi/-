@@ -22,7 +22,7 @@
           <Property Name="BaikeSeries" Type="nvarchar" MaxLength="50" />
           <Property Name="BaikeType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="BaikeTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="BaikeImg" Type="nvarchar" MaxLength="50" />
+          <Property Name="BaikeImg" Type="nvarchar(max)" />
           <Property Name="BaikeDescribe" Type="nvarchar(max)" />
           <Property Name="BaikeContent" Type="nvarchar(max)" Nullable="false" />
           <Property Name="BaikeTime" Type="datetime" Nullable="false" />
@@ -151,8 +151,8 @@
           </Key>
           <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserEmail" Type="nvarchar(max)" />
           <Property Name="UserPwd" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ConfirmPwd" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserImg" Type="nvarchar(max)" />
@@ -389,7 +389,7 @@
           <Property Name="BaikeSeries" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BaikeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BaikeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BaikeImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BaikeImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BaikeDescribe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BaikeContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BaikeTime" Type="DateTime" Nullable="false" Precision="3" />
@@ -536,8 +536,8 @@
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ConfirmPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -921,8 +921,8 @@
               <MappingFragment StoreEntitySet="UserInfo">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
                 <ScalarProperty Name="ConfirmPwd" ColumnName="ConfirmPwd" />
                 <ScalarProperty Name="UserImg" ColumnName="UserImg" />

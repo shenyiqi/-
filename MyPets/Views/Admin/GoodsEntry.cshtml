@@ -1,0 +1,186 @@
+﻿@model IEnumerable<MyPets.Model.Goods>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>商品管理</title>
+    <link href="~/Content/Admin/css/瀑布流/style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
+    <script type="application/x-javascript">
+     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+     </script>
+    <!----webfonts---->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!----//webfonts---->
+    <!-- Global CSS for the page and tiles -->
+    <link href="~/Content/Admin/css/瀑布流/main.css" rel="stylesheet" />
+   
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <!----start-dropdown--->
+    <script type="text/javascript">
+			var $ = jQuery.noConflict();
+				$(function() {
+					$('#activator').click(function(){
+						$('#box').animate({'top':'0px'},500);
+					});
+					$('#boxclose').click(function(){
+					$('#box').animate({'top':'-700px'},500);
+					});
+				});
+				$(document).ready(function(){
+				//Hide (Collapse) the toggle containers on load
+				$(".toggle_container").hide();
+				//Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+				$(".trigger").click(function(){
+					$(this).toggleClass("active").next().slideToggle("slow");
+						return false; //Prevent the browser jump to the link anchor
+				});
+
+			});
+    </script>
+</head>
+<body>
+   
+    <div class="header">
+        <div class="wrap">
+            <div class="logo">
+                <a href="#"><img src="@Url.Content("~/Content/Shop/img/logo.png")" /></a>
+            </div>
+            <div class="nav-icon">
+                <a href="#" class="right_bt" id="activator"><span> </span> </a>
+            </div>
+            <div class="box" id="box">
+                <div class="box_content">
+                    <div class="box_content_center">
+                        <div class="form_content">
+                            <div class="menu_box_list">
+                                <ul>
+                                    <li><a href="#"><span>首页</span></a></li>
+                                    <li><a href="#"><span>关于</span></a></li>
+                                    <li><a href="#"><span>店铺</span></a></li>
+                                    <li><a href="#"><span>广告</span></a></li>
+                                    <li><a href="#"><span>返回</span></a></li>
+                                    <li><a href="contact.html"><span>联系</span></a></li>
+                                    <li class="clear"> </li> @*<div class="clear"> </div>*@
+                                </ul>
+                            </div>
+                            <a class="boxclose" id="boxclose"> <span> </span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-searchbar">
+                <form>
+                    <input type="text" /><input type="submit" value="" />
+                </form>
+            </div>
+            <div class="userinfo">
+                <div class="user">
+                    <ul>
+                        <li><a href="javascript:;"><img src="@Url.Content("~/Content/Admin/images/user-pic.png")" title="user-name"/><span>管理员</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"> </div>
+        </div>
+    </div>
+    @*<!---//End-header---->
+       商品循环处
+    <!---start-content---->*@
+    <div class="content">
+        <div class="wrap">
+            <div id="main" role="main">
+                <ul id="tiles">
+                    <!-- These are our grid blocks -->
+                    @foreach(var item in Model)
+                    {
+                     <li onClick="location.href='#';">
+                        <img src="@Url.Content(@item.GoodsImg1)" width="200" height="200">
+                        <div class="post-info">
+                            <div class="post-basic-info">
+                                <h3><a href="#">@Html.DisplayFor(g=>item.GoodsName)</a></h3>
+                                <span><a href="#"><label> </label>类别：@Html.DisplayFor(g=>item.TypeName)</a></span>
+                                <p>所属系列：@Html.DisplayFor(g=>item.SeriesName)</p>
+                            </div>
+                            <div class="post-info-rate-share">
+                                <div class="rateit">
+                                    <span> </span>
+                                </div>
+                                <div class="post-share">
+                                    <span> </span>
+                                </div>
+                                <div class="clear"> </div>
+                            </div>
+                        </div>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!---//End-content---->
+    <!----wookmark-scripts---->
+    <script src="~/Content/Admin/js/jquery.imagesloaded.js"></script>
+    <script src="~/Content/Admin/js/jquery.wookmark.js"></script>
+    <script type="text/javascript">
+		    (function ($){
+		      var $tiles = $('#tiles'),
+		          $handler = $('li', $tiles),
+		          $main = $('#main'),
+		          $window = $(window),
+		          $document = $(document),
+		          options = {
+		            autoResize: true, 
+		            container: $main, 
+		            offset: 20, 
+		            itemWidth:280 
+		          };
+		     
+		      function applyLayout() {
+		        $tiles.imagesLoaded(function() {
+		          // Destroy the old handler
+		          if ($handler.wookmarkInstance) {
+		            $handler.wookmarkInstance.clear();
+		          }
+
+		          // Create a new layout handler.
+		          $handler = $('li', $tiles);
+		          $handler.wookmark(options);
+		        });
+		      }
+		      
+		      function onScroll() {
+		        // Check if we're within 100 pixels of the bottom edge of the broser window.
+		        var winHeight = window.innerHeight ? window.innerHeight : $window.height(), // iphone fix
+		            closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+
+		        if (closeToBottom) {
+		          // Get the first then items from the grid, clone them, and add them to the bottom of the grid
+		          var $items = $('li', $tiles),
+		              $firstTen = $items.slice(0, 10);
+		          $tiles.append($firstTen.clone());
+
+		          applyLayout();
+		        }
+		      };
+
+		      // Call the layout function for the first time
+		      applyLayout();
+
+		      // Capture scroll event.
+		      $window.bind('scroll.wookmark', onScroll);
+		    })(jQuery);
+    </script>
+   
+    <div class="footer">
+        <p>Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="#" target="_blank" title="模板之家">宠物之家</a> - Collect from <a href="#/" title="网页模板" target="_blank">江西师大</a></p>
+    </div>
+   
+</body>
+</html>
+
+

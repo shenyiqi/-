@@ -1,0 +1,36 @@
+﻿@model IEnumerable<MyPets.Model.Baike>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutBaike.cshtml";
+}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">@Html.ActionLink("首页", "Index") >搜索‘@ViewBag.search’</div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="dog_tit col-md-8">
+      <h2>词条(num)</h2>
+       <div class="dog_tit"></div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        @foreach(MyPets.Model.Baike a in ViewData["baike"] as List<MyPets.Model.Baike>)
+        {
+          <div class="row">
+            <div class="col-sm-3">
+                <img src="@Url.Content(a.BaikeImg)" style="height:200px;"/>
+            </div>
+            <div class="col-sm-9">
+                <p>@Html.DisplayFor(u=>a.BaikeContent)</p>
+            </div>
+        </div>
+        }
+    </div>
+    <div class="col-md-2"></div>
+</div>
+

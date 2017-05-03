@@ -75,14 +75,13 @@
             left: 37px;
             bottom: 0;
         }
-       
     </style>
 </head>
 <body>
     <div class="row" style="border-bottom:1px solid #a5a0a0;line-height:50px;">
         <div class="col-md-1"></div>
         <div class="col-md-1">@Html.ActionLink("宠物之家", "", "")</div>
-        <div class="col-md-1">@Html.ActionLink("宠物商城","","")</div > 
+        <div class="col-md-1">@Html.ActionLink("宠物商城","","")</div>
         <div class="col-md-1">@Html.ActionLink("宠物论坛","","")</div>
         <div class="col-md-1" style="border-bottom:2px solid #9C3"><a href="javascript:;">宠物百科</a></div>
         <div class="col-md-5"></div>
@@ -95,14 +94,17 @@
         <div class="col-md-2">
             <img src="~/Content/Shop/img/logo.png" />
         </div>
-        <div class="input-group col-md-5" style="width: 500px; margin-top: 20px; margin-right: 20%;">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="请输入文章/词条/关键字" style="border-color:#ff0000;height:46px;">
-                <span class="input-group-btn">
-                    <input class="btn btn-danger btn-lg" type="submit" value="搜索">
-                </span>
+        @using (Html.BeginForm("Search", "Baike", FormMethod.Post))
+        {
+            <div class="input-group col-md-5" style="width: 500px; margin-top: 20px; margin-right: 20%;">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="txtBaikeTitle" placeholder="请输入文章/词条/关键字" style="border-color:#ff0000;height:46px;">
+                    <span class="input-group-btn">
+                        <input class="btn btn-danger btn-lg" type="submit" value="搜索">
+                    </span>
+                </div>
             </div>
-        </div>
+        }
         <div class="col-md-2"></div>
     </div>
     <br />
@@ -221,9 +223,9 @@
         <div class="dog_tit col-md-10">
             <h2>狗狗百科</h2>
             <div class="dog_tit_r">
-                @Html.ActionLink("狗狗饲养", "ShowType",new {BaiekType = "狗狗饲养" })&nbsp;&nbsp;|&nbsp;&nbsp;
-                @Html.ActionLink("狗狗训练", "ShowType",new {BaiekType = "狗狗训练" })&nbsp;&nbsp;|&nbsp;&nbsp;
-                @Html.ActionLink("狗狗医疗", "ShowType",new {BaiekType = "狗狗医疗" })
+                @Html.ActionLink("狗狗饲养", "ShowType", new { BaiekType = "狗狗饲养" })&nbsp;&nbsp;|&nbsp;&nbsp;
+                @Html.ActionLink("狗狗训练", "ShowType", new { BaiekType = "狗狗训练" })&nbsp;&nbsp;|&nbsp;&nbsp;
+                @Html.ActionLink("狗狗医疗", "ShowType", new { BaiekType = "狗狗医疗" })
             </div>
         </div>
         <div class="col-md-1"></div>
@@ -271,36 +273,36 @@
                 <div class="minus"></div>
             </div>
         </div>
-        <div class="col-md-4" style="margin-left:-50px;">
+        <div class="col-md-5" style="margin-left:-50px;">
             <div class="row" style="height:350px;">
                 @foreach (MyPets.Model.Baike a in ViewData["dog"] as List<MyPets.Model.Baike>)
                 {
                     <table class="col-md-6" style="height:100px;margin-bottom:20px;">
                         <tr>
-                            <td><img src="@a.BaikeImg" style="width:150px;height:100px;" alt="img" /></td>
-                            <td>@Html.ActionLink(@a.BaikeTitle,"Show", new { id = a.BaikeId })</td>
+                            <td><img src="@Url.Content(a.BaikeImg)" style="width:150px;height:100px;" alt="img" /></td>
+                            <td>@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</td>
                         </tr>
                     </table>
                 }
             </div>
         </div>
-    <div class="col-md-3">
-        @foreach (MyPets.Model.Baike a in ViewData["dogtitle"] as List<MyPets.Model.Baike>)
-        {
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;">@Html.ActionLink(@a.BaikeTitle, "Show", new { id=a.BaikeId })</div>
-        }
-    </div>
-    <div class="col-md-1"></div>
+        <div class="col-md-2">
+            @foreach (MyPets.Model.Baike a in ViewData["dogtitle"] as List<MyPets.Model.Baike>)
+            {
+                <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 20px Microsoft YaHei;margin-left:50px;">@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</div>
+            }
+        </div>
+        <div class="col-md-1"></div>
     </div>
     <br />
     <div class="row">
         <div class="col-md-1"></div>
         <div class="dog_tit col-md-10">
-            <h2>狗狗百科</h2>
+            <h2>猫咪百科</h2>
             <div class="dog_tit_r">
-                <a href="#" target="_blank">狗狗饲养</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="#" target="_blank">狗狗训练</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="#" target="_blank">狗狗医疗</a>
+                <a href="#" target="_blank">猫咪饲养</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="#" target="_blank">猫咪训练</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="#" target="_blank">猫咪医疗</a>
             </div>
         </div>
         <div class="col-md-1"></div>
@@ -348,36 +350,24 @@
                 <div class="minus"></div>
             </div>
         </div>
-        <div class="col-md-4" style="margin-left:-50px;width:auto;">
-            <table style="height:350px;">
-                <tr>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                </tr>
-
-                <tr>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                </tr>
-                <tr>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                </tr>
-            </table>
+        <div class="col-md-5" style="margin-left:-50px;">
+            <div class="row" style="height:350px;">
+                @foreach (MyPets.Model.Baike a in ViewData["dog"] as List<MyPets.Model.Baike>)
+                {
+                <table class="col-md-6" style="height:100px;margin-bottom:20px;">
+                    <tr>
+                        <td><img src="@Url.Content(a.BaikeImg)" style="width:150px;height:100px;" alt="img" /></td>
+                        <td>@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</td>
+                    </tr>
+                </table>
+                }
+            </div>
         </div>
-        <div class="col-md-3">
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+        <div class="col-md-2">
+            @foreach (MyPets.Model.Baike a in ViewData["dogtitle"] as List<MyPets.Model.Baike>)
+            {
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 20px Microsoft YaHei;margin-left:50px;">@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</div>
+            }
         </div>
         <div class="col-md-1"></div>
     </div>
@@ -385,11 +375,11 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="dog_tit col-md-10">
-            <h2>狗狗百科</h2>
+            <h2>小宠百科</h2>
             <div class="dog_tit_r">
-                <a href="#" target="_blank">狗狗饲养</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="#" target="_blank">狗狗训练</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <a href="#" target="_blank">狗狗医疗</a>
+                <a href="#" target="_blank">小宠饲养</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="#" target="_blank">小宠训练</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="#" target="_blank">小宠医疗</a>
             </div>
         </div>
         <div class="col-md-1"></div>
@@ -437,36 +427,24 @@
                 <div class="minus"></div>
             </div>
         </div>
-        <div class="col-md-4" style="margin-left:-50px;width:auto;">
-            <table style="height:350px;">
-                <tr>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                </tr>
-
-                <tr>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                </tr>
-                <tr>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                    <td><img src="~/Content/Baike/img/ad1.jpg" style="width:150px;height:100px;" /></td>
-                    <td>贵宾眼屎多是怎么回事</td>
-                </tr>
-            </table>
+        <div class="col-md-5" style="margin-left:-50px;">
+            <div class="row" style="height:350px;">
+                @foreach (MyPets.Model.Baike a in ViewData["dog"] as List<MyPets.Model.Baike>)
+                {
+                <table class="col-md-6" style="height:100px;margin-bottom:20px;">
+                    <tr>
+                        <td><img src="@Url.Content(a.BaikeImg)" style="width:150px;height:100px;" alt="img" /></td>
+                        <td>@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</td>
+                    </tr>
+                </table>
+                }
+            </div>
         </div>
-        <div class="col-md-3">
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 22px Microsoft YaHei;margin-left:50px;"><a href="#">贵宾眼屎多是怎么回事</a></div>
+        <div class="col-md-2">
+            @foreach (MyPets.Model.Baike a in ViewData["dogtitle"] as List<MyPets.Model.Baike>)
+            {
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 20px Microsoft YaHei;margin-left:50px;">@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</div>
+            }
         </div>
         <div class="col-md-1"></div>
     </div>

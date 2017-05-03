@@ -12,6 +12,7 @@ namespace MyPets.Controllers
     {
         // GET: Admin
         MyPets.IBLL.IUserInfoServices UserInfoServices = new MyPets.BLL.UserInfoServices();
+        MyPets.IBLL.IGoodsServices GoodsServices = new MyPets.BLL.GoodsServices();
         public ActionResult Index()
         {
             return View();
@@ -52,9 +53,10 @@ namespace MyPets.Controllers
         {
             return View();
         }
-        public ActionResult example()
+        public ActionResult GoodsEntry() 
         {
-            return View();
+            var goods = GoodsServices.LoadEntities(g => true).ToList();
+            return View(goods);
         }
     }
 }

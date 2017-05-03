@@ -27,8 +27,8 @@ namespace MyPets.Model
     
         public int UserId { get; set; }
         public string UserPhone { get; set; }
-        public string UserName { get; set; }
         public string UserEmail { get; set; }
+        public string UserName { get; set; }
         public string UserPwd { get; set; }
         public string ConfirmPwd { get; set; }
         public string UserImg { get; set; }

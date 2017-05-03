@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Baike/css/style.css" rel="stylesheet" />
+    <link href="~/Content/Admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Baike/css/SlideStyle.css" rel="stylesheet" />
+    <link href="~/Content/Admin/css/StyleBar.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row" style="border-bottom:1px solid #a5a0a0;line-height:50px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">@Html.ActionLink("宠物之家", "", "")</div>
+        <div class="col-md-1">@Html.ActionLink("宠物商城", "", "")</div>
+        <div class="col-md-1">@Html.ActionLink("宠物论坛", "", "")</div>
+        <div class="col-md-1" style="border-bottom:2px solid #9C3"><a href="javascript:;">宠物百科</a></div>
+        <div class="col-md-5"></div>
+        <div class="col-md-1">@Html.ActionLink("登录", "", "")|@Html.ActionLink("注册", "", "")</div>
+        <div class="col-md-1"></div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-2">
+            <img src="~/Content/Shop/img/logo.png" />
+        </div>
+        @using (Html.BeginForm("Search", "Baike", FormMethod.Post))
+        {
+            <div class="input-group col-md-5" style="width: 500px; margin-top: 20px; margin-right: 20%;">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="txtBaikeTitle" placeholder="请输入文章/词条/关键字" style="border-color:#ff0000;height:46px;">
+                    <span class="input-group-btn">
+                        <input class="btn btn-danger btn-lg" type="submit" value="搜索">
+                    </span>
+                </div>
+            </div>
+        }
+        <div class="col-md-2"></div>
+    </div>
+    <br />
+    <div class="index_top">
+        <div class="row part2">
+            <div class="col-md-2"></div>
+            <a href="#" class="col-md-1">首页</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("狗狗", "ShowSeries", new { series = "狗系列" }) </a>
+            <a href="#" class="col-md-1">@Html.ActionLink("猫咪", "ShowSeries", new { series = "猫系列" })</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("小宠", "ShowSeries", new { series = "小宠系列" })</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("水族", "ShowSeries", new { series = "水族系列" })</a>
+            <div class="col-md-5"></div>
+        </div>
+    </div>
+    <br />
+    @RenderBody()
+    <script src="~/Content/Admin/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

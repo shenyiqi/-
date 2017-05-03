@@ -1179,8 +1179,11 @@
     <Content Include="Content\Admin\css\bootstrap.min.css" />
     <Content Include="Content\Admin\css\font-awesome.min.css" />
     <Content Include="Content\Admin\css\foundation.min.css" />
+    <Content Include="Content\Admin\css\StyleBar.css" />
     <Content Include="Content\Admin\css\styles.css" />
     <Content Include="Content\Admin\css\templatemo-style.css" />
+    <Content Include="Content\Admin\css\瀑布流\main.css" />
+    <Content Include="Content\Admin\css\瀑布流\style.css" />
     <Content Include="Content\Admin\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Admin\images\1.jpg" />
     <Content Include="Content\Admin\images\2.jpg" />
@@ -1188,13 +1191,25 @@
     <Content Include="Content\Admin\images\4.jpg" />
     <Content Include="Content\Admin\images\5.jpg" />
     <Content Include="Content\Admin\images\bicycle.jpg" />
+    <Content Include="Content\Admin\images\border.png" />
     <Content Include="Content\Admin\images\candy-cane-stars.png" />
     <Content Include="Content\Admin\images\checkbox-radio-sheet.png" />
+    <Content Include="Content\Admin\images\close2.png" />
+    <Content Include="Content\Admin\images\close2h.png" />
+    <Content Include="Content\Admin\images\facebook.png" />
+    <Content Include="Content\Admin\images\facebookh.png" />
     <Content Include="Content\Admin\images\jstar-map.png" />
+    <Content Include="Content\Admin\images\map-pin.png" />
+    <Content Include="Content\Admin\images\nav-icon.png" />
     <Content Include="Content\Admin\images\person.jpg" />
     <Content Include="Content\Admin\images\profile-photo.jpg" />
+    <Content Include="Content\Admin\images\reply.png" />
+    <Content Include="Content\Admin\images\search-icon.png" />
+    <Content Include="Content\Admin\images\start-rate.png" />
+    <Content Include="Content\Admin\images\start-rateh.png" />
     <Content Include="Content\Admin\images\sunset-big.jpg" />
     <Content Include="Content\Admin\images\sunset.jpg" />
+    <Content Include="Content\Admin\images\user-pic.png" />
     <Content Include="Content\Admin\jqvmap\data\jquery.vmap.sampledata.js" />
     <Content Include="Content\Admin\jqvmap\jquery.vmap.js" />
     <Content Include="Content\Admin\jqvmap\jquery.vmap.min.js" />
@@ -1221,7 +1236,9 @@
     <Content Include="Content\Admin\js\jquery-1.11.2.min.js" />
     <Content Include="Content\Admin\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Content\Admin\js\jquery-stars.js" />
+    <Content Include="Content\Admin\js\jquery.imagesloaded.js" />
     <Content Include="Content\Admin\js\jquery.main.js" />
+    <Content Include="Content\Admin\js\jquery.wookmark.js" />
     <Content Include="Content\Admin\js\smothscrool.js" />
     <Content Include="Content\Baike\css\bootstrap-select.css" />
     <Content Include="Content\Baike\css\SlideStyle.css" />
@@ -1634,6 +1651,9 @@
     <Content Include="Views\Shop\Order.cshtml" />
     <Content Include="Views\Shop\Register.cshtml" />
     <Content Include="Views\Shop\UpGoods.cshtml" />
+    <Content Include="Views\Admin\GoodsEntry.cshtml" />
+    <Content Include="Views\Baike\Search.cshtml" />
+    <Content Include="Views\Shared\_LayoutBaike.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

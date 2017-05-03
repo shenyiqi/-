@@ -45,9 +45,13 @@ namespace MyPets.Controllers
         {
             return View();
         }
-        public ActionResult Search()//显示搜索的百科
+        public ActionResult Search(string txtBaikeTitle)//显示搜索的百科
         {
+            ViewBag.search = txtBaikeTitle;
+            var baike = BaikeServices.LoadEntities(b => b.BaikeTitle == txtBaikeTitle).ToList();
+            ViewData["baike"] = baike;
             return View();
         }
+
     }
 }
