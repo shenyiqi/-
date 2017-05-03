@@ -16,8 +16,8 @@ namespace MyPets.Controllers
     {
         // GET: Register
         IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
-        
-        IDBSession db = new DBSession();  
+
+        IDBSession db = new DBSession();
         //DbContext db = DbContextFactory.CreateDbContext();
 
         [HttpGet]
@@ -31,7 +31,6 @@ namespace MyPets.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(UserInfo user)
         {
-
             string ValidateCode = Request["txtverifcode"];
             if (ValidateCode != Session["ValidateCode"].ToString())
             {
@@ -46,7 +45,8 @@ namespace MyPets.Controllers
                 {
                     //以下代码将权限保存到Session
                     // var current_user = db.Users.Where(o => o.UserName == user.UserName).FirstOrDefault();;alert('登录成功!返回首页!');
-                    HttpContext.Session["UserName"] = users.UserName;
+                    
+                    Session["UserName"] = users.UserName;
                     return RedirectToAction("Index", "Home");
                     //return Content("<script>window.location.href='/Baike/Index'</script>");
 
@@ -157,7 +157,7 @@ namespace MyPets.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult RebackPwdStep3(string pwd,string confirmpwd)
+        public ActionResult RebackPwdStep3(string pwd, string confirmpwd)
         {
             string name = Session["ValidateUserName"].ToString();
             if (pwd != confirmpwd)
@@ -167,7 +167,7 @@ namespace MyPets.Controllers
             else
             {
                 var update = UserInfoServices.SetPwd(name, pwd, confirmpwd);
-                if (update>0)
+                if (update > 0)
                 {
                     return Content(";<script>alert('密码修改成功');window.location.href='/Register/RebackPwdStep4'</script>");
                 }
@@ -197,7 +197,7 @@ namespace MyPets.Controllers
             {
                 return Content("<script>alert('验证码发送成功，请耐心等待');history.go(-1)</script>");
             }
-            else return View();
+            else return Content("<script>alert('验证码发送失败，请重新发送');history.go(-1)</script>");
         }
     }
 }
