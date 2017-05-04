@@ -33,9 +33,10 @@ namespace MyPets.Controllers
             ViewData["water"] = waterpet;    ViewData["watertitle"] = waterTitle;
             return View();
         }
-        public ActionResult Show() //显示单个百科
+        public ActionResult Show(int id) //显示单个百科
         {
-            return View();
+            var baike = BaikeServices.LoadEntities(b => b.BaikeId == id).FirstOrDefault();
+            return View(baike);
         }
         public ActionResult ShowSeries()//显示系列百科
         {
@@ -49,7 +50,8 @@ namespace MyPets.Controllers
         {
 
             ViewBag.search = txtBaikeTitle;
-            var baike = BaikeServices.LoadEntities(b => b.BaikeTitle == txtBaikeTitle).ToList();
+            var baike = BaikeServices.LoadEntities(b => b.BaikeTitle.Contains(txtBaikeTitle)||b.BaikeType.Contains(txtBaikeTitle)||b.BaikeSeries.Contains(txtBaikeTitle)).ToList();
+            ViewBag.num = baike.Count();
             ViewData["baike"] = baike;
             return View();
         }

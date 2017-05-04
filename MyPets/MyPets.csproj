@@ -1654,6 +1654,7 @@
     <Content Include="Views\Admin\GoodsEntry.cshtml" />
     <Content Include="Views\Baike\Search.cshtml" />
     <Content Include="Views\Shared\_LayoutBaike.cshtml" />
+    <Content Include="Views\Baike\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

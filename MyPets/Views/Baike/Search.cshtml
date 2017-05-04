@@ -11,11 +11,12 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="dog_tit col-md-8">
-      <h2>词条(num)</h2>
+      <h2>词条(@ViewBag.num)</h2>
        <div class="dog_tit"></div>
     </div>
     <div class="col-md-2"></div>
 </div>
+<br />
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
@@ -23,12 +24,13 @@
         {
           <div class="row">
             <div class="col-sm-3">
-                <img src="@Url.Content(a.BaikeImg)" style="height:200px;"/>
+                <img src="@Url.Content(a.BaikeImg)" style="height:200px;width:250px;margin-bottom:20px;"/>
             </div>
             <div class="col-sm-9">
-                <p>@Html.DisplayFor(u=>a.BaikeContent)</p>
+                <p style="line-height:200px;height:200px;">@Html.ActionLink(a.BaikeTitle,"Show",new { id = a.BaikeId })</p>
             </div>
         </div>
+
         }
     </div>
     <div class="col-md-2"></div>

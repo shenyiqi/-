@@ -80,12 +80,12 @@
 <body>
     <div class="row" style="border-bottom:1px solid #a5a0a0;line-height:50px;">
         <div class="col-md-1"></div>
-        <div class="col-md-1">@Html.ActionLink("宠物之家", "", "")</div>
-        <div class="col-md-1">@Html.ActionLink("宠物商城","","")</div>
-        <div class="col-md-1">@Html.ActionLink("宠物论坛","","")</div>
+        <div class="col-md-1">@Html.ActionLink("宠物之家", "Index", "Home")</div>
+        <div class="col-md-1">@Html.ActionLink("宠物商城", "Index", "Shop")</div>
+        <div class="col-md-1">@Html.ActionLink("宠物论坛", "Index", "Forum")</div>
         <div class="col-md-1" style="border-bottom:2px solid #9C3"><a href="javascript:;">宠物百科</a></div>
         <div class="col-md-5"></div>
-        <div class="col-md-1">@Html.ActionLink("登录","","")|@Html.ActionLink("注册","","")</div>
+        <div class="col-md-1">@Html.ActionLink("登录", "Login", "Register")|@Html.ActionLink("注册", "Register", "Register")</div>
         <div class="col-md-1"></div>
     </div>
     <br /><br />
@@ -111,11 +111,11 @@
     <div class="index_top">
         <div class="row part2">
             <div class="col-md-2"></div>
-            <a href="#" class="col-md-1">首页</a>
-            <a href="#" class="col-md-1">@Html.ActionLink("狗狗", "ShowSeries", new { series = "狗系列" }) </a>
-            <a href="#" class="col-md-1">@Html.ActionLink("猫咪", "ShowSeries", new { series = "猫系列" })</a>
-            <a href="#" class="col-md-1">@Html.ActionLink("小宠", "ShowSeries", new { series = "小宠系列" })</a>
-            <a href="#" class="col-md-1">@Html.ActionLink("水族", "ShowSeries", new { series = "水族系列" })</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("首页", "Index")</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("狗狗", "Search", new { txtBaikeTitle = "狗系列" }) </a>
+            <a href="#" class="col-md-1">@Html.ActionLink("猫咪", "Search", new { txtBaikeTitle = "猫系列" })</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("小宠", "Search", new { txtBaikeTitle = "小宠系列" })</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("水族", "Search", new { txtBaikeTitle = "水族系列" })</a>
             <div class="col-md-5"></div>
         </div>
     </div>
@@ -223,10 +223,10 @@
         <div class="dog_tit col-md-10">
             <h2>狗狗百科</h2>
             <div class="dog_tit_r">
-                @Html.ActionLink("狗狗饲养", "ShowType", new { BaiekType = "狗狗饲养" })&nbsp;&nbsp;|&nbsp;&nbsp;
-                @Html.ActionLink("狗狗训练", "ShowType", new { BaiekType = "狗狗训练" })&nbsp;&nbsp;|&nbsp;&nbsp;
-                @Html.ActionLink("狗狗医疗", "ShowType", new { BaiekType = "狗狗医疗" })
-            </div>
+                @Html.ActionLink("狗狗饲养", "ShowType", new { txtBaikeTitle = "狗狗饲养" })&nbsp;&nbsp;|&nbsp;&nbsp;
+                @Html.ActionLink("狗狗训练", "ShowType", new { txtBaikeTitle = "狗狗训练" })&nbsp;&nbsp;|&nbsp;&nbsp;
+                @Html.ActionLink("狗狗医疗", "ShowType", new { txtBaikeTitle = "狗狗医疗" })
+            </div> 
         </div>
         <div class="col-md-1"></div>
     </div> @*狗百科*@
@@ -447,6 +447,56 @@
             }
         </div>
         <div class="col-md-1"></div>
+    </div>
+    <p style="text-align:center;color:#cec3c3;margin-top:20px;">用关爱与呵护谱写的养宠百科，全面的养宠知识满足所需，专业的宠物医生在线解答，为爱宠健康生活保驾护航。宠物之家——全面关爱宠物生活！</p>
+    <hr />
+    <div class="footer" style="background-color:#f2e7e7;">
+        <div class="row" style="margin-bottom:20px;">
+            <div class="col-md-1"></div>
+            <div class="col-md-11"><h3>友情链接</h3></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div style="margin-right:20px;display:inline-block;width:50px;">金毛犬</div>
+                <div style="margin-right:20px;display:inline-block;width:50px;">泰迪熊</div>
+                <div style="margin-right:20px;display:inline-block;width:50px;">哈士奇</div>
+                <div style="margin-right:20px;display:inline-block;width:140px;">七夕送什么礼物好</div>
+                <div style="margin-right:20px;display:inline-block;width:60px;">家居图片</div>
+                <div style="margin-right:20px;display:inline-block;width:60px;">爱问宠物</div>
+                <div style="margin-right:20px;display:inline-block;width:100px;">玛莎拉蒂手表</div>
+                <div style="margin-right:20px;display:inline-block;width:60px;">浪琴手表</div>
+                <div style="margin-right:20px;display:inline-block;width:50px;">宠物猫</div>
+                <div style="margin-right:20px;display:inline-block;width:70px;">长沙宠物网</div>
+                <div style="margin-right:20px;display:inline-block;width:60px;">南昌企业</div>
+                <div style="margin-right:20px;display:inline-block;width:50px;">巴巴</div>
+                <div style="margin-right:20px;display:inline-block;width:70px;">边境牧羊犬</div><br /><br />
+                <div style="margin-right:20px;display:inline-block;width:60px;">东营房产</div>
+                <div style="margin-right:20px;display:inline-block;width:50px;">返程票</div>
+                <div style="margin-right:20px;display:inline-block;width:70px;">阳光狗狗网</div>
+                <div style="margin-right:20px;display:inline-block;width:60px;">波奇商城</div>
+            </div>
+            <div class="col-md-1"></div>
+         </div>
+        <hr style="background:#000000;color:#000000;" />
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10" style="text-align:center;">
+                <div style="display:inline-block;width:95px;font-size:22px;"><p>关于网站</p></div>|
+                <div style="display:inline-block;width:95px;font-size:22px;"><p>友情链接</p></div>|
+                <div style="display:inline-block;width:95px;font-size:22px;"><p>诚聘英才</p></div>|
+                <div style="display:inline-block;width:95px;font-size:22px;"><p>联系我们</p></div>|
+                <div style="display:inline-block;width:95px;font-size:22px;"><p>网站地图</p></div>|
+                <div style="display:inline-block;width:95px;font-size:22px;"><p>意见反馈</p></div>|
+                <div style="display:inline-block;width:95px;font-size:22px;"><p>帮助中心</p></div>|
+                <div style="display:inline-block;width:95px;font-size:22px;"><p>最新文章</p></div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11"></div>
+        </div>
     </div>
 
     <script src="~/Content/Admin/js/jquery-1.11.2.min.js"></script>
