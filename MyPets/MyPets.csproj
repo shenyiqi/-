@@ -1289,6 +1289,16 @@
     <Content Include="Content\Baike\img\upload\animal_chow_chow_1280x1024_44127_m.jpg" />
     <Content Include="Content\Baike\img\upload\Img401711705.jpg" />
     <Content Include="Content\Baike\img\upload\Mypsd_52802_201309090817380036B.jpg" />
+    <Content Include="Content\Baike\img\upload\slideimg\catslide1.jpg" />
+    <Content Include="Content\Baike\img\upload\slideimg\catslide2.jpg" />
+    <Content Include="Content\Baike\img\upload\slideimg\catslide3.jpg" />
+    <Content Include="Content\Baike\img\upload\slideimg\catslide4.jpg" />
+    <Content Include="Content\Baike\img\upload\slideimg\catslide5.jpg" />
+    <Content Include="Content\Baike\img\upload\slideimg\otherslide1.jpg" />
+    <Content Include="Content\Baike\img\upload\slideimg\otherslide2.jpg" />
+    <Content Include="Content\Baike\img\upload\slideimg\otherslide3.jpg" />
+    <Content Include="Content\Baike\img\upload\slideimg\otherslide4.jpg" />
+    <Content Include="Content\Baike\img\upload\slideimg\otherslide5.jpg" />
     <Content Include="Content\Baike\img\upload\t0133f08cf402d8b0cc.jpg" />
     <Content Include="Content\Baike\img\upload\t01458f664819249e43.jpg" />
     <Content Include="Content\Baike\img\upload\t0179c889fafc7ccc4c.jpg" />

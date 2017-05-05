@@ -34,26 +34,18 @@ namespace MyPets.Controllers
             return View();
         }
         public ActionResult Show(int id) //显示单个百科
-        {
+        { 
             var baike = BaikeServices.LoadEntities(b => b.BaikeId == id).FirstOrDefault();
             return View(baike);
         }
-        public ActionResult ShowSeries()//显示系列百科
-        {
-            return View();
-        }
-        public ActionResult ShowType()//显示类别百科
-        {
-            return View();
-        }
+       
         public ActionResult Search(string txtBaikeTitle)//显示搜索的百科
         {
-
+            //||b.BaikeType.Contains(txtBaikeTitle)||b.BaikeSeries.Contains(txtBaikeTitle)
             ViewBag.search = txtBaikeTitle;
-            var baike = BaikeServices.LoadEntities(b => b.BaikeTitle.Contains(txtBaikeTitle)||b.BaikeType.Contains(txtBaikeTitle)||b.BaikeSeries.Contains(txtBaikeTitle)).ToList();
+            var baike = BaikeServices.LoadEntities(b => b.BaikeTitle.Contains(txtBaikeTitle) || b.BaikeType.Contains(txtBaikeTitle) || b.BaikeSeries.Contains(txtBaikeTitle)).ToList();
             ViewBag.num = baike.Count();
-            ViewData["baike"] = baike;
-            return View();
+            return View(baike);
         }
 
     }

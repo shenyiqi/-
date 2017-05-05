@@ -98,7 +98,7 @@
         {
             <div class="input-group col-md-5" style="width: 500px; margin-top: 20px; margin-right: 20%;">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="txtBaikeTitle" placeholder="请输入文章/词条/关键字" style="border-color:#ff0000;height:46px;">
+                    <input type="text" class="form-control" name="txtBaikeTitle" placeholder="请输入文章/词条/关键字"  style="border-color:#ff0000;height:46px;">
                     <span class="input-group-btn">
                         <input class="btn btn-danger btn-lg" type="submit" value="搜索">
                     </span>
@@ -179,7 +179,7 @@
                     <img src="~/Content/Baike/img/Football_64px_555219_easyicon.net.png" class="img img-circle" />
                 </div>
                 <div class="col-sm-9">
-                    <h4>宠物大全</h4>
+                    <h4>@Html.ActionLink("宠物大全","Search",new { txtBaikeTitle="系列" })</h4>
                     <p>在这里，我们用相知与它结缘</p>
                 </div>
             </div>
@@ -189,7 +189,7 @@
                     <img src="~/Content/Baike/img/Football_64px_555219_easyicon.net.png" class="img img-circle" />
                 </div>
                 <div class="col-sm-9" style="margin-bottom:30px;">
-                    <h4>宠物饲养</h4>
+                    <h4>@Html.ActionLink("宠物饲养", "Search", new { txtBaikeTitle = "养" })</h4>
                     <p>在这里，我们用安全伴它成长</p>
                 </div>
             </div>
@@ -199,7 +199,7 @@
                     <img src="~/Content/Baike/img/Football_64px_555219_easyicon.net.png" class="img img-circle" />
                 </div>
                 <div class="col-sm-9">
-                    <h4>宠物训练</h4>
+                    <h4>@Html.ActionLink("宠物训练", "Search", new { txtBaikeTitle = "训练" })</h4>
                     <p>在这里，我们用鼓励伴它同行</p>
                 </div>
             </div>
@@ -209,7 +209,7 @@
                     <img src="~/Content/Baike/img/Football_64px_555219_easyicon.net.png" class="img img-circle" />
                 </div>
                 <div class="col-sm-9">
-                    <h4>宠物医疗</h4>
+                    <h4>@Html.ActionLink("宠物医疗", "Search", new { txtBaikeTitle = "医疗" })</h4>
                     <p>在这里，我们用呵护保它健康</p>
                 </div>
             </div>
@@ -223,9 +223,9 @@
         <div class="dog_tit col-md-10">
             <h2>狗狗百科</h2>
             <div class="dog_tit_r">
-                @Html.ActionLink("狗狗饲养", "ShowType", new { txtBaikeTitle = "狗狗饲养" })&nbsp;&nbsp;|&nbsp;&nbsp;
-                @Html.ActionLink("狗狗训练", "ShowType", new { txtBaikeTitle = "狗狗训练" })&nbsp;&nbsp;|&nbsp;&nbsp;
-                @Html.ActionLink("狗狗医疗", "ShowType", new { txtBaikeTitle = "狗狗医疗" })
+                @Html.ActionLink("狗狗饲养", "Search", new { txtBaikeTitle = "狗狗饲养" })&nbsp;&nbsp;|&nbsp;&nbsp;
+                @Html.ActionLink("狗狗训练", "Search", new { txtBaikeTitle = "狗狗训练" })&nbsp;&nbsp;|&nbsp;&nbsp;
+                @Html.ActionLink("狗狗医疗", "Search", new { txtBaikeTitle = "狗狗医疗" })
             </div> 
         </div>
         <div class="col-md-1"></div>
@@ -238,28 +238,38 @@
                 <div class="box">
                     <ul class="list">
                         <li style="margin-right:-40px;">
-                            <a href="#"><img src="~/Content/Baike/img/ad1.jpg" width="300" height="350" style="margin-left:-40px;"></a>
+                            <a href="@Url.Action("Show",new {id=109 })"><img src="@Url.Content("~/Content/Baike/img/upload/0a84764d969565bf.jpg")" width="300" height="350" style="margin-left:-40px;"></a>
                             <p style="margin-left:-40px;">
                                 <strong>酶与益生菌对于狗狗有何作用</strong><br />
-                                其实狗狗身体本身就会存在各式各样的酶，来帮助机体消化以及吸收营养。不过随着某些食物摄入量地减少，某些酶的活性就会变得越来...[<a href="#" target="_blank">详细</a>]
+                                其实狗狗身体本身就会存在各式各样的酶，来帮助机体消化以及吸收营养。不过随着某些食物摄入量地减少，某些酶的活性就会变得越来...[@Html.ActionLink("详细", "Show", new { id = 109 })]
                             </p>
-                        </li>
+                        </li>  
                         <li>
-                            <a href="#"><img src="~/Content/Baike/img/ad2.jpg" width="300" height="350"></a>
+                            <a href="@Url.Action("Show",new {id="109" })"><img src="@Url.Content("~/Content/Baike/img/upload/0beb1dcf24533d64.jpg")" width="300" height="350"></a>
                             <p>
                                 <stong>犬体外寄生虫会诱发出哪些疾病</stong><br />
-                                为狗狗做好驱虫工作不只是为了防止某些寄生虫对我们的健康造成影响，更主要的是因为寄生虫对于狗狗的危害来的更大，而且寄生虫不...[<a href="#" target="_blank">详细</a>]
+                                为狗狗做好驱虫工作不只是为了防止某些寄生虫对我们的健康造成影响，更主要的是因为寄生虫对于狗狗的危害来的更大，而且寄生虫不...[@Html.ActionLink("详细", "Show", new { id = 109 })]
                             </p>
                         </li>
                         <li>
-                            <a href="#"><img src="~/Content/Baike/img/ad3.jpg" width="300" height="350"></a>
+                            <a href="@Url.Action("Show",new {id="109" })"><img src="@Url.Content("~/Content/Baike/img/upload/1-121116122217.jpg")" width="300" height="350"></a>
                             <p>
                                 <strong>维生素过量对狗狗有何危害</strong><br />
-                                维生素是维持狗狗生长发育以及正常生理的必要物质，合理地为狗狗补充维生素能够有效地增强狗狗的抵抗力，并在一定程度上防止狗狗...[<a href="#" target="_blank">详细</a>]
+                                维生素是维持狗狗生长发育以及正常生理的必要物质，合理地为狗狗补充维生素能够有效地增强狗狗的抵抗力，并在一定程度上防止狗狗...[@Html.ActionLink("详细", "Show", new { id = 109 })]
                             </p>
                         </li>
-                        <li><a href="#"><img src="~/Content/Baike/img/ad4.jpg" width="300" height="350"></a><p>站长素材4</p></li>
-                        <li><a href="#"><img src="~/Content/Baike/img/ad5.jpg" width="300" height="350"></a><p>站长素材5</p></li>
+                        <li><a href="@Url.Action("Show",new {id=109 })"><img src="@Url.Content("~/Content/Baike/img/upload/1.jpg")" width="300" height="350"></a>
+                            <p>
+                                <strong>酶与益生菌对于狗狗有何作用</strong><br />
+                                其实狗狗身体本身就会存在各式各样的酶，来帮助机体消化以及吸收营养。不过随着某些食物摄入量地减少，某些酶的活性就会变得越来...[@Html.ActionLink("详细", "Show", new { id = 109 })]
+                            </p>
+                         </li>
+                        <li><a href="@Url.Action("Show",new {id="109" })"><img src="@Url.Content("~/Content/Baike/img/upload/1443514309-0.jpg")" width="300" height="350"></a>
+                            <p>
+                                <stong>犬体外寄生虫会诱发出哪些疾病</stong><br />
+                                为狗狗做好驱虫工作不只是为了防止某些寄生虫对我们的健康造成影响，更主要的是因为寄生虫对于狗狗的危害来的更大，而且寄生虫不...[@Html.ActionLink("详细", "Show", new { id = 109 })] 
+                            </p>
+                        </li>
                     </ul>
                 </div>
                 <ul class="btn">
@@ -315,28 +325,28 @@
                 <div class="box">
                     <ul class="list">
                         <li style="margin-right:-40px;">
-                            <a href="#"><img src="~/Content/Baike/img/ad1.jpg" width="300" height="350" style="margin-left:-40px;"></a>
+                            <a href="#"><img src="~/Content/Baike/img/upload/slideimg/catslide1.jpg" width="300" height="350" style="margin-left:-40px;"></a>
                             <p style="margin-left:-40px;">
                                 <strong>酶与益生菌对于狗狗有何作用</strong><br />
                                 其实狗狗身体本身就会存在各式各样的酶，来帮助机体消化以及吸收营养。不过随着某些食物摄入量地减少，某些酶的活性就会变得越来...[<a href="#" target="_blank">详细</a>]
                             </p>
                         </li>
                         <li>
-                            <a href="#"><img src="~/Content/Baike/img/ad2.jpg" width="300" height="350"></a>
+                            <a href="#"><img src="~/Content/Baike/img/upload/slideimg/catslide2.jpg" width="300" height="350"></a>
                             <p>
                                 <stong>犬体外寄生虫会诱发出哪些疾病</stong><br />
                                 为狗狗做好驱虫工作不只是为了防止某些寄生虫对我们的健康造成影响，更主要的是因为寄生虫对于狗狗的危害来的更大，而且寄生虫不...[<a href="#" target="_blank">详细</a>]
                             </p>
                         </li>
                         <li>
-                            <a href="#"><img src="~/Content/Baike/img/ad3.jpg" width="300" height="350"></a>
+                            <a href="#"><img src="~/Content/Baike/img/upload/slideimg/catslide3.jpg" width="300" height="350"></a>
                             <p>
                                 <strong>维生素过量对狗狗有何危害</strong><br />
                                 维生素是维持狗狗生长发育以及正常生理的必要物质，合理地为狗狗补充维生素能够有效地增强狗狗的抵抗力，并在一定程度上防止狗狗...[<a href="#" target="_blank">详细</a>]
                             </p>
                         </li>
-                        <li><a href="#"><img src="~/Content/Baike/img/ad4.jpg" width="300" height="350"></a><p>站长素材4</p></li>
-                        <li><a href="#"><img src="~/Content/Baike/img/ad5.jpg" width="300" height="350"></a><p>站长素材5</p></li>
+                        <li><a href="#"><img src="~/Content/Baike/img/upload/slideimg/catslide4.jpg" width="300" height="350"></a><p>站长素材4</p></li>
+                        <li><a href="#"><img src="~/Content/Baike/img/upload/slideimg/catslide5.jpg" width="300" height="350"></a><p>站长素材5</p></li>
                     </ul>
                 </div>
                 <ul class="btn">
@@ -392,28 +402,28 @@
                 <div class="box">
                     <ul class="list">
                         <li style="margin-right:-40px;">
-                            <a href="#"><img src="~/Content/Baike/img/ad1.jpg" width="300" height="350" style="margin-left:-40px;"></a>
+                            <a href="#"><img src="~/Content/Baike/img/upload/slideimg/otherslide1.jpg" width="300" height="350" style="margin-left:-40px;"></a>
                             <p style="margin-left:-40px;">
                                 <strong>酶与益生菌对于狗狗有何作用</strong><br />
                                 其实狗狗身体本身就会存在各式各样的酶，来帮助机体消化以及吸收营养。不过随着某些食物摄入量地减少，某些酶的活性就会变得越来...[<a href="#" target="_blank">详细</a>]
                             </p>
                         </li>
                         <li>
-                            <a href="#"><img src="~/Content/Baike/img/ad2.jpg" width="300" height="350"></a>
+                            <a href="#"><img src="~/Content/Baike/img/upload/slideimg/otherslide2.jpg" width="300" height="350"></a>
                             <p>
                                 <stong>犬体外寄生虫会诱发出哪些疾病</stong><br />
                                 为狗狗做好驱虫工作不只是为了防止某些寄生虫对我们的健康造成影响，更主要的是因为寄生虫对于狗狗的危害来的更大，而且寄生虫不...[<a href="#" target="_blank">详细</a>]
                             </p>
                         </li>
                         <li>
-                            <a href="#"><img src="~/Content/Baike/img/ad3.jpg" width="300" height="350"></a>
+                            <a href="#"><img src="~/Content/Baike/img/upload/slideimg/otherslide3.jpg" width="300" height="350"></a>
                             <p>
                                 <strong>维生素过量对狗狗有何危害</strong><br />
                                 维生素是维持狗狗生长发育以及正常生理的必要物质，合理地为狗狗补充维生素能够有效地增强狗狗的抵抗力，并在一定程度上防止狗狗...[<a href="#" target="_blank">详细</a>]
                             </p>
                         </li>
-                        <li><a href="#"><img src="~/Content/Baike/img/ad4.jpg" width="300" height="350"></a><p>站长素材4</p></li>
-                        <li><a href="#"><img src="~/Content/Baike/img/ad5.jpg" width="300" height="350"></a><p>站长素材5</p></li>
+                        <li><a href="#"><img src="~/Content/Baike/img/upload/slideimg/otherslide4.jpg" width="300" height="350"></a><p>站长素材4</p></li>
+                        <li><a href="#"><img src="~/Content/Baike/img/upload/slideimg/otherslide5.jpg" width="300" height="350"></a><p>站长素材5</p></li>
                     </ul>
                 </div>
                 <ul class="btn">
