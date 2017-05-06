@@ -1,4 +1,6 @@
-﻿@model IEnumerable<MyPets.Model.Baike>
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<MyPets.Model.Baike>
 @{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_LayoutBaike.cshtml";
@@ -26,11 +28,15 @@
             <div class="col-sm-3">
                 <img src="@Url.Content(a.BaikeImg)" style="height:200px;width:250px;margin-bottom:20px;"/>
             </div>
-            <div class="col-sm-9">
-                <p style="line-height:200px;height:200px;">@Html.ActionLink(a.BaikeTitle,"Show",new { id = a.BaikeId })</p>
-            </div>
+              <div class="col-sm-9">
+                  <h3>@Html.ActionLink(a.BaikeType, "GetType", new { txttype = a.BaikeType })</h3>
+                  <strong>标题</strong>：@Html.ActionLink(a.BaikeTitle, "Show", new { id = a.BaikeId })<br />
+                  <strong>简介</strong>：<br />
+                  <p style="line-height:25px;">@Html.DisplayFor(item => a.BaikeDescribe)...[@Html.ActionLink("详细", "Show", new { id = a.BaikeId })]</p>
+              </div>
         </div>
         }
+        <div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("GetSearch", "Baike", new { page, txtBaikeTitle = @ViewData["search"] }))</div>
     </div>
     <div class="col-md-2"></div>
 </div>

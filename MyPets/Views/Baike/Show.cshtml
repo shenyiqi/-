@@ -5,7 +5,7 @@
 }
 <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-11">@Html.ActionLink("首页", "Index") >@Html.ActionLink(Model.BaikeSeries, "Search",new { txtBaikeTitle=Model.BaikeSeries})>@Html.ActionLink(Model.BaikeType, "Search",new { txtBaikeTitle=Model.BaikeType })>@Html.DisplayFor(b=>b.BaikeTitle)</div>
+    <div class="col-md-11">@Html.ActionLink("首页", "Index") >@Html.ActionLink(Model.BaikeType, "ShowType",new { txttype=Model.BaikeType })>@Html.DisplayFor(b=>b.BaikeTitle)</div> 
 </div>
 @*<h2 style="text-align:center">@Html.DisplayFor(b=>b.BaikeTitle)</h2>*@
 <div class="row">

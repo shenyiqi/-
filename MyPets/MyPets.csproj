@@ -85,6 +85,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PageList\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PageList\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -1313,6 +1319,10 @@
     <Content Include="Content\Baike\img\upload\timg.jpg" />
     <Content Include="Content\Baike\img\upload\xinsrc_12201031710016564323113.jpg" />
     <Content Include="Content\Baike\img\upload\xinsrc_552010317101434325937177.jpg" />
+    <Content Include="Content\Baike\img\你说我像饼？偶可是热带鱼之王七彩神仙！.png" />
+    <Content Include="Content\Baike\img\宠物夏季饲养全攻略.png" />
+    <Content Include="Content\Baike\img\干货分享——养犬新手必看知识合集.png" />
+    <Content Include="Content\Baike\img\爱猫无国界：各国猫文化大盘点.png" />
     <Content Include="Content\Baike\js\bootstrap-select.js" />
     <Content Include="Content\Baike\js\jquery.cxslide.min.js" />
     <Content Include="Content\Baike\js\slides.js" />
@@ -1665,6 +1675,11 @@
     <Content Include="Views\Baike\Search.cshtml" />
     <Content Include="Views\Shared\_LayoutBaike.cshtml" />
     <Content Include="Views\Baike\Show.cshtml" />
+    <Content Include="Views\Baike\ShowType.cshtml" />
+    <Content Include="Views\Baike\ShowAd1.cshtml" />
+    <Content Include="Views\Baike\ShowAd2.cshtml" />
+    <Content Include="Views\Baike\ShowAd3.cshtml" />
+    <Content Include="Views\Baike\ShowAd4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

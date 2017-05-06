@@ -1,0 +1,40 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<MyPets.Model.Baike>
+@{
+    ViewBag.Title = "ShowType";
+    Layout = "~/Views/Shared/_LayoutBaike.cshtml";
+}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="dog_tit col-md-8">
+        <h2>词条(@ViewBag.num)</h2>
+        <div class="dog_tit"></div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        @foreach (var a in Model)
+        {
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="@Url.Content(a.BaikeImg)" style="height:200px;width:250px;margin-bottom:20px;" />
+                </div>
+                <div class="col-sm-9">
+                    <h3>@Html.ActionLink(a.BaikeType,"GetType",new { txttype =a.BaikeType })</h3>
+                    <strong>标题</strong>：@Html.ActionLink(a.BaikeTitle, "Show", new { id = a.BaikeId })<br />
+                    <strong>简介</strong>：<br />
+                    <p style="line-height:25px;">@Html.DisplayFor(item=>a.BaikeDescribe)...[@Html.ActionLink("详细", "Show", new { id = a.BaikeId })]</p> 
+                </div>
+            </div>
+            
+        }
+        <div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("GetType", "Baike", new { page, txttype = @ViewData["type"] }))</div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+
