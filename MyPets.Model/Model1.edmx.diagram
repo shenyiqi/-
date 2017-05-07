@@ -30,6 +30,10 @@
         <AssociationConnector Association="MyPetsModel.FK_Post_UserInfo" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_Response_Post" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_Shop_Shop" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MyPetsModel.BaikeAnswer" Width="1.5" PointX="5.25" PointY="7.375" />
+        <EntityTypeShape EntityType="MyPetsModel.BaikeQuestion" Width="1.5" PointX="3" PointY="7.125" />
+        <AssociationConnector Association="MyPetsModel.FK_BaikeAnswer_BaikeQuestion" />
+        <AssociationConnector Association="MyPetsModel.FK_BaikeQuestion_UserInfo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

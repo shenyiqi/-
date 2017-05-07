@@ -152,8 +152,6 @@ namespace MyPets.Controllers
         [HttpGet]
         public ActionResult RebackPwdStep3() //找回密码
         {
-            //string name = Session["ValidateUserName"].ToString();
-            //var user = UserInfoServices.LoadEntities(u => u.UserName == name).FirstOrDefault();
             return View();
         }
         [HttpPost]

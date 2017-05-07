@@ -38,5 +38,7 @@ namespace MyPets.Model
         public virtual DbSet<Shop> Shop { get; set; }
         public virtual DbSet<ShopRecommend> ShopRecommend { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<BaikeAnswer> BaikeAnswer { get; set; }
+        public virtual DbSet<BaikeQuestion> BaikeQuestion { get; set; }
     }
 }

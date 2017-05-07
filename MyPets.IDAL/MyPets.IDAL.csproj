@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAdminstratorDal.cs" />
+    <Compile Include="IBaikeAnswerDal.cs" />
     <Compile Include="IBaikeDal.cs" />
+    <Compile Include="IBaikeQuestionDal.cs" />
     <Compile Include="IBaseDal.cs" />
     <Compile Include="ICollectDal.cs" />
     <Compile Include="IDBSession.cs" />

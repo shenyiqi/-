@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminstratorDal.cs" />
+    <Compile Include="BaikeAnswerDal.cs" />
     <Compile Include="BaikeDal.cs" />
+    <Compile Include="BaikeQuestionDal.cs" />
     <Compile Include="BaseDal.cs" />
     <Compile Include="CollectDal.cs" />
     <Compile Include="DbContextFactory.cs" />

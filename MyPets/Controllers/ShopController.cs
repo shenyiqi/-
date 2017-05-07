@@ -6,13 +6,17 @@ using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 using MyPets.Models;
 using MyPets.Model;
+using MyPets.IDAL;
+using MyPets.DALFactory;
 
 namespace MyPets.Controllers
 {
     public class ShopController : Controller
     {
         // GET: Shop
-        MyPetsEntities db = new MyPetsEntities();
+        IBLL.IGoodsServices GoodsServices = new BLL.GoodsServices();
+        IBLL.IShopServices ShopServices = new BLL.ShopServices();
+        IDBSession db = new DBSession();
         public ActionResult Index(int? id)//int? id表示可以为空的整数=nullable<id>
         {
             return View();
@@ -34,12 +38,9 @@ namespace MyPets.Controllers
                 string relativepath = @"~/Content/Shop/upload/Store/" + filename;
                 shopimg.SaveAs(serverpath);
                 shop.ShopImg = relativepath;
-                db.Shop.Add(shop);
+                ShopServices.AddEntity(shop);
                 db.SaveChanges();
-                var id = from n in db.Shop
-                         where n.UserId == Convert.ToInt32(Request["UserId"])
-                         select n.UserId;
-                return View("Index", id);
+                return View();
             }
             return View();
         }
@@ -79,10 +80,7 @@ namespace MyPets.Controllers
             string serverpath4 = Server.MapPath("~/Content/Shop/upload/Goods/") + filename4;
             string relativepath4 = @"~/Content/Shop/upload/Goods/" + filename4;
             postimg4.SaveAs(serverpath4);
-
-            MyPetsEntities db = new MyPetsEntities();
-
-            db.Goods.Add(new MyPets.Model.Goods()
+            GoodsServices.AddEntity(new Goods()
             {
                 GoodsName = txtname,
                 SeriesName = selectseries,
@@ -90,14 +88,14 @@ namespace MyPets.Controllers
                 DetailName = selectdetailtype,
                 GoodsPrice = Convert.ToDecimal(txtprice),
                 GoodsDescribe = txtdescribe,
-                GoodsStock=Convert.ToInt32(txtstock),
-                SellNum=0,
-                IsDiscount=false,
-                ShopId=1,
-                GoodsImg1=relativepath1,
-                GoodsImg2=relativepath2,
-                GoodsImg3=relativepath3,
-                GoodsImg4=relativepath4
+                GoodsStock = Convert.ToInt32(txtstock),
+                SellNum = 0,
+                IsDiscount = false,
+                ShopId = 1,
+                GoodsImg1 = relativepath1,
+                GoodsImg2 = relativepath2,
+                GoodsImg3 = relativepath3,
+                GoodsImg4 = relativepath4
             });
             db.SaveChanges();
             return View();

@@ -1,0 +1,131 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>我要提问</title>
+    <link href="~/Content/Admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Baike/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/Baike/css/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
+    <link href="~/Content/Baike/css/default.css" rel="stylesheet" />
+    <link href="~/Content/Admin/css/StyleBar.css" rel="stylesheet" />
+    <style type="text/css" media="screen">
+        .btn.jumbo {
+            font-size: 20px;
+            font-weight: normal;
+            padding: 14px 24px;
+            margin-right: 10px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row" style="border-bottom:1px solid #a5a0a0;line-height:50px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">@Html.ActionLink("宠物之家", "Index", "Home")</div>
+        <div class="col-md-1">@Html.ActionLink("宠物商城", "Index", "Shop")</div>
+        <div class="col-md-1">@Html.ActionLink("宠物论坛", "Index", "Forum")</div>
+        <div class="col-md-1" style="border-bottom:2px solid #9C3"><a href="javascript:;">宠物百科</a></div>
+        <div class="col-md-5"></div>
+        <div class="col-md-1">@Html.ActionLink("登录", "Login", "Register")|@Html.ActionLink("注册", "Register", "Register")</div>
+        <div class="col-md-1"></div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-2">
+            <img src="~/Content/Shop/img/logo.png" />
+        </div>
+        @using (Html.BeginForm("SearchAnswer", "Baike", FormMethod.Post))
+        {
+            <div class="input-group col-md-5" style="width: 500px; margin-top: 20px; margin-right: 20%;">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="txtBaikeTitle" placeholder="请输入文章/词条/关键字" style="border-color:#ff0000;height:46px;">
+                    <span class="input-group-btn">
+                        <input class="btn btn-danger btn-lg" type="submit" value="搜索">
+                    </span>
+                </div>
+            </div>
+        }
+        <div class="col-md-2"></div>
+    </div>
+    <br />
+    <div class="index_top">
+        <div class="row part2">
+            <div class="col-md-2"></div>
+            <a href="#" class="col-md-1">@Html.ActionLink("首页", "Index")</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("狗狗", "ShowType", new { txttype = "狗" }) </a>
+            <a href="#" class="col-md-1">@Html.ActionLink("猫咪", "ShowType", new { txttype = "猫" })</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("小宠", "ShowType", new { txttype = "小宠" })</a>
+            <a href="#" class="col-md-1">@Html.ActionLink("水族", "ShowType", new { txttype = "水" })</a>
+            <div class="col-md-5"></div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2">@Html.ActionLink("首页", "Index")>我要提问</div>
+        <div class="col-md-9"></div>
+    </div>
+    <hr />
+    @using (Html.BeginForm())
+     {
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-9">
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="InputTitle">标题</label>
+                        <input type="text" class="form-control" id="InputTitle" name="InputTitle" placeholder="请输入标题" style="width:730px;">
+                    </div>
+                </div>
+                <br />
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="InputType">类型</label>
+                        <select class="form-control" id="InputType" name="InputType" style="width:730px;">
+                            <option>饲养</option>
+                            <option>训练</option>
+                            <option>医疗</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div> 问题描述：（包括描述宠物食物、体重、精神状态、食欲状态、大小便情况等</div>
+                <article class="zzsc">
+                    <div class="container">
+                        <div class="jumbotron" style="padding:10px;width:750px;">
+                            @*<h1 style="font-size:58px">所见即所得jQuery文本编辑器</h1>*@
+                            @*<hr style="border-color: white" />*@
+                            <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入问题描述..." style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;"></textarea>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-8" style="margin-top:-25px;"><input type="submit" class="btn btn-default" value="提交提问" /> <a href="@Url.Action("Answer")" class="btn btn-info">取消</a></div>
+            <div class="col-md-1"></div>
+        </div> 
+     }
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/Baike/js/bootstrap3-wysihtml5.all.min.js"></script>
+    <script src="~/Content/Baike/js/bootstrap-wysihtml5.zh-CN.js"></script>
+    <script>
+        $('.textarea').wysihtml5({ locale: "zh-CN" });
+    </script>
+</body>
+</html>

@@ -21,6 +21,8 @@ namespace MyPets.IDAL
         IShopRecommendDal ShopRecommendDal { get; set; }
         IPrivateMsgDal PrivateMsgDal { get; set; }
         IResponseDal ResponseDal { get; set; }
+        IBaikeAnswerDal BaikeAnswerDal { get; set; }
+        IBaikeQuestionDal BaikeQuestionDal { get; set; } 
         bool SaveChanges();
     }
 }

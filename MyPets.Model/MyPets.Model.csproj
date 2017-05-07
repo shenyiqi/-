@@ -59,6 +59,12 @@
     <Compile Include="Baike.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="BaikeAnswer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaikeQuestion.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Collect.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

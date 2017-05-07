@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using MyPets.Models;
 using MyPets.Model;
+using MyPets.IDAL;
+using MyPets.DALFactory;
 
 namespace MyPets.Controllers
 {
@@ -13,6 +15,8 @@ namespace MyPets.Controllers
         // GET: Admin
         MyPets.IBLL.IUserInfoServices UserInfoServices = new MyPets.BLL.UserInfoServices();
         MyPets.IBLL.IGoodsServices GoodsServices = new MyPets.BLL.GoodsServices();
+        IBLL.IBaikeServices BaikeServices = new BLL.BaikeServices();
+        IDBSession db = new DBSession();
         public ActionResult Index()
         {
             return View();
@@ -26,7 +30,6 @@ namespace MyPets.Controllers
         [ValidateInput(false)]
         public ActionResult Baike(string txttitle, string txtseries, string id_select, string txtdescribe, FormCollection fc)
         {
-            MyPetsEntities db = new MyPetsEntities();
             var content = fc["Bcontent"];
             HttpPostedFileBase postimg = Request.Files["txtimg"];
             string filepath = postimg.FileName;
@@ -40,7 +43,7 @@ namespace MyPets.Controllers
                 string filename = filepath.Substring(filepath.LastIndexOf("//") + 1);
                 string serverpath = Server.MapPath("~/Content/Admin/Baike/img/upload/") + filename;
                 string relativepath = @"~/Content/Admin/Baike/img/upload/" + filename;
-                db.Baike.Add(new MyPets.Model.Baike()
+                BaikeServices.AddEntity(new Baike()
                 {
                     BaikeTitle = txttitle,
                     BaikeSeries = txtseries,

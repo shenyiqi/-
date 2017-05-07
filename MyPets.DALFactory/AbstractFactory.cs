@@ -27,6 +27,16 @@ namespace MyPets.DALFactory
             string fullClassName = NameSpace + ".BaikeDal";
             return CreateInstance(fullClassName) as IBaikeDal; 
         }
+        public static IBaikeQuestionDal CreateBaikeQuestionDal()
+        {
+            string fullClassName = NameSpace + ".BaikeQuestionDal";
+            return CreateInstance(fullClassName) as IBaikeQuestionDal;
+        }
+        public static IBaikeAnswerDal CreateBaikeAnswerDal()
+        {
+            string fullClassName = NameSpace + ".BaikeAnswerDal";
+            return CreateInstance(fullClassName) as IBaikeAnswerDal;
+        }
         public static ICollectDal CreateCollectDal()
         {
             string fullClassName = NameSpace + ".CollectDal";

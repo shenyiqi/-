@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminServices.cs" />
+    <Compile Include="BaikeAnswerServices.cs" />
+    <Compile Include="BaikeQuestionServices.cs" />
     <Compile Include="BaikeServices.cs" />
     <Compile Include="BaseServices.cs" />
     <Compile Include="CollectServices.cs" />

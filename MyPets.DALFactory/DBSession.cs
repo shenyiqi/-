@@ -70,6 +70,39 @@ namespace MyPets.DALFactory
             set { _BaikeDal = value; }
         }
         /// <summary>
+        /// 创建数据操作类IBaikeQuestionDal的实例
+        /// </summary>
+        private IBaikeQuestionDal _BaikeQuestionDal;
+        public IBaikeQuestionDal BaikeQuestionDal
+        {
+            get
+            {
+                if (_BaikeQuestionDal == null)
+                {
+                    _BaikeQuestionDal = AbstractFactory.CreateBaikeQuestionDal();
+                }
+                return _BaikeQuestionDal;
+            }
+            set { _BaikeQuestionDal = value; }
+        }
+        /// <summary>
+        /// 创建数据操作类IBaikeAnswerDal的实例
+        /// </summary>
+        private IBaikeAnswerDal _BaikeAnswerDal;
+        public IBaikeAnswerDal BaikeAnswerDal
+        {
+            get
+            {
+                if (_BaikeAnswerDal == null)
+                {
+                    _BaikeAnswerDal = AbstractFactory.CreateBaikeAnswerDal();
+                }
+                return _BaikeAnswerDal;
+            }
+            set { _BaikeAnswerDal = value; }
+        }
+        
+        /// <summary>
         /// 创建数据操作类CollectDal的实例
         /// </summary>
         private ICollectDal _CollectDal;
@@ -233,9 +266,9 @@ namespace MyPets.DALFactory
         //将数据一次性提交到数据库中，避免了多次连接数据库。
         public bool SaveChanges()
         {
-            db.Configuration.ValidateOnSaveEnabled = false;
+            //db.Configuration.ValidateOnSaveEnabled = false;
             db.SaveChanges();
-            db.Configuration.ValidateOnSaveEnabled = true;
+            //db.Configuration.ValidateOnSaveEnabled = true;
             return true;
 
         }

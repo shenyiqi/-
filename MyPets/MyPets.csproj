@@ -1247,16 +1247,22 @@
     <Content Include="Content\Admin\js\jquery.wookmark.js" />
     <Content Include="Content\Admin\js\smothscrool.js" />
     <Content Include="Content\Baike\css\bootstrap-select.css" />
+    <Content Include="Content\Baike\css\bootstrap-theme.min.css" />
+    <Content Include="Content\Baike\css\bootstrap3-wysihtml5.min.css" />
+    <Content Include="Content\Baike\css\default.css" />
     <Content Include="Content\Baike\css\SlideStyle.css" />
     <Content Include="Content\Baike\css\style.css" />
+    <Content Include="Content\Baike\fonts\icomoon.svg" />
     <Content Include="Content\Baike\img\ad1.jpg" />
     <Content Include="Content\Baike\img\ad2.jpg" />
     <Content Include="Content\Baike\img\ad3.jpg" />
     <Content Include="Content\Baike\img\ad4.jpg" />
     <Content Include="Content\Baike\img\ad5.jpg" />
+    <Content Include="Content\Baike\img\article_24px_26483_easyicon.net.png" />
     <Content Include="Content\Baike\img\control.png" />
     <Content Include="Content\Baike\img\Football_64px_555219_easyicon.net.png" />
     <Content Include="Content\Baike\img\main.png" />
+    <Content Include="Content\Baike\img\questions_32px_42541_easyicon.net.png" />
     <Content Include="Content\Baike\img\upload\011.jpg" />
     <Content Include="Content\Baike\img\upload\0a84764d969565bf.jpg" />
     <Content Include="Content\Baike\img\upload\0beb1dcf24533d64.jpg" />
@@ -1324,6 +1330,8 @@
     <Content Include="Content\Baike\img\干货分享——养犬新手必看知识合集.png" />
     <Content Include="Content\Baike\img\爱猫无国界：各国猫文化大盘点.png" />
     <Content Include="Content\Baike\js\bootstrap-select.js" />
+    <Content Include="Content\Baike\js\bootstrap-wysihtml5.zh-CN.js" />
+    <Content Include="Content\Baike\js\bootstrap3-wysihtml5.all.min.js" />
     <Content Include="Content\Baike\js\jquery.cxslide.min.js" />
     <Content Include="Content\Baike\js\slides.js" />
     <Content Include="Content\PersonalCenter\css\animate.min.css" />
@@ -1573,6 +1581,10 @@
     <Content Include="Content\Store\js\main.js" />
     <Content Include="Content\Store\js\owl.carousel.min.js" />
     <Content Include="Content\Store\js\script.slider.js" />
+    <Content Include="Content\留言富文本\main.css" />
+    <Content Include="Content\留言富文本\main.js" />
+    <Content Include="Content\留言富文本\sinaFaceAndEffec.css" />
+    <Content Include="Content\留言富文本\sinaFaceAndEffec.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1602,6 +1614,9 @@
     <Content Include="Content\PersonalCenter\fonts\Pe-icon-7-stroke.ttf" />
     <Content Include="Content\PersonalCenter\fonts\Pe-icon-7-stroke.woff" />
     <Content Include="Content\Shop\img\backgrounds\Thumbs.db" />
+    <Content Include="Content\Baike\fonts\icomoon.eot" />
+    <Content Include="Content\Baike\fonts\icomoon.ttf" />
+    <Content Include="Content\Baike\fonts\icomoon.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ckplayer.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1680,6 +1695,8 @@
     <Content Include="Views\Baike\ShowAd2.cshtml" />
     <Content Include="Views\Baike\ShowAd3.cshtml" />
     <Content Include="Views\Baike\ShowAd4.cshtml" />
+    <Content Include="Views\Baike\Answer.cshtml" />
+    <Content Include="Views\Baike\Quiz.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
