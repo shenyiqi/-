@@ -34,6 +34,7 @@
         <EntityTypeShape EntityType="MyPetsModel.BaikeQuestion" Width="1.5" PointX="3" PointY="7.125" />
         <AssociationConnector Association="MyPetsModel.FK_BaikeAnswer_BaikeQuestion" />
         <AssociationConnector Association="MyPetsModel.FK_BaikeQuestion_UserInfo" />
+        <AssociationConnector Association="MyPetsModel.FK_BaikeAnswer_BaikeQuestion1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

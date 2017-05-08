@@ -24,6 +24,7 @@ namespace MyPets.Model
             this.Post = new HashSet<Post>();
             this.Shop = new HashSet<Shop>();
             this.BaikeQuestion = new HashSet<BaikeQuestion>();
+            this.BaikeAnswer = new HashSet<BaikeAnswer>();
         }
     
         public int UserId { get; set; }
@@ -51,5 +52,7 @@ namespace MyPets.Model
         public virtual ICollection<Shop> Shop { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaikeQuestion> BaikeQuestion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BaikeAnswer> BaikeAnswer { get; set; }
     }
 }

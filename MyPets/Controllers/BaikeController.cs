@@ -16,6 +16,7 @@ namespace MyPets.Controllers
         IBLL.IBaikeServices BaikeServices = new BLL.BaikeServices();
         IBLL.IBaikeQuestionServices BaikeQuestionServices = new BLL.BaikeQuestionServices();
         IBLL.IBaikeAnswerServices BaikeAnswerServices = new BLL.BaikeAnswerServices();
+        IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
         IDBSession db = new DBSession();
         public ActionResult Index()
         { 
@@ -23,16 +24,16 @@ namespace MyPets.Controllers
             //        where b.BaikeSeries == "狗系列"
             //        select b).Skip(6).Take(6);
             var dogBaike = BaikeServices.LoadEntities(b => b.BaikeSeries == "狗系列").Take(6).ToList();
-            var dogTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "狗系列").Skip(6).Take(6).ToList();
+            var dogTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "狗系列").OrderBy(b => b.BaikeId).Skip(6).Take(6).ToList();
 
             var catBaike = BaikeServices.LoadEntities(b => b.BaikeSeries == "猫系列").Take(6).ToList();
-            var catTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "猫系列").Skip(6).Take(6).ToList();
+            var catTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "猫系列").OrderBy(b=>b.BaikeId).Skip(6).Take(6).ToList();
 
             var littlepet = BaikeServices.LoadEntities(b => b.BaikeSeries == "小宠系列").Take(6).ToList();
-            var littleTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "小宠系列").Skip(6).Take(6).ToList();
+            var littleTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "小宠系列").OrderBy(b => b.BaikeId).Skip(6).Take(6).ToList();
 
             var waterpet = BaikeServices.LoadEntities(b => b.BaikeSeries == "水族系列").Take(6).ToList();
-            var waterTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "水族系列").Skip(6).Take(6).ToList();
+            var waterTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "水族系列").OrderBy(b => b.BaikeId).Skip(6).Take(6).ToList();
             ViewData["dog"] = dogBaike; ViewData["dogtitle"] = dogTitle;
             ViewData["cat"] = catBaike; ViewData["cattitle"] = catTitle;
             ViewData["littlepet"] = littlepet; ViewData["littletitle"] = littleTitle;
@@ -131,6 +132,23 @@ namespace MyPets.Controllers
             }
             else return Content("<script>alert('提交失败');history(-1)</script>");
            
+        }
+        public ActionResult ShowQuiz(int id)
+        {
+            //ViewModel.BaikeViewModel baikeViewModel = new ViewModel.BaikeViewModel();
+            var ques = BaikeQuestionServices.LoadEntities(a => a.QuestionId == id).FirstOrDefault();
+            ViewBag.head = ques.QuestionTitle;
+            ViewBag.desc = ques.QuestionDescribe;
+            ViewBag.time = ques.QuestionTime;
+            MyPetsEntities db1 = new MyPetsEntities();
+            var answer = from q in db1.BaikeAnswer
+                           join a in db1.BaikeQuestion on q.QuestionId equals a.QuestionId
+                           where q.QuestionId==id
+                           select q;
+            ViewBag.num = answer.Count();
+            var name = UserInfoServices.LoadEntities(u => u.UserId == ques.UserId).FirstOrDefault();
+            ViewBag.username = name.UserName;
+            return View(answer);
         }
     }
 }
