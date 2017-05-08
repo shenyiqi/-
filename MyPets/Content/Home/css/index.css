@@ -1,0 +1,508 @@
+/*全局reset*/
+
+* {
+	padding: 0;
+	margin: 0;
+    font-family:微软雅黑;
+}
+
+
+/*-------------------首页顶部-------------------*/
+
+#index_top {
+	width: 100%;
+	height: 36px;
+	border-bottom: 1px solid #DDDDDD;
+	font-size: 13px;
+}
+#index_top a{
+	color: RGB(51,51,51);
+	text-decoration: none;
+}
+#index_top a:hover {
+	color: RGB(238, 85, 51);
+}
+
+#index_top .content {
+	width: 1190px;
+	height: 36px;
+	margin: 0 auto;
+	position: relative;	
+}
+
+#index_top .content div {
+	float: left;
+}
+
+#index_top .favorite {
+	width: 124px;
+	height: 36px;
+	text-align: center;
+	line-height: 36px;
+	color: RGB(102, 102, 102);
+	cursor: pointer;
+}
+
+#index_top .favorite:hover {
+	color: RGB(238, 85, 51);
+
+}
+#index_top .index_topRight{
+	position: absolute;
+    display: block;
+    height: 16px;
+    line-height: 16px;
+	right: 0;
+	top: 10px;
+	
+}
+#index_top .index_topRight li{
+	list-style: none;
+    padding:0 10px ;
+    border-right: solid 1px RGB(204,204,204);
+	float: left;
+}
+
+
+/*-----------------首页顶部结束--------------------*/
+
+
+/*-------------------搜索框部分-----------------------*/
+
+#search {
+	width: 1190px;
+	height: 130px;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+#search img {
+	margin: 15px 0;
+}
+#search .search_mid{
+	position: absolute;
+	top: 43px;
+	left: 300px;
+}
+#search .search_mid input{
+	float: left;
+}
+#searchTxtBox{
+	width: 516px;
+	height: 44px;
+	text-indent: 10px;
+	font-size: 16px;
+	color: RGB(51,51,51);
+	border: solid 3px RGB(238,85,51);
+}
+#searchBtn{
+	width: 80px;
+	height: 44px;
+	border: none;
+	background: RGB(238,85,51);
+	font-size: 18px;
+	color: white;
+	cursor: pointer;
+}
+/*-------------------搜索框部分结束--------------------*/
+
+
+
+
+/*----------------------导航栏--------------------*/
+
+#navigation_bar {
+	width: 100%;
+	height: 36px;
+	background: RGB(238, 85, 51);
+}
+
+
+/*设置导航栏css属性*/
+
+#navigation_bar .vital_part {
+	width: 1190px;
+	height: 36px;
+	background: RGB(238, 85, 51);
+	margin: 0 auto;
+	color: white;
+	position: relative;
+}
+
+#navigation_bar .vital_part a {
+	height: 36px;
+	color: white;
+	line-height: 36px;
+	margin: 0 auto;
+	padding: 0 17px;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+	float: left;
+}
+
+#navigation_bar .vital_part .all_type {
+	width: 190px;
+	height: 36px;
+	text-align: left;
+	text-indent: 10px;
+	background: RGB(204, 34, 0);
+	overflow: hidden;
+	padding: 0;
+}
+
+#navigation_bar .vital_part .navigation {
+	height: 36px;
+}
+
+#navigation_bar .vital_part .navigation a:hover {
+	background: RGB(154, 0, 0);
+}/*添加移入css属性*/
+
+
+
+
+#navigation_bar .vital_part .index {
+	background: RGB(154, 0, 0);
+}
+
+#navigation_bar .shopping_cart {
+	position: absolute;
+	right: 0;
+	/*设置购物车在右侧*/
+	width: 110px;
+	background: RGB(204, 34, 0);
+}/*导航栏的购物车css属性*/
+
+
+
+
+
+/*--------------------导航栏结束------------------------*/
+
+
+/*---------------------首页中部------------------*/
+
+#index_middlePart {
+	width: 100%;
+	height: 450px;
+	background: RGB(243, 243, 243);
+}
+
+#index_middlePart .midContent {
+	width: 1190px;
+	height: 450px;
+	margin: 0 auto;
+	position: relative;
+}
+
+#index_middlePart .midContent div {
+	float: left;
+}
+
+.typeMenu {
+	width: 188px;
+	height: 448px;
+	background: RGB(255, 255, 255);
+	border: solid 1px RGB(204,34,0);
+	border-top: none;
+	
+}
+.typeMenu a{
+	color: RGB(102,102,102);
+	text-decoration: none;
+}
+.typeMenu a:hover{
+	color: RGB(238,85,51);
+}
+a.mainType{
+    color:RGB(51,51,51);
+    font-size: 16px;
+    margin-left: 5px;
+}
+div.typeImgContainer{
+	width: 25px;
+	height: 25px;
+	margin-left: 10px;
+	border: solid 1px #9ACD32;
+}
+.typeMenu>div{
+	width: 188px;
+}
+.typeMenu>div:hover{
+	border: solid 2px RGB(205,44,11);
+	border-left: solid 1px RGB(205,44,11);
+}
+.typeMenu .dogPart{
+	height: 111px;
+	border-bottom: solid 1px RGB(204,204,204);
+	
+}
+.typeMenu .catPart{
+	height: 111px;
+	border-bottom: solid 1px RGB(204,204,204);
+	
+}
+.typeMenu .smallPetsPart{
+	height: 68px;
+	border-bottom: solid 1px RGB(204,204,204);
+	
+}
+.typeMenu .aquaticPetsPart{
+	height: 90px;
+	border-bottom: solid 1px RGB(204,204,204);
+	
+}
+.typeMenu .reptilePart{
+	height: 62px;
+	
+}
+.menu_list{
+	width: 188px;
+	margin-top:10px ;
+}
+.listDetails{
+    width: 178px;
+    margin-left: 10px;
+}
+.listDetails span{
+	float: left;
+	width: 55px;
+	padding-top:2px;
+}
+.listDetails span>a{
+	font-size: 14px;
+}
+.typeMenu .details{
+	width: 654px;
+	height: 446px;
+	position: absolute;
+	top: 0;
+	left: 189px;
+	background: RGB(252,252,250);
+	z-index: 12;
+	display: none;
+}
+.typeMenu .details .detailsLine{
+	float: left;
+	width: 610px;
+	margin:0 22px;
+	height: 34px;
+	border-bottom: dashed 1px RGB(204,204,204);
+}
+.typeMenu .details .detailsLine .dlTitle{
+	width: 120px;
+}
+.typeMenu .details .detailsLine .dlTitle>a{
+	border: none;
+	font-weight: 700;
+	color: RGB(238,85,51);
+}
+.typeMenu>div>a{
+	float: left;
+	font-size: 14px;
+	padding:1px 12px;
+}
+.typeMenu .details a{
+	float: left;
+	font-size: 14px;
+	margin-top: 8px;
+	padding:0 5px;
+	border-left: solid 1px RGB(210,204,216);
+}
+#carousel {
+	width: 800px;
+	height: 360px;
+	overflow: hidden;
+	position: relative;
+}
+
+
+/*轮播图*/
+
+#carousel .pic {
+	width: 4800px;
+	height: 360px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#carousel .pic img {
+	float: left;
+}
+
+#carousel ul {
+	position: absolute;
+	bottom: 15px;
+	right: 18px;
+}
+
+#carousel ul li {
+	list-style: none;
+	width: 24px;
+	height: 24px;
+	border-radius: 12px;
+	text-align: center;
+	line-height: 24px;
+	color: RGB(51, 51, 51);
+	font-family: "arial";
+	font-size: 14px;
+	background: RGB(243, 243, 243);
+	float: left;
+	margin-left: 5px;
+}
+
+#carousel ul li:hover {
+	cursor: pointer;
+}
+
+
+/*轮播图右侧广告*/
+
+#index_middlePart .midContent .ad_rOcarousel {
+	width: 200px;
+	height: 360px;
+}
+
+#index_middlePart .midContent .ad_rOcarousel div {
+	width: 200px;
+	height: 180px;
+}
+
+
+/*轮播图下侧广告*/
+
+#index_middlePart .midContent .ad_bOcarousel {
+	width: 1000px;
+	height: 90px;
+}
+
+#index_middlePart .midContent .ad_bOcarousel div {
+	width: 250px;
+	height: 90px;
+}
+
+
+/*------------------首页中部结束--------------------*/
+
+/*------------------商品展示部分--------------------*/
+#goodsPart{
+	margin: 0 auto;
+	width: 1190px;
+	position: relative;
+}
+.boxTitle{
+	color: RGB(238,85,51);
+	font-size: 20px;
+}
+#goodsPart .boxOne{
+	margin-top:48px;
+	width: 1190px;
+	position: relative;
+}
+#goodsPart .hotGoods{
+	height: 212px;
+	width: 1190px;
+    margin-top: 10px;
+	border: solid 1px RGB(230,230,230);
+}
+.GoodsModel{
+	width: 184px;
+	height: 198px;
+	float: left;
+	margin: 6px;	
+}
+#goodsPart div{
+	float: left;
+}
+#goodsPart .hotGoods img{
+	width: 120px;
+	height: 120px;
+	margin: 24px auto;
+	margin-bottom: 0;
+	display: block;
+}
+#goodsPart .hotGoods .aContainer{
+	height: 20px;
+	width: 168px;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+#goodsPart a{
+	text-decoration: none;
+	font-size: 14px;
+	color: RGB(102,102,102);
+}
+#goodsPart a:hover{
+	color: RGB(240,85,84);
+}
+#goodsPart .goodsPrice{
+	width: 80px;
+	font-size: 14px;
+	color: RGB(241,85,51);
+}
+#goodsPart .sales{
+	width: 100px;
+	font-size: 13px;
+	color: RGB(102,102,102);
+}
+.ChoicePart {
+	width: 1000px;
+	position: absolute;
+	top: 0;
+	left: 190px;
+}
+.ChoicePart li{
+	list-style: none;
+	text-align: center;
+	font-size: 16px;
+	color: RGB(51,51,51);
+	height: 33px;
+	line-height: 33px;
+	float: left;
+    padding: 0 16px;
+}
+.firstChoice{
+    color:RGB(255,255,255);
+    background:RGB(238,85,51) ;
+    text-decoration: underline;
+}
+.ChoicePart li:hover{
+	text-decoration: underline;
+	color: RGB(255,255,255);
+	background:RGB(238,85,51) ;
+}
+.ChoicePart .choiceBlock{
+	position:absolute ;
+	width: 999px;
+	height: 480px;
+	top: 34px;
+	left: 0;
+	/*background:#FFCC00;*/
+	color: RGB(102,102,102);
+	border-bottom: 1px solid RGB(230,230,230);
+	border-right: 1px solid RGB(230,230,230);
+	display: none;
+}
+.choiceDetail{
+	width: 1190px;
+	height:482px;
+	margin: 0 auto;
+	margin-top: 4px;
+	border-top: solid 2px RGB(238,85,51);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------商品展示部分结束--------------------*/

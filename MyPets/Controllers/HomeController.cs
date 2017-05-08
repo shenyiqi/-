@@ -8,9 +8,12 @@ namespace MyPets.Controllers
 {
     public class HomeController : Controller
     {
+        IBLL.IGoodsServices goodsService = new BLL.GoodsServices();
+
         public ActionResult Index()
         {
-            return View();
+            var goods = goodsService.LoadEntities(g=>g.SellNum>0).OrderByDescending(g=>g.SellNum).ToList();
+            return View(goods);
         }
 
         public ActionResult About()

@@ -1,31 +1,890 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = null;
 }
+@model IEnumerable<MyPets.Model.Goods>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<link href="~/Content/Home/css/index.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/Home/js/index.js"></script>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+
+<body>
+    <!--首页顶部-->
+    <div id="index_top">
+        <div class="content">
+            <div class="favorite">收藏宠物之家</div>
+            <ul class="index_topRight">
+                <li>
+                    <a href="">登录</a>
+                </li>
+                <li>
+                    <a href="">注册</a>
+                </li>
+                <li>
+                    <a href="">手机版</a>
+                </li>
+                <li>
+                    <a href="">关注宠物之家</a>
+                </li>
+                <li>
+                    <a href="">首页</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <!--首页顶部结束-->
+    <!--搜索框部分-->
+    <div id="search">
+        <img src="~/Content/Shop/img/logo.png" style="width:240px;height:100px;" />
+        <div class="search_mid">
+            <input type="text" name="" id="searchTxtBox" value="" placeholder="狗粮" />
+            <input type="button" name="searchBtn" id="searchBtn" value="搜索" />
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <!--搜索框部分结束-->
+    <!--导航栏部分-->
+    <div id="navigation_bar">
+        <div class="vital_part">
+            <a href="" class="all_type">全部商品分类</a>
+            <a href="" class="shopping_cart">购物车</a>
+            <div class="navigation">
+                <a href="" class="index">首页</a>
+                <a href="">狗狗</a>
+                <a href="">猫猫</a>
+                <a href="">小宠</a>
+                <a href="">水族</a>
+                <a href="">全球购</a>
+                <a href="">团购</a>
+                <a href="">品牌馆</a>
+                <a href="">在线服务</a>
+            </div>
+
+        </div>
     </div>
-</div>
+    <!--导航栏部分结束-->
+    <!--首页中部-->
+    <div id="index_middlePart">
+        <div class="midContent">
+            <!--具体类别部分-->
+            <div class="typeMenu">
+                <div class="dogPart">
+                    <div class="menu_list">
+                        <div class="typeImgContainer">
+                            <!--放小图片用的div-->
+                        </div>
+                        <a href="" class="mainType">狗狗商品</a>
+                    </div>
+                    <div class="listDetails">
+                        <span><a href="">狗粮</a></span>
+                        <span><a href="">狗罐头</a></span>
+                        <span><a href="">狗零食</a></span>
+                        <span><a href="">医疗</a></span>
+                        <span><a href="">保健</a></span>
+                        <span><a href="">沐浴露</a></span>
+                        <span><a href="">日用品</a></span>
+                        <span><a href="">玩具</a></span>
+                        <span><a href="">衣服</a></span>
+                    </div>
+                    <div class="details">
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">宠物狗粮</a>
+                            </div>
+                            <a href="">离乳期犬粮</a>
+                            <a href="">幼犬粮</a>
+                            <a href="">成犬粮</a>
+                            <a href="">老犬粮</a>
+                            <a href="">全犬粮</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">狗罐头/妙鲜包</a>
+                            </div>
+                            <a href="">成犬</a>
+                            <a href="">幼犬</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">狗狗零食</a>
+                            </div>
+                            <a href="">肉质零食</a>
+                            <a href="">咬骨咬胶</a>
+                            <a href="">奶制零食</a>
+                            <a href="">饼干素食</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">狗狗保健品</a>
+                            </div>
+                            <a href="">美毛护肤</a>
+                            <a href="">补钙强骨</a>
+                            <a href="">微量矿物</a>
+                            <a href="">调理肠胃</a>
+                            <a href="">综合营养</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">狗狗医疗</a>
+                            </div>
+                            <a href="">体内驱虫</a>
+                            <a href="">体外驱虫</a>
+                            <a href="">口腔修护</a>
+                            <a href="">眼部护理</a>
+                            <a href="">耳道清洁</a>
+                            <a href="">皮肤问题</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">狗狗沐浴露</a>
+                            </div>
+                            <a href="">幼犬专用</a>
+                            <a href="">药用香波</a>
+                            <a href="">美毛去味</a>
+                            <a href="">特色毛发</a>
+                            <a href="">干洗粉</a>
+                            <a href="">洗手液</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">狗狗日用品</a>
+                            </div>
+                            <a href="">器具系列</a>
+                            <a href="">牵引系列</a>
+                            <a href="">出行装备</a>
+                            <a href="">排便用品</a>
+                            <a href="">环境清洁</a>
+                            <a href="">狗狗训练</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">狗狗美容</a>
+                            </div>
+                            <a href="">吊牌挂件</a>
+                            <a href="">毛巾系列</a>
+                            <a href="">梳子/刷子系列</a>
+                            <a href="">修剪系列</a>
+                            <a href="">洗澡用品</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">狗狗玩具</a>
+                            </div>
+                            <a href="">休闲玩具</a>
+                            <a href="">互动玩具</a>
+                            <a href="">益智训导</a>
+                            <a href="">磨牙玩具</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">狗狗衣服/狗窝</a>
+                            </div>
+                            <a href="">宠物服装</a>
+                            <a href="">犬窝/犬笼</a>
+                            <a href="">毛毯/垫子/凉席</a>
+                            <a href="">鞋子/袜子/帽子</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="catPart">
+                    <div class="menu_list">
+                        <div class="typeImgContainer">
+                            <!--放小图片用的div-->
+                        </div>
+                        <a href="" class="mainType">猫猫用品</a>
+                    </div>
+                    <div class="listDetails">
+                        <span><a href="">猫粮</a></span>
+                        <span><a href="">猫罐头</a></span>
+                        <span><a href="">猫零食</a></span>
+                        <span><a href="">医疗</a></span>
+                        <span><a href="">保健</a></span>
+                        <span><a href="">沐浴露</a></span>
+                        <span><a href="">日用品</a></span>
+                        <span><a href="">玩具</a></span>
+                        <span><a href="">猫窝</a></span>
+                    </div>
+                    <div class="details">
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">宠物猫粮</a>
+                            </div>
+                            <a href="">成猫粮</a>
+                            <a href="">幼猫粮</a>
+                            <a href="">全猫粮</a>
+                            <a href="">老猫粮</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">猫罐头/妙鲜包</a>
+                            </div>
+                            <a href="">成猫湿粮</a>
+                            <a href="">幼猫湿粮</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">猫猫零食</a>
+                            </div>
+                            <a href="">肉质零食</a>
+                            <a href="">猫条/猫草</a>
+                            <a href="">果冻</a>
+                            <a href="">猫咪洁牙零食</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">猫猫保健品</a>
+                            </div>
+                            <a href="">美毛护肤</a>
+                            <a href="">补钙强骨</a>
+                            <a href="">微量矿物</a>
+                            <a href="">调理肠胃</a>
+                            <a href="">综合营养</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">猫猫医疗</a>
+                            </div>
+                            <a href="">体内驱虫</a>
+                            <a href="">体外驱虫</a>
+                            <a href="">口腔修护</a>
+                            <a href="">眼部护理</a>
+                            <a href="">耳道清洁</a>
+                            <a href="">皮肤问题</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">猫猫香波</a>
+                            </div>
+                            <a href="">幼猫专用</a>
+                            <a href="">药用香波</a>
+                            <a href="">美毛去味</a>
+                            <a href="">特色毛发</a>
+                            <a href="">干洗粉</a>
+                            <a href="">洗手液</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">日用产品</a>
+                            </div>
+                            <a href="">器具系列</a>
+                            <a href="">出行装备</a>
+                            <a href="">排便用品</a>
+                            <a href="">环境清洁</a>
+                            <a href="">猫砂系列</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">美容器材</a>
+                            </div>
+                            <a href="">毛巾系列</a>
+                            <a href="">挂牌吊件</a>
+                            <a href="">修剪系列</a>
+                            <a href="">梳子/刷子系列</a>
+                            <a href="">洗澡用品</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">猫猫玩具</a>
+                            </div>
+                            <a href="">互动玩具</a>
+                            <a href="">益智训导</a>
+                            <a href="">猫爬架</a>
+                            <a href="">猫抓板</a>
+                            <a href="">猫薄荷玩具</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">猫衣服/猫窝</a>
+                            </div>
+                            <a href="">猫窝</a>
+                            <a href="">毛毯/垫子</a>
+                            <a href="">变身帽</a>
+                        </div>
+                    </div>
+                </div>
+                <!--小型宠物-->
+                <div class="smallPetsPart">
+                    <div class="menu_list">
+                        <div class="typeImgContainer">
+                            <!--放小图片用的div-->
+                        </div>
+                        <a href="" class="mainType">奇趣小宠</a>
+                    </div>
+                    <div class="listDetails">
+                        <span><a href="">兔子</a></span>
+                        <span><a href="">仓鼠</a></span>
+                        <span><a href="">龙猫</a></span>
+                    </div>
+                    <div class="details">
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">兔兔用品</a>
+                            </div>
+                            <a href="">兔兔饲料/零食</a>
+                            <a href="">兔兔医疗/保健品</a>
+                            <a href="">兔兔牧草</a>
+                            <a href="">兔兔磨牙</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">仓鼠用品</a>
+                            </div>
+                            <a href="">仓鼠饲料/零食</a>
+                            <a href="">仓鼠医疗/保健品</a>
+                            <a href="">仓鼠玩具</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">龙猫用品</a>
+                            </div>
+                            <a href="">龙猫饲料/零食</a>
+                            <a href="">龙猫用品</a>
+                            <a href="">龙猫玩具</a>
+                            <a href="">龙猫牧草</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">天竺鼠(荷兰猪)</a>
+                            </div>
+                            <a href="">天竺鼠饲料/零食</a>
+                        </div>
+                    </div>
+                </div>
+                <!--水族宠物-->
+                <div class="aquaticPetsPart">
+                    <div class="menu_list">
+                        <div class="typeImgContainer">
+                            <!--放小图片用的div-->
+                        </div>
+                        <a href="" class="mainType">水族市场</a>
+                    </div>
+                    <div class="listDetails">
+                        <span><a href="">水族箱</a></span>
+                        <span><a href="">饲料</a></span>
+                        <span><a href="">药剂</a></span>
+                        <span><a href="">氧气泵</a></span>
+                        <span><a href="">过滤器</a></span>
+                        <span><a href="">温控</a></span>
+                    </div>
+                    <div class="details">
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">鱼缸/水族箱</a>
+                            </div>
+                            <a href="">鱼缸/水族箱</a>
+                            <a href="">鱼缸配件</a>
+                            <a href="">鱼缸底柜</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">鱼饲料</a>
+                            </div>
+                            <a href="">血鹦鹉饲料</a>
+                            <a href="">罗汉鱼饲料</a>
+                            <a href="">小型鱼饲料</a>
+                            <a href="">虫干/虾干</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">过滤器</a>
+                            </div>
+                            <a href="">内置过滤器</a>
+                            <a href="">外置过滤器</a>
+                            <a href="">上置过滤器</a>
+                            <a href="">壁挂过滤器</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">过滤材料</a>
+                            </div>
+                            <a href="">过滤棉</a>
+                            <a href="">生化棉</a>
+                            <a href="">陶瓷环</a>
+                            <a href="">生化球</a>
+                            <a href="">活性炭</a>
+                            <a href="">细菌屋</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">潜水泵</a>
+                            </div>
+                            <a href="">潜水泵</a>
+                            <a href="">冲浪泵</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">配件器材</a>
+                            </div>
+                            <a href="">增氧配件</a>
+                            <a href="">照明器材</a>
+                            <a href="">鱼缸清洁用具</a>
+                            <a href="">喂食器</a>
+                            <a href="">杀菌灯</a>
+                            <a href="">氧气泵</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">温控设备</a>
+                            </div>
+                            <a href="">温度计</a>
+                            <a href="">加热棒</a>
+                            <a href="">风扇</a>
+                            <a href="">控制器</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">药水系列</a>
+                            </div>
+                            <a href="">硝化细菌</a>
+                            <a href="">净水剂</a>
+                            <a href="">杀菌</a>
+                            <a href="">疾病治疗</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">造景装饰</a>
+                            </div>
+                            <a href="">造景/装饰</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">水草肥料</a>
+                            </div>
+                            <a href="">水草/肥料</a>
+                        </div>
+                    </div>
+                </div>
+                <!--爬行动物-->
+                <div class="reptilePart">
+                    <div class="menu_list">
+                        <div class="typeImgContainer">
+                            <!--放小图片用的div-->
+                        </div>
+                        <a href="" class="mainType">爬虫用品</a>
+                    </div>
+                    <div class="listDetails">
+                        <span><a href="">陆龟</a></span>
+                        <span><a href="">水龟</a></span>
+                        <span><a href="">蜥蜴</a></span>
+                    </div>
+                    <div class="details">
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">陆龟用品</a>
+                            </div>
+                            <a href="">龟箱</a>
+                            <a href="">陆龟龟粮</a>
+                            <a href="">陆龟温控</a>
+                            <a href="">陆龟医疗/保健</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">水龟用品</a>
+                            </div>
+                            <a href="">龟缸</a>
+                            <a href="">水龟龟粮</a>
+                            <a href="">水龟温控</a>
+                            <a href="">水龟医疗/保健</a>
+                        </div>
+                        <div class="detailsLine">
+                            <div class="dlTitle">
+                                <a href="">蜥蜴蛇守宫用品</a>
+                            </div>
+                            <a href="">保健品系列</a>
+                            <a href="">加热取暖设备</a>
+                            <a href="">垫材类</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--具体类别部分结束-->
+            <!--轮播图-->
+            <div id="carousel">
+                <div class="pic">
+                    <img src="~/Content/Home/img/Carousel01.jpg" />
+                    <img src="~/Content/Home/img/Carousel02.jpg" />
+                    <img src="~/Content/Home/img/Carousel03.jpg" />
+                    <img src="~/Content/Home/img/Carousel04.jpg" />
+                    <img src="~/Content/Home/img/Carousel05.jpg" />
+                    <img src="~/Content/Home/img/Carousel01.jpg" />
+                </div>
+                <ul>
+                    <li style="background: RGB(238,85,51);color: RGB(243,243,243);">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+            <!--轮播图结束-->
+            <!--轮播图右侧广告-->
+            <div class="ad_rOcarousel">
+                <div id="ad_rO1" style="background: blue;"></div>
+                <div id="ad_rO2" style="background: purple;"></div>
+            </div>
+            <!--轮播图右侧广告结束-->
+            <!--轮播图下侧广告-->
+            <div class="ad_bOcarousel">
+                <div id="ad_bO1" style="background: red;"></div>
+                <div id="ad_bO2" style="background: orange;"></div>
+                <div id="ad_bO3" style="background: yellow;"></div>
+                <div id="ad_bO4" style="background: green;"></div>
+            </div>
+            <!--轮播图下侧广告结束-->
+        </div>
+    </div>
+    <!--首页中部结束-->
+    <!--商品展示部分-->
+    <div id="goodsPart">
+        <div class="boxOne">
+            <span class="boxTitle">
+                火爆商品
+            </span>
+        </div>
+        <div class="hotGoods">
+
+            @foreach (var g in Model)
+            {
+                <div class="GoodsModel">
+                    <img src="@Url.Content(g.GoodsImg1)" />
+                    <div class="aContainer">
+                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                    </div>
+                    <div class="goodsPrice">
+                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                    </div>
+                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                </div>
+            }           
+        </div>
+
+        <div class="boxOne">
+            <span class="boxTitle">
+                促销商品
+            </span>
+        </div>
+        <div class="hotGoods">
+            @foreach (var g in Model)
+            {
+                <div class="GoodsModel">
+                    <img src="@Url.Content(g.GoodsImg1)" />
+                    <div class="aContainer">
+                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                    </div>
+                    <div class="goodsPrice">
+                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                    </div>
+                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                </div>
+            }
+            @*<div class="GoodsModel">
+                <img src="images/goods.jpg" />
+                <div class="aContainer">
+                    <a href="">福来恩 小型犬滴剂加强型0.67ml 单支无说明书</a>
+                </div>
+                <div class="goodsPrice">
+                    ￥49.00
+                </div>
+                <div class="sales">已售<span>12434</span></div>
+            </div>*@            
+        </div>
+
+        <div class="boxOne">
+            <span class="boxTitle">
+                狗狗商品
+            </span>
+            <div class="ChoicePart">
+                <ul>
+                    <li class="firstChoice">
+                        <span>狗粮</span>
+                        <div class="choiceBlock" style="display: block;">
+                            选项卡1
+                        </div>
+                    </li>
+                    <li>
+                        <span>湿粮</span>
+                        <div class="choiceBlock">
+                            选项卡2
+                        </div>
+                    </li>
+                    <li>
+                        <span>零食</span>
+                        <div class="choiceBlock">
+                            选项卡3
+                        </div>
+                    </li>
+                    <li>
+                        <span>保健品</span>
+                        <div class="choiceBlock">
+                            选项卡4
+                        </div>
+                    </li>
+                    <li>
+                        <span>医疗</span>
+                        <div class="choiceBlock">
+                            选项卡5
+                        </div>
+                    </li>
+                    <li>
+                        <span>沐浴露</span>
+                        <div class="choiceBlock">
+                            选项卡6
+                        </div>
+                    </li>
+                    <li>
+                        <span>日用品</span>
+                        <div class="choiceBlock">
+                            选项卡7
+                        </div>
+                    </li>
+                    <li>
+                        <span>美容</span>
+                        <div class="choiceBlock">
+                            选项卡8
+                        </div>
+                    </li>
+                    <li>
+                        <span>玩具</span>
+                        <div class="choiceBlock">
+                            选项卡9
+                        </div>
+                    </li>
+                    <li>
+                        <span>衣服窝</span>
+                        <div class="choiceBlock">
+                            选项卡10
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="choiceDetail">
+            <img src="~/Content/Home/img/GoodsPart/dogGoods.jpg" />
+        </div>
+        <div class="boxOne">
+            <span class="boxTitle">
+                猫咪商品
+            </span>
+            <div class="ChoicePart">
+                <ul>
+                    <li class="firstChoice">
+                        猫粮
+                        <div class="choiceBlock" style="display: block;">
+                            选项卡1
+                        </div>
+                    </li>
+                    <li>
+                        湿粮
+                        <div class="choiceBlock">
+                            选项卡2
+                        </div>
+                    </li>
+                    <li>
+                        零食
+                        <div class="choiceBlock">
+                            选项卡3
+                        </div>
+                    </li>
+                    <li>
+                        保健品
+                        <div class="choiceBlock">
+                            选项卡4
+                        </div>
+                    </li>
+                    <li>
+                        香波
+                        <div class="choiceBlock">
+                            选项卡5
+                        </div>
+                    </li>
+                    <li>
+                        医疗
+                        <div class="choiceBlock">
+                            选项卡6
+                        </div>
+                    </li>
+                    <li>
+                        日用品
+                        <div class="choiceBlock">
+                            选项卡7
+                        </div>
+                    </li>
+                    <li>
+                        美容
+                        <div class="choiceBlock">
+                            选项卡8
+                        </div>
+                    </li>
+                    <li>
+                        玩具
+                        <div class="choiceBlock">
+                            选项卡9
+                        </div>
+                    </li>
+                    <li>
+                        衣服窝
+                        <div class="choiceBlock">
+                            选项卡10
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="choiceDetail">
+            <img src="~/Content/Home/img/GoodsPart/catsGoods.jpg" />
+        </div>
+        <div class="boxOne">
+            <span class="boxTitle">
+                小宠商品
+            </span>
+            <div class="ChoicePart">
+                <ul>
+                    <li class="firstChoice">
+                        兔兔用品
+                        <div class="choiceBlock" style="display: block;">
+                            选项卡1
+                        </div>
+                    </li>
+                    <li>
+                        仓鼠用品
+                        <div class="choiceBlock">
+                            选项卡2
+                        </div>
+                    </li>
+                    <li>
+                        龙猫用品
+                        <div class="choiceBlock">
+                            选项卡3
+                        </div>
+                    </li>
+                    <li>
+                        天竺鼠用品
+                        <div class="choiceBlock">
+                            选项卡4
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="choiceDetail">
+            <img src="~/Content/Home/img/GoodsPart/smallpGoods.jpg" />
+        </div>
+        <div class="boxOne">
+            <span class="boxTitle">
+                水族商品
+            </span>
+            <div class="ChoicePart">
+                <ul>
+                    <li class="firstChoice">
+                        鱼缸
+                        <div class="choiceBlock" style="display: block;">
+                            选项卡1
+                        </div>
+                    </li>
+                    <li>
+                        鱼饲料
+                        <div class="choiceBlock">
+                            选项卡2
+                        </div>
+                    </li>
+                    <li>
+                        药水
+                        <div class="choiceBlock">
+                            选项卡3
+                        </div>
+                    </li>
+                    <li>
+                        过滤材料
+                        <div class="choiceBlock">
+                            选项卡4
+                        </div>
+                    </li>
+                    <li>
+                        氧气泵
+                        <div class="choiceBlock">
+                            选项卡5
+                        </div>
+                    </li>
+                    <li>
+                        潜水泵
+                        <div class="choiceBlock">
+                            选项卡6
+                        </div>
+                    </li>
+                    <li>
+                        温控设备
+                        <div class="choiceBlock">
+                            选项卡7
+                        </div>
+                    </li>
+                    <li>
+                        造景装饰
+                        <div class="choiceBlock">
+                            选项卡8
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="choiceDetail">
+            <img src="~/Content/Home/img/GoodsPart/aquaticpGoods.jpg" />
+        </div>
+        <div class="boxOne">
+            <span class="boxTitle">
+                爬虫商品
+            </span>
+            <div class="ChoicePart">
+                <ul>
+                    <li class="firstChoice">
+                        陆龟用品
+                        <div class="choiceBlock" style="display: block;">
+                            选项卡1
+                        </div>
+                    </li>
+                    <li>
+                        水龟用品
+                        <div class="choiceBlock">
+                            选项卡2
+                        </div>
+                    </li>
+                    <li>
+                        其他类
+                        <div class="choiceBlock">
+                            选项卡3
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="choiceDetail">
+            <img src="~/Content/Home/img/GoodsPart/reptilepGoods.jpg" />
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <!--商品展示部分结束-->
+
+
+
+
+
+</body>

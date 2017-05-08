@@ -86,10 +86,10 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList">
-      <HintPath>..\packages\PageList\PagedList.dll</HintPath>
+      <HintPath>..\packages\PagedList\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="PagedList.Mvc">
-      <HintPath>..\packages\PageList\PagedList.Mvc.dll</HintPath>
+      <HintPath>..\packages\PagedList\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -1334,6 +1334,23 @@
     <Content Include="Content\Baike\js\bootstrap3-wysihtml5.all.min.js" />
     <Content Include="Content\Baike\js\jquery.cxslide.min.js" />
     <Content Include="Content\Baike\js\slides.js" />
+    <Content Include="Content\Home\css\index.css" />
+    <Content Include="Content\Home\img\Carousel01.jpg" />
+    <Content Include="Content\Home\img\Carousel02.jpg" />
+    <Content Include="Content\Home\img\Carousel03.jpg" />
+    <Content Include="Content\Home\img\Carousel04.jpg" />
+    <Content Include="Content\Home\img\Carousel05.jpg" />
+    <Content Include="Content\Home\img\goods.jpg" />
+    <Content Include="Content\Home\img\GoodsPart\aquaticpGoods.jpg" />
+    <Content Include="Content\Home\img\GoodsPart\catsGoods.jpg" />
+    <Content Include="Content\Home\img\GoodsPart\dogGoods.jpg" />
+    <Content Include="Content\Home\img\GoodsPart\reptilepGoods.jpg" />
+    <Content Include="Content\Home\img\GoodsPart\smallpGoods.jpg" />
+    <Content Include="Content\Home\img\icons\icon.png" />
+    <Content Include="Content\Home\img\icons\toolbar.png" />
+    <Content Include="Content\Home\img\logo.jpg" />
+    <Content Include="Content\Home\img\logon.jpg" />
+    <Content Include="Content\Home\js\index.js" />
     <Content Include="Content\PersonalCenter\css\animate.min.css" />
     <Content Include="Content\PersonalCenter\css\bootstrap.min.css" />
     <Content Include="Content\PersonalCenter\css\demo.css" />
