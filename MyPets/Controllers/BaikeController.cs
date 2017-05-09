@@ -19,10 +19,11 @@ namespace MyPets.Controllers
         IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
         IDBSession db = new DBSession();
         public ActionResult Index()
-        { 
+        {
             //var s = (from b in db.Baike
             //        where b.BaikeSeries == "狗系列"
             //        select b).Skip(6).Take(6);
+            
             var dogBaike = BaikeServices.LoadEntities(b => b.BaikeSeries == "狗系列").Take(6).ToList();
             var dogTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "狗系列").OrderBy(b => b.BaikeId).Skip(6).Take(6).ToList();
 
@@ -92,7 +93,7 @@ namespace MyPets.Controllers
         public ActionResult Answer(int ? type,int ? page) //问答专区
         {
             int t = (type ?? 1);
-            int pageSize = 5;
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
             var allBaike = BaikeQuestionServices.LoadEntities(b => true).ToList();
             var goodsBaike = BaikeQuestionServices.LoadEntities(b => b.isChoiceness == true).ToList();
@@ -137,18 +138,48 @@ namespace MyPets.Controllers
         {
             //ViewModel.BaikeViewModel baikeViewModel = new ViewModel.BaikeViewModel();
             var ques = BaikeQuestionServices.LoadEntities(a => a.QuestionId == id).FirstOrDefault();
-            ViewBag.head = ques.QuestionTitle;
-            ViewBag.desc = ques.QuestionDescribe;
-            ViewBag.time = ques.QuestionTime;
+            ViewBag.head = ques.QuestionTitle; //问题标题
+            ViewBag.desc = ques.QuestionDescribe; //问题描述
+            ViewBag.time = ques.QuestionTime; //提问时间
             MyPetsEntities db1 = new MyPetsEntities();
             var answer = from q in db1.BaikeAnswer
                            join a in db1.BaikeQuestion on q.QuestionId equals a.QuestionId
                            where q.QuestionId==id
                            select q;
-            ViewBag.num = answer.Count();
+            ViewBag.num = answer.Count();//回答人数
             var name = UserInfoServices.LoadEntities(u => u.UserId == ques.UserId).FirstOrDefault();
-            ViewBag.username = name.UserName;
+            ViewBag.username = name.UserName;//提问人
+            var goodsanswer = BaikeAnswerServices.LoadEntities(a => true).Take(3).OrderBy(a=>Guid.NewGuid()).ToList();
+            ViewData["goodsanswer"] = goodsanswer;
+            Session["QuestionId"] = id;
             return View(answer);
+        }
+        [HttpPost]
+        public ActionResult ShowQuiz(FormCollection fc)  
+        {
+            var id = UserInfoServices.LoadEntities(u => u.UserName == Session["UserName"].ToString()).FirstOrDefault();
+            int userid = id.UserId;
+            var answercontent = fc["AreaDescribe"];
+            var addAnswer = BaikeAnswerServices.AddEntity(new BaikeAnswer
+            {
+               
+                QuestionId = Convert.ToInt32(Session["QuestionId"]),
+                UserId=userid,
+                AnswerContent=answercontent,
+                AnswerTime=DateTime.Now
+
+            });
+            if (addAnswer != null)
+            {
+                db.SaveChanges();
+                return View();
+            }
+            else return Content("<script>;alert('提交失败！');history.go(-1)</script>");
+        }
+        public ActionResult LoginOff()  //退出登录
+        {
+            Session["UserName"] = null;
+            return RedirectToAction("Index");
         }
     }
 }

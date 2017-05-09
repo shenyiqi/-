@@ -16,11 +16,10 @@ namespace MyPets.Controllers
     {
         // GET: Register
         IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
-
+        
         IDBSession db = new DBSession();
-        //DbContext db = DbContextFactory.CreateDbContext();
-
-        [HttpGet]
+        
+        
         [AllowAnonymous]
         public ActionResult Login() //登录
         {
@@ -29,9 +28,10 @@ namespace MyPets.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(UserInfo user)
+        public ActionResult Login(UserInfo user,string ReturnUrl)   
         {
             string ValidateCode = Request["txtverifcode"];
+
             if (ValidateCode != Session["ValidateCode"].ToString())
             {
                 return Content("<script>;alert('验证码错误！');history.go(-1)</script>");
@@ -43,13 +43,15 @@ namespace MyPets.Controllers
                 var users = UserInfoServices.LoadEntities(o => o.UserName == user.UserName && o.UserPwd == user.UserPwd).FirstOrDefault();
                 if (users != null)
                 {
-                    //以下代码将权限保存到Session
-                    // var current_user = db.Users.Where(o => o.UserName == user.UserName).FirstOrDefault();;alert('登录成功!返回首页!');
-                    
-                    Session["UserName"] = users.UserName;
-                    return RedirectToAction("Index", "Home");
-                    //return Content("<script>window.location.href='/Baike/Index'</script>");
-
+                    Session["UserName"] = users.UserName;//Url.IsLocalUrl(ReturnUrl) && ReturnUrl.Length > 1 && ReturnUrl.StartsWith("/") && !ReturnUrl.StartsWith("//") && !ReturnUrl.StartsWith("/\\")
+                    if (ReturnUrl != null)
+                    {
+                        return Redirect(ReturnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {
@@ -89,7 +91,7 @@ namespace MyPets.Controllers
                     user.IsSeller = false;
                     UserInfoServices.AddEntity(user);
                     db.SaveChanges();
-                    HttpContext.Session["UserName"] = user.UserName;
+                    Session["UserName"] = user.UserName;
                     RedirectToAction("Index", "Home");//跳到商城首页，还在弄
                 }
                 else

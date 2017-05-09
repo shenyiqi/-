@@ -11,7 +11,6 @@ namespace MyPets.Controllers
         // GET: Default
         public ActionResult Index() //视频播放
         {
-           var ddd= DateTime.Now;
             return View();
         }
 
