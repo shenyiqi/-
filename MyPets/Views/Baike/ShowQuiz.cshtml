@@ -1,0 +1,43 @@
+﻿@*@model MyPets.ViewModel.BaikeViewModel*@
+@model IEnumerable<MyPets.Model.BaikeAnswer>
+@{
+    ViewBag.Title = "问题详情";
+    Layout = "~/Views/Shared/_LayoutBaike.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-11">@Html.ActionLink("首页","Index")>@Html.ActionLink("问答专区","Answer")>问题详情</div>
+    <hr />
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+       <h2>@ViewBag.head</h2>
+        <hr style="border-color:#cac4c4;" />
+        <p>@Html.Raw(@ViewBag.desc)</p>
+        <p>@ViewBag.username 提问于| @ViewBag.time</p>
+    </div>
+    <div class="col-md-3"></div>
+    <div class="col-md-1"></div>
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+        <h2>@ViewBag.num 个回答 <a href="#" style="float:right;margin-right:50px; color:#808080;font-size:16px;line-height:32px;height:32px" ><img src="~/Content/Baike/img/Mail_Reply_24px_1097606_easyicon.net.png" style="margin-top:-1px;" /> 回复</a></h2>
+        <hr style="border-color:#cac4c4;" />
+        @foreach(var a in Model)
+        {
+           <div class="row">
+               <div class="col-md-1">
+                   <img src="@Url.Content(a.UserInfo.UserImg)" style="width:50px;height:50px;"/>
+               </div>
+               <div class="col-md-11" style="margin-bottom:20px;">
+                   <div><a href="javascript:;" style="font:#2be90e;">@Html.DisplayFor(item => a.UserInfo.UserName)</a> | @Html.DisplayFor(item=>a.AnswerTime)</div>
+                   <p>@Html.DisplayFor(item=>a.AnswerContent)</p>
+               </div>
+           </div>
+        }
+    </div>
+    <div class="col-md-4"></div>
+</div>

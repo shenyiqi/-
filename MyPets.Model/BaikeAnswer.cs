@@ -18,7 +18,9 @@ namespace MyPets.Model
         public Nullable<int> QuestionId { get; set; }
         public string AnswerContent { get; set; }
         public Nullable<System.DateTime> AnswerTime { get; set; }
+        public int UserId { get; set; }
     
         public virtual BaikeQuestion BaikeQuestion { get; set; }
+        public virtual UserInfo UserInfo { get; set; }
     }
 }

@@ -110,12 +110,13 @@
     <br />
     <div class="index_top">
         <div class="row part2">
-            <div class="col-md-2"></div>
-            <a href="#" class="col-md-1">@Html.ActionLink("首页", "Index")</a>
-            <a href="#" class="col-md-1">@Html.ActionLink("狗狗", "ShowType", new { txttype = "狗" }) </a>
-            <a href="#" class="col-md-1">@Html.ActionLink("猫咪", "ShowType", new { txttype = "猫" })</a>
-            <a href="#" class="col-md-1">@Html.ActionLink("小宠", "ShowType", new { txttype = "小宠" })</a>
-            <a href="#" class="col-md-1">@Html.ActionLink("水族", "ShowType", new { txttype = "水" })</a>
+            <div class="col-md-1"></div>
+            <div class="col-md-1">@Html.ActionLink("首页", "Index")</div>
+            <div class="col-md-1">@Html.ActionLink("狗狗", "ShowType", new { txttype = "狗" }) </div>
+            <div class="col-md-1">@Html.ActionLink("猫咪", "ShowType", new { txttype = "猫" })</div>
+            <div class="col-md-1">@Html.ActionLink("小宠", "ShowType", new { txttype = "小宠" })</div>
+            <div class="col-md-1">@Html.ActionLink("水族", "ShowType", new { txttype = "水" })</div>
+            <div class="col-md-1">@Html.ActionLink("问答", "Answer")</div>
             <div class="col-md-5"></div>
         </div>
     </div>
@@ -132,7 +133,7 @@
                             <a href="@Url.Action("ShowAd4")"><img src="~/Content/Baike/img/ad2.jpg" width="950" height="350" alt="img"></a>
                         </div>
                         <div class="scrotext" style="bottom:0px;">
-                            <h4><a href=""@Url.Action("ShowAd4")">干货分享——养犬新手必看知识合集</a></h4>
+                            <h4><a href="@Url.Action("ShowAd4")">干货分享——养犬新手必看知识合集</a></h4>
                             <p>初养宠物犬，更多的新手饲主有着的是一种迷茫。因为狗狗是花了大价钱买来的，所以对待起来也不可能那么的随便。九层之台、起于累...</p>
                         </div>
                         <div class="scroimg" style="left: -950px;">
@@ -150,14 +151,14 @@
                             <p>一方水土养一方喵，想不想在日本繁华的猫街沾沾招财猫的福气？或是在雨后的浪漫法兰西和你心目中的那只喵来场旷世绝恋？快上车，...</p>
                         </div>
                         <div class="scroimg" style="left:-950px;">
-                            <a href="@Url.Action("ShowAd3")"><img width="950" height="350" alt="img" src="~/Content/Baike/img/ad5.jpg"></a>
+                            <a href="@Url.Action("ShowAd3")"><img width="950" height="350" alt="img" src="~/Content/Baike/img/ad1.jpg"></a>
                         </div>
                         <div class="scrotext" style="bottom:-950px;">
                             <h4><a href="@Url.Action("ShowAd3")">宠物夏季饲养全攻略</a></h4>
                             <p>夏天对于各种宠物来说都是一个无比难熬的季节。但是主人们请不要担心，万能的波奇小编来啦。我们给大家支支招，学习一点消夏小知...</p>
                         </div>
                         <div class="scroimg" style="left:-950px;">
-                            <a href="@Url.Action("Answer")"><img width="950" height="350" alt="img" src="~/Content/Baike/img/ad1.jpg"></a>
+                            <a href="@Url.Action("Answer")"><img width="950" height="350" alt="img" src="~/Content/Baike/img/ad5.jpg"></a>
                         </div>
                         <div class="scrotext" style="bottom: -950px;">
                             <h4><a href="@Url.Action("Answer")">第一期“波奇宠物”专家团在线问诊活动开始啦！</a></h4>

@@ -33,6 +33,7 @@
           </Key>
           <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="QuestionId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="AnswerContent" Type="nvarchar(max)" />
           <Property Name="AnswerTime" Type="datetime" />
         </EntityType>
@@ -182,14 +183,14 @@
           <Property Name="Score" Type="int" />
         </EntityType>
         <Association Name="FK_BaikeAnswer_BaikeQuestion">
-          <End Role="BaikeQuestion" Type="Self.BaikeQuestion" Multiplicity="0..1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
           <End Role="BaikeAnswer" Type="Self.BaikeAnswer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="BaikeQuestion">
-              <PropertyRef Name="QuestionId" />
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="BaikeAnswer">
-              <PropertyRef Name="QuestionId" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -366,7 +367,7 @@
           <EntitySet Name="ShopRecommend" EntityType="Self.ShopRecommend" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BaikeAnswer_BaikeQuestion" Association="Self.FK_BaikeAnswer_BaikeQuestion">
-            <End Role="BaikeQuestion" EntitySet="BaikeQuestion" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="BaikeAnswer" EntitySet="BaikeAnswer" />
           </AssociationSet>
           <AssociationSet Name="FK_BaikeQuestion_UserInfo" Association="Self.FK_BaikeQuestion_UserInfo">
@@ -605,6 +606,7 @@
           <NavigationProperty Name="Post" Relationship="Self.FK_Post_UserInfo" FromRole="UserInfo" ToRole="Post" />
           <NavigationProperty Name="Shop" Relationship="Self.FK_Shop_Shop" FromRole="UserInfo" ToRole="Shop" />
           <NavigationProperty Name="BaikeQuestion" Relationship="MyPetsModel.FK_BaikeQuestion_UserInfo" FromRole="UserInfo" ToRole="BaikeQuestion" />
+          <NavigationProperty Name="BaikeAnswer" Relationship="MyPetsModel.FK_BaikeAnswer_BaikeQuestion1" FromRole="UserInfo" ToRole="BaikeAnswer" />
         </EntityType>
         <Association Name="FK_Collect_Shop">
           <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
@@ -822,6 +824,10 @@
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="BaikeQuestion" EntitySet="BaikeQuestion" />
           </AssociationSet>
+          <AssociationSet Name="FK_BaikeAnswer_BaikeQuestion1" Association="MyPetsModel.FK_BaikeAnswer_BaikeQuestion1">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="BaikeAnswer" EntitySet="BaikeAnswer" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="BaikeAnswer">
           <Key>
@@ -832,6 +838,8 @@
           <Property Name="AnswerContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AnswerTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="BaikeQuestion" Relationship="MyPetsModel.FK_BaikeAnswer_BaikeQuestion" FromRole="BaikeAnswer" ToRole="BaikeQuestion" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="MyPetsModel.FK_BaikeAnswer_BaikeQuestion1" FromRole="BaikeAnswer" ToRole="UserInfo" />
         </EntityType>
         <EntityType Name="BaikeQuestion">
           <Key>
@@ -867,6 +875,18 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="BaikeQuestion">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BaikeAnswer_BaikeQuestion1">
+          <End Type="MyPetsModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="MyPetsModel.BaikeAnswer" Role="BaikeAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BaikeAnswer">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1048,6 +1068,7 @@
           <EntitySetMapping Name="BaikeAnswer">
             <EntityTypeMapping TypeName="MyPetsModel.BaikeAnswer">
               <MappingFragment StoreEntitySet="BaikeAnswer">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="AnswerTime" ColumnName="AnswerTime" />
                 <ScalarProperty Name="AnswerContent" ColumnName="AnswerContent" />
                 <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />

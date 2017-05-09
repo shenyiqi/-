@@ -47,12 +47,13 @@
     <br />
     <div class="index_top">
         <div class="row part2">
-            <div class="col-md-2"></div>
-            <a href="#" class="col-md-1">@Html.ActionLink("首页", "Index")</a>
-            <a href="#" class="col-md-1">@Html.ActionLink("狗狗", "ShowType", new { txttype = "狗" }) </a>
-            <a href="#" class="col-md-1">@Html.ActionLink("猫咪", "ShowType", new { txttype = "猫" })</a>
-            <a href="#" class="col-md-1">@Html.ActionLink("小宠", "ShowType", new { txttype = "小宠" })</a>
-            <a href="#" class="col-md-1">@Html.ActionLink("水族", "ShowType", new { txttype = "水" })</a>
+            <div class="col-md-1"></div>
+            <div class="col-md-1">@Html.ActionLink("首页", "Index")</div>
+            <div class="col-md-1">@Html.ActionLink("狗狗", "ShowType", new { txttype = "狗" }) </div>
+            <div class="col-md-1">@Html.ActionLink("猫咪", "ShowType", new { txttype = "猫" })</div>
+            <div class="col-md-1">@Html.ActionLink("小宠", "ShowType", new { txttype = "小宠" })</div>
+            <div class="col-md-1">@Html.ActionLink("水族", "ShowType", new { txttype = "水" })</div>
+            <div class="col-md-1">@Html.ActionLink("问答", "Answer")</div>
             <div class="col-md-5"></div>
         </div>
     </div>
@@ -81,7 +82,7 @@
                 @foreach(var b in Model)
                 {
                   <tr class="row">
-                    <td class="col-sm-9" style="line-height:24px;"><img src="~/Content/Baike/img/article_24px_26483_easyicon.net.png" /> @Html.ActionLink(b.QuestionTitle,"ShowAnswer",new { id=b.QuestionId})</td>
+                    <td class="col-sm-9" style="line-height:24px;"><img src="~/Content/Baike/img/article_24px_26483_easyicon.net.png" /> @Html.ActionLink(b.QuestionTitle,"ShowQuiz",new { id=b.QuestionId})</td>
                     <td class="col-sm-3">提问于 | @Html.DisplayFor(item=>b.QuestionTime)</td> 
                  </tr>
                 }
