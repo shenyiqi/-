@@ -526,8 +526,8 @@
             <!--轮播图下侧广告-->
             <div class="ad_bOcarousel">
                 <div id="ad_bO1"><a href="@Url.Action("ShowType","Baike",new { txttype="狗"})"><img src="~/Content/Home/img/Baike/dogBaike.jpg" /></a></div>
-                <div id="ad_bO2"><a href="@Url.Action("ShowType","Baike",new { txttype="猫"})"><img src="~/Content/Home/img/Baike/catBaike.jpg" /></a></div>
-                <div id="ad_bO3"><img src="~/Content/Home/img/Baike/tips.jpg" /></div>
+                <div id="ad_bO2"><a href="@Url.Action("Index","Baike")"><img src="~/Content/Home/img/Baike/catBaike.jpg" /></a></div>
+                <div id="ad_bO3"><a href="@Url.Action("Index","Baike")"><img src="~/Content/Home/img/Baike/tips.jpg" /></a></div>
             </div>
             <!--轮播图下侧广告结束-->
             <!--轮播图右侧广告-->
@@ -571,7 +571,7 @@
             </span>
         </div>
         <div class="hotGoods">
-            @foreach (var g in Model)
+            @foreach (MyPets.Model.Goods g in ViewData["randomgoods"] as List<MyPets.Model.Goods>)
             {
                 <div class="GoodsModel">
                     <img src="@Url.Content(g.GoodsImg1)" />
