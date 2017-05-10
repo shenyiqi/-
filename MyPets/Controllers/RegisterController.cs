@@ -43,15 +43,36 @@ namespace MyPets.Controllers
                 var users = UserInfoServices.LoadEntities(o => o.UserName == user.UserName && o.UserPwd == user.UserPwd).FirstOrDefault();
                 if (users != null)
                 {
-                    Session["UserName"] = users.UserName;//Url.IsLocalUrl(ReturnUrl) && ReturnUrl.Length > 1 && ReturnUrl.StartsWith("/") && !ReturnUrl.StartsWith("//") && !ReturnUrl.StartsWith("/\\")
-                    if (ReturnUrl != null)
+                    Session["UserName"] = users.UserName;
+                    if (!string.IsNullOrEmpty(Request["rememberpwd"]))
                     {
-                        return Redirect(ReturnUrl);
+                        HttpCookie cookiepwd = new HttpCookie("pwd", users.UserName); //设置cookie
+                        HttpCookie cookiwname = new HttpCookie("name", users.UserPwd);
+                        cookiepwd.Expires = DateTime.Now.AddDays(3); //设置过期时间
+                        cookiwname.Expires = DateTime.Now.AddDays(3);
+                        Response.Cookies.Add(cookiepwd); //将cookies写入客户端
+                        Response.Cookies.Add(cookiwname);
+                        if (ReturnUrl != null)
+                        {
+                            return Redirect(ReturnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        if (ReturnUrl != null)
+                        {
+                            return Redirect(ReturnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
+                   
                 }
                 else
                 {

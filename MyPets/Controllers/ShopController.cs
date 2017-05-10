@@ -104,5 +104,9 @@ namespace MyPets.Controllers
         {
             return View();
         }
+        public ActionResult UpDiscountGoods()
+        {
+            return View();
+        }
     }
 }

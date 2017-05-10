@@ -1263,6 +1263,10 @@
     <Content Include="Content\Baike\img\Football_64px_555219_easyicon.net.png" />
     <Content Include="Content\Baike\img\Mail_Reply_24px_1097606_easyicon.net.png" />
     <Content Include="Content\Baike\img\main.png" />
+    <Content Include="Content\Baike\img\petsicon1.jpg" />
+    <Content Include="Content\Baike\img\petsicon2.jpg" />
+    <Content Include="Content\Baike\img\petsicon3.jpg" />
+    <Content Include="Content\Baike\img\petsicon4.jpg" />
     <Content Include="Content\Baike\img\questions_32px_42541_easyicon.net.png" />
     <Content Include="Content\Baike\img\upload\011.jpg" />
     <Content Include="Content\Baike\img\upload\0a84764d969565bf.jpg" />
@@ -1703,7 +1707,6 @@
     <Content Include="Views\Register\RebackPwdStep3.cshtml" />
     <Content Include="Views\Register\RebackPwdStep4.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
-    <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Shop\Order.cshtml" />
     <Content Include="Views\Shop\Register.cshtml" />
     <Content Include="Views\Shop\UpGoods.cshtml" />
@@ -1719,6 +1722,8 @@
     <Content Include="Views\Baike\Answer.cshtml" />
     <Content Include="Views\Baike\Quiz.cshtml" />
     <Content Include="Views\Baike\ShowQuiz.cshtml" />
+    <Content Include="Views\Shop\UpDiscountGoods.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
