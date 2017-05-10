@@ -12,8 +12,9 @@ namespace MyPets.Controllers
 
         public ActionResult Index()
         {
-            var goods = goodsService.LoadEntities(g=>g.SellNum>0).OrderByDescending(g=>g.SellNum).ToList();
-            return View(goods);
+            var hotgoods = goodsService.LoadEntities(g=>g.SellNum>0).OrderByDescending(g=>g.SellNum).Take(6).ToList();
+            //var randomgoods = goodsService.LoadEntities().OrderBy(x => Guid.NewGuid()).Take (6);
+            return View();
         }
 
         public ActionResult About()

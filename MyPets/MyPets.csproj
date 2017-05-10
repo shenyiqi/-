@@ -1337,6 +1337,9 @@
     <Content Include="Content\Baike\js\jquery.cxslide.min.js" />
     <Content Include="Content\Baike\js\slides.js" />
     <Content Include="Content\Home\css\index.css" />
+    <Content Include="Content\Home\img\Baike\catBaike.jpg" />
+    <Content Include="Content\Home\img\Baike\dogBaike.jpg" />
+    <Content Include="Content\Home\img\Baike\tips.jpg" />
     <Content Include="Content\Home\img\Carousel01.jpg" />
     <Content Include="Content\Home\img\Carousel02.jpg" />
     <Content Include="Content\Home\img\Carousel03.jpg" />

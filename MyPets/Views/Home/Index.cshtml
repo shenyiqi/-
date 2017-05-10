@@ -57,8 +57,8 @@
                 <a href="">猫猫</a>
                 <a href="">小宠</a>
                 <a href="">水族</a>
-                <a href="">全球购</a>
-                <a href="">团购</a>
+                <a href="">百科</a>
+                <a href="">论坛</a>
                 <a href="">品牌馆</a>
                 <a href="">在线服务</a>
             </div>
@@ -545,21 +545,22 @@
             </span>
         </div>
         <div class="hotGoods">
-
-            @foreach (var g in Model)
+            @*var g in Model*@
+            @*MyPets.Model.Goods g in ViewData["goods"] as List<MyPets.Model.Goods>*@
+                @foreach (var g in Model)
             {
-                <div class="GoodsModel">
-                    <img src="@Url.Content(g.GoodsImg1)" />
-                    <div class="aContainer">
-                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                    <div class="GoodsModel">
+                        <img src="@Url.Content(g.GoodsImg1)" />
+                        <div class="aContainer">
+                            <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                        </div>
+                        <div class="goodsPrice">
+                            ￥@Html.DisplayFor(a => g.GoodsPrice)
+                        </div>
+                        <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
                     </div>
-                    <div class="goodsPrice">
-                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                    </div>
-                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                </div>
-            }           
-        </div>
+                }
+</div>
 
         <div class="boxOne">
             <span class="boxTitle">
