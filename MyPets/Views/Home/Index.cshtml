@@ -3,13 +3,16 @@
     Layout = null;
 }
 @model IEnumerable<MyPets.Model.Goods>
+<!DOCTYPE html>
 
-<link href="~/Content/Home/css/index.css" rel="stylesheet" />
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Content/Home/js/index.js"></script>
-
-
-
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="~/Content/Home/css/index.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Home/js/index.js"></script>
+</head>
 <body>
     <!--首页顶部-->
     <div id="index_top">
@@ -191,7 +194,7 @@
                 </div>
                 <div class="catPart">
                     <div class="menu_list">
-                        <div class="typeImgContainer">
+                        <div class="typeImgContainer" style="background-position: -58px 0">
                             <!--放小图片用的div-->
                         </div>
                         <a href="" class="mainType">猫猫用品</a>
@@ -308,7 +311,7 @@
                 <!--小型宠物-->
                 <div class="smallPetsPart">
                     <div class="menu_list">
-                        <div class="typeImgContainer">
+                        <div class="typeImgContainer" style="background-position: -110px 0">
                             <!--放小图片用的div-->
                         </div>
                         <a href="" class="mainType">奇趣小宠</a>
@@ -356,7 +359,7 @@
                 <!--水族宠物-->
                 <div class="aquaticPetsPart">
                     <div class="menu_list">
-                        <div class="typeImgContainer">
+                        <div class="typeImgContainer" style="background-position: -170px 0">
                             <!--放小图片用的div-->
                         </div>
                         <a href="" class="mainType">水族市场</a>
@@ -460,7 +463,7 @@
                 <!--爬行动物-->
                 <div class="reptilePart">
                     <div class="menu_list">
-                        <div class="typeImgContainer">
+                        <div class="typeImgContainer" style="background-position: -230px 0">
                             <!--放小图片用的div-->
                         </div>
                         <a href="" class="mainType">爬虫用品</a>
@@ -520,20 +523,20 @@
                 </ul>
             </div>
             <!--轮播图结束-->
-            <!--轮播图右侧广告-->
-            <div class="ad_rOcarousel">
-                <div id="ad_rO1" style="background: blue;"></div>
-                <div id="ad_rO2" style="background: purple;"></div>
-            </div>
-            <!--轮播图右侧广告结束-->
             <!--轮播图下侧广告-->
             <div class="ad_bOcarousel">
-                <div id="ad_bO1" style="background: red;"></div>
-                <div id="ad_bO2" style="background: orange;"></div>
-                <div id="ad_bO3" style="background: yellow;"></div>
-                <div id="ad_bO4" style="background: green;"></div>
+                <div id="ad_bO1"><a href="@Url.Action("ShowType","Baike",new { txttype="狗"})"><img src="~/Content/Home/img/Baike/dogBaike.jpg" /></a></div>
+                <div id="ad_bO2"><a href="@Url.Action("ShowType","Baike",new { txttype="猫"})"><img src="~/Content/Home/img/Baike/catBaike.jpg" /></a></div>
+                <div id="ad_bO3"><img src="~/Content/Home/img/Baike/tips.jpg" /></div>
             </div>
             <!--轮播图下侧广告结束-->
+            <!--轮播图右侧广告-->
+            <div class="ad_rOcarousel">
+                <div id="ad_rO1"></div>
+                <div id="ad_rO2"></div>
+            </div>
+            <!--轮播图右侧广告结束-->
+
         </div>
     </div>
     <!--首页中部结束-->
@@ -547,20 +550,20 @@
         <div class="hotGoods">
             @*var g in Model*@
             @*MyPets.Model.Goods g in ViewData["goods"] as List<MyPets.Model.Goods>*@
-                @foreach (var g in Model)
+            @foreach (MyPets.Model.Goods g in ViewData["hotgoods"] as List<MyPets.Model.Goods>)
             {
-                    <div class="GoodsModel">
-                        <img src="@Url.Content(g.GoodsImg1)" />
-                        <div class="aContainer">
-                            <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                        </div>
-                        <div class="goodsPrice">
-                            ￥@Html.DisplayFor(a => g.GoodsPrice)
-                        </div>
-                        <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                <div class="GoodsModel">
+                    <img src="@Url.Content(g.GoodsImg1)" />
+                    <div class="aContainer">
+                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
                     </div>
-                }
-</div>
+                    <div class="goodsPrice">
+                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                    </div>
+                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                </div>
+            }
+        </div>
 
         <div class="boxOne">
             <span class="boxTitle">
@@ -582,15 +585,15 @@
                 </div>
             }
             @*<div class="GoodsModel">
-                <img src="images/goods.jpg" />
-                <div class="aContainer">
-                    <a href="">福来恩 小型犬滴剂加强型0.67ml 单支无说明书</a>
-                </div>
-                <div class="goodsPrice">
-                    ￥49.00
-                </div>
-                <div class="sales">已售<span>12434</span></div>
-            </div>*@            
+                    <img src="images/goods.jpg" />
+                    <div class="aContainer">
+                        <a href="">福来恩 小型犬滴剂加强型0.67ml 单支无说明书</a>
+                    </div>
+                    <div class="goodsPrice">
+                        ￥49.00
+                    </div>
+                    <div class="sales">已售<span>12434</span></div>
+                </div>*@
         </div>
 
         <div class="boxOne">
@@ -602,7 +605,36 @@
                     <li class="firstChoice">
                         <span>狗粮</span>
                         <div class="choiceBlock" style="display: block;">
-                            选项卡1
+                            <div class="GoodsModel">
+                                <img src="images/goods.jpg" />
+                                <div class="aContainer">
+                                    <a href="">福来恩 小型犬滴剂加强型0.67ml 单支无说明书</a>
+                                </div>
+                                <div class="goodsPrice">
+                                    ￥49.00
+                                </div>
+                                <div class="sales">已售<span>12434</span></div>
+                            </div>
+                            <div class="GoodsModel">
+                                <img src="images/goods.jpg" />
+                                <div class="aContainer">
+                                    <a href="">福来恩 小型犬滴剂加强型0.67ml 单支无说明书</a>
+                                </div>
+                                <div class="goodsPrice">
+                                    ￥49.00
+                                </div>
+                                <div class="sales">已售<span>12434</span></div>
+                            </div>
+                            <div class="GoodsModel">
+                                <img src="images/goods.jpg" />
+                                <div class="aContainer">
+                                    <a href="">福来恩 小型犬滴剂加强型0.67ml 单支无说明书</a>
+                                </div>
+                                <div class="goodsPrice">
+                                    ￥49.00
+                                </div>
+                                <div class="sales">已售<span>12434</span></div>
+                            </div>
                         </div>
                     </li>
                     <li>
@@ -889,3 +921,4 @@
 
 
 </body>
+</html>
