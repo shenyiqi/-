@@ -6,8 +6,22 @@
     <title>@ViewBag.Title</title>
     <link href="~/Content/Baike/css/style.css" rel="stylesheet" />
     <link href="~/Content/Admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Baike/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/Baike/css/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
+    <link href="~/Content/Baike/css/default.css" rel="stylesheet" />
     <link href="~/Content/Baike/css/SlideStyle.css" rel="stylesheet" />
     <link href="~/Content/Admin/css/StyleBar.css" rel="stylesheet" />
+    <style type="text/css" media="screen">
+        .btn.jumbo {
+            font-size: 20px;
+            font-weight: normal;
+            padding: 14px 24px;
+            margin-right: 10px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+        }
+    </style>
 </head>
 <body>
     <div class="row" style="border-bottom:1px solid #a5a0a0;line-height:50px;">
@@ -16,8 +30,26 @@
         <div class="col-md-1">@Html.ActionLink("宠物商城", "Index", "Shop")</div>
         <div class="col-md-1">@Html.ActionLink("宠物论坛", "Index", "Forum")</div>
         <div class="col-md-1" style="border-bottom:2px solid #9C3"><a href="javascript:;">宠物百科</a></div>
-        <div class="col-md-5"></div>
-        <div class="col-md-1">@Html.ActionLink("登录", "Login", "Register")|@Html.ActionLink("注册", "Register", "Register")</div>
+        <div class="col-md-4"></div>
+        <div class="col-md-2">
+            @if (Session["UserName"] == null)
+            {
+                <div>@Html.ActionLink("登录", "Login", "Register") | @Html.ActionLink("注册", "Register", "Register")</div>
+            }
+            else
+            {
+                <div class="dropdown">
+                    <div id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <a href="javascript:;" style="color:#9C3;">@Session["UserName"]</a>
+                        <span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="@Url.Action("Index","PersonalCenter",new { user=Session["UserName"]})">个人中心</a></li>
+                        <li><a href="@Url.Action("LoginOff")">退出登录</a></li>
+                    </ul>
+                </div>
+            }
+         </div>
         <div class="col-md-1"></div>
     </div>
     <br /><br />
@@ -56,5 +88,10 @@
     @RenderBody()
     <script src="~/Content/Admin/js/jquery-1.11.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/Baike/js/bootstrap3-wysihtml5.all.min.js"></script>
+    <script src="~/Content/Baike/js/bootstrap-wysihtml5.zh-CN.js"></script>
+    <script>
+        $('.textarea').wysihtml5({ locale: "zh-CN" });
+    </script>
 </body>
 </html>

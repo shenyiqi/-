@@ -132,32 +132,32 @@
                     alert("请输入你的验证码");
                     //new TipBox({ type: 'tip', str: '请输入你的验证码', clickDomCancel: true, setTime: 10000500, hasBtn: true });
                 }
-                else {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/Register/Login',
-                        params: { username: username, useremail: useremail, userpassword: userpassword, usercode: usercode },
-                        callback: function (msg) {
-                            if (msg == "success") {
-                                new TipBox({ type: 'success', str: '登陆成功', hasBtn: true });
-                                $("#UserName").val("");
-                                $("#UserEmail").val("");
-                                $("#UserPwd").val("");
-                                $("#txtverifcode").val("");
-                                $("#UserName").focus();
-                                location.href = "/Baike/Index";  //登录成功跳转的页面，待跳百科
-                            }
-                            else if (msg == "failed") {
-                                new TipBox({ type: 'error', str: '密码或者账户出错!', hasBtn: true });
-                                $("#UserName").val("");
-                                $("#UserEmail").val("");
-                                $("#UserPwd").val("");
-                                $("#txtverifcode").val("");
-                                $("#UserName").focus();
-                            }
-                        }
-                    });
-                }
+                //else {
+                //    $.ajax({
+                //        type: 'POST',
+                //        url: '/Register/Login',
+                //        params: { username: username, useremail: useremail, userpassword: userpassword, usercode: usercode },
+                //        callback: function (msg) {
+                //            if (msg == "success") {
+                //                new TipBox({ type: 'success', str: '登陆成功', hasBtn: true });
+                //                $("#UserName").val("");
+                //                $("#UserEmail").val("");
+                //                $("#UserPwd").val("");
+                //                $("#txtverifcode").val("");
+                //                $("#UserName").focus();
+                //                location.href = "/Baike/Index";  //登录成功跳转的页面，待跳百科
+                //            }
+                //            else if (msg == "failed") {
+                //                new TipBox({ type: 'error', str: '密码或者账户出错!', hasBtn: true });
+                //                $("#UserName").val("");
+                //                $("#UserEmail").val("");
+                //                $("#UserPwd").val("");
+                //                $("#txtverifcode").val("");
+                //                $("#UserName").focus();
+                //            }
+                //        }
+                //    });
+                //}
             });
 
             $(document).keypress(function (e) {
@@ -187,7 +187,7 @@
                 <div class="col-sm-6">
                     <div class="page">
                         <div class="main">
-                            @using (Html.BeginForm("Login", "Register", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "loginForm" }))
+                            @using (Html.BeginForm("Login", "Register", FormMethod.Post, new {id = "loginForm" }))
                             {
                                 @Html.AntiForgeryToken()
                                 <div class="item item-username">
@@ -226,6 +226,7 @@
                                         <dd> <a class="qq" href="#"> <span><img alt="" src="~/Content/Register/img/login_qq.png" width="40" height="40"></span> </a> <a class="weibo" href="#"> <span><img alt="" src="~/Content/Register/img/login_wb.png" width="40" height="40"></span> </a> </dd>
                                     </dl>
                                 </div>
+                                @Html.Hidden("ReturnUrl", Request.UrlReferrer.ToString())
                             }
                         </div>
                     </div>
@@ -246,20 +247,20 @@
                 <li>
                     <a href="#">
                         <img src="~/Content/Register/img/plugmenu4.png">
-                        <label>服务中心</label>
+                        <label>宠物百科</label>
                     </a>
                 </li>
                 <li class="home"><a href="#"></a></li>
                 <li>
                     <a href="#">
                         <img src="~/Content/Register/img/plugmenu3.png">
-                        <label>热门活动</label>
+                        <label>促销专区</label>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <img src="~/Content/Register/img/plugmenu2.png">
-                        <label>搜索车辆</label>
+                        <label>搜索商品</label>
                     </a>
                 </li>
             </ul>
