@@ -1,4 +1,4 @@
-﻿
+﻿@model MyPets.Model.Shop
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutShop.cshtml";
@@ -12,15 +12,16 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-4" style="overflow:hidden;">
-        <img src="~/Content/Shop/img/backgrounds/1.jpg" style="width:100%;height:370px;"/>
+        <img src="~/Content/Shop/upload/Store/Store1.jpg" style="width:100%;height:370px;"/>
     </div>
     <div class="col-md-4">
-        <p>点铺名</p>
-        <p>店主</p>
-        <p>客户</p>
-        <p>等级</p>
-        <p>点铺名</p>
-    </div>
+        <div style="font-size:22px;margin-top:5px;margin-bottom:36px;display:inline-block;width:80px;">店铺名:</div>@Model.ShopName<br />
+        <div style="font-size:22px;margin-bottom:36px;display:inline-block;width:60px;">店主:</div>@Model.UserInfo.UserName<br />
+        <div style="font-size:22px;margin-bottom:36px;display:inline-block;width:35px;">ID:</div>@Model.SellerIdCard<br />
+        <div style="font-size:22px;margin-bottom:36px;display:inline-block;width:60px;">客服:</div>@Model.CustomerService<br />
+        <div style="font-size:22px;margin-bottom:36px;display:inline-block;width:60px;">等级:</div>@Model.StarLevel<br />
+        <div style="font-size:22px;display:inline-block;width:60px;">描述:</div>凡是注册我们网站的用户都可以免费开店，精心管理你的店铺吧！
+</div>
     <div class="col-md-2"></div>
 </div>
 

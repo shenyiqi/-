@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyPets.DALFactory;
+using MyPets.IDAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +12,14 @@ namespace MyPets.Controllers
     {
         //
         // GET: /PersonalCenter/
-     
+        IBLL.IUserInfoServices UserInfo = new BLL.UserInfoServices();
+        IDBSession db = new DBSession();
+        public ActionResult Index(string user)
+        {
+            var userinfo = UserInfo.LoadEntities(u => u.UserName == user).FirstOrDefault();
+            return View();
+        }
+
         public ActionResult myorder() 
         {
             return View();

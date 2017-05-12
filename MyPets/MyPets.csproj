@@ -1395,7 +1395,12 @@
     <Content Include="Content\Register\img\u_s2.png" />
     <Content Include="Content\Shop\css\basic.css" />
     <Content Include="Content\Shop\css\custom.css" />
+    <Content Include="Content\Shop\css\imgstyle.css" />
+    <Content Include="Content\Shop\css\normalize.css" />
     <Content Include="Content\Shop\css\style.css" />
+    <Content Include="Content\Shop\css\StylePagedList.css" />
+    <Content Include="Content\Shop\css\zzsc-demo.css" />
+    <Content Include="Content\Shop\img\1.jpg" />
     <Content Include="Content\Shop\img\backgrounds\1.jpg" />
     <Content Include="Content\Shop\img\backgrounds\2.jpg" />
     <Content Include="Content\Shop\img\backgrounds\3.jpg" />
@@ -1597,6 +1602,12 @@
     <Content Include="Content\Shop\upload\Goods\dog1.6.2.jpg" />
     <Content Include="Content\Shop\upload\Goods\dog1.6.3.jpg" />
     <Content Include="Content\Shop\upload\Goods\dog1.6.4.jpg" />
+    <Content Include="Content\Shop\upload\Store\Store1.jpg" />
+    <Content Include="Content\Shop\upload\Store\Store2.jpg" />
+    <Content Include="Content\Shop\upload\Store\Store3.jpg" />
+    <Content Include="Content\Shop\upload\Store\Store4.jpg" />
+    <Content Include="Content\Shop\upload\Store\Store5.jpg" />
+    <Content Include="Content\Shop\upload\Store\Store6.jpg" />
     <Content Include="Content\Store\css\owl.carousel.css" />
     <Content Include="Content\Store\css\responsive.css" />
     <Content Include="Content\Store\css\style.css" />
@@ -1724,12 +1735,14 @@
     <Content Include="Views\Baike\ShowQuiz.cshtml" />
     <Content Include="Views\Shop\UpDiscountGoods.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Shop\GoodsType.cshtml" />
+    <Content Include="Views\Shared\_LayoutPersonalCenter.cshtml" />
+    <Content Include="Views\PersonalCenter\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Register\img\headphoto\" />
     <Folder Include="Content\Register\js\" />
-    <Folder Include="Content\Shop\upload\Store\" />
     <Folder Include="Content\Store\img\" />
     <Folder Include="ViewModel\" />
     <Folder Include="Views\ValidateCode\" />

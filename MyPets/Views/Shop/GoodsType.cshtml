@@ -1,0 +1,38 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<MyPets.Model.Goods>
+@{
+    ViewBag.Title = "GoodsType";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+@section Head{
+<link href="~/Content/Shop/css/normalize.css" rel="stylesheet" />
+<link href="~/Content/Shop/css/imgstyle.css" rel="stylesheet" />
+<link href="~/Content/Shop/css/zzsc-demo.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-head-line">狗狗商品</h1>
+        <h1 class="page-subhead-line">下面属于狗狗的所有商品，总共 @ViewBag.num 个</h1>
+    </div>
+</div>
+<div class="zzsc-container">
+    <div class="container">
+        <div class="gallery">
+            @foreach(var g in Model)
+            {
+             <div class="gallery-item">
+                <div class="gallery-item-image">
+                    <img src="@Url.Content(g.GoodsImg1)" style="width:100%;height:100%;">
+                </div>
+                <div class="gallery-item-description">
+                    <h3>@g.SeriesName</h3>
+                    <span>商品名：@g.GoodsName</span>
+                </div>
+            </div>
+            }
+         </div>
+        <div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("GoodsType", "Shop", new { page, type = @ViewBag.type }))</div>
+    </div>
+</div>
+
