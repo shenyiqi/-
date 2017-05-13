@@ -1,0 +1,165 @@
+﻿@model MyPets.Model.Goods
+@{
+    ViewBag.Title = "EditGoods";
+    Layout = "~/Views/Shared/_LayoutWaterFull.cshtml";
+}
+<div class="single-page">
+    <div class="single-page-artical">
+        <div class="artical-content">
+            <h3>商品图片</h3>
+            <div class="row">
+                <div class="col-md-3"><img src="@Url.Content(Model.GoodsImg1)" title="banner1"></div>
+                <div class="col-md-3"><img src="@Url.Content(Model.GoodsImg2)" title="banner1"></div>
+                <div class="col-md-3"><img src="@Url.Content(Model.GoodsImg3)" title="banner1"></div>
+                <div class="col-md-3"><img src="@Url.Content(Model.GoodsImg4)" title="banner1"></div>
+            </div>
+            <h3>商品描述</h3>
+            <p>注册成为我们网站的会员，都可以免费开宠物店铺，我们宠物之家提供了一个非常良好的平台为会员服务，你可以随时上传你的商品来进行售卖。作为一个集商城、论坛、百科于一身的网站，对于用户照顾他们的小宠物有非常大的作用，商城的商品根据你店铺的商品实际价格来定价，也可以看看其他商家再做考虑，我们的商城也有促销商品专区，你可以上传商品到促销区来销售。</p>
+        </div>
+        <div class="share-artical">
+            <ul>
+                <li><a href="javascript:;"><span class="glyphicon glyphicon-flag" aria-hidden="true">@Model.DetailName</span></a></li>
+                <li><a href="javascript:;"><span class="glyphicon glyphicon-flag" aria-hidden="true">@Model.TypeName</span></a></li>
+                <li><a href="javascript:;"><span class="glyphicon glyphicon-flag" aria-hidden="true">@Model.Shop.ShopName</span></a></li>
+                <li><a href="javascript:;"><span class="glyphicon glyphicon-flag" aria-hidden="true">@Model.Shop.UserInfo.UserName</span></a></li>
+            </ul>
+        </div>
+        <div class="clear"> </div>
+    </div>
+    <!---start-comments-section--->
+    <div class="comment-section">
+        <div class="grids_of_2">
+            <h3>详细资料</h3>
+            <div class="grid1_of_2">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="txtseries">商品类别</label>
+                                <input type="text" class="form-control" id="txtseries" readonly value="@Model.TypeName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="txttype">具体类别</label>
+                                <input type="text" class="form-control" id="txttype" readonly value="@Model.DetailName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="txtdetailtype">商品名称</label>
+                                <input type="text" class="form-control" id="txtdetailtype" readonly value="@Model.GoodsName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="txtname">商品等级</label>
+                                <input type="text" class="form-control" id="txtname" readonly value="@Model.GoodsRange">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="txtprice">商品价格</label>
+                                <input type="text" class="form-control" id="txtprice" readonly value="@Model.GoodsPrice">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="txtdis">是否打折</label>
+                                @if (Model.IsDiscount)
+                                {
+                                    <input type="text" class="form-control" id="txtdis" readonly value="是">
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" id="txtdis" readonly value="否">
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="txtdisprice">折后价</label>
+                                @if (Model.IsDiscount)
+                                {
+                                    <input type="text" class="form-control" id="txtdisprice" readonly value="@Model.DiscountPrice">
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" id="txtdis" readonly value="都说了不打折">
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="txtstock">商品库存</label>
+                                <input type="text" class="form-control" id="txtstock" readonly value="@Model.GoodsStock">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="txtstore">所属店铺</label>
+                                <input type="text" class="form-control" id="txtstore" readonly value="@Model.Shop.ShopName" placeholder="Jane Doe">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="owner">店铺店主</label>
+                                <input type="text" class="form-control" id="owner" readonly value="@Model.Shop.UserInfo.UserName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="txtservices">店铺客服</label>
+                                <input type="text" class="form-control" id="txtservices" readonly value="@Model.Shop.CustomerService">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="txtrange">店铺等级</label>
+                                <input type="text" class="form-control" id="txtrange" readonly value="@Model.Shop.StarLevel">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <br />
+            <div class="form-inline" style="text-align:center;">
+                <a href="@Url.Action("DeleteGoods", new {id=Model.GoodsId })" class="btn btn-info">删除</a>
+                <a href="@Url.Action("GoodsEntry")" class="btn btn-default">返回</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>

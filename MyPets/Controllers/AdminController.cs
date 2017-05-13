@@ -13,8 +13,8 @@ namespace MyPets.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        MyPets.IBLL.IUserInfoServices UserInfoServices = new MyPets.BLL.UserInfoServices();
-        MyPets.IBLL.IGoodsServices GoodsServices = new MyPets.BLL.GoodsServices();
+        IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
+        IBLL.IGoodsServices GoodsServices = new BLL.GoodsServices();
         IBLL.IBaikeServices BaikeServices = new BLL.BaikeServices();
         IDBSession db = new DBSession();
         public ActionResult Index()
@@ -71,6 +71,29 @@ namespace MyPets.Controllers
         {
             var goods = GoodsServices.LoadEntities(g => true).ToList();
             return View(goods);
+        }
+       
+        public ActionResult ShowGoods(string goodstitle)
+        {
+            var goods = GoodsServices.LoadEntities(g => g.GoodsName.Contains(goodstitle) || g.DetailName.Contains(goodstitle)).ToList();
+           return View(goods);
+        }
+        public ActionResult EditGoods(int goodsid)
+        {
+            var goods = GoodsServices.LoadEntities(g => g.GoodsId == goodsid).FirstOrDefault();
+            return View(goods);
+        }
+        public ActionResult DeleteGoods(int id)
+        {
+            var goods = GoodsServices.LoadEntities(g => g.GoodsId == id).FirstOrDefault();
+            var delgoods = GoodsServices.DeleteEntity(goods);
+            if (delgoods)
+            {
+                db.SaveChanges();
+                Content("<script>;alert('删除成功！');window.location.href='/Admin/GoodsEntry'</script>");
+                return RedirectToAction("GoodsEntry");
+            }
+            return Content("<script>alert('删除失败！')</script>");
         }
     }
 }

@@ -278,6 +278,14 @@
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.css" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.min.css" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bootstrap-3.3.7-dist\js\bootstrap.js" />
+    <Content Include="bootstrap-3.3.7-dist\js\bootstrap.min.js" />
+    <Content Include="bootstrap-3.3.7-dist\js\npm.js" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -1182,7 +1190,6 @@
     <Content Include="ckfinder\translations.txt" />
     <Content Include="ckfinder\引用\CKFinder.dll" />
     <Content Include="Content\Admin\css\all.css" />
-    <Content Include="Content\Admin\css\bootstrap.min.css" />
     <Content Include="Content\Admin\css\font-awesome.min.css" />
     <Content Include="Content\Admin\css\foundation.min.css" />
     <Content Include="Content\Admin\css\StyleBar.css" />
@@ -1212,7 +1219,9 @@
     <Content Include="Content\Admin\images\reply.png" />
     <Content Include="Content\Admin\images\search-icon.png" />
     <Content Include="Content\Admin\images\start-rate.png" />
+    <Content Include="Content\Admin\images\start-rate2.png" />
     <Content Include="Content\Admin\images\start-rateh.png" />
+    <Content Include="Content\Admin\images\start-rateh2.png" />
     <Content Include="Content\Admin\images\sunset-big.jpg" />
     <Content Include="Content\Admin\images\sunset.jpg" />
     <Content Include="Content\Admin\images\user-pic.png" />
@@ -1247,7 +1256,6 @@
     <Content Include="Content\Admin\js\jquery.wookmark.js" />
     <Content Include="Content\Admin\js\smothscrool.js" />
     <Content Include="Content\Baike\css\bootstrap-select.css" />
-    <Content Include="Content\Baike\css\bootstrap-theme.min.css" />
     <Content Include="Content\Baike\css\bootstrap3-wysihtml5.min.css" />
     <Content Include="Content\Baike\css\default.css" />
     <Content Include="Content\Baike\css\SlideStyle.css" />
@@ -1360,7 +1368,6 @@
     <Content Include="Content\Home\img\logon.jpg" />
     <Content Include="Content\Home\js\index.js" />
     <Content Include="Content\PersonalCenter\css\animate.min.css" />
-    <Content Include="Content\PersonalCenter\css\bootstrap.min.css" />
     <Content Include="Content\PersonalCenter\css\demo.css" />
     <Content Include="Content\PersonalCenter\css\light-bootstrap-dashboard.css" />
     <Content Include="Content\PersonalCenter\css\pe-icon-7-stroke.css" />
@@ -1368,7 +1375,6 @@
     <Content Include="Content\PersonalCenter\js\bootstrap-checkbox-radio-switch.js" />
     <Content Include="Content\PersonalCenter\js\bootstrap-notify.js" />
     <Content Include="Content\PersonalCenter\js\bootstrap-select.js" />
-    <Content Include="Content\PersonalCenter\js\bootstrap.min.js" />
     <Content Include="Content\PersonalCenter\js\chartist.min.js" />
     <Content Include="Content\PersonalCenter\js\demo.js" />
     <Content Include="Content\PersonalCenter\js\jquery-1.10.2.js" />
@@ -1414,6 +1420,10 @@
     <Content Include="Content\Shop\js\jquery.backstretch.min.js" />
     <Content Include="Content\Shop\js\jquery.metisMenu.js" />
     <Content Include="Content\Shop\js\scripts.js" />
+    <Content Include="Content\Shop\upload\Goods\add1.1.jpg" />
+    <Content Include="Content\Shop\upload\Goods\add1.2.jpg" />
+    <Content Include="Content\Shop\upload\Goods\add1.3.jpg" />
+    <Content Include="Content\Shop\upload\Goods\add1.4.jpg" />
     <Content Include="Content\Shop\upload\Goods\b.1.1.1.jpg" />
     <Content Include="Content\Shop\upload\Goods\b.1.1.2.jpg" />
     <Content Include="Content\Shop\upload\Goods\b.1.1.3.jpg" />
@@ -1622,12 +1632,9 @@
     <Content Include="Content\留言富文本\sinaFaceAndEffec.css" />
     <Content Include="Content\留言富文本\sinaFaceAndEffec.js" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1653,6 +1660,14 @@
     <Content Include="Content\Baike\fonts\icomoon.eot" />
     <Content Include="Content\Baike\fonts\icomoon.ttf" />
     <Content Include="Content\Baike\fonts\icomoon.woff" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.min.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ckplayer.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1738,6 +1753,9 @@
     <Content Include="Views\Shop\GoodsType.cshtml" />
     <Content Include="Views\Shared\_LayoutPersonalCenter.cshtml" />
     <Content Include="Views\PersonalCenter\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutWaterFull.cshtml" />
+    <Content Include="Views\Admin\ShowGoods.cshtml" />
+    <Content Include="Views\Admin\EditGoods.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1748,9 +1766,6 @@
     <Folder Include="Views\ValidateCode\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
