@@ -62,14 +62,7 @@ namespace MyPets.Controllers
             var userInfo = UserInfoServices.LoadEntities(u => true).ToList();
             return View(userInfo);
         }
-        public ActionResult ShopManagement()
-        {
-            return View();
-        }
-        public ActionResult AdManagement()
-        {
-            return View();
-        }
+
         public ActionResult Entry()
         {
             return View();
