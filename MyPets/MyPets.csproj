@@ -1370,8 +1370,6 @@
     <Content Include="Content\Home\img\logon.jpg" />
     <Content Include="Content\Home\js\goods.js" />
     <Content Include="Content\Home\js\index.js" />
-    <Content Include="Content\Home\js\jquery-1.8.3.min.js" />
-    <Content Include="Content\Home\js\jquery.min.js" />
     <Content Include="Content\Home\js\js.js" />
     <Content Include="Content\PersonalCenter\css\animate.min.css" />
     <Content Include="Content\PersonalCenter\css\bootstrap.min.css" />
@@ -1625,12 +1623,9 @@
     <Content Include="Content\留言富文本\sinaFaceAndEffec.css" />
     <Content Include="Content\留言富文本\sinaFaceAndEffec.js" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1748,14 +1743,7 @@
     <Content Include="Views\Home\Shangpin.cshtml" />
     <Content Include="Views\Home\goumai.cshtml" />
     <Content Include="Views\Home\jiesuan.cshtml" />
-    <Content Include="Views\Shop\GoodsType.cshtml" />
-    <Content Include="Views\Shop\UpDiscountGoods.cshtml" />
-    <Content Include="Views\Shared\_LayoutPersonalCenter.cshtml" />
-    <Content Include="Views\Shared\_LayoutWaterFull.cshtml" />
     <Content Include="Views\PersonalCenter\Index.cshtml" />
-    <Content Include="Views\Admin\EditGoods.cshtml" />
-    <Content Include="Views\Admin\ShowGoods.cshtml" />
-    <Content Include="Views\Admin\UserManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1767,9 +1755,6 @@
     <Folder Include="Views\ValidateCode\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
