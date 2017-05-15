@@ -62,7 +62,14 @@ namespace MyPets.Controllers
             var userInfo = UserInfoServices.LoadEntities(u => true).ToList();
             return View(userInfo);
         }
-
+        public ActionResult AdManagement() //店铺推荐
+        {
+            return View();
+        }
+        public ActionResult OrderManagement()
+        {
+            return View();
+        }
         public ActionResult Entry()
         {
             return View();
@@ -76,7 +83,7 @@ namespace MyPets.Controllers
         public ActionResult ShowGoods(string goodstitle)
         {
             var goods = GoodsServices.LoadEntities(g => g.GoodsName.Contains(goodstitle) || g.DetailName.Contains(goodstitle)).ToList();
-           return View(goods);
+            return View(goods);
         }
         public ActionResult EditGoods(int goodsid)
         { 

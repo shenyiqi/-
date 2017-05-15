@@ -92,8 +92,9 @@ namespace MyPets.Controllers
                 case 2:
                     ViewBag.type = type;
                     return View(goodsBaike.ToPagedList(pageNumber, pageSize));
+                default:
+                    return View();
             }
-            return View();
         }
         public ActionResult Quiz() //提问
         {
@@ -128,18 +129,22 @@ namespace MyPets.Controllers
             ViewBag.head = ques.QuestionTitle; //问题标题
             ViewBag.desc = ques.QuestionDescribe; //问题描述
             ViewBag.time = ques.QuestionTime; //提问时间
-            MyPetsEntities db1 = new MyPetsEntities();
-            var answer = from q in db1.BaikeAnswer
-                           join a in db1.BaikeQuestion on q.QuestionId equals a.QuestionId
-                           where q.QuestionId==id
-                           select q;
+          
+            //MyPetsEntities db1 = new MyPetsEntities();
+            //var answer = (from q in db1.BaikeAnswer
+            //               join a in db1.BaikeQuestion on q.QuestionId equals a.QuestionId
+            //               where q.QuestionId==id
+            //               select q).ToList();
+
+            var answer = BaikeAnswerServices.LoadEntities(b => b.QuestionId == id).OrderByDescending(b=>b.AnswerTime).ToList(); 
             ViewBag.num = answer.Count();//回答人数
             var name = UserInfoServices.LoadEntities(u => u.UserId == ques.UserId).FirstOrDefault();
             ViewBag.username = name.UserName;//提问人
             var goodsanswer = BaikeAnswerServices.LoadEntities(a => true).Take(3).OrderBy(a=>Guid.NewGuid()).ToList();
             ViewData["goodsanswer"] = goodsanswer;
             Session["QuestionId"] = id;
-            return View(answer);
+            ViewData["answer"] = answer;
+            return View();
         }
         [HttpPost]
         [ValidateInput(false)]
@@ -161,7 +166,7 @@ namespace MyPets.Controllers
             if (addAnswer != null)
             {
                 db.SaveChanges();
-                return View();
+                return RedirectToAction("ShowQuiz", new { id = Convert.ToInt32(Session["QuestionId"])});
             }
             else return Content("<script>;alert('提交失败！');history.go(-1)</script>");
         }
