@@ -1,5 +1,4 @@
-﻿@*@model MyPets.ViewModel.BaikeViewModel*@
-@model IEnumerable<MyPets.Model.BaikeAnswer>
+﻿@model IEnumerable<MyPets.Model.BaikeAnswer>
 @{
     ViewBag.Title = "问题详情";
     Layout = "~/Views/Shared/_LayoutBaike.cshtml";
@@ -32,18 +31,19 @@
     <div class="col-md-7">
         <h2>@ViewBag.num 个回答 </h2>
         <hr style="border-color:#cac4c4;" />
-        @foreach (var a in Model)
+        @foreach (MyPets.Model.BaikeAnswer b in ViewData["answer"] as List<MyPets.Model.BaikeAnswer>)
         {
             <div class="row">
                 <div class="col-md-1">
-                    <img src="@Url.Content(a.UserInfo.UserImg)" style="width:50px;height:50px;" />
+                    <img src="@Url.Content(b.UserInfo.UserImg)" style="width:50px;height:50px;" />
                 </div>
                 <div class="col-md-11" style="margin-bottom:20px;">
-                    <div><a href="javascript:;" style="color:#2be90e;">@Html.DisplayFor(item => a.UserInfo.UserName)</a> | @Html.DisplayFor(item => a.AnswerTime)</div>
-                    <p>@Html.Raw(a.AnswerContent)</p>
+                    <div><a href="javascript:;" style="color:#2be90e;">@Html.DisplayFor(item => b.UserInfo.UserName)</a> | @Html.DisplayFor(item => b.AnswerTime)</div>
+                    <p>@Html.Raw(b.AnswerContent)</p>
                 </div>
             </div>
         }
+
     </div>
     <div class="col-md-4">
 
@@ -52,26 +52,26 @@
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-7">
-      @if (Session["UserName"] != null)
-      {
-          using (Html.BeginForm())
-          {
-            <hr style="border-color:#808080;" />
-            <p>回复</p>
-            <article class="zzsc">
-                <div class="container">
-                    <div class="jumbotron" style="padding:10px;width:840px;">
-                        <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入问题描述..." style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;"></textarea>
+        @if (Session["UserName"] != null)
+        {
+            using (Html.BeginForm())
+            {
+                <hr style="border-color:#808080;" />
+                <p>回复</p>
+                <article class="zzsc">
+                    <div class="container">
+                        <div class="jumbotron" style="padding:10px;width:840px;">
+                            <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入问题描述..." style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;"></textarea>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
                 <input type="submit" class="btn btn-info" value="我来回答" style="float:right;margin-top:-20px;">
-          }
-      }
-      else
-      {
-         <p>请 <a href="@Url.Action("Login","Register")">登录</a> 发表评论</p>
-      }
+            }
+        }
+        else
+        {
+            <p>请 <a href="@Url.Action("Login","Register")">登录</a> 发表评论</p>
+        }
     </div>
     <div class="col-md-4">
     </div>

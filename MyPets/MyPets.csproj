@@ -1190,7 +1190,6 @@
     <Content Include="ckfinder\translations.txt" />
     <Content Include="ckfinder\引用\CKFinder.dll" />
     <Content Include="Content\Admin\css\all.css" />
-    <Content Include="Content\Admin\css\bootstrap.min.css" />
     <Content Include="Content\Admin\css\font-awesome.min.css" />
     <Content Include="Content\Admin\css\foundation.min.css" />
     <Content Include="Content\Admin\css\StyleBar.css" />
@@ -1255,7 +1254,6 @@
     <Content Include="Content\Admin\js\jquery.wookmark.js" />
     <Content Include="Content\Admin\js\smothscrool.js" />
     <Content Include="Content\Baike\css\bootstrap-select.css" />
-    <Content Include="Content\Baike\css\bootstrap-theme.min.css" />
     <Content Include="Content\Baike\css\bootstrap3-wysihtml5.min.css" />
     <Content Include="Content\Baike\css\default.css" />
     <Content Include="Content\Baike\css\SlideStyle.css" />
@@ -1334,6 +1332,7 @@
     <Content Include="Content\Baike\img\upload\timg.jpg" />
     <Content Include="Content\Baike\img\upload\xinsrc_12201031710016564323113.jpg" />
     <Content Include="Content\Baike\img\upload\xinsrc_552010317101434325937177.jpg" />
+    <Content Include="Content\Baike\img\user.jpg" />
     <Content Include="Content\Baike\img\你说我像饼？偶可是热带鱼之王七彩神仙！.png" />
     <Content Include="Content\Baike\img\宠物夏季饲养全攻略.png" />
     <Content Include="Content\Baike\img\干货分享——养犬新手必看知识合集.png" />
@@ -1369,6 +1368,8 @@
     <Content Include="Content\Home\img\icons\toolbar.png" />
     <Content Include="Content\Home\js\goods.js" />
     <Content Include="Content\Home\js\index.js" />
+    <Content Include="Content\Home\js\jquery-1.8.3.min.js" />
+    <Content Include="Content\Home\js\jquery.min.js" />
     <Content Include="Content\Home\js\js.js" />
     <Content Include="Content\PersonalCenter\css\animate.min.css" />
     <Content Include="Content\PersonalCenter\css\bootstrap.min.css" />
@@ -1622,9 +1623,12 @@
     <Content Include="Content\留言富文本\sinaFaceAndEffec.css" />
     <Content Include="Content\留言富文本\sinaFaceAndEffec.js" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1711,7 +1715,6 @@
     <Content Include="Views\Admin\Baike.cshtml" />
     <Content Include="Views\Admin\Entry.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\UserManagement.cshtml" />
     <Content Include="Views\Baike\Index.cshtml" />
     <Content Include="Views\Demo\DateTimePartialViewDate.cshtml" />
     <Content Include="Views\Demo\Index.cshtml" />
@@ -1743,13 +1746,14 @@
     <Content Include="Views\Home\Shangpin.cshtml" />
     <Content Include="Views\Home\goumai.cshtml" />
     <Content Include="Views\Home\jiesuan.cshtml" />
-    <Content Include="Views\Shared\_LayoutPersonalCenter.cshtml" />
-    <Content Include="Views\Shared\_LayoutWaterFull.cshtml" />
     <Content Include="Views\Shop\GoodsType.cshtml" />
     <Content Include="Views\Shop\UpDiscountGoods.cshtml" />
+    <Content Include="Views\Shared\_LayoutPersonalCenter.cshtml" />
+    <Content Include="Views\Shared\_LayoutWaterFull.cshtml" />
     <Content Include="Views\PersonalCenter\Index.cshtml" />
     <Content Include="Views\Admin\EditGoods.cshtml" />
     <Content Include="Views\Admin\ShowGoods.cshtml" />
+    <Content Include="Views\Admin\UserManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1762,6 +1766,9 @@
     <Folder Include="Views\ValidateCode\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
