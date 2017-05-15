@@ -77,6 +77,7 @@
           <Property Name="GoodsStock" Type="int" Nullable="false" />
           <Property Name="ShopId" Type="int" Nullable="false" />
           <Property Name="SellNum" Type="int" />
+          <Property Name="GoodsRange" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="GoodsComment">
           <Key>
@@ -482,6 +483,7 @@
           <NavigationProperty Name="Shop" Relationship="Self.FK_Goods_Shop1" FromRole="Goods" ToRole="Shop" />
           <NavigationProperty Name="GoodsComment" Relationship="Self.FK_GoodsComment_Goods" FromRole="Goods" ToRole="GoodsComment" />
           <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetail_Goods" FromRole="Goods" ToRole="OrderDetail" />
+          <Property Name="GoodsRange" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="GoodsComment">
           <Key>
@@ -933,6 +935,7 @@
           <EntitySetMapping Name="Goods">
             <EntityTypeMapping TypeName="MyPetsModel.Goods">
               <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="GoodsRange" ColumnName="GoodsRange" />
                 <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
                 <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
                 <ScalarProperty Name="SeriesName" ColumnName="SeriesName" />

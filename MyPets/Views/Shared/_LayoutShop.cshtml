@@ -4,8 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/Content/Admin/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Admin/css/font-awesome.min.css" rel="stylesheet" />
 
     <link href="~/Content/Shop/css/basic.css" rel="stylesheet" />
@@ -13,7 +12,8 @@
     <link href="~/Content/Shop/css/custom.css" rel="stylesheet" />
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-   
+    @RenderSection("Head",false)
+
 </head>
 <body>
     <div id="wrapper">
@@ -25,12 +25,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">店铺名</a>
+                <a class="navbar-brand" href="index.html">我的店铺</a>
             </div>
             <div class="header-right">
-                <a href="#" class="btn btn-info" title="新留言"><b>30 </b><i class="fa fa-envelope-o fa-2x"></i></a>
-                <a href="#" class="btn btn-primary" title="新订单"><b>40 </b><i class="fa fa-bars fa-2x"></i></a>
-                <a href="#" class="btn btn-danger" title="退出"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+                <a href="@Url.Action("Message",new { user=Session["UserName"]})" class="btn btn-info" title="留言"><i class="fa fa-envelope-o fa-2x"></i></a>
+                <a href="@Url.Action("Order",new { user=Session["UserName"]})" class="btn btn-primary" title="订单"><i class="fa fa-bars fa-2x"></i></a>
+                <a href="@Url.Action("LoginOff")" class="btn btn-danger" title="退出"><i class="fa fa-exclamation-circle fa-2x"></i></a>
             </div>
         </nav>
         <!-- /. NAV TOP  -->
@@ -51,19 +51,19 @@
                         <a href="#"><i class="fa fa-desktop "></i>我的货架<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="~/Shop/UpGoods"><i class="fa fa-toggle-on"></i>狗狗商品</a>
+                                <a href="@Url.Action("GoodsType",new {type="狗狗商品" })"><i class="fa fa-toggle-on"></i>狗狗商品</a>
                             </li>
                             <li>
-                                <a href="~/Shop/UpGoods"><i class="fa fa-bell "></i>猫猫商品</a>
+                                <a href="@Url.Action("GoodsType",new {type="猫猫商品" })"><i class="fa fa-bell "></i>猫猫商品</a>
                             </li>
                             <li>
-                                <a href="~/Shop/UpGoods"><i class="fa fa-circle-o "></i>奇趣小宠</a>
+                                <a href="@Url.Action("GoodsType",new {type="奇趣小宠" })"><i class="fa fa-circle-o "></i>奇趣小宠</a>
                             </li>
                             <li>
-                                <a href="~/Shop/UpGoods"><i class="fa fa-code "></i>水族市场</a>
+                                <a href="@Url.Action("GoodsType",new {type="水族市场" })"><i class="fa fa-code "></i>水族市场</a>
                             </li>
                             <li>
-                                <a href="~/Shop/UpGoods"><i class="fa fa-bug "></i>爬虫用品</a>
+                                <a href="@Url.Action("GoodsType",new {type="爬虫用品" })"><i class="fa fa-bug "></i>爬虫用品</a>
                             </li>
                         </ul>
                     </li>
@@ -71,7 +71,7 @@
                         <a href="#"><i class="fa fa-yelp "></i>发布商品<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#"><i class="fa fa-send "></i>普通商品</a>
+                                <a href="@Url.Action("UpGoods")"><i class="fa fa-send "></i>普通商品</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-recycle "></i>促销商品</a>
@@ -130,7 +130,7 @@
         &copy; 2017 YourCompany | More Templates <a href="#" target="_blank" title="宠物之家">宠物之家</a> - Collect from <a href="#" title="网页模板" target="_blank">江西师大</a>
     </div>
     <script src="~/Content/Admin/js/jquery-1.11.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="~/Content/Shop/js/jquery.metisMenu.js"></script>
     <script src="~/Content/Shop/js/custom.js"></script>
 </body>

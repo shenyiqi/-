@@ -37,6 +37,7 @@ namespace MyPets.Model
         public int GoodsStock { get; set; }
         public int ShopId { get; set; }
         public Nullable<int> SellNum { get; set; }
+        public string GoodsRange { get; set; }
     
         public virtual Shop Shop { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

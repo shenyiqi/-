@@ -214,15 +214,36 @@ a.boxclose{
 .post-share span:hover{
 	background:url(../../images/facebookh.png) no-repeat 0px 0px;
 }
-.rateit span{
+.rateit span{                  /*等级1*/
 	height:18px;
+	width:76px;
+	background:url(../../images/start-rate2.png) no-repeat 0px 0px; 
+	display:inline-block;
+}
+.rateit1 span{               /*等级2*/  
+    height:18px;
 	width:76px;
 	background:url(../../images/start-rate.png) no-repeat 0px 0px; 
 	display:inline-block;
 }
-.rateit span:hover{
+
+.rateit2 span{               /*等级3*/  
+    height:18px;
+	width:76px;
 	background:url(../../images/start-rateh.png) no-repeat 0px 0px; 
+	display:inline-block;
 }
+
+.rateit3 span{               /*等级4*/  
+    height:18px;
+	width:76px;
+	background:url(../../images/start-rateh2.png) no-repeat 0px 0px; 
+	display:inline-block;
+} 
+
+/*.rateit span:hover{  
+	background:url(../../images/start-rateh.png) no-repeat 0px 0px; 
+}*/
 .post-basic-info{
 	padding: 7% 7% 5% 7%;
 }

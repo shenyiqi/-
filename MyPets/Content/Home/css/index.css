@@ -90,7 +90,7 @@
 }
 #searchTxtBox{
 	width: 516px;
-	height: 44px;
+	height: 38px;
 	text-indent: 10px;
 	font-size: 16px;
 	color: RGB(51,51,51);
@@ -222,10 +222,11 @@ a.mainType{
     margin-left: 5px;
 }
 div.typeImgContainer{
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height:28px;
 	margin-left: 10px;
-	border: solid 1px #9ACD32;
+    background-image:url(../img/icons/icon.png);
+    background-position:0px 0px;
 }
 .typeMenu>div{
 	width: 188px;
@@ -311,15 +312,17 @@ div.typeImgContainer{
 	padding:0 5px;
 	border-left: solid 1px RGB(210,204,216);
 }
+
+
+
+/*轮播图*/
 #carousel {
 	width: 800px;
 	height: 360px;
 	overflow: hidden;
 	position: relative;
+    cursor:pointer;
 }
-
-
-/*轮播图*/
 
 #carousel .pic {
 	width: 4800px;
@@ -364,24 +367,47 @@ div.typeImgContainer{
 #index_middlePart .midContent .ad_rOcarousel {
 	width: 200px;
 	height: 360px;
+    position:absolute;
+    top:0;
+    left:990px;
+}
+#ad_rO1{
+	background:RGB(255,244,250);
+	border-bottom: 2px solid red;
+}
+#ad_rO2{
+	background:RGB(255,255,255) ;
 }
 
 #index_middlePart .midContent .ad_rOcarousel div {
 	width: 200px;
-	height: 180px;
+	height: 224px;
 }
 
 
 /*轮播图下侧广告*/
 
 #index_middlePart .midContent .ad_bOcarousel {
-	width: 1000px;
+	width: 800px;
 	height: 90px;
 }
 
+#ad_bO1{
+	background: RGB(247,247,247);
+	border-right: 1px solid RGB(243,243,243);
+}
+#ad_bO2{
+	background: RGB(247,247,247);
+	border-right: 1px solid RGB(243,243,243);
+}
+#ad_bO3{
+	background: RGB(247,247,247);
+}
+
 #index_middlePart .midContent .ad_bOcarousel div {
-	width: 250px;
+	width: 266px;
 	height: 90px;
+	cursor: pointer;
 }
 
 

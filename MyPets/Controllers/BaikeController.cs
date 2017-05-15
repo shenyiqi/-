@@ -23,22 +23,9 @@ namespace MyPets.Controllers
             //var s = (from b in db.Baike
             //        where b.BaikeSeries == "狗系列"
             //        select b).Skip(6).Take(6);
-            
             var dogBaike = BaikeServices.LoadEntities(b => b.BaikeSeries == "狗系列").Take(6).ToList();
-            var dogTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "狗系列").OrderBy(b => b.BaikeId).Skip(6).Take(6).ToList();
-
-            var catBaike = BaikeServices.LoadEntities(b => b.BaikeSeries == "猫系列").Take(6).ToList();
-            var catTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "猫系列").OrderBy(b=>b.BaikeId).Skip(6).Take(6).ToList();
-
-            var littlepet = BaikeServices.LoadEntities(b => b.BaikeSeries == "小宠系列").Take(6).ToList();
-            var littleTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "小宠系列").OrderBy(b => b.BaikeId).Skip(6).Take(6).ToList();
-
-            var waterpet = BaikeServices.LoadEntities(b => b.BaikeSeries == "水族系列").Take(6).ToList();
-            var waterTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "水族系列").OrderBy(b => b.BaikeId).Skip(6).Take(6).ToList();
+            var dogTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "狗系列").OrderBy(b => Guid.NewGuid()).Skip(6).Take(6).ToList();
             ViewData["dog"] = dogBaike; ViewData["dogtitle"] = dogTitle;
-            ViewData["cat"] = catBaike; ViewData["cattitle"] = catTitle;
-            ViewData["littlepet"] = littlepet; ViewData["littletitle"] = littleTitle;
-            ViewData["water"] = waterpet; ViewData["watertitle"] = waterTitle;
             return View();
         }
         public ActionResult Show(int id) //显示单个百科
@@ -129,7 +116,7 @@ namespace MyPets.Controllers
             if (addquestion != null)
             {
                 db.SaveChanges();
-                return View();
+                return View("Answer");
             }
             else return Content("<script>alert('提交失败');history(-1)</script>");
            
@@ -155,9 +142,11 @@ namespace MyPets.Controllers
             return View(answer);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult ShowQuiz(FormCollection fc)  
         {
-            var id = UserInfoServices.LoadEntities(u => u.UserName == Session["UserName"].ToString()).FirstOrDefault();
+            string name = Session["UserName"].ToString();
+            var id = UserInfoServices.LoadEntities(u => u.UserName == name).FirstOrDefault();
             int userid = id.UserId;
             var answercontent = fc["AreaDescribe"];
             var addAnswer = BaikeAnswerServices.AddEntity(new BaikeAnswer

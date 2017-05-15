@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "UpDiscountGoods";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-head-line">促销商品</h1>
+        <h1 class="page-subhead-line">请按顺序执行步骤，完成商品上传</h1>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    <div class="alert alert-info">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="choicegoods">选择商品</label>
+                @Html.DropDownList("choicegoods", @ViewData["setgoods"] as SelectList, "--选择商品--", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="txtdisprice">促销价</label>
+                <input type="text" class="form-control" id="txtdisprice" name="txtdisprice" placeholder="Goods Price" onblur="validate()">
+            </div>
+        </div>
+        <div style="margin-top:20px;">
+            <label>促销描述</label>
+            <textarea class="form-control" rows="5" name="txtdesc" style="width:90%;" placeholder="请输入促销描述..."></textarea>
+        </div>
+        <div class="row" style="margin-top:20px;text-align:center;">
+            <input type="submit" class="btn btn-info" value="发布" />
+        </div>
+    </div>
+}
+<script type="text/javascript">
+
+    function validate() {
+        var reg = new RegExp("^[0-9]+(.[0-9]{1,2})?$");
+        var obj = document.getElementById("txtdisprice");
+        if (!reg.test(obj.value)) {
+            alert("请输入正确价格格式!");
+        }
+    }
+</script>
