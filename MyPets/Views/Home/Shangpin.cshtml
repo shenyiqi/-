@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Shangpin";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+@model IEnumerable<MyPets.Model.Goods>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Content/Home/js/jquery.min.js"></script>
+    <script src="~/Content/Home/js/goods.js"></script>
+    <link href="~/Content/Home/css/shangpin.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1">
+
+        <div >
+            @foreach (var g in Model)
+            {         <div class="product">
+                    <div class="tupian">
+                        <a href=""><img src="@Url.Content(g.GoodsImg1)" style="width: 150px; height: 170px" /></a>
+                    </div>
+                    <div class="jiage"><span style="color:red;font-size:20px;">￥@Html.DisplayFor(a=>g.GoodsPrice)</span></div>
+                    <div class="name">
+                        <a href="">@Html.DisplayFor(a=>g.GoodsName)</a>
+                    </div>
+                    <div style="height: 15px">
+                        <div class="yishou">已售：@Html.DisplayFor(s => g.SellNum)</div>
+                        <div class="pingjia">已有：<a href="">@Html.DisplayFor(s => g.SellNum)</a>人评价</div>
+                    </div>
+                    <div class="gouwu">
+                        <a href="">
+                            <input type="button" value="加入购物车" class="goumai" />
+                        </a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </form>
+</body>
+</html>

@@ -27,7 +27,22 @@ namespace MyPets.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+          
+            return View();
+        }
+       public ActionResult Shangpin(string keyword)
+        {
+            var gougou =goodsService.LoadEntities(b=>b.DetailName== keyword).ToList();
+            return View(gougou);
 
+           
+        }
+        public ActionResult goumai()
+        {
+            return View();
+         }
+        public ActionResult jiesuan()
+        {
             return View();
         }
     }

@@ -1336,9 +1336,16 @@
     <Content Include="Content\Baike\js\jquery.cxslide.min.js" />
     <Content Include="Content\Baike\js\slides.js" />
     <Content Include="Content\Home\css\index.css" />
+    <Content Include="Content\Home\css\shangpin.css" />
+    <Content Include="Content\Home\css\style.css" />
+    <Content Include="Content\Home\css\StyleSheet1.css" />
+    <Content Include="Content\Home\img\app_small.jpg" />
     <Content Include="Content\Home\img\Baike\catBaike.jpg" />
     <Content Include="Content\Home\img\Baike\dogBaike.jpg" />
     <Content Include="Content\Home\img\Baike\tips.jpg" />
+    <Content Include="Content\Home\img\btn_c.jpg" />
+    <Content Include="Content\Home\img\btn_q.jpg" />
+    <Content Include="Content\Home\img\btn_z.jpg" />
     <Content Include="Content\Home\img\Carousel01.jpg" />
     <Content Include="Content\Home\img\Carousel02.jpg" />
     <Content Include="Content\Home\img\Carousel03.jpg" />
@@ -1354,7 +1361,11 @@
     <Content Include="Content\Home\img\icons\toolbar.png" />
     <Content Include="Content\Home\img\logo.jpg" />
     <Content Include="Content\Home\img\logon.jpg" />
+    <Content Include="Content\Home\js\goods.js" />
     <Content Include="Content\Home\js\index.js" />
+    <Content Include="Content\Home\js\jquery-1.8.3.min.js" />
+    <Content Include="Content\Home\js\jquery.min.js" />
+    <Content Include="Content\Home\js\js.js" />
     <Content Include="Content\PersonalCenter\css\animate.min.css" />
     <Content Include="Content\PersonalCenter\css\bootstrap.min.css" />
     <Content Include="Content\PersonalCenter\css\demo.css" />
@@ -1719,6 +1730,10 @@
     <Content Include="Views\Baike\Answer.cshtml" />
     <Content Include="Views\Baike\Quiz.cshtml" />
     <Content Include="Views\Baike\ShowQuiz.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
+    <Content Include="Views\Home\Shangpin.cshtml" />
+    <Content Include="Views\Home\goumai.cshtml" />
+    <Content Include="Views\Home\jiesuan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

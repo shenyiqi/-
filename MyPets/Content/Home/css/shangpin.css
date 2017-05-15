@@ -1,0 +1,23 @@
+﻿
+body {
+}
+.product{ font-size:12px;width:200px;border:2px solid #ffffff;
+
+}
+.product:hover{border:2px solid red;display:block;}
+.tupian {width: 150px;height: 170px;padding-left:24px;}
+.tupian a{border-style: none; border-color: inherit; border-width: 0; vertical-align: middle;}
+.jiage{ height: 40px;line-height:40px;}
+.name{height: 50px; width: 200px;}
+.name a{text-decoration:none;color:black}
+.name a:hover{color:#dd8888;text-decoration:none;cursor:pointer;}
+.yishou{float:left; color:#b299a5;}
+.pingjia{float:right;}
+.pingjia a{color:#dd8888;text-decoration:none;}
+.gouwu{padding-top:10px;padding-bottom:2px;padding-left:2px}
+.goumai{ Height:25px;Width:108px;background-color:#f3f3f3;border-width:0px;}
+.goumai:hover{background-color:red;color:white;cursor:pointer;}
+.product{
+    float:left;
+    margin:5px 10px;
+}

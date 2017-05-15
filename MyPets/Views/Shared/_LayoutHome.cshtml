@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Content/Home/js/index.js"></script>
+    <link href="~/Content/Home/css/index.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <div id="index_top">
+            <div class="content">
+                <div class="favorite">收藏宠物之家</div>
+                <ul class="index_topRight">
+                    <li>
+                        <a href="">登录</a>
+                    </li>
+                    <li>
+                        <a href="">注册</a>
+                    </li>
+                    <li>
+                        <a href="">手机版</a>
+                    </li>
+                    <li>
+                        <a href="">关注宠物之家</a>
+                    </li>
+                    <li>
+                        <a href="">首页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--首页顶部结束-->
+        <!--搜索框部分-->
+        <div id="search">
+            <img src="~/Content/Shop/img/logo.png" style="width:240px;height:100px;" />
+            <div class="search_mid">
+                <input type="text" name="" id="searchTxtBox" value="" placeholder="狗粮" />
+                <input type="button" name="searchBtn" id="searchBtn" value="搜索" />
+            </div>
+
+        </div>
+
+        <!--搜索框部分结束-->
+        <!--导航栏部分-->
+        <div id="navigation_bar">
+            <div class="vital_part">
+                <a href="" class="all_type">全部商品分类</a>
+                <a href="" class="shopping_cart">购物车</a>
+                <div class="navigation">
+                    <a href="" class="index">首页</a>
+                    <a href="">狗狗</a>
+                    <a href="">猫猫</a>
+                    <a href="">小宠</a>
+                    <a href="">水族</a>
+                    <a href="">百科</a>
+                    <a href="">论坛</a>
+                    <a href="">品牌馆</a>
+                    <a href="">在线服务</a>
+                </div>
+
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+</body>
+</html>
