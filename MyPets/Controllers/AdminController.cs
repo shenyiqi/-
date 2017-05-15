@@ -79,7 +79,7 @@ namespace MyPets.Controllers
            return View(goods);
         }
         public ActionResult EditGoods(int goodsid)
-        {
+        { 
             var goods = GoodsServices.LoadEntities(g => g.GoodsId == goodsid).FirstOrDefault();
             return View(goods);
         }
