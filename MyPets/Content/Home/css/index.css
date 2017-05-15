@@ -75,7 +75,26 @@
 	margin: 0 auto;
 	position: relative;
 }
-
+#search .searchType{
+    position:absolute;
+    top:13px;
+    left:300px;
+    height:36px;
+    width:100px;
+    background:RGB(255,255,255);
+}
+#search .searchType li{
+    list-style:none;
+    float:left;
+    text-align:center;
+    width:50px;
+    line-height:36px;
+    color:RGB(238,85,51);
+    cursor:pointer;
+}
+#search .searchType li:hover{
+    background:RGB(255,238,229);
+}
 
 #search img {
 	margin: 15px 0;
@@ -434,28 +453,60 @@ div.typeImgContainer{
     margin-top: 10px;
 	border: solid 1px RGB(230,230,230);
 }
-.GoodsModel{
-	width: 184px;
-	height: 198px;
-	float: left;
-	margin: 6px;	
+#goodsPart .famousShop{
+    width:1190px;
+    height:270px;
+    margin-top: 10px;
+}
+#goodsPart .famousShop div{
+    margin-left:10px;
+    width:190px;
+}
+#goodsPart .famousShop img{
+    float:left;
+}
+img.bottomShop{
+    margin-top:10px;
 }
 #goodsPart div{
 	float: left;
 }
-#goodsPart .hotGoods img{
+/*商品展示模式*/
+.GoodsModel{
+	width: 184px;
+	height: 198px;
+	float: left;
+	margin: 6px;
+    position:relative;	
+}
+.GoodsModel img{
 	width: 120px;
 	height: 120px;
 	margin: 24px auto;
 	margin-bottom: 0;
 	display: block;
+    position:relative;
+    cursor:pointer;
 }
-#goodsPart .hotGoods .aContainer{
+.GoodsModel .aContainer{
 	height: 20px;
 	width: 168px;
 	overflow: hidden;
 	margin-bottom: 10px;
+    line-height:20px;
 }
+.GoodsModel .goodsPrice{
+    margin-left:10px;
+	width: 70px;
+	font-size: 14px;
+	color: RGB(241,85,51);
+}
+.GoodsModel .sales{
+	width: 100px;
+	font-size: 13px;
+	color: RGB(102,102,102);
+}
+/*商品展示模式结束*/
 #goodsPart a{
 	text-decoration: none;
 	font-size: 14px;
@@ -464,16 +515,7 @@ div.typeImgContainer{
 #goodsPart a:hover{
 	color: RGB(240,85,84);
 }
-#goodsPart .goodsPrice{
-	width: 80px;
-	font-size: 14px;
-	color: RGB(241,85,51);
-}
-#goodsPart .sales{
-	width: 100px;
-	font-size: 13px;
-	color: RGB(102,102,102);
-}
+
 .ChoicePart {
 	width: 1000px;
 	position: absolute;
@@ -485,32 +527,30 @@ div.typeImgContainer{
 	text-align: center;
 	font-size: 16px;
 	color: RGB(51,51,51);
-	height: 33px;
-	line-height: 33px;
+	height: 30px;
+	line-height: 30px;
 	float: left;
     padding: 0 16px;
+    cursor:pointer;
 }
-.firstChoice{
+
+li.beChoiced{
     color:RGB(255,255,255);
     background:RGB(238,85,51) ;
     text-decoration: underline;
 }
-.ChoicePart li:hover{
-	text-decoration: underline;
-	color: RGB(255,255,255);
-	background:RGB(238,85,51) ;
-}
 .ChoicePart .choiceBlock{
 	position:absolute ;
 	width: 999px;
-	height: 480px;
-	top: 34px;
+	height: 479px;
+	top: 32px;
 	left: 0;
 	/*background:#FFCC00;*/
 	color: RGB(102,102,102);
 	border-bottom: 1px solid RGB(230,230,230);
 	border-right: 1px solid RGB(230,230,230);
 	display: none;
+    cursor:default;
 }
 .choiceDetail{
 	width: 1190px;

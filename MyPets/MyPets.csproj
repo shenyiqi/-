@@ -1366,8 +1366,6 @@
     <Content Include="Content\Home\img\GoodsPart\smallpGoods.jpg" />
     <Content Include="Content\Home\img\icons\icon.png" />
     <Content Include="Content\Home\img\icons\toolbar.png" />
-    <Content Include="Content\Home\img\logo.jpg" />
-    <Content Include="Content\Home\img\logon.jpg" />
     <Content Include="Content\Home\js\goods.js" />
     <Content Include="Content\Home\js\index.js" />
     <Content Include="Content\Home\js\js.js" />
@@ -1747,6 +1745,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Home\img\shopimg\" />
     <Folder Include="Content\Register\img\headphoto\" />
     <Folder Include="Content\Register\js\" />
     <Folder Include="Content\Shop\upload\Store\" />

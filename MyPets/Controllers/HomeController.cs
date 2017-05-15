@@ -12,10 +12,33 @@ namespace MyPets.Controllers
 
         public ActionResult Index()
         {
+            //火爆商品
             var hotGoods = goodsService.LoadEntities(g=>g.SellNum>0).OrderByDescending(g=>g.SellNum).Take(6).ToList();
+            //促销商品
+            var discountGoods = goodsService.LoadEntities(g => g.IsDiscount == true).Take(6).ToList();
             var randomGoods = goodsService.LoadEntities(g=>true).OrderBy(x => Guid.NewGuid()).Take(6).ToList();
+            //狗狗商品
+            var dogFood=goodsService.LoadEntities(g=>g.SeriesName=="狗狗商品" && g.TypeName == "粮食").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
+            var dogShiliang = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "湿粮").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
+            var dogYiliao = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "医疗").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
+            var dogBaojian = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "保健").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
+            var dogRiyong = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "日用品").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
+
             ViewData["hotgoods"] = hotGoods;
+            ViewData["discountgoods"] = discountGoods;
             ViewData["randomgoods"] = randomGoods;
+            ViewData["dogfood"] = dogFood;
+            ViewData["dogshiliang"] = dogShiliang;
+            ViewData["dogyiliao"] = dogYiliao;
+            ViewData["dogbaojian"] = dogBaojian;
+            ViewData["dogriyong"] = dogRiyong;
+
+
+            //猫猫商品
+            var catFood = goodsService.LoadEntities(g => g.SeriesName == "猫猫商品" && g.TypeName == "零食").Take(10).ToList();
+            ViewData["catfood"] = catFood;
+
+            
             return View();
         }
 
