@@ -11,18 +11,30 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <script src="~/Content/Home/js/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Content/Home/js/goods.js"></script>
     <link href="~/Content/Home/css/shangpin.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1">
+        <div class="left">
+            <div>图片 狗狗商品</div>
+            <div>
+                <div>宠物狗粮</div>
+                <div>
 
-        <div >
+                </div>
+            </div>
+
+        </div>
+
+        <div class="right">
             @foreach (var g in Model)
-            {         <div class="product">
+            {     
+                    <div class="product">
                     <div class="tupian">
-                        <a href=""><img src="@Url.Content(g.GoodsImg1)" style="width: 150px; height: 170px" /></a>
+                        <a href="">
+                        <img src="@Url.Content(g.GoodsImg1)" style="width: 150px; height: 170px" /></a>
                     </div>
                     <div class="jiage"><span style="color:red;font-size:20px;">￥@Html.DisplayFor(a=>g.GoodsPrice)</span></div>
                     <div class="name">

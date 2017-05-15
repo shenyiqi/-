@@ -1,8 +1,21 @@
-﻿
+﻿*{
+    margin:0px;
+    padding:0px;
+}
 body {
 }
-.product{ font-size:12px;width:200px;border:2px solid #ffffff;
+/*左边*/
+.left{
 
+}
+/*左边结束*/
+/*右边*/
+.rihgt{
+    width:800px;
+    overflow:hidden;
+    float:right;
+}
+.product{ font-size:12px;width:200px;border:2px solid #ffffff;
 }
 .product:hover{border:2px solid red;display:block;}
 .tupian {width: 150px;height: 170px;padding-left:24px;}
@@ -21,3 +34,4 @@ body {
     float:left;
     margin:5px 10px;
 }
+/*右边结束*/

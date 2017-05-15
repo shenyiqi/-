@@ -278,6 +278,14 @@
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.css" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.min.css" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bootstrap-3.3.7-dist\js\bootstrap.js" />
+    <Content Include="bootstrap-3.3.7-dist\js\bootstrap.min.js" />
+    <Content Include="bootstrap-3.3.7-dist\js\npm.js" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -1363,8 +1371,6 @@
     <Content Include="Content\Home\img\logon.jpg" />
     <Content Include="Content\Home\js\goods.js" />
     <Content Include="Content\Home\js\index.js" />
-    <Content Include="Content\Home\js\jquery-1.8.3.min.js" />
-    <Content Include="Content\Home\js\jquery.min.js" />
     <Content Include="Content\Home\js\js.js" />
     <Content Include="Content\PersonalCenter\css\animate.min.css" />
     <Content Include="Content\PersonalCenter\css\bootstrap.min.css" />
@@ -1618,12 +1624,9 @@
     <Content Include="Content\留言富文本\sinaFaceAndEffec.css" />
     <Content Include="Content\留言富文本\sinaFaceAndEffec.js" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1649,6 +1652,14 @@
     <Content Include="Content\Baike\fonts\icomoon.eot" />
     <Content Include="Content\Baike\fonts\icomoon.ttf" />
     <Content Include="Content\Baike\fonts\icomoon.woff" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.min.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ckplayer.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1734,6 +1745,13 @@
     <Content Include="Views\Home\Shangpin.cshtml" />
     <Content Include="Views\Home\goumai.cshtml" />
     <Content Include="Views\Home\jiesuan.cshtml" />
+    <Content Include="Views\Shared\_LayoutPersonalCenter.cshtml" />
+    <Content Include="Views\Shared\_LayoutWaterFull.cshtml" />
+    <Content Include="Views\Shop\GoodsType.cshtml" />
+    <Content Include="Views\Shop\UpDiscountGoods.cshtml" />
+    <Content Include="Views\PersonalCenter\Index.cshtml" />
+    <Content Include="Views\Admin\EditGoods.cshtml" />
+    <Content Include="Views\Admin\ShowGoods.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1745,9 +1763,6 @@
     <Folder Include="Views\ValidateCode\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
