@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MyPets.Models;
 using MyPets.Model;
 using MyPets.IDAL;
+using PagedList;
 using MyPets.DALFactory;
 
 namespace MyPets.Controllers
@@ -15,6 +16,7 @@ namespace MyPets.Controllers
         // GET: Admin
         IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
         IBLL.IGoodsServices GoodsServices = new BLL.GoodsServices();
+        IBLL.IShopServices ShopServices = new BLL.ShopServices();
         IBLL.IBaikeServices BaikeServices = new BLL.BaikeServices();
         IDBSession db = new DBSession();
         public ActionResult Index()
@@ -22,7 +24,7 @@ namespace MyPets.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Baike()
+        public ActionResult Baike() //百科
         {
             return View();
         }
@@ -57,10 +59,32 @@ namespace MyPets.Controllers
                 return View();
             }
         }
-        public ActionResult UserManagement()
+        public ActionResult UserManagement() //用户管理
         {
             var userInfo = UserInfoServices.LoadEntities(u => true).ToList();
             return View(userInfo);
+        }
+        public bool DeleteUser(string id)
+        {
+            int userid = Convert.ToInt32(id);
+            var user = UserInfoServices.LoadEntities(u => u.UserId == userid).FirstOrDefault();
+            var deluser = UserInfoServices.DeleteEntity(user);
+            if (deluser)
+            {
+                db.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public ActionResult ShopManagement(int? page)
+        {
+            int PageSize = 6;
+            int PageNumber = (page ?? 1);
+            var shop = ShopServices.LoadEntities(s => true).ToList();
+            return View(shop.ToPagedList(PageNumber, PageSize));
         }
         public ActionResult AdManagement() //店铺推荐
         {
@@ -79,14 +103,14 @@ namespace MyPets.Controllers
             var goods = GoodsServices.LoadEntities(g => true).ToList();
             return View(goods);
         }
-       
+
         public ActionResult ShowGoods(string goodstitle)
         {
             var goods = GoodsServices.LoadEntities(g => g.GoodsName.Contains(goodstitle) || g.DetailName.Contains(goodstitle)).ToList();
             return View(goods);
         }
         public ActionResult EditGoods(int goodsid)
-        { 
+        {
             var goods = GoodsServices.LoadEntities(g => g.GoodsId == goodsid).FirstOrDefault();
             return View(goods);
         }

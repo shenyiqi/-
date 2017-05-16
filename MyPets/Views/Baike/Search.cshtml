@@ -36,7 +36,7 @@
               </div>
         </div>
         }
-        <div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("GetSearch", "Baike", new { page, txtBaikeTitle = @ViewData["search"] }))</div>
+        <div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("GetSearch", "Baike", new { page, txtBaikeTitle = @ViewData["search"] }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 5 })</div>
     </div>
     <div class="col-md-2"></div>
 </div>

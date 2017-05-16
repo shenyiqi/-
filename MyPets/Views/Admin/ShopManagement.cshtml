@@ -1,0 +1,36 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList<MyPets.Model.Shop>
+@{
+    ViewBag.Title = "店铺管理";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Head{
+
+}
+<h2>店铺管理</h2>
+<hr style="border-color:#808080;"/>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <img src="@Url.Content(@item.ShopImg)" class="img-thumbnail" style="width:300px;height:200px;" />
+            <br />
+            <div style="display:inline-block;width:330px;margin-bottom:30px;margin-top:5px;">
+              <div class="form-inline">
+                  <div class="form-group">
+                     <h2>店名：@item.ShopName</h2>
+                  </div>
+                  <a href="@Url.Action("EditShop",new { id=item.ShopId})" style="float:right;margin-right:45px;font-size:18px;">详细</a>
+                  </div>
+            </div>
+            
+        </div>
+    }
+</div>
+           
+ <div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("ShopManagement", "Admin", new { page }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 5 })</div>
+      
+   
+
+

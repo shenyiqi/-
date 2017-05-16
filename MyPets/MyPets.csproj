@@ -1269,6 +1269,10 @@
     <Content Include="Content\Baike\img\Football_64px_555219_easyicon.net.png" />
     <Content Include="Content\Baike\img\Mail_Reply_24px_1097606_easyicon.net.png" />
     <Content Include="Content\Baike\img\main.png" />
+    <Content Include="Content\Baike\img\petsicon1.jpg" />
+    <Content Include="Content\Baike\img\petsicon2.jpg" />
+    <Content Include="Content\Baike\img\petsicon3.jpg" />
+    <Content Include="Content\Baike\img\petsicon4.jpg" />
     <Content Include="Content\Baike\img\questions_32px_42541_easyicon.net.png" />
     <Content Include="Content\Baike\img\upload\011.jpg" />
     <Content Include="Content\Baike\img\upload\0a84764d969565bf.jpg" />
@@ -1662,6 +1666,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1742,6 +1748,16 @@
     <Content Include="Views\Home\goumai.cshtml" />
     <Content Include="Views\Home\jiesuan.cshtml" />
     <Content Include="Views\PersonalCenter\Index.cshtml" />
+    <Content Include="Views\Admin\EditGoods.cshtml" />
+    <Content Include="Views\Admin\ShowGoods.cshtml" />
+    <Content Include="Views\Admin\UserManagement.cshtml" />
+    <Content Include="Views\Shared\_LayoutWaterFull.cshtml" />
+    <Content Include="Views\Shared\_LayoutPersonalCenter.cshtml" />
+    <Content Include="Views\Shop\GoodsType.cshtml" />
+    <Content Include="Views\Shop\UpDiscountGoods.cshtml" />
+    <Content Include="Views\Admin\ShopManagement.cshtml" />
+    <Content Include="Views\Baike\ParticalAnswer.cshtml" />
+    <Content Include="Views\Baike\SearchAnswer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

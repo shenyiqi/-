@@ -22,6 +22,7 @@
     <![endif]-->
     <link href="~/Content/Admin/css/foundation.min.css" rel="stylesheet" />
     <link href="~/Content/Admin/css/all.css" rel="stylesheet" />
+    @RenderSection("Head", false)
 </head>
 <body>
     <!-- Left column -->
@@ -40,13 +41,13 @@
             </div>
             <nav class="templatemo-left-nav">
                 <ul>
-                    <li><a href="#" class="active"><i class="fa fa-home fa-fw"></i>办公入口</a></li>
-                    <li><a href="#"><i class="fa fa-bar-chart fa-fw"></i>用户管理</a></li>
-                    <li><a href="#"><i class="fa fa-database fa-fw"></i>店铺管理</a></li>
-                    <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>订单管理</a></li>
-                    <li><a href="#"><i class="fa fa-users fa-fw"></i>留言管理</a></li>
-                    <li><a href="#"><i class="fa fa-sliders fa-fw"></i>帖子管理</a></li>
-                    <li><a href="#"><i class="fa fa-eject fa-fw"></i>退出</a></li>
+                    <li><a href="@Url.Action("Entry")" class="active"><i class="fa fa-home fa-fw"></i>办公入口</a></li>
+                    <li><a href="@Url.Action("UserManagement")"><i class="fa fa-bar-chart fa-fw"></i>用户管理</a></li>
+                    <li><a href="@Url.Action("ShopManagement")"><i class="fa fa-database fa-fw"></i>店铺管理</a></li>
+                    <li><a href="@Url.Action("OrderManagement")"><i class="fa fa-map-marker fa-fw"></i>订单管理</a></li>
+                    <li><a href="@Url.Action("MessageManagement")"><i class="fa fa-users fa-fw"></i>留言管理</a></li>
+                    <li><a href="@Url.Action("PostManagement")"><i class="fa fa-sliders fa-fw"></i>帖子管理</a></li>
+                    <li><a href="@Url.Action("LoginOff")"><i class="fa fa-eject fa-fw"></i>退出</a></li>
                 </ul>
             </nav>
         </div>
@@ -58,7 +59,7 @@
                         <ul class="text-uppercase">
                             <li><a href="" class="active">管理页面</a></li>
                             <li>@Html.ActionLink("发布百科", "Baike")</li>
-                            <li><a href="#">广告管理</a></li>
+                            <li>@Html.ActionLink("广告管理", "AdManagement")</li>
                             <li><a href="#">待定</a></li>
                             <li><a href="#">待定</a></li>
                         </ul>
@@ -84,7 +85,7 @@
     <!-- JS -->
     <script src="~/Content/Admin/js/jquery-1.11.2.min.js"></script>
     <script src="~/Content/Admin/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="~/Content/Admin/js/templatemo-script.js"></script>
+    @*<script src="~/Content/Admin/js/templatemo-script.js"></script>*@
     <script src="~/Content/Admin/js/highlight.min.js"></script>
 
     <script src="~/Content/Admin/js/jquery-stars.js"></script>

@@ -1,0 +1,26 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<MyPets.Model.BaikeQuestion>
+@{
+    Layout = null;
+}
+
+<table class="table table-hover">
+    @foreach (var b in Model)
+    {
+        <tr class="row">
+            <td class="col-sm-9" style="line-height:24px;"><img src="~/Content/Baike/img/article_24px_26483_easyicon.net.png" />@Html.ActionLink(b.QuestionTitle, "ShowQuiz", new { @id = b.QuestionId })</td>
+            <td class="col-sm-3">提问于 | @Html.DisplayFor(item => b.QuestionTime)</td>
+        </tr>
+    }
+</table>
+<div style="text-align:center;">
+    @Html.PagedListPager(Model, page => Url.Action("ParticalAnswer", "Baike", new { page, type = @ViewBag.type }),
+                 PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                                            new AjaxOptions
+                                            {
+                                                HttpMethod = "GET",
+                                                InsertionMode = InsertionMode.Replace,
+                                                UpdateTargetId = "tbAnswer"
+                                            }))
+</div>
