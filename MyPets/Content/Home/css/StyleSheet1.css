@@ -102,8 +102,8 @@ font-weight:600;
 /*评价*/
 .pingjia{
    border:1px solid #ccc;
-   margin-top:540px; width:900px;
-   margin-left:100px;
+   margin-top:540px; width:960px;
+   margin-left:20px;
 }
 #pingjia1{ color :red;
     font-size:25px;
