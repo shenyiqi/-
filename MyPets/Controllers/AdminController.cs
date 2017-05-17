@@ -8,6 +8,7 @@ using MyPets.Model;
 using MyPets.IDAL;
 using PagedList;
 using MyPets.DALFactory;
+using MyPets.DAL;
 
 namespace MyPets.Controllers
 {
@@ -16,8 +17,15 @@ namespace MyPets.Controllers
         // GET: Admin
         IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
         IBLL.IGoodsServices GoodsServices = new BLL.GoodsServices();
+        IBLL.IGoodsCommentServices GoodsCommentServices = new BLL.GoodsCommentServices();
         IBLL.IShopServices ShopServices = new BLL.ShopServices();
         IBLL.IBaikeServices BaikeServices = new BLL.BaikeServices();
+        IBLL.ICollectServices CollectServices = new BLL.CollectServices();
+        IBLL.IBaikeAnswerServices BaikeAnswerServices = new BLL.BaikeAnswerServices();
+        IBLL.IBaikeQuestionServices BaikeQuestionServices = new BLL.BaikeQuestionServices();
+        IBLL.IOrderDetailServices OrderDetailServices = new BLL.OrderDetailServices();
+        IBLL.IOrderServices OrderServices = new BLL.OrderServices();
+        IBLL.IPostServices PostServices = new BLL.PostServices();
         IDBSession db = new DBSession();
         public ActionResult Index()
         {
@@ -69,22 +77,36 @@ namespace MyPets.Controllers
             int userid = Convert.ToInt32(id);
             var user = UserInfoServices.LoadEntities(u => u.UserId == userid).FirstOrDefault();
             var deluser = UserInfoServices.DeleteEntity(user);
-            if (deluser)
-            {
-                db.SaveChanges();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return true;
         }
-        public ActionResult ShopManagement(int? page)
+        public ActionResult ShopManagement(int? page) //店铺管理
         {
             int PageSize = 6;
             int PageNumber = (page ?? 1);
             var shop = ShopServices.LoadEntities(s => true).ToList();
             return View(shop.ToPagedList(PageNumber, PageSize));
+        }
+        public ActionResult EditShop(int id) //店铺管理 
+        {
+            var shop = ShopServices.LoadEntities(s => s.ShopId == id).FirstOrDefault();
+            var goods = GoodsServices.LoadEntities(g => g.ShopId == id).ToList();
+            ViewBag.goods = goods.Count();
+            var disgoods = GoodsServices.LoadEntities(g => g.ShopId == id && g.IsDiscount == true).ToList();
+            ViewBag.disgoods = disgoods.Count();
+            ViewBag.norgoods = goods.Count() - disgoods.Count();
+            return View(shop);
+        }
+        public ActionResult EditShopGoods(int id,int ? page) //店铺商品管理 局部分页
+        {
+            int PageSize = 6;
+            int PageNumber = (page ?? 1);
+            ViewBag.id = id;
+            var goods = GoodsServices.LoadEntities(g => g.ShopId == id).ToList();
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("EditShopGoods", goods.ToPagedList(PageNumber, PageSize));
+            }
+            else return View("EditShopGoods",goods.ToPagedList(PageNumber, PageSize));
         }
         public ActionResult AdManagement() //店铺推荐
         {
@@ -103,14 +125,14 @@ namespace MyPets.Controllers
             var goods = GoodsServices.LoadEntities(g => true).ToList();
             return View(goods);
         }
-
+       
         public ActionResult ShowGoods(string goodstitle)
         {
             var goods = GoodsServices.LoadEntities(g => g.GoodsName.Contains(goodstitle) || g.DetailName.Contains(goodstitle)).ToList();
             return View(goods);
         }
         public ActionResult EditGoods(int goodsid)
-        {
+        { 
             var goods = GoodsServices.LoadEntities(g => g.GoodsId == goodsid).FirstOrDefault();
             return View(goods);
         }

@@ -1,0 +1,111 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<MyPets.Model.Goods>
+@{
+    Layout = null;
+}
+<table class="table table-hover">
+    <tr>
+        <th>
+            商品图片
+        </th>
+        <th>
+            商品名称
+        </th>
+        <th>
+            所属系列
+        </th>
+        <th>
+            所属类别
+        </th>
+        <th>
+            具体类别
+        </th>
+        <th>
+            商品价格
+        </th>
+        <th>
+            是否促销
+        </th>
+        <th>
+            促销价格
+        </th>
+        <th>
+            商品库存
+        </th>
+        <th>
+            商品销量
+        </th>
+        <th>
+            商品等级
+        </th>
+        <th>操作</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+               <img src="@Url.Content(item.GoodsImg1)" style="width:50px;height:50px;" class="img img-circle" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoodsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeriesName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetailName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoodsPrice)
+            </td>
+            <td>
+                @if (item.IsDiscount)
+                {
+                    <div>是</div>
+                }
+                else
+                {
+                    <div>否</div>
+                }
+            </td>
+            <td>
+                @if (item.IsDiscount)
+                {
+                    @Html.DisplayFor(modelItem => item.DiscountPrice)
+                }
+                else
+                {
+                    <div>不促销</div>
+                }
+               
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoodsStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SellNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoodsRange)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.GoodsId })
+            </td>
+        </tr>
+    }
+</table>
+<div style="text-align:center;">
+    @Html.PagedListPager(Model, page => Url.Action("EditShopGoods", "Admin", new { page, id = @ViewBag.id }),
+                 PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                                            new AjaxOptions
+                                            {
+                                                HttpMethod = "GET",
+                                                InsertionMode = InsertionMode.Replace,
+                                                UpdateTargetId = "tbGoods"
+                                            }))
+</div>
