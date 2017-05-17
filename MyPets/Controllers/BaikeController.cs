@@ -77,7 +77,11 @@ namespace MyPets.Controllers
         {
             return View();
         }
-        public ActionResult Answer(int ? type,int ? page) //问答专区
+        public ActionResult Answer() //问答专区
+        {
+            return View();
+        }
+        public ActionResult ParticalAnswer(int? type, int? page) //局部刷新分页
         {
             int t = (type ?? 1);
             int pageSize = 6;
@@ -88,13 +92,35 @@ namespace MyPets.Controllers
             {
                 case 1:
                     ViewBag.type = type;
-                    return View(allBaike.ToPagedList(pageNumber, pageSize));
+                    if (Request.IsAjaxRequest())
+                    {
+                        return PartialView("ParticalAnswer", allBaike.ToPagedList(pageNumber, pageSize));
+                    }
+                    else
+                    {
+                        return View("ParticalAnswer", allBaike.ToPagedList(pageNumber, pageSize));
+                    }
                 case 2:
                     ViewBag.type = type;
-                    return View(goodsBaike.ToPagedList(pageNumber, pageSize));
+                    if (Request.IsAjaxRequest())
+                    {
+                        return PartialView("ParticalAnswer", goodsBaike.ToPagedList(pageNumber, pageSize));
+                    }
+                    else
+                    {
+                        return View("ParticalAnswer", goodsBaike.ToPagedList(pageNumber, pageSize));
+                    }
                 default:
                     return View();
             }
+        }
+        public ActionResult SearchAnswer(string txtBaikeQuestion,int ? page)
+        {
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            ViewBag.question = txtBaikeQuestion;
+            var question = BaikeQuestionServices.LoadEntities(q => q.QuestionTitle.Contains(txtBaikeQuestion)).ToList();
+            return View(question.ToPagedList(pageNumber,pageSize));
         }
         public ActionResult Quiz() //提问
         {

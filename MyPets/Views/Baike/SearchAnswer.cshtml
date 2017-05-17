@@ -1,4 +1,7 @@
-﻿@{
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<MyPets.Model.BaikeQuestion>
+@{
     Layout = null;
 }
 
@@ -7,7 +10,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>问答专区</title>
+    <title>百科问答</title>
     <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Admin/css/StyleBar.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -59,32 +62,26 @@
     <br />
     <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-2">@Html.ActionLink("首页", "Index")>问答专区</div>
+        <div class="col-md-2">搜索结果</div>
         <div class="col-md-9"></div>
     </div>
-    <hr />
-    <div class="row" style="height:45px;line-height:45px;">
-        <div class="col-md-1"></div>
-        <div class="col-md-8"><h2>问答专区</h2></div>
-        <div class="col-md-3">
-            <a href="@Url.Action("Quiz")"><h3><img src="~/Content/Baike/img/questions_32px_42541_easyicon.net.png" />&nbsp;我要提问</h3></a>
-        </div>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-11"><h3>@Html.ActionLink("全部", "Answer", new { type = 1 }) | @Html.ActionLink("精华", "Answer", new { type = 2 })</h3></div>
-    </div>
+    <br />
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
-            <div id="tbAnswer">
-                @{
-                    Html.RenderAction("ParticalAnswer", "Baike");
+            <table class="table table-hover">
+                @foreach (var b in Model)
+                {
+                    <tr class="row">
+                        <td class="col-sm-9" style="line-height:24px;"><img src="~/Content/Baike/img/article_24px_26483_easyicon.net.png" />@Html.ActionLink(b.QuestionTitle, "ShowQuiz", new { @id = b.QuestionId })</td>
+                        <td class="col-sm-3">提问于 | @Html.DisplayFor(item => b.QuestionTime)</td>
+                    </tr>
                 }
-            </div>
-            <div class="col-md-1"></div>
+            </table>
         </div>
-    </div>
+        <div class="col-md-1"></div>
+    </div>  
+    <div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("SearchAnswer", "Baike", new { page, txtBaikeQuestion = @ViewBag.question }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 5 })</div>
+   
 </body>
 </html>
