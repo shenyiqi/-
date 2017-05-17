@@ -20,10 +20,10 @@
             <div class="favorite">收藏宠物之家</div>
             <ul class="index_topRight">
                 <li>
-                    <a href="@Url.Action("Login","Register")" id="registerState">登录</a>
+                    <a href="">登录</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Register", "Register")">注册</a>
+                    <a href="">注册</a>
                 </li>
                 <li>
                     <a href="">手机版</a>
@@ -41,16 +41,11 @@
     <!--搜索框部分-->
     <div id="search">
         <img src="~/Content/Shop/img/logo.png" style="width:240px;height:100px;" />
-        <div class="searchType">
-            <ul>
-                <li class="beSelected" style="background:RGB(238,85,51);color:RGB(255,255,255);">商品</li>
-                <li>店铺</li>
-            </ul>
-        </div>
         <div class="search_mid">
             <input type="text" name="" id="searchTxtBox" value="" placeholder="狗粮" />
             <input type="button" name="searchBtn" id="searchBtn" value="搜索" />
         </div>
+
     </div>
 
     <!--搜索框部分结束-->
@@ -67,7 +62,7 @@
                 <a href="">水族</a>
                 <a href="">百科</a>
                 <a href="">论坛</a>
-                <a href="">店铺</a>
+                <a href="">品牌馆</a>
                 <a href="">在线服务</a>
             </div>
 
@@ -84,36 +79,36 @@
                         <div class="typeImgContainer">
                             <!--放小图片用的div-->
                         </div>
-                        <a href="" class="mainType">狗狗商品</a>
+                        <a href="@Url.Action("shangpin", "Home", new { keyword = "狗", type="狗"})" class="mainType">狗狗商品</a>
                     </div>
                     <div class="listDetails">
-                        <span><a href="">狗粮</a></span>
-                        <span><a href="">狗罐头</a></span>
-                        <span><a href="">狗零食</a></span>
-                        <span><a href="">医疗</a></span>
-                        <span><a href="">保健</a></span>
-                        <span><a href="">沐浴露</a></span>
-                        <span><a href="">日用品</a></span>
-                        <span><a href="">玩具</a></span>
-                        <span><a href="">衣服</a></span>
+                        <span><a href="@Url.Action("shangpin", "Home", new { keyword = "离乳期狗粮", type="狗"})">狗粮</a></span>
+                        <span><a href="@Url.Action("shangpin", "Home", new { keyword = "罐头", type="狗"})">狗罐头</a></span>
+                        <span><a href="@Url.Action("shangpin", "Home", new { keyword = "零食", type="狗"})">狗零食</a></span>
+                        <span><a href="@Url.Action("shangpin", "Home", new { keyword = "医疗", type="狗"})">医疗</a></span>
+                        <span><a href="@Url.Action("shangpin", "Home", new { keyword = "保健", type="狗"})">保健</a></span>
+                        <span><a href="@Url.Action("shangpin", "Home", new { keyword = "沐浴露", type="狗"})">沐浴露</a></span>
+                        <span><a href="@Url.Action("shangpin", "Home", new { keyword = "日用品", type="狗"})">日用品</a></span>
+                        <span><a href="@Url.Action("shangpin", "Home", new { keyword = "玩具", type="狗"})">玩具</a></span>
+                        <span><a href="@Url.Action("shangpin", "Home", new { keyword = "衣服", type="狗"})">衣服</a></span>
                     </div>
                     <div class="details">
                         <div class="detailsLine">
                             <div class="dlTitle">
                                 <a href="">宠物狗粮</a>
                             </div>
-                            <a href="">离乳期犬粮</a>
-                            <a href="">幼犬粮</a>
-                            <a href="">成犬粮</a>
-                            <a href="">老犬粮</a>
-                            <a href="">全犬粮</a>
+                            <a href="@Url.Action("shangpin", "Home", new { keyword = "离乳期狗粮", type="狗"})">离乳期犬粮</a>
+                            <a href="@Url.Action("shangpin","Home",new { keyword="幼犬粮",type="狗"})">幼犬粮</a>
+                            <a href="@Url.Action("shangpin","Home",new { keyword="成犬粮",type="狗"})">成犬粮</a>
+                            <a href="@Url.Action("shangpin","Home",new { keyword="老犬粮",type="狗"})">老犬粮</a>
+                            <a href="@Url.Action("shangpin","Home",new { keyword="全犬粮",type="狗"})">全犬粮</a>
                         </div>
                         <div class="detailsLine">
                             <div class="dlTitle">
                                 <a href="">狗罐头/妙鲜包</a>
                             </div>
-                            <a href="">成犬</a>
-                            <a href="">幼犬</a>
+                            <a href="@Url.Action("shangpin","Home",new { keyword="成犬",type="狗"})">成犬</a>
+                            <a href="@Url.Action("shangpin","Home",new { keyword="幼犬",type="狗"})">幼犬</a>
                         </div>
                         <div class="detailsLine">
                             <div class="dlTitle">
@@ -205,25 +200,25 @@
                         <a href="" class="mainType">猫猫用品</a>
                     </div>
                     <div class="listDetails">
-                        <span><a href="">猫粮</a></span>
-                        <span><a href="">猫罐头</a></span>
-                        <span><a href="">猫零食</a></span>
-                        <span><a href="">医疗</a></span>
-                        <span><a href="">保健</a></span>
-                        <span><a href="">沐浴露</a></span>
-                        <span><a href="">日用品</a></span>
-                        <span><a href="">玩具</a></span>
-                        <span><a href="">猫窝</a></span>
+                            <span>  <a href="@Url.Action("shangpin","Home",new { keyword="猫粮",type="猫"})">猫粮</a> </span>
+                            <span><a href="@Url.Action("shangpin","Home",new { keyword="湿粮",type="猫"})">猫罐头</a> </span>
+                            <span><a href="@Url.Action("shangpin","Home",new { keyword="零食",type="猫"})">猫零食</a></span>
+                            <span><a href="@Url.Action("shangpin","Home",new { keyword="医疗",type="猫"})">医疗</a></span>
+                            <span><a href="">保健</a></span>
+                            <span><a href="">沐浴露</a></span>
+                            <span><a href="">日用品</a></span>
+                            <span><a href="">玩具</a></span>
+                            <span><a href="">猫窝</a></span>
                     </div>
                     <div class="details">
                         <div class="detailsLine">
                             <div class="dlTitle">
                                 <a href="">宠物猫粮</a>
                             </div>
-                            <a href="">成猫粮</a>
-                            <a href="">幼猫粮</a>
-                            <a href="">全猫粮</a>
-                            <a href="">老猫粮</a>
+                            <a href="@Url.Action("shangpin","Home",new { keyword="成猫",type="猫"})">成猫粮</a>
+                            <a href="@Url.Action("shangpin","Home",new { keyword="幼猫",type="猫"})">幼猫粮</a>
+                            <a href="@Url.Action("shangpin","Home",new { keyword="幼猫",type="猫"})">全猫粮</a>
+                            <a href="@Url.Action("shangpin","Home",new { keyword="成猫", type="猫"})">老猫粮</a>
                         </div>
                         <div class="detailsLine">
                             <div class="dlTitle">
@@ -537,12 +532,8 @@
             <!--轮播图下侧广告结束-->
             <!--轮播图右侧广告-->
             <div class="ad_rOcarousel">
-                <div id="ad_rO1">
-                    
-                </div>
-                <div id="ad_rO2">
-
-                </div>
+                <div id="ad_rO1"></div>
+                <div id="ad_rO2"></div>
             </div>
             <!--轮播图右侧广告结束-->
 
@@ -558,6 +549,7 @@
         </div>
         <div class="hotGoods">
             @*var g in Model*@
+            @*MyPets.Model.Goods g in ViewData["goods"] as List<MyPets.Model.Goods>*@
             @foreach (MyPets.Model.Goods g in ViewData["hotgoods"] as List<MyPets.Model.Goods>)
             {
                 <div class="GoodsModel">
@@ -579,7 +571,7 @@
             </span>
         </div>
         <div class="hotGoods">
-            @foreach (MyPets.Model.Goods g in ViewData["discountgoods"] as List<MyPets.Model.Goods>)
+            @foreach (MyPets.Model.Goods g in ViewData["randomgoods"] as List<MyPets.Model.Goods>)
             {
                 <div class="GoodsModel">
                     <img src="@Url.Content(g.GoodsImg1)" />
@@ -603,35 +595,6 @@
                     <div class="sales">已售<span>12434</span></div>
                 </div>*@
         </div>
-        <div class="boxOne">
-            <span class="boxTitle">
-                知名店铺&nbsp;&nbsp;&nbsp;放心选择
-            </span>
-        </div>
-        <div class="famousShop">
-            <div style="margin-left:0;">
-                <img src="~/Content/Home/img/shopimg/shop1.jpg" />
-            </div>
-            <div>
-                <img src="~/Content/Home/img/shopimg/shop2.jpg" />
-                <img class="bottomShop" src="~/Content/Home/img/shopimg/shop3.jpg" />
-            </div>
-            <div>
-                <img src="~/Content/Home/img/shopimg/shop4.jpg" />
-            </div>
-            <div>
-                <img src="~/Content/Home/img/shopimg/shop5.jpg" />
-                <img class="bottomShop" src="~/Content/Home/img/shopimg/shop6.jpg" />
-            </div>    
-            <div>
-                <img src="~/Content/Home/img/shopimg/shop7.jpg" />
-            </div>    
-            <div>
-                <img src="~/Content/Home/img/shopimg/shop8.jpg" />
-                <img class="bottomShop" src="~/Content/Home/img/shopimg/shop9.jpg" />
-            </div>    
-                
-        </div>
 
         <div class="boxOne">
             <span class="boxTitle">
@@ -639,184 +602,93 @@
             </span>
             <div class="ChoicePart">
                 <ul>
-                    <li class="beChoiced">
+                    <li class="firstChoice">
                         <span>狗粮</span>
                         <div class="choiceBlock" style="display: block;">
-                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                            {
-                                <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
-                                    <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                                    </div>
-                                    <div class="goodsPrice">
-                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                                    </div>
-                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                            <div class="GoodsModel">
+                                <img src="images/goods.jpg" />
+                                <div class="aContainer">
+                                    <a href="">福来恩 小型犬滴剂加强型0.67ml 单支无说明书</a>
                                 </div>
-                            }
+                                <div class="goodsPrice">
+                                    ￥49.00
+                                </div>
+                                <div class="sales">已售<span>12434</span></div>
+                            </div>
+                            <div class="GoodsModel">
+                                <img src="images/goods.jpg" />
+                                <div class="aContainer">
+                                    <a href="">福来恩 小型犬滴剂加强型0.67ml 单支无说明书</a>
+                                </div>
+                                <div class="goodsPrice">
+                                    ￥49.00
+                                </div>
+                                <div class="sales">已售<span>12434</span></div>
+                            </div>
+                            <div class="GoodsModel">
+                                <img src="images/goods.jpg" />
+                                <div class="aContainer">
+                                    <a href="">福来恩 小型犬滴剂加强型0.67ml 单支无说明书</a>
+                                </div>
+                                <div class="goodsPrice">
+                                    ￥49.00
+                                </div>
+                                <div class="sales">已售<span>12434</span></div>
+                            </div>
                         </div>
                     </li>
                     <li>
                         <span>湿粮</span>
                         <div class="choiceBlock">
-                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                            {
-                                <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
-                                    <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                                    </div>
-                                    <div class="goodsPrice">
-                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                                    </div>
-                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                                </div>
-                            }
+                            选项卡2
                         </div>
                     </li>
                     <li>
                         <span>零食</span>
                         <div class="choiceBlock">
-                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                            {
-                                <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
-                                    <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                                    </div>
-                                    <div class="goodsPrice">
-                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                                    </div>
-                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                                </div>
-                            }
+                            选项卡3
                         </div>
                     </li>
                     <li>
                         <span>保健品</span>
                         <div class="choiceBlock">
-                            @foreach (MyPets.Model.Goods g in ViewData["dogbaojian"] as List<MyPets.Model.Goods>)
-                            {
-                                <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
-                                    <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                                    </div>
-                                    <div class="goodsPrice">
-                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                                    </div>
-                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                                </div>
-                            }
+                            选项卡4
                         </div>
                     </li>
                     <li>
                         <span>医疗</span>
                         <div class="choiceBlock">
-                            @foreach (MyPets.Model.Goods g in ViewData["dogyiliao"] as List<MyPets.Model.Goods>)
-                            {
-                                <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
-                                    <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                                    </div>
-                                    <div class="goodsPrice">
-                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                                    </div>
-                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                                </div>
-                            }
+                            选项卡5
                         </div>
                     </li>
                     <li>
                         <span>沐浴露</span>
                         <div class="choiceBlock">
-                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                            {
-                                <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
-                                    <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                                    </div>
-                                    <div class="goodsPrice">
-                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                                    </div>
-                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                                </div>
-                            }
+                            选项卡6
                         </div>
                     </li>
                     <li>
                         <span>日用品</span>
                         <div class="choiceBlock">
-                            @foreach (MyPets.Model.Goods g in ViewData["dogriyong"] as List<MyPets.Model.Goods>)
-                            {
-                                <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
-                                    <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                                    </div>
-                                    <div class="goodsPrice">
-                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                                    </div>
-                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                                </div>
-                            }
+                            选项卡7
                         </div>
                     </li>
                     <li>
                         <span>美容</span>
                         <div class="choiceBlock">
-                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                            {
-                                <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
-                                    <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                                    </div>
-                                    <div class="goodsPrice">
-                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                                    </div>
-                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                                </div>
-                            }
+                            选项卡8
                         </div>
                     </li>
                     <li>
                         <span>玩具</span>
                         <div class="choiceBlock">
-                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                            {
-                                <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
-                                    <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                                    </div>
-                                    <div class="goodsPrice">
-                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                                    </div>
-                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                                </div>
-                            }
+                            选项卡9
                         </div>
                     </li>
                     <li>
                         <span>衣服窝</span>
                         <div class="choiceBlock">
-                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                            {
-                                <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
-                                    <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                                    </div>
-                                    <div class="goodsPrice">
-                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                                    </div>
-                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                                </div>
-                            }
+                            选项卡10
                         </div>
                     </li>
                 </ul>
@@ -831,22 +703,10 @@
             </span>
             <div class="ChoicePart">
                 <ul>
-                    <li class="beChoiced">
+                    <li class="firstChoice">
                         猫粮
                         <div class="choiceBlock" style="display: block;">
-                            @foreach (MyPets.Model.Goods g in ViewData["catfood"] as List<MyPets.Model.Goods>)
-                            {
-                                <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
-                                    <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                                    </div>
-                                    <div class="goodsPrice">
-                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
-                                    </div>
-                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                                </div>
-                            }
+                            选项卡1
                         </div>
                     </li>
                     <li>
@@ -915,7 +775,7 @@
             </span>
             <div class="ChoicePart">
                 <ul>
-                    <li class="beChoiced">
+                    <li class="firstChoice">
                         兔兔用品
                         <div class="choiceBlock" style="display: block;">
                             选项卡1
@@ -951,7 +811,7 @@
             </span>
             <div class="ChoicePart">
                 <ul>
-                    <li class="beChoiced">
+                    <li class="firstChoice">
                         鱼缸
                         <div class="choiceBlock" style="display: block;">
                             选项卡1
@@ -1011,7 +871,7 @@
             </span>
             <div class="ChoicePart">
                 <ul>
-                    <li class="beChoiced">
+                    <li class="firstChoice">
                         陆龟用品
                         <div class="choiceBlock" style="display: block;">
                             选项卡1

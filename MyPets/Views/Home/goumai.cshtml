@@ -4,64 +4,52 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
-
+@model MyPets.Model.Goods
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <link href="~/Content/Home/css/StyleSheet1.css" rel="stylesheet" />
-  
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Content/Home/js/goods.js"></script>
 </head>
-<body style="width:1200px;margin:auto;">
+<body >
     <form id="form1">
-        <div style="background-color:#f3f3f3; height: 35px;line-height:35px">
-            首页 > 狗狗系列 > 狗狗保健品 > 美毛护肤 > 维斯康 冰岛有机海藻颗粒300g 发毛固色 >
+      <div style="width:1200px;margin:0 auto;">
+        <div style="background-color:#f3f3f3; height: 35px;line-height:35px;color:#808080;">
+            首页 &nbsp;<span style="color:red ;font-size:16px;" >></span>&nbsp; @Html.DisplayFor(a => Model.SeriesName) &nbsp;<span style="color:red ;font-size:18px;">></span>&nbsp; @Html.DisplayFor(a => Model.DetailName) &nbsp;<span style="color:red ;font-size:18px;">></span>&nbsp;  @Html.DisplayFor(a => Model.GoodsName)
+            
         </div>
         <div>
             <div style="float:left;">
                 @*左边*@
                 <div class="top">
                     <div class="imgbox">
-                        <div class="probox">
-                            <img src="~/Content/Goods/img/%e7%8b%97.png" alt="" class="a" />
-
+                        <div class="probox"><img src="@Url.Content(Model.GoodsImg1)" alt="" class="a" />                
                             <div class="hoverbox">
                             </div>
                         </div>
-                        <div class="showbox">
-                            <img src="~/Content/Goods/img/%e7%8b%97.png" alt="" class="a" />
-
-                        </div>
+                        <div class="showbox"> <img src="@Url.Content(Model.GoodsImg1)" alt="" class="a" /></div>
                     </div>
                     <div class="tupian">
                         <div class="tupian1">
-                            <a href="javascript:void(0)">
-                                <img src="~/Content/Goods/img/%e7%8b%97.png" class="e" />
-                            </a>
+                            <a href="javascript:void(0)"><img src="@Url.Content(Model.GoodsImg1)" class="e" /></a>
                         </div>
                         <div class="tupian2">
-                            <a href="javascript:void(0)">
-                                <img src="~/Content/Goods/img/%e9%b1%bc.png" class="b" />
-                            </a>
+                            <a href="javascript:void(0)"><img src="@Url.Content(Model.GoodsImg2)" class="b" /></a>
                         </div>
                         <div class="tupian3">
-                            <a href="javascript:void(0)">
-                                <img src="~/Content/Goods/img/%e9%be%9f.png" class="c" />
-                            </a>
+                            <a href="javascript:void(0)"><img src="@Url.Content(Model.GoodsImg3)" class="c" /></a>
                         </div>
                         <div class="tupian4">
-                            <a href="javascript:void(0)">
-                                <img src="~/Content/Goods/img/%e5%85%94%e5%ad%90.png" class="d" />
-                            </a>
+                            <a href="javascript:void(0)"><img src="@Url.Content(Model.GoodsImg4)" class="d" /></a>
                         </div>
                     </div>
                 </div>
                 @*中间*@
                 <div class="zhong">
-                    <div class="name">比瑞吉 小型成犬粮天然狗粮1.5kg</div>
+                    <div class="name">@Html.DisplayFor(a => Model.GoodsName)</div>
                     <div class="yunfei">23省免运费 </div>
 
                     <div class="jiage">
@@ -71,7 +59,7 @@
                         </div>*@
                         <div class="jiage2">
                             价 格：
-                            <span style="color: red; font-size: 30px; ">￥72.00</span>
+                            <span style="color: red; font-size: 30px; ">￥@Html.DisplayFor(a => Model.GoodsPrice)</span>
                         </div>
                     </div>
                     <div class="num">
@@ -83,15 +71,12 @@
                     <div style="margin-top:30px;margin-left:300px;">
                         <input id="Button1" type="button" value="立即购买" />
                     </div>
-
                 </div>
             </div>
-            @*右边*@
+          @*右边*@
             <div class="you">
-
                 <div style="text-align: center; color:#c2a5b2; margin: 20px;">
-                    <div style="float:left;width:33%">
-                      
+                    <div style="float:left;width:33%">             
                         <img src="~/Content/Home/img/btn_z.jpg" />
                         <p>100%</p>
                         <p>正品保障</p>
@@ -105,16 +90,15 @@
                         <img src="~/Content/Home/img/btn_q.jpg" />
                         <p>7天</p>
                         <p>无忧退换</p>
-
                     </div>
                     <br /><br />
                 </div>
               <br /><br />
                 <div class="two">
-                    <p>商品编号：101817</p><br />
-                    <p>已　　售：<span style="color:red;">156139件</span></p><br />
+                    <p>商品编号：@Html.DisplayFor(a => Model.GoodsId)</p><br />
+                    <p>已　　售：<span style="color:red;">@Html.DisplayFor(a => Model.SellNum)</span></p><br />
                     <p>  满意指数：5.0分</p><br />
-                    <p> <a href="#pingjia1">已有:699人评论</a></p>
+                    <p> <a href="#pingjia1">已有:@Html.DisplayFor(a => Model.SellNum)评论</a></p>
                 </div>
                 <div class="two">
                     <div class="ma">
@@ -124,14 +108,10 @@
                         <br />
                         <p>&nbsp;首单再送50元</p>
                     </div>
-
                 </div>
-
             </div>
         </div>
-
         @*评价*@
-
         <div class="pingjia"> 
             <div id="pingjia1">商品评论</div>
             <div style="height:110px;border-bottom :1px solid #808080;border-top :1px solid #808080;">
@@ -145,7 +125,6 @@
                    <div>差评:</div> 
                 </div>
             </div>
-
             <div style="height:150px;border-bottom :1px dashed  #808080;">
                 <div class="pingjia4">
                    <div>用户头像</div>
@@ -157,6 +136,7 @@
                   <div>时间</div> 
                 </div>
             </div>
+        </div>
         </div>
     </form>
 </body>

@@ -2,18 +2,70 @@
     margin:0px;
     padding:0px;
 }
-body {
+body { 
 }
-/*左边*/
-.left{
+/*上边*/
+.typeImgContainer {
+    width: 30px;
+	height:28px;
+    background-image:url(../img/icons/icon.png);
+    background-position:0px 0px;
+    float:left;
 
 }
-/*左边结束*/
-/*右边*/
+.top{
+    height:310px;
+   border-bottom:1px solid #808080;
+   
+}
+.leibie{
+    width:160px;
+    float:left;margin-top:10px;
+}
+ .lei{
+     float:left;
+     width:80px;
+     text-align:right;
+     
+}
+ .lei div{
+     height:34px;
+     line-height:34px;
+     text-align:center;
+     color:#808080;
+     font-size:12px;
+ }
+.one {
+    float: left;    
+}
+.ones{
+      margin-left:80px;
+  }  
+.one a{
+    height:34px;
+    line-height:34px;
+     display:block;
+      float:left;
+ font-size: 12px;
+text-align: center;
+text-decoration: none;
+color:#0088dd;
+padding:0px 20px;
+}
+.one a:hover{
+    background-color:orangered;
+    color:white;  
+
+}
+
+/*上边结束*/
+
+/*下边*/
 .rihgt{
-    width:800px;
+    width:850px;
     overflow:hidden;
-    float:right;
+   margin:0 auto;
+
 }
 .product{ font-size:12px;width:200px;border:2px solid #ffffff;
 }
