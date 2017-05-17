@@ -1190,7 +1190,6 @@
     <Content Include="ckfinder\translations.txt" />
     <Content Include="ckfinder\引用\CKFinder.dll" />
     <Content Include="Content\Admin\css\all.css" />
-    <Content Include="Content\Admin\css\bootstrap.min.css" />
     <Content Include="Content\Admin\css\font-awesome.min.css" />
     <Content Include="Content\Admin\css\foundation.min.css" />
     <Content Include="Content\Admin\css\StyleBar.css" />
@@ -1255,7 +1254,6 @@
     <Content Include="Content\Admin\js\jquery.wookmark.js" />
     <Content Include="Content\Admin\js\smothscrool.js" />
     <Content Include="Content\Baike\css\bootstrap-select.css" />
-    <Content Include="Content\Baike\css\bootstrap-theme.min.css" />
     <Content Include="Content\Baike\css\bootstrap3-wysihtml5.min.css" />
     <Content Include="Content\Baike\css\default.css" />
     <Content Include="Content\Baike\css\SlideStyle.css" />
@@ -1271,6 +1269,10 @@
     <Content Include="Content\Baike\img\Football_64px_555219_easyicon.net.png" />
     <Content Include="Content\Baike\img\Mail_Reply_24px_1097606_easyicon.net.png" />
     <Content Include="Content\Baike\img\main.png" />
+    <Content Include="Content\Baike\img\petsicon1.jpg" />
+    <Content Include="Content\Baike\img\petsicon2.jpg" />
+    <Content Include="Content\Baike\img\petsicon3.jpg" />
+    <Content Include="Content\Baike\img\petsicon4.jpg" />
     <Content Include="Content\Baike\img\questions_32px_42541_easyicon.net.png" />
     <Content Include="Content\Baike\img\upload\011.jpg" />
     <Content Include="Content\Baike\img\upload\0a84764d969565bf.jpg" />
@@ -1334,6 +1336,7 @@
     <Content Include="Content\Baike\img\upload\timg.jpg" />
     <Content Include="Content\Baike\img\upload\xinsrc_12201031710016564323113.jpg" />
     <Content Include="Content\Baike\img\upload\xinsrc_552010317101434325937177.jpg" />
+    <Content Include="Content\Baike\img\user.jpg" />
     <Content Include="Content\Baike\img\你说我像饼？偶可是热带鱼之王七彩神仙！.png" />
     <Content Include="Content\Baike\img\宠物夏季饲养全攻略.png" />
     <Content Include="Content\Baike\img\干货分享——养犬新手必看知识合集.png" />
@@ -1367,8 +1370,6 @@
     <Content Include="Content\Home\img\GoodsPart\smallpGoods.jpg" />
     <Content Include="Content\Home\img\icons\icon.png" />
     <Content Include="Content\Home\img\icons\toolbar.png" />
-    <Content Include="Content\Home\img\logo.jpg" />
-    <Content Include="Content\Home\img\logon.jpg" />
     <Content Include="Content\Home\js\goods.js" />
     <Content Include="Content\Home\js\index.js" />
     <Content Include="Content\Home\js\js.js" />
@@ -1665,6 +1666,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1713,7 +1716,6 @@
     <Content Include="Views\Admin\Baike.cshtml" />
     <Content Include="Views\Admin\Entry.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\UserManagement.cshtml" />
     <Content Include="Views\Baike\Index.cshtml" />
     <Content Include="Views\Demo\DateTimePartialViewDate.cshtml" />
     <Content Include="Views\Demo\Index.cshtml" />
@@ -1745,16 +1747,21 @@
     <Content Include="Views\Home\Shangpin.cshtml" />
     <Content Include="Views\Home\goumai.cshtml" />
     <Content Include="Views\Home\jiesuan.cshtml" />
-    <Content Include="Views\Shared\_LayoutPersonalCenter.cshtml" />
-    <Content Include="Views\Shared\_LayoutWaterFull.cshtml" />
-    <Content Include="Views\Shop\GoodsType.cshtml" />
-    <Content Include="Views\Shop\UpDiscountGoods.cshtml" />
     <Content Include="Views\PersonalCenter\Index.cshtml" />
     <Content Include="Views\Admin\EditGoods.cshtml" />
     <Content Include="Views\Admin\ShowGoods.cshtml" />
+    <Content Include="Views\Admin\UserManagement.cshtml" />
+    <Content Include="Views\Shared\_LayoutWaterFull.cshtml" />
+    <Content Include="Views\Shared\_LayoutPersonalCenter.cshtml" />
+    <Content Include="Views\Shop\GoodsType.cshtml" />
+    <Content Include="Views\Shop\UpDiscountGoods.cshtml" />
+    <Content Include="Views\Admin\ShopManagement.cshtml" />
+    <Content Include="Views\Baike\ParticalAnswer.cshtml" />
+    <Content Include="Views\Baike\SearchAnswer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Home\img\shopimg\" />
     <Folder Include="Content\Register\img\headphoto\" />
     <Folder Include="Content\Register\js\" />
     <Folder Include="Content\Shop\upload\Store\" />

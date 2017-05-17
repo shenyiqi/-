@@ -16,10 +16,10 @@ namespace MyPets.Controllers
     {
         // GET: Register
         IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
-        
+
         IDBSession db = new DBSession();
-        
-        
+
+
         [AllowAnonymous]
         public ActionResult Login() //登录
         {
@@ -28,7 +28,7 @@ namespace MyPets.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(UserInfo user,string ReturnUrl)   
+        public ActionResult Login(UserInfo user, string ReturnUrl)
         {
             string ValidateCode = Request["txtverifcode"];
 
@@ -72,7 +72,7 @@ namespace MyPets.Controllers
                             return RedirectToAction("Index", "Home");
                         }
                     }
-                   
+
                 }
                 else
                 {
@@ -93,36 +93,45 @@ namespace MyPets.Controllers
         public ActionResult Register(UserInfo user)
         {
             var chk_member = UserInfoServices.LoadEntities(o => o.UserName == user.UserName).FirstOrDefault();
-            if (chk_member != null)
+            if (!string.IsNullOrEmpty(Request["confirmtoread"]))
             {
-                return Content("<script>;alert('该账号已经有人注册了！');history.go(-1)</script>");
-
-            }
-            try
-            {
-                if (Request.Files["file"] != null)
+                if (chk_member != null)
                 {
-                    HttpPostedFileBase file = Request.Files["file"];
-                    string filepath = file.FileName;
-                    string filename = filepath.Substring(filepath.LastIndexOf("//") + 1);
-                    string serverpath = Server.MapPath("~/Content/Register/img/headphoto/") + filename;
-                    string relativepath = @"~/Content/Register/img/headphoto/" + filename;
-                    file.SaveAs(serverpath);
-                    user.UserImg = relativepath;
-                    user.IsSeller = false;
-                    UserInfoServices.AddEntity(user);
-                    db.SaveChanges();
-                    Session["UserName"] = user.UserName;
-                    RedirectToAction("Index", "Home");//跳到商城首页，还在弄
+                    return Content("<script>;alert('该账号已经有人注册了！');history.go(-1)</script>");
                 }
                 else
                 {
-                    return Content("<script>;alert('请先上传图片！');history.go(-1)</script>");
+                    try
+                    {
+                        if (Request.Files["file"] != null)
+                        {
+                            HttpPostedFileBase file = Request.Files["file"];
+                            string filepath = file.FileName;
+                            string filename = filepath.Substring(filepath.LastIndexOf("//") + 1);
+                            string serverpath = Server.MapPath("~/Content/Register/img/headphoto/") + filename;
+                            string relativepath = @"~/Content/Register/img/headphoto/" + filename;
+                            file.SaveAs(serverpath);
+                            user.UserImg = relativepath;
+                            user.IsSeller = false;
+                            UserInfoServices.AddEntity(user);
+                            db.SaveChanges();
+                            Session["UserName"] = user.UserName;
+                            RedirectToAction("Index", "Home");//跳到商城首页，还在弄
+                        }
+                        else
+                        {
+                            return Content("<script>;alert('请先上传图片！');history.go(-1)</script>");
+                        }
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        return Content(ex.Message);
+                    }
                 }
             }
-            catch (DbEntityValidationException ex)
+            else
             {
-                return Content(ex.Message);
+                return Content("<script>alert('请确认阅读用户手册')<script>");
             }
             return View();
         }

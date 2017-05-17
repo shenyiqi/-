@@ -3,31 +3,35 @@
     ViewBag.Title = "ShowGoods";
     Layout = "~/Views/Shared/_LayoutWaterFull.cshtml";
 }
-<ul id="tiles">
-    <!-- These are our grid blocks -->
-    @foreach (var item in Model)
-    {
-        <li onClick="@Url.Action("编辑","EditGoods",new { goodsid=item.GoodsId})">
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-2">
             <img src="@Url.Content(@item.GoodsImg1)" width="200" height="200">
-            <div class="post-info">
-                <div class="post-basic-info">
-                    <h3><a href="#">@Html.DisplayFor(g => item.GoodsName)</a></h3>
-                    <span><a href="javascript:;"><label> </label>类别：@Html.DisplayFor(g => item.TypeName)</a></span>
-                    <p>所属系列：@Html.DisplayFor(g => item.SeriesName)</p>
-                </div>
-                <div class="post-info-rate-share">
-                    <div class="@item.GoodsRange">
-                        <span></span>
-                    </div>
-                    <div class="btn btn-default" style="float:right;margin-right:20px;">
-                        <span>@Html.ActionLink("编辑", "EditGoods", new { goodsid = item.GoodsId }) </span>
-                    </div>
-                    <div class="clear"> </div>
-                </div>
+        </div>
+        <div class="col-md-8">
+            <h3><a href="javascript:;">@Html.DisplayFor(g => item.GoodsName)</a></h3>
+            <span><a href="javascript:;"style="color:#808080">所属系列：@Html.DisplayFor(g => item.SeriesName)</a></span>
+            <span><a href="javascript:;"style="color:#808080">类别：@Html.DisplayFor(g => item.TypeName)</a></span>
+            <span><a href="javascript:;"style="color:#808080">具体类别：@Html.DisplayFor(g => item.DetailName)</a></span>
+        </div>
+        <div class="col-md-2">
+            <div class="btn btn-default" style="float:right;margin-right:20px;margin-top:20px;">
+                <span>@Html.ActionLink("详细", "EditGoods", new { goodsid = item.GoodsId }) </span>
             </div>
-        </li>
-    }
-</ul>
+        </div>
+    </div> 
+}
+
+
+
+
+
+
+
+
+
 
 
 

@@ -77,7 +77,11 @@ namespace MyPets.Controllers
         {
             return View();
         }
-        public ActionResult Answer(int ? type,int ? page) //问答专区
+        public ActionResult Answer() //问答专区
+        {
+            return View();
+        }
+        public ActionResult ParticalAnswer(int? type, int? page) //局部刷新分页
         {
             int t = (type ?? 1);
             int pageSize = 6;
@@ -88,12 +92,35 @@ namespace MyPets.Controllers
             {
                 case 1:
                     ViewBag.type = type;
-                    return View(allBaike.ToPagedList(pageNumber, pageSize));
+                    if (Request.IsAjaxRequest())
+                    {
+                        return PartialView("ParticalAnswer", allBaike.ToPagedList(pageNumber, pageSize));
+                    }
+                    else
+                    {
+                        return View("ParticalAnswer", allBaike.ToPagedList(pageNumber, pageSize));
+                    }
                 case 2:
                     ViewBag.type = type;
-                    return View(goodsBaike.ToPagedList(pageNumber, pageSize));
+                    if (Request.IsAjaxRequest())
+                    {
+                        return PartialView("ParticalAnswer", goodsBaike.ToPagedList(pageNumber, pageSize));
+                    }
+                    else
+                    {
+                        return View("ParticalAnswer", goodsBaike.ToPagedList(pageNumber, pageSize));
+                    }
+                default:
+                    return View();
             }
-            return View();
+        }
+        public ActionResult SearchAnswer(string txtBaikeQuestion,int ? page)
+        {
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            ViewBag.question = txtBaikeQuestion;
+            var question = BaikeQuestionServices.LoadEntities(q => q.QuestionTitle.Contains(txtBaikeQuestion)).ToList();
+            return View(question.ToPagedList(pageNumber,pageSize));
         }
         public ActionResult Quiz() //提问
         {
@@ -128,18 +155,22 @@ namespace MyPets.Controllers
             ViewBag.head = ques.QuestionTitle; //问题标题
             ViewBag.desc = ques.QuestionDescribe; //问题描述
             ViewBag.time = ques.QuestionTime; //提问时间
-            MyPetsEntities db1 = new MyPetsEntities();
-            var answer = from q in db1.BaikeAnswer
-                           join a in db1.BaikeQuestion on q.QuestionId equals a.QuestionId
-                           where q.QuestionId==id
-                           select q;
+          
+            //MyPetsEntities db1 = new MyPetsEntities();
+            //var answer = (from q in db1.BaikeAnswer
+            //               join a in db1.BaikeQuestion on q.QuestionId equals a.QuestionId
+            //               where q.QuestionId==id
+            //               select q).ToList();
+
+            var answer = BaikeAnswerServices.LoadEntities(b => b.QuestionId == id).OrderByDescending(b=>b.AnswerTime).ToList(); 
             ViewBag.num = answer.Count();//回答人数
             var name = UserInfoServices.LoadEntities(u => u.UserId == ques.UserId).FirstOrDefault();
             ViewBag.username = name.UserName;//提问人
             var goodsanswer = BaikeAnswerServices.LoadEntities(a => true).Take(3).OrderBy(a=>Guid.NewGuid()).ToList();
             ViewData["goodsanswer"] = goodsanswer;
             Session["QuestionId"] = id;
-            return View(answer);
+            ViewData["answer"] = answer;
+            return View();
         }
         [HttpPost]
         [ValidateInput(false)]
@@ -161,7 +192,7 @@ namespace MyPets.Controllers
             if (addAnswer != null)
             {
                 db.SaveChanges();
-                return View();
+                return RedirectToAction("ShowQuiz", new { id = Convert.ToInt32(Session["QuestionId"])});
             }
             else return Content("<script>;alert('提交失败！');history.go(-1)</script>");
         }

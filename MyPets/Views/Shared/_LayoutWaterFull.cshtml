@@ -17,7 +17,7 @@
     <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Admin/css/瀑布流/main.css" rel="stylesheet" />
 
-   
+
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <!----start-dropdown--->
     <script type="text/javascript">
@@ -72,11 +72,11 @@
                 </div>
             </div>
             <div class="top-searchbar">
-               @using(Html.BeginForm("ShowGoods", "Admin", FormMethod.Post))
-               {
-                    <input type="text" name="goodstitle"/>
+                @using (Html.BeginForm("ShowGoods", "Admin", FormMethod.Post))
+                {
+                    <input type="text" name="goodstitle" />
                     <input type="submit" value="" />
-               }
+                }
             </div>
             <div class="userinfo">
                 <div class="user">
@@ -90,7 +90,9 @@
     </div>
     <div class="content">
         <div class="wrap">
-                @RenderBody()
+            <div id="main" role="main">
+                    @RenderBody()
+            </div>
         </div>
     </div>
     <script src="~/Content/Admin/js/jquery.imagesloaded.js"></script>

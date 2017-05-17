@@ -1,8 +1,34 @@
 $(function(){
+
+    //搜索框部分
+   
+    $(".searchType li").click(function () {
+        $(this).addClass('beSelected').siblings().removeClass('beSelected');
+        $(this).css({ "background": "RGB(238,85,51)", "color": "RGB(255,255,255)" }).siblings().css({ "background": "", "color": "" });
+        if ($(this).text() == "店铺") {
+            $("#searchTxtBox").prop('placeholder', '店铺1');
+        }else {
+            $("#searchTxtBox").prop('placeholder', '狗粮');
+        } 
+    })
+
+    $("li.beSelected").siblings('li').mouseenter(function () {
+        $(this).addClass('enter');
+    })
+    $("li.beSelected").siblings('li').mouseleave(function () {
+        $(this).removeClass('enter');
+    })
+
+
+    //搜索框部分结束
+
+
+
+
 	
 //	商品菜单部分
 	$(".typeMenu>div").mouseenter(function(){
-		$(this).children(".details").css({"display":"block","border":"solid 2px RGB(205,44,11)"})
+	    $(this).children(".details").css({ "display": "block", "border": "solid 2px RGB(205,44,11)" });
 	    $(this).siblings().children(".details").css({"display":"none"});	  			
 	})
 	
@@ -62,9 +88,26 @@ $(function(){
 //商品展示部分
 	$(".ChoicePart li").mouseenter(function(){
 		$(this).children(".choiceBlock").css({"display":"block"})
-		$(this).siblings().children(".choiceBlock").css({"display":"none"})
+		$(this).siblings().children(".choiceBlock").css({ "display": "none" })
+		$(this).addClass('beChoiced').siblings().removeClass('beChoiced');
+
 	})
 
+    //				给商品图片加鼠标移入事件
+	$(".GoodsModel>img").mouseenter(function () {
+	    $(this).stop().animate({ 'top': '-12px' }, 300)
+	})
+	$(".GoodsModel>.aContainer").mouseenter(function () {
+	    $(this).siblings("img").stop().animate({'top':'-12px'},300);
+	})
+
+    //				给商品图片加鼠标移出事件
+	$(".GoodsModel>img").mouseleave(function () {
+	    $(this).stop().animate({ 'top': '0px' }, 300)
+	})
+	$(".GoodsModel>.aContainer").mouseleave(function () {
+	    $(this).siblings("img").stop().animate({ 'top': '0px' }, 300);
+	})
 
 //商品展示部分结束
 				
