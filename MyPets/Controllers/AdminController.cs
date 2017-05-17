@@ -56,7 +56,7 @@ namespace MyPets.Controllers
                 db.SaveChanges();
                 return View();
             }
-        }
+        } 
         public ActionResult UserManagement()
         {
             var userInfo = UserInfoServices.LoadEntities(u => true).ToList();
