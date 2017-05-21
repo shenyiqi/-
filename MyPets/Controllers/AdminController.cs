@@ -106,7 +106,10 @@ namespace MyPets.Controllers
             {
                 return PartialView("EditShopGoods", goods.ToPagedList(PageNumber, PageSize));
             }
-            else return View("EditShopGoods",goods.ToPagedList(PageNumber, PageSize));
+            else
+            {
+                return View("EditShopGoods",goods.ToPagedList(PageNumber, PageSize));
+            }
         }
         public ActionResult AdManagement() //店铺推荐
         {

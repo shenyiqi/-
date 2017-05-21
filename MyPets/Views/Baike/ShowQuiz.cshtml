@@ -3,6 +3,46 @@
     ViewBag.Title = "问题详情";
     Layout = "~/Views/Shared/_LayoutBaike.cshtml";
 }
+@section Add{
+    <link href="~/Content/Baike/css/common.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        
+        //  $(function () {
+        //var divs = document.getElementsByClassName('box');
+        //for (i = 0; i < divs.length; i++) {
+        //    $('.box').eq(i).click(function () {
+        //        //var a = $('.box').index(this);
+        //        var className = $(this).attr('class');
+        //        $("#dialogBg").find(a).fadeIn(300);
+        //        $('#dialog').find(a).removeAttr('class').addClass('animated ' + className + '').fadeIn();
+        //        alert(a);
+        //var divs = document.getElementsByClassName('box');
+        //for (var i = 0; i < divs.length; i++) {
+        //    $(divs[i]).attr("a")
+        //    var className = $(div[i]).attr('class');
+        //    $(divs[i]).children("#dialogBg").fadeIn(300);
+        //    $(divs[i]).removeAttr('class').addClass('animated ' + className + '').fadeIn();
+
+        })
+        }
+
+        //$(function () {
+        //    $('.box a').click(function () {
+        //        var className = $(this).attr('class');
+        //        $('#dialogBg').fadeIn(300);
+        //        $('#dialog').removeAttr('class').addClass('animated ' + className + '').fadeIn();
+        //    });
+
+        //    //关闭弹窗
+        //    $('.claseDialogBtn').click(function () {
+        //        $('#dialogBg').fadeOut(300, function () {
+        //            $('#dialog').addClass('bounceOutUp').fadeOut();
+        //        });
+        //    });
+        //});
+    </script>
+}
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-11">@Html.ActionLink("首页", "Index")>@Html.ActionLink("问答专区", "Answer")>问题详情</div>
@@ -31,19 +71,34 @@
     <div class="col-md-7">
         <h2>@ViewBag.num 个回答 </h2>
         <hr style="border-color:#cac4c4;" />
-        @foreach (MyPets.Model.BaikeAnswer b in ViewData["answer"] as List<MyPets.Model.BaikeAnswer>)
-        {
-            <div class="row">
-                <div class="col-md-1">
-                    <img src="@Url.Content(b.UserInfo.UserImg)" style="width:50px;height:50px;" />
-                </div>
-                <div class="col-md-11" style="margin-bottom:20px;">
-                    <div><a href="javascript:;" style="color:#2be90e;">@Html.DisplayFor(item => b.UserInfo.UserName)</a> | @Html.DisplayFor(item => b.AnswerTime)</div>
-                    <p>@Html.Raw(b.AnswerContent)</p>
-                </div>
-            </div>
-        }
+        <div id="ShowAnswer">
+            @foreach (MyPets.Model.BaikeAnswer b in ViewData["answer"] as List<MyPets.Model.BaikeAnswer>)
+            {
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="@Url.Content(b.UserInfo.UserImg)" style="width:50px;height:50px;" />
+                    </div>
+                    <div class="col-md-11" style="margin-bottom:20px;">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div><a href="javascript:;" style="color:#2be90e;"> @Html.DisplayFor(item => b.UserInfo.UserName)</a> | @Html.DisplayFor(item => b.AnswerTime)</div>
+                                <p>@Html.Raw(b.AnswerContent)</p>
+                            </div>
+                            <div class="col-md-2">
+                                <div style="width:50px;display:inline-block;">
+                                    <a href="javascript:;" id="@b.AnswerId" onclick="ClickGood(this.id)" style="color:#000000;">
+                                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">@b.ClickNum</span>
+                                    </a>
+                                </div>
+                                @Html.Hidden("answerid", @b.AnswerId)
+                                <a href="javascript:;"style="color:#000000;"><span class="glyphicon glyphicon-edit">回复</span></a>
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
     <div class="col-md-4">
 
@@ -56,23 +111,50 @@
         {
             using (Html.BeginForm())
             {
-                <hr style="border-color:#808080;" />
-                <p>回复</p>
-                <article class="zzsc">
-                    <div class="container">
-                        <div class="jumbotron" style="padding:10px;width:840px;">
-                            <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入问题描述..." style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;"></textarea>
-                        </div>
-                    </div>
-                </article>
-                <input type="submit" class="btn btn-info" value="我来回答" style="float:right;margin-top:-20px;">
+        <hr style="border-color:#808080;" />
+        <p>回复</p>
+        <article class="zzsc">
+            <div class="container">
+                <div class="jumbotron" style="padding:10px;width:840px;">
+                    <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入问题描述..." style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;"></textarea>
+                </div>
+            </div>
+        </article>
+        <input type="submit" class="btn btn-info" value="我来回答" style="float:right;margin-top:-20px;">
             }
         }
         else
         {
-            <p>请 <a href="@Url.Action("Login","Register")">登录</a> 发表评论</p>
+        <p>请 <a href="@Url.Action("Login","Register")">登录</a> 发表评论</p>
         }
     </div>
     <div class="col-md-4">
     </div>
 </div>
+<script type="text/javascript">
+    function ClickGood(id) {
+        var clickid = document.getElementById(id);
+        var firstchildnode = clickid.children[0].innerHTML;
+        var num = parseInt(firstchildnode);
+        var nownum = num + 1;
+        $.ajax({
+            type: "POST",
+            url: "/Baike/ClickGood",
+            data: { "id": id },
+            dataType: "text",
+            cache: false,
+            success: function (data) {
+                if (data) {
+                    clickid.children[0].innerHTML = nownum.toString();
+                }
+                else {
+                    alert("点赞失败！");
+                }
+
+            }
+
+        })
+    }
+
+
+</script>

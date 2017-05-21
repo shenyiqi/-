@@ -48,6 +48,7 @@
     <Compile Include="ICollectServices.cs" />
     <Compile Include="IGoodsCommentServices.cs" />
     <Compile Include="IGoodsServices.cs" />
+    <Compile Include="IResponAnswerServices.cs" />
     <Compile Include="IOrderDetailServices.cs" />
     <Compile Include="IOrderServices.cs" />
     <Compile Include="IPostServices.cs" />

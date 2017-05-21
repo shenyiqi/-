@@ -29,8 +29,8 @@ namespace MyPets.Controllers
             ViewBag.datetime = DateTime.Now.AddMinutes(5);
             return View("DateTimePartialViewDate");
         }
-        public ActionResult Baike()
-        {
+        public ActionResult Demo()
+        { 
             return View();
         }
     }

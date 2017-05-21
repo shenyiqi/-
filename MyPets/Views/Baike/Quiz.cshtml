@@ -33,8 +33,26 @@
         <div class="col-md-1">@Html.ActionLink("宠物商城", "Index", "Shop")</div>
         <div class="col-md-1">@Html.ActionLink("宠物论坛", "Index", "Forum")</div>
         <div class="col-md-1" style="border-bottom:2px solid #9C3"><a href="javascript:;">宠物百科</a></div>
-        <div class="col-md-5"></div>
-        <div class="col-md-1">@Html.ActionLink("登录", "Login", "Register")|@Html.ActionLink("注册", "Register", "Register")</div>
+        <div class="col-md-4"></div>
+        <div class="col-md-2">
+            @if (Session["UserName"] == null)
+            {
+                <div>@Html.ActionLink("登录", "Login", "Register") | @Html.ActionLink("注册", "Register", "Register")</div>
+            }
+            else
+            {
+                <div class="dropdown">
+                    <div id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <a href="javascript:;" style="color:#9C3;">@Session["UserName"]</a>
+                        <span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="@Url.Action("Index","PersonalCenter",new { user=Session["UserName"]})">个人中心</a></li>
+                        <li><a href="@Url.Action("LoginOff")">退出登录</a></li>
+                    </ul>
+                </div>
+            }
+        </div>
         <div class="col-md-1"></div>
     </div>
     <br /><br />

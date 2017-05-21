@@ -14,13 +14,22 @@ namespace MyPets.Model
     
     public partial class BaikeAnswer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BaikeAnswer()
+        {
+            this.ResponAnswer = new HashSet<ResponAnswer>();
+        }
+    
         public int AnswerId { get; set; }
         public Nullable<int> QuestionId { get; set; }
         public string AnswerContent { get; set; }
         public Nullable<System.DateTime> AnswerTime { get; set; }
         public int UserId { get; set; }
+        public Nullable<int> ClickNum { get; set; }
     
         public virtual BaikeQuestion BaikeQuestion { get; set; }
         public virtual UserInfo UserInfo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ResponAnswer> ResponAnswer { get; set; }
     }
 }

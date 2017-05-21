@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+ }
+@foreach (var b in Model)
+{
+    <div class="row">
+        <div class="col-md-1">
+            <img src="@Url.Content(b.UserInfo.UserImg)" style="width:50px;height:50px;" />
+        </div>
+        <div class="col-md-11" style="margin-bottom:20px;">
+            <div class="row">
+                <div class="col-md-10">
+                    <div><a href="javascript:;" style="color:#2be90e;">@b.UserInfo.UserName</a> | @b.AnswerTime</div>
+                    <p>@Html.Raw(b.AnswerContent)</p>
+                </div>
+                <div class="col-md-2">
+                    <div style="width:50px;display:inline-block;">
+                        <a @*href="@Url.Action("PartialShowQuiz", new { answerid = b.AnswerId })"*@ id="@b.AnswerId" onclick="ClickGood(this.id)" style="color:#000000;">
+                            <div style="width:50px;display:inline-block">
+                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">@b.ClickNum</span>
+                            </div>
+                        </a>
+                    </div>
+                    <span class="glyphicon glyphicon-edit">回复</span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
