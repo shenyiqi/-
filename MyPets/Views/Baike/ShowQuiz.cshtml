@@ -17,7 +17,13 @@
                 });
             });
         }
-
+        function ShowPage(obj) {
+            var type = $(obj).next(".responseanwer")
+            if (type.css("display") == "none") {
+                type.show();
+            }
+            else type.css("display", "none");
+        }
 
         //$(function () {   //原先代码
         //    $('.box a').click(function () {
@@ -34,6 +40,7 @@
         //    });
         //});
     </script>
+
 }
 <div class="row">
     <div class="col-md-1"></div>
@@ -78,12 +85,20 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        @foreach (MyPets.Model.ResponAnswer a in b.ResponAnswer.Where(item => item.AnswerId == @b.AnswerId).ToList())
-                                        {
-                                            <div><hr /></div>
-                                            <div><a href="javascript:;"> @Html.DisplayFor(item => a.UserName)</a> @Html.Raw("@")@b.UserInfo.UserName | @Html.DisplayFor(item => a.ResponTime)</div>
-                                            <p>@Html.Raw(a.ResponContent)</p>
-                                        }
+                                        <div style="text-align:right;margin-right:-130px; font-size:8px;color:#cac4c4;" onclick="ShowPage(this)">查看全部回复</div>
+                                        <div class="responseanwer">
+                                            @foreach (MyPets.Model.ResponAnswer a in b.ResponAnswer.Where(item => item.AnswerId == @b.AnswerId).ToList())
+                                            {
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-2" style="margin-left:-100px;"><img src="~/Content/Baike/img/user.jpg" style="width:50px;height:50px;"/></div>
+                                                    <div class="col-md-9"style="margin-left:-20px;">
+                                                        <a href="javascript:;"> @Html.DisplayFor(item => a.UserName)</a> @Html.Raw("@")@b.UserInfo.UserName | @Html.DisplayFor(item => a.ResponTime)
+                                                        <p>@Html.Raw(a.ResponContent)</p>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
