@@ -23,7 +23,7 @@ namespace MyPets.Controllers
             var dogYiliao = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "医疗").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
             var dogBaojian = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "保健").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
             var dogRiyong = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "日用品").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
-
+            
             ViewData["hotgoods"] = hotGoods;
             ViewData["discountgoods"] = discountGoods;
             ViewData["randomgoods"] = randomGoods;
@@ -38,7 +38,26 @@ namespace MyPets.Controllers
             var catFood = goodsService.LoadEntities(g => g.SeriesName == "猫猫商品" && g.TypeName == "零食").Take(10).ToList();
             ViewData["catfood"] = catFood;
 
-            
+
+            //奇趣小宠
+            var smallPetFood = goodsService.LoadEntities(g => g.SeriesName == "奇趣小宠" && g.TypeName == "粮食").Take(10).ToList();
+            ViewData["smallpetfood"] = smallPetFood;
+
+            //水族市场
+            var aquaticPetFood = goodsService.LoadEntities(g => g.SeriesName == "水族市场" && g.TypeName == "日用品").Take(10).ToList();
+            ViewData["aquaticpetfood"] = aquaticPetFood;
+
+            //爬虫用品
+            var reptileFood = goodsService.LoadEntities(g => g.SeriesName == "爬虫用品" && g.TypeName == "日用品").Take(10).ToList();
+            ViewData["reptilefood"] = reptileFood;
+
+
+            return View();
+        }
+
+        public ActionResult Search()
+        {
+
             return View();
         }
 

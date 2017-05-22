@@ -385,23 +385,69 @@ div.typeImgContainer{
 
 #index_middlePart .midContent .ad_rOcarousel {
 	width: 200px;
-	height: 360px;
+	height: 450px;
     position:absolute;
     top:0;
     left:990px;
 }
 #ad_rO1{
-	background:RGB(255,244,250);
-	border-bottom: 2px solid red;
+	/*background:RGB(255,244,250);
+	border-bottom: 2px solid red;*/
+    width:200px;
+    height:200px;
 }
 #ad_rO2{
-	background:RGB(255,255,255) ;
+	background:/*RGB(255,244,250)*/RGB(255,255,255) ;
+    width:200px;
+    height:250px;
+}
+#ad_rO2Content{
+    width:180px;
+    height:250px;
+    margin-left:10px;
+    font-size:14px;
+}
+#ad_rO2Content>img{
+    width:100px;
+    height:100px;
+    margin-top:10px;
+    margin-left:30px;
+}
+#ad_rO2Content .codeDiscribe{
+    text-indent:1em;
+    width:140px;
+    margin-left:15px;
 }
 
-#index_middlePart .midContent .ad_rOcarousel div {
-	width: 200px;
-	height: 224px;
+#subscribe{
+    float:left;
 }
+#subscribe>span{
+    font-weight:700;
+    font-size:16px;
+    display:block;
+    margin:18px 0px 5px;
+}
+#subscribe>input{
+    float:left;
+}
+#subscribeEmailAddress{
+    width:122px;
+    height:22px;
+    border:1px solid RGB(204,204,204);
+    border-right:none;
+}
+#subscribeConfirm{
+    width:52px;
+    height:24px;
+    border:none;
+    background:RGB(240,85,51);
+    color:RGB(255,255,255);
+}
+.font-red{
+    color:RGB(240,85,51);
+}
+
 
 
 /*轮播图下侧广告*/
@@ -436,7 +482,8 @@ div.typeImgContainer{
 #goodsPart{
 	margin: 0 auto;
 	width: 1190px;
-	position: relative;
+    height:3800px;
+	/*position: relative;*/
 }
 .boxTitle{
 	color: RGB(238,85,51);
@@ -561,14 +608,36 @@ li.beChoiced{
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /*------------------商品展示部分结束--------------------*/
+
+/*------------------首页底部结束--------------------*/
+#footer{
+    width:100%;
+    height:270px;
+}
+#footer .footer_up{
+    width:100%;
+    height:120px;
+    background:RGB(238,85,51);
+}
+#footer .footer_up>img{
+    display:block;
+    width:908px;
+    margin:0 auto;
+}
+#footer .footer_down{
+    width:100%;
+    height:150px;
+    background:RGB(243,243,243);
+}
+#footer .footer_down>img{
+    display:block;
+    width:970px;
+    margin:0 auto;
+}
+
+
+
+
+
+/*------------------首页底部结束--------------------*/

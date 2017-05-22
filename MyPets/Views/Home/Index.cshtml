@@ -40,6 +40,8 @@
     <!--首页顶部结束-->
     <!--搜索框部分-->
     <div id="search">
+    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+    {
         <img src="~/Content/Shop/img/logo.png" style="width:240px;height:100px;" />
         <div class="searchType">
             <ul>
@@ -48,9 +50,10 @@
             </ul>
         </div>
         <div class="search_mid">
-            <input type="text" name="" id="searchTxtBox" value="" placeholder="狗粮" />
-            <input type="button" name="searchBtn" id="searchBtn" value="搜索" />
+            <input type="text" name="searchInput" id="searchTxtBox" value="" placeholder="狗粮" />
+            <input type="submit" name="searchBtn" id="searchBtn" value="搜索" onclick="search()" />
         </div>
+    }
     </div>
 
     <!--搜索框部分结束-->
@@ -512,12 +515,12 @@
             <!--轮播图-->
             <div id="carousel">
                 <div class="pic">
-                    <img src="~/Content/Home/img/Carousel01.jpg" />
-                    <img src="~/Content/Home/img/Carousel02.jpg" />
-                    <img src="~/Content/Home/img/Carousel03.jpg" />
-                    <img src="~/Content/Home/img/Carousel04.jpg" />
-                    <img src="~/Content/Home/img/Carousel05.jpg" />
-                    <img src="~/Content/Home/img/Carousel01.jpg" />
+                    <img src="~/Content/Home/img/index/Carousel01.jpg" />
+                    <img src="~/Content/Home/img/index/Carousel02.jpg" />
+                    <img src="~/Content/Home/img/index/Carousel03.jpg" />
+                    <img src="~/Content/Home/img/index/Carousel04.jpg" />
+                    <img src="~/Content/Home/img/index/Carousel05.jpg" />
+                    <img src="~/Content/Home/img/index/Carousel01.jpg" />
                 </div>
                 <ul>
                     <li style="background: RGB(238,85,51);color: RGB(243,243,243);">1</li>
@@ -538,10 +541,18 @@
             <!--轮播图右侧广告-->
             <div class="ad_rOcarousel">
                 <div id="ad_rO1">
-                    
+                    <img src="~/Content/Home/img/index/ad_rO1.jpg" />
                 </div>
                 <div id="ad_rO2">
-
+                    <div id="ad_rO2Content">
+                        <div id="subscribe">
+                            <span>订阅促销信息</span>
+                            <input type="text" name="" id="subscribeEmailAddress" placeholder="请输入E-mail地址"/>
+                            <input type="button" id="subscribeConfirm" value="订阅" />
+                        </div>
+                        <img src="~/Content/Home/img/index/PetsCode.png" />
+                        <div class="codeDiscribe">宠物之家客户端<br /><span class="font-red">注册送100元，首单再送50元,快来扫我吧！</span></div>
+                    </div>
                 </div>
             </div>
             <!--轮播图右侧广告结束-->
@@ -918,7 +929,19 @@
                     <li class="beChoiced">
                         兔兔用品
                         <div class="choiceBlock" style="display: block;">
-                            选项卡1
+                            @foreach (MyPets.Model.Goods g in ViewData["smallpetfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
                     </li>
                     <li>
@@ -954,7 +977,19 @@
                     <li class="beChoiced">
                         鱼缸
                         <div class="choiceBlock" style="display: block;">
-                            选项卡1
+                            @foreach (MyPets.Model.Goods g in ViewData["aquaticpetfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
                     </li>
                     <li>
@@ -1014,7 +1049,19 @@
                     <li class="beChoiced">
                         陆龟用品
                         <div class="choiceBlock" style="display: block;">
-                            选项卡1
+                            @foreach (MyPets.Model.Goods g in ViewData["reptilefood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
                     </li>
                     <li>
@@ -1035,29 +1082,20 @@
         <div class="choiceDetail">
             <img src="~/Content/Home/img/GoodsPart/reptilepGoods.jpg" />
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
     <!--商品展示部分结束-->
 
 
-
+    <!--首页底部,暂时采用图片布局-->
+    <div id="footer">
+        <div class="footer_up">
+            <img src="~/Content/Home/img/index/footerImg1.png" />
+        </div>
+        <div class="footer_down">
+            <img src="~/Content/Home/img/index/footerImg2.png" />
+        </div>
+    </div>
+    <!--首页底部结束-->
 
 
 </body>

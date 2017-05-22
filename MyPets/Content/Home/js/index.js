@@ -18,6 +18,10 @@ $(function(){
     $("li.beSelected").siblings('li').mouseleave(function () {
         $(this).removeClass('enter');
     })
+    
+    var search = function () {
+        
+    }
 
 
     //搜索框部分结束
