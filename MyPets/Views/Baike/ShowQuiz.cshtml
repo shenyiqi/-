@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyPets.Model.BaikeAnswer>
+﻿@*@model IEnumerable<MyPets.Model.BaikeAnswer>*@
 @{
     ViewBag.Title = "问题详情";
     Layout = "~/Views/Shared/_LayoutBaike.cshtml";
@@ -7,27 +7,19 @@
     <link href="~/Content/Baike/css/common.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
-        
-        //  $(function () {
-        //var divs = document.getElementsByClassName('box');
-        //for (i = 0; i < divs.length; i++) {
-        //    $('.box').eq(i).click(function () {
-        //        //var a = $('.box').index(this);
-        //        var className = $(this).attr('class');
-        //        $("#dialogBg").find(a).fadeIn(300);
-        //        $('#dialog').find(a).removeAttr('class').addClass('animated ' + className + '').fadeIn();
-        //        alert(a);
-        //var divs = document.getElementsByClassName('box');
-        //for (var i = 0; i < divs.length; i++) {
-        //    $(divs[i]).attr("a")
-        //    var className = $(div[i]).attr('class');
-        //    $(divs[i]).children("#dialogBg").fadeIn(300);
-        //    $(divs[i]).removeAttr('class').addClass('animated ' + className + '').fadeIn();
-
-        })
+        function divclick(obj) {
+            var className = $(obj).attr('class');
+            $(obj).next("#dialogBg").fadeIn(300);
+            $(obj).next().next('#dialog').removeAttr('class').addClass('animated ' + className + '').fadeIn();
+            $('.claseDialogBtn').click(function () {
+                $(obj).next('#dialogBg').fadeOut(300, function () {
+                    $(obj).next().next('#dialog').addClass('bounceOutUp').fadeOut();
+                });
+            });
         }
 
-        //$(function () {
+
+        //$(function () {   //原先代码
         //    $('.box a').click(function () {
         //        var className = $(this).attr('class');
         //        $('#dialogBg').fadeIn(300);
@@ -83,6 +75,17 @@
                             <div class="col-md-10">
                                 <div><a href="javascript:;" style="color:#2be90e;"> @Html.DisplayFor(item => b.UserInfo.UserName)</a> | @Html.DisplayFor(item => b.AnswerTime)</div>
                                 <p>@Html.Raw(b.AnswerContent)</p>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-11">
+                                        @foreach (MyPets.Model.ResponAnswer a in b.ResponAnswer.Where(item => item.AnswerId == @b.AnswerId).ToList())
+                                        {
+                                            <div><hr /></div>
+                                            <div><a href="javascript:;"> @Html.DisplayFor(item => a.UserName)</a> @Html.Raw("@")@b.UserInfo.UserName | @Html.DisplayFor(item => a.ResponTime)</div>
+                                            <p>@Html.Raw(a.ResponContent)</p>
+                                        }
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-2">
                                 <div style="width:50px;display:inline-block;">
@@ -90,9 +93,22 @@
                                         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">@b.ClickNum</span>
                                     </a>
                                 </div>
-                                @Html.Hidden("answerid", @b.AnswerId)
-                                <a href="javascript:;"style="color:#000000;"><span class="glyphicon glyphicon-edit">回复</span></a>
-
+                                <div class="box" style="display:inline-block">
+                                    <a href="javascript:;" class="bounceIn" style="color:#000000;" onclick="divclick(this)"><span class="glyphicon glyphicon-edit">回复</span></a>
+                                    <div id="dialogBg"></div>
+                                    <div id="dialog" class="animated">
+                                        <img class="dialogIco" width="50" height="50" src="~/Content/Baike/img/ico.png" alt="" />
+                                        <div class="dialogTop">
+                                            <a href="javascript:;" class="claseDialogBtn">关闭</a>
+                                        </div>
+                                        <form action="/Baike/ResponAnswer" method="post" id="editForm">
+                                            <strong>回复 @Html.Raw("@")@b.UserInfo.UserName</strong>
+                                            @Html.Hidden("answerid", @b.AnswerId)
+                                            <textarea class="form-control" rows="6" name="txtarea" placeholder="输入回复内容..."></textarea>
+                                            <input type="submit" value="确认提交" class="btn btn-sm btn-info" style="float:right;margin-top:5px;margin-right:5px;" />
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -111,21 +127,21 @@
         {
             using (Html.BeginForm())
             {
-        <hr style="border-color:#808080;" />
-        <p>回复</p>
-        <article class="zzsc">
-            <div class="container">
-                <div class="jumbotron" style="padding:10px;width:840px;">
-                    <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入问题描述..." style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;"></textarea>
-                </div>
-            </div>
-        </article>
-        <input type="submit" class="btn btn-info" value="我来回答" style="float:right;margin-top:-20px;">
+                <hr style="border-color:#808080;" />
+                <p>回复</p>
+                <article class="zzsc">
+                    <div class="container">
+                        <div class="jumbotron" style="padding:10px;width:840px;">
+                            <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入问题描述..." style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;"></textarea>
+                        </div>
+                    </div>
+                </article>
+                <input type="submit" class="btn btn-info" value="我来回答" style="float:right;margin-top:-30px;">
             }
         }
         else
         {
-        <p>请 <a href="@Url.Action("Login","Register")">登录</a> 发表评论</p>
+            <p>请 <a href="@Url.Action("Login","Register")">登录</a> 发表评论</p>
         }
     </div>
     <div class="col-md-4">

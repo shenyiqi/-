@@ -54,6 +54,7 @@
     <Compile Include="IPostServices.cs" />
     <Compile Include="IPrivateMsgServices.cs" />
     <Compile Include="IResponseServices.cs" />
+    <Compile Include="IShopCartServices.cs" />
     <Compile Include="IShopRecommendServices.cs" />
     <Compile Include="IShopServices.cs" />
     <Compile Include="IUserInfoServices.cs" />

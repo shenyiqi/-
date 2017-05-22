@@ -55,6 +55,7 @@
     <Compile Include="IPrivateMsgDal.cs" />
     <Compile Include="IResponAnswerDal.cs" />
     <Compile Include="IResponseDal.cs" />
+    <Compile Include="IShopCartDal.cs" />
     <Compile Include="IShopDal.cs" />
     <Compile Include="IShopRecommendDal.cs" />
     <Compile Include="IUserInfoDal.cs" />
