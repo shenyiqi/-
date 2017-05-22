@@ -1285,10 +1285,14 @@
     <Content Include="Content\Admin\js\smothscrool.js" />
     <Content Include="Content\Baike\css\bootstrap-select.css" />
     <Content Include="Content\Baike\css\bootstrap3-wysihtml5.min.css" />
+    <Content Include="Content\Baike\css\common.css" />
     <Content Include="Content\Baike\css\default.css" />
     <Content Include="Content\Baike\css\SlideStyle.css" />
     <Content Include="Content\Baike\css\style.css" />
     <Content Include="Content\Baike\fonts\icomoon.svg" />
+    <Content Include="Content\Baike\img\1.png" />
+    <Content Include="Content\Baike\img\2.png" />
+    <Content Include="Content\Baike\img\3.png" />
     <Content Include="Content\Baike\img\ad1.jpg" />
     <Content Include="Content\Baike\img\ad2.jpg" />
     <Content Include="Content\Baike\img\ad3.jpg" />
@@ -1297,6 +1301,7 @@
     <Content Include="Content\Baike\img\article_24px_26483_easyicon.net.png" />
     <Content Include="Content\Baike\img\control.png" />
     <Content Include="Content\Baike\img\Football_64px_555219_easyicon.net.png" />
+    <Content Include="Content\Baike\img\ico.png" />
     <Content Include="Content\Baike\img\Mail_Reply_24px_1097606_easyicon.net.png" />
     <Content Include="Content\Baike\img\main.png" />
     <Content Include="Content\Baike\img\petsicon1.jpg" />
@@ -1367,6 +1372,8 @@
     <Content Include="Content\Baike\img\upload\xinsrc_12201031710016564323113.jpg" />
     <Content Include="Content\Baike\img\upload\xinsrc_552010317101434325937177.jpg" />
     <Content Include="Content\Baike\img\user.jpg" />
+    <Content Include="Content\Baike\img\yizan.png" />
+    <Content Include="Content\Baike\img\zan.png" />
     <Content Include="Content\Baike\img\你说我像饼？偶可是热带鱼之王七彩神仙！.png" />
     <Content Include="Content\Baike\img\宠物夏季饲养全攻略.png" />
     <Content Include="Content\Baike\img\干货分享——养犬新手必看知识合集.png" />
@@ -1659,7 +1666,6 @@
     <Content Include="Content\留言富文本\sinaFaceAndEffec.css" />
     <Content Include="Content\留言富文本\sinaFaceAndEffec.js" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -1706,6 +1712,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1785,17 +1793,26 @@
     <Content Include="Views\Home\Shangpin.cshtml" />
     <Content Include="Views\Home\goumai.cshtml" />
     <Content Include="Views\Home\jiesuan.cshtml" />
-    <Content Include="Views\Shop\GoodsType.cshtml" />
-    <Content Include="Views\Shop\UpDiscountGoods.cshtml" />
-    <Content Include="Views\Shared\_LayoutPersonalCenter.cshtml" />
-    <Content Include="Views\Shared\_LayoutWaterFull.cshtml" />
     <Content Include="Views\PersonalCenter\Index.cshtml" />
     <Content Include="Views\Admin\EditGoods.cshtml" />
     <Content Include="Views\Admin\ShowGoods.cshtml" />
     <Content Include="Views\Admin\UserManagement.cshtml" />
+    <Content Include="Views\Shared\_LayoutWaterFull.cshtml" />
+    <Content Include="Views\Shared\_LayoutPersonalCenter.cshtml" />
+    <Content Include="Views\Shop\GoodsType.cshtml" />
+    <Content Include="Views\Shop\UpDiscountGoods.cshtml" />
+    <Content Include="Views\Admin\ShopManagement.cshtml" />
+    <Content Include="Views\Baike\ParticalAnswer.cshtml" />
+    <Content Include="Views\Baike\SearchAnswer.cshtml" />
+    <Content Include="Views\Admin\EditShop.cshtml" />
+    <Content Include="Views\Admin\EditShopGoods.cshtml" />
+    <Content Include="Views\Baike\PartialShowQuiz.cshtml" />
+    <Content Include="Views\Demo\Demo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Baike\弹出框样式\" />
+    <Folder Include="Content\Demo\" />
     <Folder Include="Content\Home\img\shopimg\" />
     <Folder Include="Content\Register\img\headphoto\" />
     <Folder Include="Content\Register\js\" />
@@ -1805,9 +1822,6 @@
     <Folder Include="Views\ValidateCode\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />

@@ -11,6 +11,7 @@
     <link href="~/Content/Baike/css/default.css" rel="stylesheet" />
     <link href="~/Content/Baike/css/SlideStyle.css" rel="stylesheet" />
     <link href="~/Content/Admin/css/StyleBar.css" rel="stylesheet" />
+    @RenderSection("Add",false)
     <style type="text/css" media="screen">
         .btn.jumbo {
             font-size: 20px;
@@ -87,6 +88,7 @@
     <br />
     @RenderBody()
     <script src="~/Content/Admin/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="~/Content/Baike/js/bootstrap3-wysihtml5.all.min.js"></script>
     <script src="~/Content/Baike/js/bootstrap-wysihtml5.zh-CN.js"></script>

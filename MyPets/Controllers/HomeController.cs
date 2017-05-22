@@ -74,17 +74,25 @@ namespace MyPets.Controllers
           
             return View();
         }
-       public ActionResult Shangpin(string keyword)
+       public ActionResult Shangpin(string keyword,string type, string txttype, int? page)
         {
-            var gougou =goodsService.LoadEntities(b=>b.DetailName== keyword).ToList();
+            Session["sptype"] = type;
+            var gougou =goodsService.LoadEntities(b=>b.DetailName.Contains(keyword)).ToList();
             return View(gougou);
 
-           
+
+            //int pageSize =10;
+            //int pageNumber = (page ?? 1);
+            //ViewBag.num = baike.Count();
+            //ViewData["type"] = txttype;
+            //return View(baike.ToPagedList(pageNumber, pageSize));
+
         }
-        public ActionResult goumai()
+        public ActionResult goumai(int id)
         {
-            return View();
-         }
+            var wupin = goodsService.LoadEntities(b => b.GoodsId == id).FirstOrDefault();
+            return View(wupin);
+        }
         public ActionResult jiesuan()
         {
             return View();

@@ -101,7 +101,22 @@ namespace MyPets.DALFactory
             }
             set { _BaikeAnswerDal = value; }
         }
-        
+        /// <summary>
+        /// 创建数据操作类百科问答回复评论的实例
+        /// </summary>
+        private IResponAnswerDal _ResponAnswerDal;
+        public IResponAnswerDal ResponAnswerDal
+        {
+            get
+            {
+                if (_ResponAnswerDal == null)
+                {
+                    _ResponAnswerDal = AbstractFactory.CreateResponAnswerDal();
+                }
+                return _ResponAnswerDal;
+            }
+            set { _ResponAnswerDal = value; }
+        }
         /// <summary>
         /// 创建数据操作类CollectDal的实例
         /// </summary>

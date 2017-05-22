@@ -7,79 +7,108 @@
 
 <h2>用户管理</h2>
 <br />
-<table class="table table-hover">
+<table class="table table-hover" id="tbuser">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserId)
+            编号
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserPhone)
+            手机号
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserEmail)
+            邮箱
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
+            用户名
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserPwd)
+            密码
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ConfirmPwd)
+            是否商家
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserImg)
+            等级
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsSeller)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Range)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Score)
+            积分
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserPwd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConfirmPwd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserImg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsSeller)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Range)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Score)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr id="@item.UserId">
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                ********
+            </td>
+            <td>
+                @if (item.IsSeller)
+                {
+                    <div>是</div>
+                }
+                else
+                {
+                    <div>否</div>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Range)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score)
+            </td>
+            <td>
+                <a href="javascript:;" id="@item.UserId" onclick="DeleteLog(this.id)">删除用户</a>
+            </td>
+        </tr>
+    }
 </table>
+<script type="text/javascript">
+    function DeleteLog(id) {
+        //if (confirm("确定要删除吗？")) {
+        //    url: "/Admin/DeleteUser";
+        //    parameter = { id: id };
+        //    $.post(url, parameter, function (data) {
+        //        $("#tbuser tr").each(function () {
+        //            var a = $(this).children();
+        //            if (a.eq(0).text() == id) {
+        //                a.remove();
+        //                alert("删除成功！");
+        //            }
+        //        });
+
+        //    })
+        //}
+        if (confirm("确定要删除吗？")) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/DeleteUser",
+                data: { "id": id },
+                dataType: "text",
+                cache: false,
+                success: function (data) {
+                    if (data) {
+                        alert("删除成功！");
+                        window.location.href = '/Admin/UserManagement';
+                    }
+                    else alert("删除失败！");
+
+                }
+
+            })
+        }
+    }
+</script>

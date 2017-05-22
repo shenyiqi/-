@@ -54,6 +54,7 @@
     <Compile Include="PostServices.cs" />
     <Compile Include="PrivateMsgServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponAnswerServices.cs" />
     <Compile Include="ResponseServices.cs" />
     <Compile Include="ShopRecommendServices.cs" />
     <Compile Include="ShopServices.cs" />

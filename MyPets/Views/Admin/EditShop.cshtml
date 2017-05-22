@@ -1,0 +1,104 @@
+﻿@model MyPets.Model.Shop
+@{
+    ViewBag.Title = "店铺管理";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Head{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
+<h3>店铺管理</h3>
+<hr style="border-color:#808080;" />
+<div class="row">
+    <div class="col-md-12"><img src="@Url.Content(Model.ShopImg)" style="width:1000px;height:400px;" /></div>
+</div>
+<br />
+<p style="font: normal 16px/26px 'Open Sans', sans-serif,Helvetica,sans-serif;color: #9b9b9b;padding: 17px 0px;font-weight: 400;">
+    注册成为我们网站的会员，都可以免费开宠物店铺，我们宠物之家提供了一个非常良好的平台为会员服务，你可以随时上传你的商品来进行售卖。作为一个集商城、论坛、百科于一身的网站，对于用户照顾他们的小宠物有非常大的作用，商城的商品根据你店铺的商品实际价格来定价，也可以看看其他商家再做考虑，我们的商城也有促销商品专区，你可以上传商品到促销区来销售。
+</p>
+<h2>店铺信息</h2>
+<hr style="border-color:#808080;" />
+<br />
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="txt1">店铺名称</label>
+                <input type="text" class="form-control" id="txt1" readonly value="@Model.ShopName">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="txt2">店铺客服</label>
+                <input type="text" class="form-control" id="txt2" readonly value="@Model.CustomerService">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="txt3">店铺邮箱</label>
+                <input type="text" class="form-control" id="txt3" readonly value="@Model.ShopEmail">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="txt4">店铺店主</label>
+                <input type="text" class="form-control" id="txt4" readonly value="@Model.UserInfo.UserName">
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="txt5">商品数量</label>
+                <input type="text" class="form-control" id="txt5" readonly value="@ViewBag.goods">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="txt6">普通商品</label>
+                <input type="text" class="form-control" id="txt6" readonly value="@ViewBag.norgoods">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="txt7">促销商品</label>
+                <input type="text" class="form-control" id="txt7" readonly value="@ViewBag.disgoods">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="txt8">店主等级</label>
+                <input type="text" class="form-control" id="txt8" readonly value="@Model.StarLevel">
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<h2>所有商品</h2>
+<hr style="border-color:#808080;" />
+<div id="tbGoods">
+    @{
+        Html.RenderAction("EditShopGoods", "Admin");
+    }
+</div>
+<br />
+<div class="form-inline" style="text-align:center;">
+    <a href="@Url.Action("DeleteShop", new {id=Model.ShopId })" class="btn btn-info">删除店铺</a>
+    <a href="@Url.Action("GoodsEntry")" class="btn btn-default">返回</a>
+</div>
+
+
