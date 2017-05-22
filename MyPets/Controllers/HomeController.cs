@@ -89,6 +89,13 @@ namespace MyPets.Controllers
             //return View(baike.ToPagedList(pageNumber, pageSize));
 
         }
+        
+        public ActionResult AddToCart(int id)
+        {
+            var good = goodsService.LoadEntities(g => g.GoodsId == id).FirstOrDefault();
+
+            return View();
+        }
         public ActionResult goumai(int id)
         {
             var wupin = goodsService.LoadEntities(b => b.GoodsId == id).FirstOrDefault();
@@ -97,6 +104,11 @@ namespace MyPets.Controllers
         public ActionResult jiesuan()
         {
             return View();
+        }
+        public ActionResult LoginOff()  //退出登录
+        {
+            Session["UserName"] = null;
+            return RedirectToAction("Index");
         }
     }
 }
