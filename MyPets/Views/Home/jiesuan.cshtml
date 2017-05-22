@@ -3,7 +3,7 @@
     ViewBag.Title = "jiesuan";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
-
+@model IEnumerable<MyPets.Model.ShopCart>
 <!DOCTYPE html>
 
 <html>
@@ -18,13 +18,11 @@
 <body>
     <div>
         <div class="box">
-            <div class="deng">
-                您还没有登录! <a>登录</a> 后您的商品将永久保存在"购物车"中
-            </div>
+          
             <div class="yun">
                 <div class="yunfei">宠物之家自营商品（全国免运费！）</div>
                 <div class="right">
-                    <a>继续购物></a>
+                    <a href="">继续购物></a>
                 </div>
             </div>
             <div class="content_box">
@@ -38,67 +36,37 @@
                     <div class="totle_top">小计</div>
                     <div class="del_top">操作</div>
                 </div>
-                <div class="imfor">
+             @foreach (var b in Model)
+             {
+                  <div class="imfor">
                     <div class="check">
                         <input type="checkbox" class="Each" />
                     </div>
                     <div class="pudc">
                         <div class="tupian">
-                            <a href="">
-                                <img src="~/Content/gouwuche/js/1.jpg" style=" width:50px;height:50px;" />
+                            <a href="@Url.Action("Shangpin")">
+                                <img src="@Url.Content(b.Goods.GoodsImg1)" style="width:50px;height:50px;" />
                             </a>
-
                         </div>
                     </div>
                     <div class="name">
-                        <a href="" class="na">m名字名字名字名字名字字名字</a>
+                        <a href="" class="na">@Html.DisplayFor(a => @b.Goods.GoodsName)</a>
                     </div>
 
-                    <div class="pices">599</div>
+                    <div class="pices">@Html.DisplayFor(a => @b.Goods.GoodsPrice)</div>
                     <div class="num">
                         <input class="reduc" type="button" value="-" />
-                        <input class="multil" type="text" value="1" />
+                        <input type="text" value="@Html.DisplayFor(a => @b.GoodsSum)" class="multil" />
                         <input class="add" type="button" value="+" />
                     </div>
-                    <div class="totle">599</div>
-                    <div class="del">
-                       <p class="na">删除</p> 
-                    </div>
-                </div>
-
-
-
-                <div class="imfor">
-                    <div class="check">
-                        <input type="checkbox" class="Each" />
-                    </div>
-                    <div class="pudc">
-                        <div class="tupian">
-                            <a href="">
-                                <img src="~/Content/gouwuche/js/1.jpg" style=" width:50px;height:50px;" />
-                            </a>
-
-                        </div>
-                    </div>
-                    <div class="name">
-                        <a href="" class="na">m名字名字名字名字名字名字名字名字字名字</a>
-                    </div>
-
-                    <div class="pices">599</div>
-                    <div class="num">
-                        <input class="reduc" type="button" value="-" />
-                        <input type="text" value="1" class="multil" />
-                        <input class="add" type="button" value="+" />
-                    </div>
-                    <div class="totle">599</div>
+                    <div class="totle">@Html.DisplayFor(a => @b.Goods.GoodsPrice)</div>
                     <div class="del">
                         <p class="na">删除</p> 
                     </div>
                 </div>
-
-            </div>
+             }
+            </div> 
             <div class="foot">
-
                 @*<div class="foot_d">清空购物车</div>*@
                 <div class="foot_del">删除选中商品</div>
 

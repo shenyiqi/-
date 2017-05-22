@@ -81,7 +81,7 @@ padding:0px 20px;
 .pingjia a{color:#dd8888;text-decoration:none;}
 .gouwu{padding-top:10px;padding-bottom:2px;padding-left:2px}
 .goumai{ Height:25px;Width:108px;background-color:#f3f3f3;border-width:0px;}
-.goumai:hover{background-color:red;color:white;cursor:pointer;}
+.goumai:hover{background-color:red;color:white;cursor:pointer; text-decoration:none;}
 .product{
     float:left;
     margin:5px 10px;

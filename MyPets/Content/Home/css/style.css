@@ -50,7 +50,7 @@
 /*商品*/
 .pudc{margin-top:10px;}
 .pudc_top {width: 310px;}
-.tupian{width:80px;height:80px;}
+.tupian{width:80px;height:80px; }
 .tupian a{border-style: none;
            border-color: inherit;
             border-width: 0; 
@@ -75,7 +75,7 @@
 .num {margin-top:10px;width: 130px;
 }
 .num_top {width: 130px;}
-.multil{width:35px;}
+.multil{width:35px; text-align:center;}
 .reduc{
     width:10px;
 }

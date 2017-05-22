@@ -3,27 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyPets.Model;
+using MyPets.IDAL;
+using MyPets.DALFactory;
 
 namespace MyPets.Controllers
 {
     public class HomeController : Controller
     {
         IBLL.IGoodsServices goodsService = new BLL.GoodsServices();
-
+        IBLL.IShopCartServices ShopCartServices = new BLL.ShopCartServices();
+        IDBSession db = new DBSession();
         public ActionResult Index()
         {
             //火爆商品
-            var hotGoods = goodsService.LoadEntities(g=>g.SellNum>0).OrderByDescending(g=>g.SellNum).Take(6).ToList();
+            var hotGoods = goodsService.LoadEntities(g => g.SellNum > 0).OrderByDescending(g => g.SellNum).Take(6).ToList();
             //促销商品
             var discountGoods = goodsService.LoadEntities(g => g.IsDiscount == true).Take(6).ToList();
-            var randomGoods = goodsService.LoadEntities(g=>true).OrderBy(x => Guid.NewGuid()).Take(6).ToList();
+            var randomGoods = goodsService.LoadEntities(g => true).OrderBy(x => Guid.NewGuid()).Take(6).ToList();
             //狗狗商品
-            var dogFood=goodsService.LoadEntities(g=>g.SeriesName=="狗狗商品" && g.TypeName == "粮食").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
+            var dogFood = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "粮食").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
             var dogShiliang = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "湿粮").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
             var dogYiliao = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "医疗").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
             var dogBaojian = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "保健").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
             var dogRiyong = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "日用品").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
-            
+
             ViewData["hotgoods"] = hotGoods;
             ViewData["discountgoods"] = discountGoods;
             ViewData["randomgoods"] = randomGoods;
@@ -71,29 +75,48 @@ namespace MyPets.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-          
+
             return View();
         }
-       public ActionResult Shangpin(string keyword,string type, string txttype, int? page)
+        public ActionResult Shangpin(string keyword, string type)
         {
             Session["sptype"] = type;
-            var gougou =goodsService.LoadEntities(b=>b.DetailName.Contains(keyword)).ToList();
+
+            var gougou = goodsService.LoadEntities(b => b.DetailName.Contains(keyword)).ToList();
             return View(gougou);
-
-
-            //int pageSize =10;
-            //int pageNumber = (page ?? 1);
-            //ViewBag.num = baike.Count();
-            //ViewData["type"] = txttype;
-            //return View(baike.ToPagedList(pageNumber, pageSize));
-
         }
-        
-        public ActionResult AddToCart(int id)
-        {
-            var good = goodsService.LoadEntities(g => g.GoodsId == id).FirstOrDefault();
 
-            return View();
+        public ActionResult AddToCart(int id,int ? sum)
+        {
+            if (Session["UserName"] != null)
+            {
+                string name = Session["UserName"].ToString();
+                var cart = ShopCartServices.LoadEntities(c => c.GoodsId == id).FirstOrDefault();
+                try
+                {
+                    if (cart == null)
+                    {
+                        var good = goodsService.LoadEntities(g => g.GoodsId == id).FirstOrDefault();
+                        var AddCart = ShopCartServices.AddEntity(new ShopCart
+                        {
+                            GoodsId = good.GoodsId,
+                            GoodsSum = (sum??1),
+                            UserName =name
+                        });
+                        db.SaveChanges();
+                        return Content("<script>alert('商品成功加入购物车！');history.go(-1);</script>");
+                    }
+                    else
+                    {
+                        return Content("<script>alert('商品已经加入购物车！');history.go(-1);</script>");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Content(ex.Message);
+                }
+            }
+            else return Content("<script>alert('您还未登陆！！');history.go(-1);</script>");
         }
         public ActionResult goumai(int id)
         {
@@ -102,7 +125,9 @@ namespace MyPets.Controllers
         }
         public ActionResult jiesuan()
         {
-            return View();
+            var  name = Session["UserName"].ToString();
+            var wupin =ShopCartServices .LoadEntities(b => b.UserName==name).ToList();
+            return View(wupin);
         }
         public ActionResult LoginOff()  //退出登录
         {

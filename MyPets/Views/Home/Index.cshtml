@@ -52,7 +52,7 @@
                     <a href="">关注宠物之家</a>
                 </li>
                 <li>
-                    <a href="">首页</a>
+                    <a href="@Url.Action("Index")">首页</a>
                 </li>
             </ul>
         </div>
@@ -83,9 +83,9 @@
             <a href="" class="all_type">全部商品分类</a>
             <a href="" class="shopping_cart">购物车</a>
             <div class="navigation">
-                <a href="" class="index">首页</a>
-                <a href="">狗狗</a>
-                <a href="">猫猫</a>
+                <a href="@Url.Action("Index","Home")" class="index">首页</a>
+                <a href="@Url.Action("Shangpin",new { keyword="狗粮",type="狗"})">狗狗</a>
+                <a href="@Url.Action("Shangpin",new { keyword="猫粮",type="猫"})">猫猫</a>
                 <a href="">小宠</a>
                 <a href="">水族</a>
                 <a href="">百科</a>
@@ -111,8 +111,8 @@
                     </div>
                     <div class="listDetails">
                         <span><a href="@Url.Action("Shangpin",new { keyword="狗粮",type="狗"})">狗粮</a></span>
-                        <span><a href="">狗罐头</a></span>
-                        <span><a href="">狗零食</a></span>
+                        <span><a href="@Url.Action("Shangpin",new { keyword="犬粮",type="狗"})">狗罐头</a></span>
+                        <span><a href="@Url.Action("Shangpin",new { keyword="成犬",type="狗"})">狗零食</a></span>
                         <span><a href="">医疗</a></span>
                         <span><a href="">保健</a></span>
                         <span><a href="">沐浴露</a></span>
@@ -125,27 +125,27 @@
                             <div class="dlTitle">
                                 <a href="">宠物狗粮</a>
                             </div>
-                            <a href="">离乳期犬粮</a>
-                            <a href="">幼犬粮</a>
-                            <a href="">成犬粮</a>
-                            <a href="">老犬粮</a>
-                            <a href="">全犬粮</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="狗粮",type="狗"})">离乳期犬粮</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="幼犬粮",type="狗"})">幼犬粮</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="成犬",type="狗"})">成犬粮</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="老犬粮",type="狗"})">老犬粮</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="成犬",type="狗"})">全犬粮</a>
                         </div>
                         <div class="detailsLine">
                             <div class="dlTitle">
                                 <a href="">狗罐头/妙鲜包</a>
                             </div>
-                            <a href="">成犬</a>
-                            <a href="">幼犬</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="狗粮",type="狗"})">成犬</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="狗粮",type="狗"})">幼犬</a>
                         </div>
                         <div class="detailsLine">
                             <div class="dlTitle">
                                 <a href="">狗狗零食</a>
                             </div>
-                            <a href="">肉质零食</a>
-                            <a href="">咬骨咬胶</a>
-                            <a href="">奶制零食</a>
-                            <a href="">饼干素食</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="成犬",type="狗"})">肉质零食</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="咬骨咬胶",type="狗"})">咬骨咬胶</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="奶制零食",type="狗"})">奶制零食</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="成犬",type="狗"})">饼干素食</a>
                         </div>
                         <div class="detailsLine">
                             <div class="dlTitle">
@@ -159,7 +159,7 @@
                         </div>
                         <div class="detailsLine">
                             <div class="dlTitle">
-                                <a href="">狗狗医疗</a>
+                                <a href="Shangpin",new { keyword="医疗",type="狗"})">狗狗医疗</a>
                             </div>
                             <a href="">体内驱虫</a>
                             <a href="">体外驱虫</a>
@@ -228,11 +228,11 @@
                         <a href="" class="mainType">猫猫用品</a>
                     </div>
                     <div class="listDetails">
-                        <span><a href="">猫粮</a></span>
-                        <span><a href="">猫罐头</a></span>
-                        <span><a href="">猫零食</a></span>
-                        <span><a href="">医疗</a></span>
-                        <span><a href="">保健</a></span>
+                        <span><a href="@Url.Action("Shangpin",new { keyword="猫粮",type="猫"})">猫粮</a></span>
+                        <span><a href="@Url.Action("Shangpin",new { keyword="湿粮",type="猫"})">猫罐头</a></span>
+                        <span><a href="@Url.Action("Shangpin",new { keyword="零食",type="猫"})">猫零食</a></span>
+                        <span><a href="@Url.Action("Shangpin",new { keyword="体内",type="猫"})">医疗</a></span>
+                        <span><a href="@Url.Action("Shangpin",new { keyword="美发",type="猫"})">保健</a></span>
                         <span><a href="">沐浴露</a></span>
                         <span><a href="">日用品</a></span>
                         <span><a href="">玩具</a></span>
@@ -243,8 +243,8 @@
                             <div class="dlTitle">
                                 <a href="">宠物猫粮</a>
                             </div>
-                            <a href="">成猫粮</a>
-                            <a href="">幼猫粮</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="成猫粮",type="猫"})">成猫粮</a>
+                            <a href="@Url.Action("Shangpin",new { keyword="幼猫湿粮",type="猫"})">幼猫粮</a>
                             <a href="">全猫粮</a>
                             <a href="">老猫粮</a>
                         </div>
