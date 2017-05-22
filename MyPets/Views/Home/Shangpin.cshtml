@@ -23,196 +23,196 @@
     <form id="form1">
         <div style="width:1200px;margin:0 auto;">
             <div class="top">
-                @if(Session["sptype"].ToString()=="狗")
+                @if (Session["sptype"].ToString() == "狗")
                 {
-                <div class="leibie">
-                    <div class="typeImgContainer">
-                        <!--放小图片用的div-->
-                    </div>
-                    <div style="margin-left:50px;font-size:20px;">狗狗商品</div>
-                </div>
-                <div style="width:700px;float:left;">
-                    <div style="margin-top:30px;">
-                        <div class="lei">
-                            <div>狗粮</div>
-                            <div>狗罐头</div>
-                            <div>狗零食</div>
-                            <div>医疗保健</div>
-                            <div>沐浴露</div>
-                            <div>日用品</div>
-                            <div>玩具</div>
-                            <div>衣服</div>
+                    <div class="leibie">
+                        <div class="typeImgContainer">
+                            <!--放小图片用的div-->
                         </div>
-                        <div>
-                            <div class="one">
-                                <a href="@Url.Action("shangpin","Home",new { keyword="离乳期狗粮",type="狗"})" class="ones">离乳期犬粮</a>
-                                <a href="@Url.Action("shangpin","Home",new { keyword="幼犬粮",type="狗"})">幼犬粮</a>
-                                <a href="@Url.Action("shangpin","Home",new { keyword="成犬粮",type="狗"})">成犬粮</a>
-                                <a href="@Url.Action("shangpin","Home",new { keyword="老犬粮",type="狗"})">老犬粮</a>
-                                <a href="@Url.Action("shangpin","Home",new { keyword="全犬粮",type="狗"})">全犬粮</a>
+                        <div style="margin-left:50px;font-size:20px;">狗狗商品</div>
+                    </div>
+                    <div style="width:700px;float:left;">
+                        <div style="margin-top:30px;">
+                            <div class="lei">
+                                <div>狗粮</div>
+                                <div>狗罐头</div>
+                                <div>狗零食</div>
+                                <div>医疗保健</div>
+                                <div>沐浴露</div>
+                                <div>日用品</div>
+                                <div>玩具</div>
+                                <div>衣服</div>
                             </div>
-                            <div class="one">
-                                <a href="" class="ones">成犬</a>
-                                <a href=""> 幼犬</a>
-                                <a href="">全犬粮</a>
-                            </div>
-                            <div class="one">
-                                <a href="" class="ones">  肉质零食</a>
-                                <a href="">咬骨咬胶</a>
-                                <a href="">奶制零食</a>
-                                <a href="">饼干素食</a>
+                            <div>
+                                <div class="one">
+                                    <a href="@Url.Action("shangpin","Home",new { keyword="离乳期狗粮",type="狗"})" class="ones">离乳期犬粮</a>
+                                    <a href="@Url.Action("shangpin","Home",new { keyword="幼犬粮",type="狗"})">幼犬粮</a>
+                                    <a href="@Url.Action("shangpin","Home",new { keyword="成犬粮",type="狗"})">成犬粮</a>
+                                    <a href="@Url.Action("shangpin","Home",new { keyword="老犬粮",type="狗"})">老犬粮</a>
+                                    <a href="@Url.Action("shangpin","Home",new { keyword="全犬粮",type="狗"})">全犬粮</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones">成犬</a>
+                                    <a href=""> 幼犬</a>
+                                    <a href="">全犬粮</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones">  肉质零食</a>
+                                    <a href="">咬骨咬胶</a>
+                                    <a href="">奶制零食</a>
+                                    <a href="">饼干素食</a>
 
-                            </div>
-                            <div class="one">
-                                <a href="" class="ones"> 美毛护肤</a>
-                                <a href="">补钙强骨</a>
-                                <a href="">微量矿物</a>
-                                <a href="">调理肠胃</a>
-                                <a href=""> 综合营养</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones"> 美毛护肤</a>
+                                    <a href="">补钙强骨</a>
+                                    <a href="">微量矿物</a>
+                                    <a href="">调理肠胃</a>
+                                    <a href=""> 综合营养</a>
 
-                            </div>
-                            <div class="one">
-                                <a href="" class="ones">体内驱虫</a>
-                                <a href="">体外驱虫</a>
-                                <a href="">口腔修护</a>
-                                <a href="">眼部护理</a>
-                                <a href="">耳道清洁</a>
-                                <a href="">皮肤问题</a>
-                            </div>
-                            <div class="one">
-                                <a href="" class="ones">药用香波</a>
-                                <a href="">美毛去味</a>
-                                <a href="">特色毛发</a>
-                                <a href="">干洗粉</a>
-                                <a href="">洗手液</a>
-                            </div>               
-                            <div class="one">
-                                <a href="" class="ones"> 休闲玩具</a>
-                                <a href=""> 互动玩具</a>
-                                <a href="">益智训导</a>
-                                <a href="">磨牙玩具</a>
-                                <a href="">洗澡用品</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones">体内驱虫</a>
+                                    <a href="">体外驱虫</a>
+                                    <a href="">口腔修护</a>
+                                    <a href="">眼部护理</a>
+                                    <a href="">耳道清洁</a>
+                                    <a href="">皮肤问题</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones">药用香波</a>
+                                    <a href="">美毛去味</a>
+                                    <a href="">特色毛发</a>
+                                    <a href="">干洗粉</a>
+                                    <a href="">洗手液</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones"> 休闲玩具</a>
+                                    <a href=""> 互动玩具</a>
+                                    <a href="">益智训导</a>
+                                    <a href="">磨牙玩具</a>
+                                    <a href="">洗澡用品</a>
 
-                            </div>
-                            <div class="one">
-                                <a href="" class="ones">宠物服装</a>
-                                <a href="">犬窝/犬笼</a>
-                                <a href="">毛毯/垫子凉席</a>
-                                <a href="">鞋子/袜子/帽子</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones">宠物服装</a>
+                                    <a href="">犬窝/犬笼</a>
+                                    <a href="">毛毯/垫子凉席</a>
+                                    <a href="">鞋子/袜子/帽子</a>
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 }
-                else if(Session["sptype"].ToString()=="猫")
+                else if (Session["sptype"].ToString() == "猫")
                 {
-                <div class="leibie">                  
-                    <div class="typeImgContainer" style="background-position: -58px 0">
-                        <!--放小图片用的div-->
+                    <div class="leibie">
+                        <div class="typeImgContainer" style="background-position: -58px 0">
+                            <!--放小图片用的div-->
+                        </div>
+                        <div style="margin-left:50px;font-size:20px;">猫猫商品</div>
                     </div>
-                    <div style="margin-left:50px;font-size:20px;">猫猫商品</div>
-                </div>
-                <div style="width:700px;float:left;">
-                    <div style="margin-top:30px;">
-                        <div class="lei">
-                            <div>宠物猫粮</div>
-                            <div>猫罐头</div>
-                            <div>猫猫零食</div>
-                            <div>猫猫医疗</div>
-                            <div>猫猫保健品</div>
-                            <div>猫猫香波</div>
-                            <div>日常用品</div>
-                            <div>猫猫玩具</div>
-                        </div>            
-                        <div>
-                            <div class="one">
-                                <a href="@Url.Action("shangpin","Home",new { keyword="成猫粮",type="猫"})"class="ones">成猫粮</a>                       
-                                <a href="@Url.Action("shangpin","Home",new { keyword="幼猫湿粮",type="猫"})">幼猫粮</a>
-                                <a href="@Url.Action("shangpin","Home",new { keyword="成猫粮",type="猫"})">全猫粮</a>
-                                <a href="@Url.Action("shangpin","Home",new { keyword="幼猫湿粮",type="猫"})">老犬粮</a>
-                                <a href="@Url.Action("shangpin","Home",new { keyword="成猫粮",type="猫"})">老猫粮</a>
+                    <div style="width:700px;float:left;">
+                        <div style="margin-top:30px;">
+                            <div class="lei">
+                                <div>宠物猫粮</div>
+                                <div>猫罐头</div>
+                                <div>猫猫零食</div>
+                                <div>猫猫医疗</div>
+                                <div>猫猫保健品</div>
+                                <div>猫猫香波</div>
+                                <div>日常用品</div>
+                                <div>猫猫玩具</div>
                             </div>
-                            <div class="one">
-                                <a href="" class="ones">成猫湿粮</a>
-                                <a href=""> 幼猫湿粮</a>
-                               
-                            </div>
-                            <div class="one">
-                                <a href="" class="ones">  肉质零食</a>
-                                <a href="">猫条/猫草</a>
-                                <a href="">果冻</a>
-                                <a href="">猫咪洁牙零食</a>
+                            <div>
+                                <div class="one">
+                                    <a href="@Url.Action("shangpin","Home",new { keyword="成猫粮",type="猫"})" class="ones">成猫粮</a>
+                                    <a href="@Url.Action("shangpin","Home",new { keyword="幼猫湿粮",type="猫"})">幼猫粮</a>
+                                    <a href="@Url.Action("shangpin","Home",new { keyword="成猫粮",type="猫"})">全猫粮</a>
+                                    <a href="@Url.Action("shangpin","Home",new { keyword="幼猫湿粮",type="猫"})">老犬粮</a>
+                                    <a href="@Url.Action("shangpin","Home",new { keyword="成猫粮",type="猫"})">老猫粮</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones">成猫湿粮</a>
+                                    <a href=""> 幼猫湿粮</a>
 
-                            </div>                      
-                            <div class="one">
-                                <a href="" class="ones">体内驱虫</a>
-                                <a href="">体外驱虫</a>
-                                <a href="">口腔修护</a>
-                                <a href="">眼部护理</a>
-                                <a href="">耳道清洁</a>
-                                <a href="">皮肤问题</a>
-                            </div>
-                            <div class="one">
-                                <a href="" class="ones"> 美毛护肤</a>
-                                <a href="">补钙强骨</a>
-                                <a href="">微量矿物</a>
-                                <a href="">调理肠胃</a>
-                                <a href=""> 综合营养</a>
-                            </div>
-                            <div class="one">
-                                <a href="" class="ones">药用香波</a>
-                                <a href="">美毛去味</a>
-                                <a href="">特色毛发</a>
-                                <a href="">干洗粉</a>
-                                <a href="">洗手液</a>
-                            </div>
-                            <div class="one">
-                                <a href="" class="ones"> 休闲玩具</a>
-                                <a href=""> 互动玩具</a>
-                                <a href="">益智训导</a>
-                                <a href="">磨牙玩具</a>
-                                <a href="">洗澡用品</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones">  肉质零食</a>
+                                    <a href="">猫条/猫草</a>
+                                    <a href="">果冻</a>
+                                    <a href="">猫咪洁牙零食</a>
 
-                            </div>
-                            <div class="one">
-                                <a href="" class="ones">猫窝猫笼</a>
-                                <a href="">毛毯/垫子</a>
-                                <a href="">精美饰品</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones">体内驱虫</a>
+                                    <a href="">体外驱虫</a>
+                                    <a href="">口腔修护</a>
+                                    <a href="">眼部护理</a>
+                                    <a href="">耳道清洁</a>
+                                    <a href="">皮肤问题</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones"> 美毛护肤</a>
+                                    <a href="">补钙强骨</a>
+                                    <a href="">微量矿物</a>
+                                    <a href="">调理肠胃</a>
+                                    <a href=""> 综合营养</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones">药用香波</a>
+                                    <a href="">美毛去味</a>
+                                    <a href="">特色毛发</a>
+                                    <a href="">干洗粉</a>
+                                    <a href="">洗手液</a>
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones"> 休闲玩具</a>
+                                    <a href=""> 互动玩具</a>
+                                    <a href="">益智训导</a>
+                                    <a href="">磨牙玩具</a>
+                                    <a href="">洗澡用品</a>
+
+                                </div>
+                                <div class="one">
+                                    <a href="" class="ones">猫窝猫笼</a>
+                                    <a href="">毛毯/垫子</a>
+                                    <a href="">精美饰品</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 }
             </div>
-              <div class="right">
-                @foreach (var g in Model)
-                {
-                    <div class="product">
-                        <div class="tupian">
-                            <a href="@Url.Action("goumai",new { id=g.GoodsId})">
-                            <img src="@Url.Content(g.GoodsImg1)" style="width: 150px; height: 170px" /></a>
+            <div class="right">
+                    @foreach (var g in Model)
+                    {
+                        <div class="product">
+                            <div class="tupian">
+                                <a href="@Url.Action("goumai",new { id=g.GoodsId})">
+                                    <img src="@Url.Content(g.GoodsImg1)" style="width: 150px; height: 170px" />
+                                </a>
+                            </div>
+                            <div class="jiage"><span style="color:red;font-size:20px;">￥@Html.DisplayFor(a => g.GoodsPrice)</span></div>
+                            <div class="name">
+                                <a href="">@Html.DisplayFor(a => g.GoodsName)</a>
+                            </div>
+                            <div style="height: 15px">
+                                <div class="yishou">已售：@Html.DisplayFor(s => g.SellNum)</div>
+                                <div class="pingjia">已有：<a href="">@Html.DisplayFor(s => g.SellNum)</a>人评价</div>
+                            </div>
+                            <div class="gouwu">
+                                <a href="@Url.Action("AddToCart",new { id=@g.GoodsId})">
+                                    <input type="button" value="加入购物车" class="goumai" />
+                                </a>
+                            </div>
                         </div>
-                        <div class="jiage"><span style="color:red;font-size:20px;">￥@Html.DisplayFor(a=>g.GoodsPrice)</span></div>
-                        <div class="name">
-                            <a href="">@Html.DisplayFor(a=>g.GoodsName)</a>
-                        </div>
-                        <div style="height: 15px">
-                            <div class="yishou">已售：@Html.DisplayFor(s => g.SellNum)</div>
-                            <div class="pingjia">已有：<a href="">@Html.DisplayFor(s => g.SellNum)</a>人评价</div>
-                        </div>
-                        <div class="gouwu">
-                            <a href="">
-                                <input type="button" value="加入购物车" class="goumai" />
-                            </a>
-                        </div>
-                    </div>
-                }
-                    
-                  @*<div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("GetType", "goods", new { page, txttype = @ViewData["type"] }))</div>*@
+                    }
+                @*<div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("GetType", "goods", new { page, txttype = @ViewData["type"] }))</div>*@
+            </div>
+
         </div>
-     
-    </div>
-            </form>
+    </form>
 </body>
 </html>

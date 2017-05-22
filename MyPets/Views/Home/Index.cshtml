@@ -10,7 +10,9 @@
     <meta charset="utf-8">
     <title></title>
     <link href="~/Content/Home/css/index.css" rel="stylesheet" />
+    <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="~/Content/Home/js/index.js"></script>
 </head>
 <body>
@@ -19,12 +21,30 @@
         <div class="content">
             <div class="favorite">收藏宠物之家</div>
             <ul class="index_topRight">
-                <li>
-                    <a href="@Url.Action("Login","Register")" id="registerState">登录</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Register", "Register")">注册</a>
-                </li>
+                @if (Session["UserName"] == null)
+                {
+                    <li>
+                        <a href="@Url.Action("Login","Register")" id="registerState">登录</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Register", "Register")">注册</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <div class="dropdown">
+                            <div id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <a href="javascript:;" style="color:#9C3;">@Session["UserName"]</a>
+                                <span class="caret"></span>
+                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="@Url.Action("Index","PersonalCenter",new { user=Session["UserName"]})">个人中心</a></li>
+                                <li><a href="@Url.Action("LoginOff")">退出登录</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                }
                 <li>
                     <a href="">手机版</a>
                 </li>
@@ -40,20 +60,20 @@
     <!--首页顶部结束-->
     <!--搜索框部分-->
     <div id="search">
-    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
-    {
-        <img src="~/Content/Shop/img/logo.png" style="width:240px;height:100px;" />
-        <div class="searchType">
-            <ul>
-                <li class="beSelected" style="background:RGB(238,85,51);color:RGB(255,255,255);">商品</li>
-                <li>店铺</li>
-            </ul>
-        </div>
-        <div class="search_mid">
-            <input type="text" name="searchInput" id="searchTxtBox" value="" placeholder="狗粮" />
-            <input type="submit" name="searchBtn" id="searchBtn" value="搜索" onclick="search()" />
-        </div>
-    }
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+        {
+            <img src="~/Content/Shop/img/logo.png" style="width:240px;height:100px;" />
+            <div class="searchType">
+                <ul>
+                    <li class="beSelected" style="background:RGB(238,85,51);color:RGB(255,255,255);">商品</li>
+                    <li>店铺</li>
+                </ul>
+            </div>
+            <div class="search_mid">
+                <input type="text" name="searchInput" id="searchTxtBox" value="" placeholder="狗粮" />
+                <input type="submit" name="searchBtn" id="searchBtn" value="搜索" onclick="search()" />
+            </div>
+        }
     </div>
 
     <!--搜索框部分结束-->
@@ -90,7 +110,7 @@
                         <a href="" class="mainType">狗狗商品</a>
                     </div>
                     <div class="listDetails">
-                        <span><a href="">狗粮</a></span>
+                        <span><a href="@Url.Action("Shangpin",new { keyword="狗粮",type="狗"})">狗粮</a></span>
                         <span><a href="">狗罐头</a></span>
                         <span><a href="">狗零食</a></span>
                         <span><a href="">医疗</a></span>
@@ -547,7 +567,7 @@
                     <div id="ad_rO2Content">
                         <div id="subscribe">
                             <span>订阅促销信息</span>
-                            <input type="text" name="" id="subscribeEmailAddress" placeholder="请输入E-mail地址"/>
+                            <input type="text" name="" id="subscribeEmailAddress" placeholder="请输入E-mail地址" />
                             <input type="button" id="subscribeConfirm" value="订阅" />
                         </div>
                         <img src="~/Content/Home/img/index/PetsCode.png" />
@@ -633,15 +653,15 @@
             <div>
                 <img src="~/Content/Home/img/shopimg/shop5.jpg" />
                 <img class="bottomShop" src="~/Content/Home/img/shopimg/shop6.jpg" />
-            </div>    
+            </div>
             <div>
                 <img src="~/Content/Home/img/shopimg/shop7.jpg" />
-            </div>    
+            </div>
             <div>
                 <img src="~/Content/Home/img/shopimg/shop8.jpg" />
                 <img class="bottomShop" src="~/Content/Home/img/shopimg/shop9.jpg" />
-            </div>    
-                
+            </div>
+
         </div>
 
         <div class="boxOne">
@@ -1084,8 +1104,6 @@
         </div>
     </div>
     <!--商品展示部分结束-->
-
-
     <!--首页底部,暂时采用图片布局-->
     <div id="footer">
         <div class="footer_up">

@@ -37,6 +37,8 @@
         <AssociationConnector Association="MyPetsModel.FK_BaikeAnswer_BaikeQuestion1" />
         <EntityTypeShape EntityType="MyPetsModel.ResponAnswer" Width="1.5" PointX="7.5" PointY="7.625" />
         <AssociationConnector Association="MyPetsModel.FK_ResponAnswer_BaikeAnswer" />
+        <EntityTypeShape EntityType="MyPetsModel.ShopCart" Width="1.5" PointX="7.5" PointY="18.625" />
+        <AssociationConnector Association="MyPetsModel.FK_ShopCart_Goods" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
