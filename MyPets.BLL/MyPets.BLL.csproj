@@ -56,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponAnswerServices.cs" />
     <Compile Include="ResponseServices.cs" />
+    <Compile Include="ShopCartServices.cs" />
     <Compile Include="ShopRecommendServices.cs" />
     <Compile Include="ShopServices.cs" />
     <Compile Include="UserInfoServices.cs" />

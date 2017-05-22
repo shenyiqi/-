@@ -41,5 +41,6 @@ namespace MyPets.Model
         public virtual DbSet<BaikeAnswer> BaikeAnswer { get; set; }
         public virtual DbSet<BaikeQuestion> BaikeQuestion { get; set; }
         public virtual DbSet<ResponAnswer> ResponAnswer { get; set; }
+        public virtual DbSet<ShopCart> ShopCart { get; set; }
     }
 }

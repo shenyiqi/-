@@ -116,7 +116,7 @@ namespace MyPets.Controllers
                             UserInfoServices.AddEntity(user);
                             db.SaveChanges();
                             Session["UserName"] = user.UserName;
-                            RedirectToAction("Index", "Home");//跳到商城首页，还在弄
+                            RedirectToAction("Index", "Home");//跳到商城首页
                         }
                         else
                         {

@@ -150,6 +150,22 @@ namespace MyPets.DALFactory
             set { _GoodsDal = value; }
         }
         /// <summary>
+        /// 购物车
+        /// </summary>
+        private IShopCartDal _ShopCartDal;
+        public IShopCartDal ShopCartDal
+        {
+            get
+            {
+                if (_ShopCartDal == null)
+                {
+                    _ShopCartDal = AbstractFactory.CreateShopCartDal();
+                }
+                return _ShopCartDal;
+            }
+            set { _ShopCartDal = value; }
+        }
+        /// <summary>
         /// 创建数据操作类GoodscommentDal的实例
         /// </summary>
         private IGoodsCommentDal _GoodsCommentDal;

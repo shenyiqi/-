@@ -19,6 +19,7 @@ namespace MyPets.Model
         {
             this.GoodsComment = new HashSet<GoodsComment>();
             this.OrderDetail = new HashSet<OrderDetail>();
+            this.ShopCart = new HashSet<ShopCart>();
         }
     
         public int GoodsId { get; set; }
@@ -44,5 +45,7 @@ namespace MyPets.Model
         public virtual ICollection<GoodsComment> GoodsComment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ShopCart> ShopCart { get; set; }
     }
 }
