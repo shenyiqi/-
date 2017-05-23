@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MyPetsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MyPetsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adminstrator">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -98,10 +98,11 @@
           <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderCount" Type="decimal" Precision="10" Scale="0" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="OrderTime" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="OrderTime" Type="datetime" Nullable="false" />
           <Property Name="OrderAddress" Type="nvarchar(max)" Nullable="false" />
           <Property Name="OrderRemark" Type="nvarchar(max)" />
           <Property Name="OrderState" Type="bit" Nullable="false" />
+          <Property Name="OrderNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -112,7 +113,7 @@
           <Property Name="DetailSum" Type="int" Nullable="false" />
           <Property Name="DetailCount" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="OrderNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -177,8 +178,8 @@
           </Key>
           <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GoodsId" Type="int" />
-          <Property Name="GoodsSum" Type="int" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="GoodsSum" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ShopRecommend">
           <Key>
@@ -311,18 +312,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_OrderDetail_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="OrderDetail">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_OrderDetail_UserInfo">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
@@ -449,10 +438,6 @@
             <End Role="Goods" EntitySet="Goods" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderDetail" EntitySet="OrderDetail" />
-          </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_UserInfo" Association="Self.FK_OrderDetail_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
@@ -478,7 +463,8 @@
             <End Role="ShopCart" EntitySet="ShopCart" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyPetsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -503,6 +489,32 @@
           <Property Name="BaikeDescribe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BaikeContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BaikeTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="BaikeAnswer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="AnswerContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnswerTime" Type="DateTime" Precision="3" />
+          <Property Name="ClickNum" Type="Int32" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_BaikeAnswer_BaikeQuestion" FromRole="BaikeAnswer" ToRole="UserInfo" />
+          <NavigationProperty Name="ResponAnswer" Relationship="Self.FK_ResponAnswer_BaikeAnswer" FromRole="BaikeAnswer" ToRole="ResponAnswer" />
+        </EntityType>
+        <EntityType Name="BaikeQuestion">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionDescribe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionTime" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="isChoiceness" Type="Boolean" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_BaikeQuestion_UserInfo" FromRole="BaikeQuestion" ToRole="UserInfo" />
         </EntityType>
         <EntityType Name="Collect">
           <Key>
@@ -534,11 +546,11 @@
           <Property Name="GoodsStock" Type="Int32" Nullable="false" />
           <Property Name="ShopId" Type="Int32" Nullable="false" />
           <Property Name="SellNum" Type="Int32" />
+          <Property Name="GoodsRange" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Shop" Relationship="Self.FK_Goods_Shop1" FromRole="Goods" ToRole="Shop" />
           <NavigationProperty Name="GoodsComment" Relationship="Self.FK_GoodsComment_Goods" FromRole="Goods" ToRole="GoodsComment" />
           <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetail_Goods" FromRole="Goods" ToRole="OrderDetail" />
-          <Property Name="GoodsRange" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="ShopCart" Relationship="MyPetsModel.FK_ShopCart_Goods" FromRole="Goods" ToRole="ShopCart" />
+          <NavigationProperty Name="ShopCart" Relationship="Self.FK_ShopCart_Goods" FromRole="Goods" ToRole="ShopCart" />
         </EntityType>
         <EntityType Name="GoodsComment">
           <Key>
@@ -560,12 +572,12 @@
           <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderCount" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="OrderTime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="OrderTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="OrderAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrderRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="OrderState" Type="Boolean" Nullable="false" />
+          <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_Order_UserInfo" FromRole="Order" ToRole="UserInfo" />
-          <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -576,9 +588,8 @@
           <Property Name="DetailSum" Type="Int32" Nullable="false" />
           <Property Name="DetailCount" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Goods" Relationship="Self.FK_OrderDetail_Goods" FromRole="OrderDetail" ToRole="Goods" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_OrderDetail_UserInfo" FromRole="OrderDetail" ToRole="UserInfo" />
         </EntityType>
         <EntityType Name="Post">
@@ -604,6 +615,17 @@
           <Property Name="PrivateMsgContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PrivateMsgEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PrivateMsgTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResponAnswer">
+          <Key>
+            <PropertyRef Name="ResponseAnswerId" />
+          </Key>
+          <Property Name="ResponseAnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnswerId" Type="Int32" />
+          <Property Name="ResponContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ResponTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BaikeAnswer" Relationship="Self.FK_ResponAnswer_BaikeAnswer" FromRole="ResponAnswer" ToRole="BaikeAnswer" />
         </EntityType>
         <EntityType Name="Response">
           <Key>
@@ -634,6 +656,16 @@
           <NavigationProperty Name="Goods" Relationship="Self.FK_Goods_Shop1" FromRole="Shop" ToRole="Goods" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_Shop_Shop" FromRole="Shop" ToRole="UserInfo" />
         </EntityType>
+        <EntityType Name="ShopCart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GoodsId" Type="Int32" />
+          <Property Name="GoodsSum" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK_ShopCart_Goods" FromRole="ShopCart" ToRole="Goods" />
+        </EntityType>
         <EntityType Name="ShopRecommend">
           <Key>
             <PropertyRef Name="RecommendId" />
@@ -656,15 +688,51 @@
           <Property Name="IsSeller" Type="Boolean" Nullable="false" />
           <Property Name="Range" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Score" Type="Int32" />
+          <NavigationProperty Name="BaikeAnswer" Relationship="Self.FK_BaikeAnswer_BaikeQuestion" FromRole="UserInfo" ToRole="BaikeAnswer" />
+          <NavigationProperty Name="BaikeQuestion" Relationship="Self.FK_BaikeQuestion_UserInfo" FromRole="UserInfo" ToRole="BaikeQuestion" />
           <NavigationProperty Name="Collect" Relationship="Self.FK_Collect_UserInfo" FromRole="UserInfo" ToRole="Collect" />
           <NavigationProperty Name="GoodsComment" Relationship="Self.FK_GoodsComment_UserInfo" FromRole="UserInfo" ToRole="GoodsComment" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_UserInfo" FromRole="UserInfo" ToRole="Order" />
           <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetail_UserInfo" FromRole="UserInfo" ToRole="OrderDetail" />
           <NavigationProperty Name="Post" Relationship="Self.FK_Post_UserInfo" FromRole="UserInfo" ToRole="Post" />
           <NavigationProperty Name="Shop" Relationship="Self.FK_Shop_Shop" FromRole="UserInfo" ToRole="Shop" />
-          <NavigationProperty Name="BaikeQuestion" Relationship="MyPetsModel.FK_BaikeQuestion_UserInfo" FromRole="UserInfo" ToRole="BaikeQuestion" />
-          <NavigationProperty Name="BaikeAnswer" Relationship="MyPetsModel.FK_BaikeAnswer_BaikeQuestion1" FromRole="UserInfo" ToRole="BaikeAnswer" />
         </EntityType>
+        <Association Name="FK_BaikeAnswer_BaikeQuestion">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="BaikeAnswer" Type="Self.BaikeAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BaikeAnswer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResponAnswer_BaikeAnswer">
+          <End Role="BaikeAnswer" Type="Self.BaikeAnswer" Multiplicity="0..1" />
+          <End Role="ResponAnswer" Type="Self.ResponAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BaikeAnswer">
+              <PropertyRef Name="AnswerId" />
+            </Principal>
+            <Dependent Role="ResponAnswer">
+              <PropertyRef Name="AnswerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BaikeQuestion_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+          <End Role="BaikeQuestion" Type="Self.BaikeQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BaikeQuestion">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Collect_Shop">
           <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
           <End Role="Collect" Type="Self.Collect" Multiplicity="*" />
@@ -725,6 +793,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ShopCart_Goods">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="ShopCart" Type="Self.ShopCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsId" />
+            </Principal>
+            <Dependent Role="ShopCart">
+              <PropertyRef Name="GoodsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GoodsComment_UserInfo">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
           <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="*" />
@@ -746,18 +826,6 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderDetail_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="OrderDetail">
-              <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -812,6 +880,8 @@
         <EntityContainer Name="MyPetsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adminstrator" EntityType="Self.Adminstrator" />
           <EntitySet Name="Baike" EntityType="Self.Baike" />
+          <EntitySet Name="BaikeAnswer" EntityType="Self.BaikeAnswer" />
+          <EntitySet Name="BaikeQuestion" EntityType="Self.BaikeQuestion" />
           <EntitySet Name="Collect" EntityType="Self.Collect" />
           <EntitySet Name="Goods" EntityType="Self.Goods" />
           <EntitySet Name="GoodsComment" EntityType="Self.GoodsComment" />
@@ -819,10 +889,24 @@
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
           <EntitySet Name="Post" EntityType="Self.Post" />
           <EntitySet Name="PrivateMsg" EntityType="Self.PrivateMsg" />
+          <EntitySet Name="ResponAnswer" EntityType="Self.ResponAnswer" />
           <EntitySet Name="Response" EntityType="Self.Response" />
           <EntitySet Name="Shop" EntityType="Self.Shop" />
+          <EntitySet Name="ShopCart" EntityType="Self.ShopCart" />
           <EntitySet Name="ShopRecommend" EntityType="Self.ShopRecommend" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+          <AssociationSet Name="FK_BaikeAnswer_BaikeQuestion" Association="Self.FK_BaikeAnswer_BaikeQuestion">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="BaikeAnswer" EntitySet="BaikeAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResponAnswer_BaikeAnswer" Association="Self.FK_ResponAnswer_BaikeAnswer">
+            <End Role="BaikeAnswer" EntitySet="BaikeAnswer" />
+            <End Role="ResponAnswer" EntitySet="ResponAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BaikeQuestion_UserInfo" Association="Self.FK_BaikeQuestion_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="BaikeQuestion" EntitySet="BaikeQuestion" />
+          </AssociationSet>
           <AssociationSet Name="FK_Collect_Shop" Association="Self.FK_Collect_Shop">
             <End Role="Shop" EntitySet="Shop" />
             <End Role="Collect" EntitySet="Collect" />
@@ -843,6 +927,10 @@
             <End Role="Goods" EntitySet="Goods" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
+          <AssociationSet Name="FK_ShopCart_Goods" Association="Self.FK_ShopCart_Goods">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="ShopCart" EntitySet="ShopCart" />
+          </AssociationSet>
           <AssociationSet Name="FK_GoodsComment_UserInfo" Association="Self.FK_GoodsComment_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="GoodsComment" EntitySet="GoodsComment" />
@@ -850,10 +938,6 @@
           <AssociationSet Name="FK_Order_UserInfo" Association="Self.FK_Order_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_UserInfo" Association="Self.FK_OrderDetail_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfo" />
@@ -871,140 +955,7 @@
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="Shop" EntitySet="Shop" />
           </AssociationSet>
-          <EntitySet Name="BaikeAnswer" EntityType="MyPetsModel.BaikeAnswer" />
-          <EntitySet Name="BaikeQuestion" EntityType="MyPetsModel.BaikeQuestion" />
-          <AssociationSet Name="FK_BaikeAnswer_BaikeQuestion" Association="MyPetsModel.FK_BaikeAnswer_BaikeQuestion">
-            <End Role="BaikeQuestion" EntitySet="BaikeQuestion" />
-            <End Role="BaikeAnswer" EntitySet="BaikeAnswer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BaikeQuestion_UserInfo" Association="MyPetsModel.FK_BaikeQuestion_UserInfo">
-            <End Role="UserInfo" EntitySet="UserInfo" />
-            <End Role="BaikeQuestion" EntitySet="BaikeQuestion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BaikeAnswer_BaikeQuestion1" Association="MyPetsModel.FK_BaikeAnswer_BaikeQuestion1">
-            <End Role="UserInfo" EntitySet="UserInfo" />
-            <End Role="BaikeAnswer" EntitySet="BaikeAnswer" />
-          </AssociationSet>
-          <EntitySet Name="ResponAnswer" EntityType="MyPetsModel.ResponAnswer" />
-          <AssociationSet Name="FK_ResponAnswer_BaikeAnswer" Association="MyPetsModel.FK_ResponAnswer_BaikeAnswer">
-            <End Role="BaikeAnswer" EntitySet="BaikeAnswer" />
-            <End Role="ResponAnswer" EntitySet="ResponAnswer" />
-          </AssociationSet>
-          <EntitySet Name="ShopCart" EntityType="MyPetsModel.ShopCart" />
-          <AssociationSet Name="FK_ShopCart_Goods" Association="MyPetsModel.FK_ShopCart_Goods">
-            <End Role="Goods" EntitySet="Goods" />
-            <End Role="ShopCart" EntitySet="ShopCart" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="BaikeAnswer">
-          <Key>
-            <PropertyRef Name="AnswerId" />
-          </Key>
-          <Property Name="AnswerId" Type="Int32" Nullable="false" />
-          <Property Name="QuestionId" Type="Int32" />
-          <Property Name="AnswerContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="AnswerTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="BaikeQuestion" Relationship="MyPetsModel.FK_BaikeAnswer_BaikeQuestion" FromRole="BaikeAnswer" ToRole="BaikeQuestion" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="UserInfo" Relationship="MyPetsModel.FK_BaikeAnswer_BaikeQuestion1" FromRole="BaikeAnswer" ToRole="UserInfo" />
-          <Property Name="ClickNum" Type="Int32" />
-          <NavigationProperty Name="ResponAnswer" Relationship="MyPetsModel.FK_ResponAnswer_BaikeAnswer" FromRole="BaikeAnswer" ToRole="ResponAnswer" />
-        </EntityType>
-        <EntityType Name="BaikeQuestion">
-          <Key>
-            <PropertyRef Name="QuestionId" />
-          </Key>
-          <Property Name="QuestionId" Type="Int32" Nullable="false" />
-          <Property Name="QuestionTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="QuestionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="QuestionDescribe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="QuestionTime" Type="DateTime" Precision="3" />
-          <Property Name="UserId" Type="Int32" />
-          <NavigationProperty Name="BaikeAnswer" Relationship="MyPetsModel.FK_BaikeAnswer_BaikeQuestion" FromRole="BaikeQuestion" ToRole="BaikeAnswer" />
-          <NavigationProperty Name="UserInfo" Relationship="MyPetsModel.FK_BaikeQuestion_UserInfo" FromRole="BaikeQuestion" ToRole="UserInfo" />
-          <Property Name="isChoiceness" Type="Boolean" />
-        </EntityType>
-        <Association Name="FK_BaikeAnswer_BaikeQuestion">
-          <End Type="MyPetsModel.BaikeQuestion" Role="BaikeQuestion" Multiplicity="0..1" />
-          <End Type="MyPetsModel.BaikeAnswer" Role="BaikeAnswer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BaikeQuestion">
-              <PropertyRef Name="QuestionId" />
-            </Principal>
-            <Dependent Role="BaikeAnswer">
-              <PropertyRef Name="QuestionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BaikeQuestion_UserInfo">
-          <End Type="MyPetsModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
-          <End Type="MyPetsModel.BaikeQuestion" Role="BaikeQuestion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserInfo">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="BaikeQuestion">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BaikeAnswer_BaikeQuestion1">
-          <End Type="MyPetsModel.UserInfo" Role="UserInfo" Multiplicity="1" />
-          <End Type="MyPetsModel.BaikeAnswer" Role="BaikeAnswer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserInfo">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="BaikeAnswer">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="ResponAnswer">
-          <Key>
-            <PropertyRef Name="ResponseAnswerId" />
-          </Key>
-          <Property Name="ResponseAnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AnswerId" Type="Int32" />
-          <Property Name="ResponContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ResponTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="BaikeAnswer" Relationship="MyPetsModel.FK_ResponAnswer_BaikeAnswer" FromRole="ResponAnswer" ToRole="BaikeAnswer" />
-        </EntityType>
-        <Association Name="FK_ResponAnswer_BaikeAnswer">
-          <End Type="MyPetsModel.BaikeAnswer" Role="BaikeAnswer" Multiplicity="0..1" />
-          <End Type="MyPetsModel.ResponAnswer" Role="ResponAnswer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BaikeAnswer">
-              <PropertyRef Name="AnswerId" />
-            </Principal>
-            <Dependent Role="ResponAnswer">
-              <PropertyRef Name="AnswerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="ShopCart">
-          <Key>
-            <PropertyRef Name="CartId" />
-          </Key>
-          <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GoodsId" Type="Int32" />
-          <Property Name="GoodsSum" Type="Int32" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Goods" Relationship="MyPetsModel.FK_ShopCart_Goods" FromRole="ShopCart" ToRole="Goods" />
-        </EntityType>
-        <Association Name="FK_ShopCart_Goods">
-          <End Type="MyPetsModel.Goods" Role="Goods" Multiplicity="0..1" />
-          <End Type="MyPetsModel.ShopCart" Role="ShopCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Goods">
-              <PropertyRef Name="GoodsId" />
-            </Principal>
-            <Dependent Role="ShopCart">
-              <PropertyRef Name="GoodsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1035,6 +986,31 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="BaikeAnswer">
+            <EntityTypeMapping TypeName="MyPetsModel.BaikeAnswer">
+              <MappingFragment StoreEntitySet="BaikeAnswer">
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AnswerContent" ColumnName="AnswerContent" />
+                <ScalarProperty Name="AnswerTime" ColumnName="AnswerTime" />
+                <ScalarProperty Name="ClickNum" ColumnName="ClickNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaikeQuestion">
+            <EntityTypeMapping TypeName="MyPetsModel.BaikeQuestion">
+              <MappingFragment StoreEntitySet="BaikeQuestion">
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="QuestionTitle" ColumnName="QuestionTitle" />
+                <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+                <ScalarProperty Name="QuestionDescribe" ColumnName="QuestionDescribe" />
+                <ScalarProperty Name="QuestionTime" ColumnName="QuestionTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="isChoiceness" ColumnName="isChoiceness" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Collect">
             <EntityTypeMapping TypeName="MyPetsModel.Collect">
               <MappingFragment StoreEntitySet="Collect">
@@ -1047,7 +1023,6 @@
           <EntitySetMapping Name="Goods">
             <EntityTypeMapping TypeName="MyPetsModel.Goods">
               <MappingFragment StoreEntitySet="Goods">
-                <ScalarProperty Name="GoodsRange" ColumnName="GoodsRange" />
                 <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
                 <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
                 <ScalarProperty Name="SeriesName" ColumnName="SeriesName" />
@@ -1064,6 +1039,7 @@
                 <ScalarProperty Name="GoodsStock" ColumnName="GoodsStock" />
                 <ScalarProperty Name="ShopId" ColumnName="ShopId" />
                 <ScalarProperty Name="SellNum" ColumnName="SellNum" />
+                <ScalarProperty Name="GoodsRange" ColumnName="GoodsRange" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1089,6 +1065,7 @@
                 <ScalarProperty Name="OrderAddress" ColumnName="OrderAddress" />
                 <ScalarProperty Name="OrderRemark" ColumnName="OrderRemark" />
                 <ScalarProperty Name="OrderState" ColumnName="OrderState" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1100,7 +1077,7 @@
                 <ScalarProperty Name="DetailSum" ColumnName="DetailSum" />
                 <ScalarProperty Name="DetailCount" ColumnName="DetailCount" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1125,6 +1102,17 @@
                 <ScalarProperty Name="PrivateMsgContent" ColumnName="PrivateMsgContent" />
                 <ScalarProperty Name="PrivateMsgEmail" ColumnName="PrivateMsgEmail" />
                 <ScalarProperty Name="PrivateMsgTime" ColumnName="PrivateMsgTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResponAnswer">
+            <EntityTypeMapping TypeName="MyPetsModel.ResponAnswer">
+              <MappingFragment StoreEntitySet="ResponAnswer">
+                <ScalarProperty Name="ResponseAnswerId" ColumnName="ResponseAnswerId" />
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="ResponContent" ColumnName="ResponContent" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ResponTime" ColumnName="ResponTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1155,6 +1143,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ShopCart">
+            <EntityTypeMapping TypeName="MyPetsModel.ShopCart">
+              <MappingFragment StoreEntitySet="ShopCart">
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
+                <ScalarProperty Name="GoodsSum" ColumnName="GoodsSum" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ShopRecommend">
             <EntityTypeMapping TypeName="MyPetsModel.ShopRecommend">
               <MappingFragment StoreEntitySet="ShopRecommend">
@@ -1177,52 +1175,6 @@
                 <ScalarProperty Name="IsSeller" ColumnName="IsSeller" />
                 <ScalarProperty Name="Range" ColumnName="Range" />
                 <ScalarProperty Name="Score" ColumnName="Score" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BaikeAnswer">
-            <EntityTypeMapping TypeName="MyPetsModel.BaikeAnswer">
-              <MappingFragment StoreEntitySet="BaikeAnswer">
-                <ScalarProperty Name="ClickNum" ColumnName="ClickNum" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="AnswerTime" ColumnName="AnswerTime" />
-                <ScalarProperty Name="AnswerContent" ColumnName="AnswerContent" />
-                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
-                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BaikeQuestion">
-            <EntityTypeMapping TypeName="MyPetsModel.BaikeQuestion">
-              <MappingFragment StoreEntitySet="BaikeQuestion">
-                <ScalarProperty Name="isChoiceness" ColumnName="isChoiceness" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="QuestionTime" ColumnName="QuestionTime" />
-                <ScalarProperty Name="QuestionDescribe" ColumnName="QuestionDescribe" />
-                <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
-                <ScalarProperty Name="QuestionTitle" ColumnName="QuestionTitle" />
-                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ResponAnswer">
-            <EntityTypeMapping TypeName="MyPetsModel.ResponAnswer">
-              <MappingFragment StoreEntitySet="ResponAnswer">
-                <ScalarProperty Name="ResponTime" ColumnName="ResponTime" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="ResponContent" ColumnName="ResponContent" />
-                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
-                <ScalarProperty Name="ResponseAnswerId" ColumnName="ResponseAnswerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ShopCart">
-            <EntityTypeMapping TypeName="MyPetsModel.ShopCart">
-              <MappingFragment StoreEntitySet="ShopCart">
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="GoodsSum" ColumnName="GoodsSum" />
-                <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
-                <ScalarProperty Name="CartId" ColumnName="CartId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

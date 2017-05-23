@@ -14,12 +14,6 @@ namespace MyPets.Model
     
     public partial class BaikeQuestion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BaikeQuestion()
-        {
-            this.BaikeAnswer = new HashSet<BaikeAnswer>();
-        }
-    
         public int QuestionId { get; set; }
         public string QuestionTitle { get; set; }
         public string QuestionType { get; set; }
@@ -28,8 +22,6 @@ namespace MyPets.Model
         public Nullable<int> UserId { get; set; }
         public Nullable<bool> isChoiceness { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BaikeAnswer> BaikeAnswer { get; set; }
         public virtual UserInfo UserInfo { get; set; }
     }
 }

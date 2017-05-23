@@ -16,7 +16,7 @@ namespace MyPets.Model
     {
         public int CartId { get; set; }
         public Nullable<int> GoodsId { get; set; }
-        public Nullable<int> GoodsSum { get; set; }
+        public int GoodsSum { get; set; }
         public string UserName { get; set; }
     
         public virtual Goods Goods { get; set; }

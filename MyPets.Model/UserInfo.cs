@@ -17,14 +17,14 @@ namespace MyPets.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserInfo()
         {
+            this.BaikeAnswer = new HashSet<BaikeAnswer>();
+            this.BaikeQuestion = new HashSet<BaikeQuestion>();
             this.Collect = new HashSet<Collect>();
             this.GoodsComment = new HashSet<GoodsComment>();
             this.Order = new HashSet<Order>();
             this.OrderDetail = new HashSet<OrderDetail>();
             this.Post = new HashSet<Post>();
             this.Shop = new HashSet<Shop>();
-            this.BaikeQuestion = new HashSet<BaikeQuestion>();
-            this.BaikeAnswer = new HashSet<BaikeAnswer>();
         }
     
         public int UserId { get; set; }
@@ -39,6 +39,10 @@ namespace MyPets.Model
         public Nullable<int> Score { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BaikeAnswer> BaikeAnswer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BaikeQuestion> BaikeQuestion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Collect> Collect { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GoodsComment> GoodsComment { get; set; }
@@ -50,9 +54,5 @@ namespace MyPets.Model
         public virtual ICollection<Post> Post { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shop> Shop { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BaikeQuestion> BaikeQuestion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BaikeAnswer> BaikeAnswer { get; set; }
     }
 }

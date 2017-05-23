@@ -4,41 +4,39 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5928e778825c4798bb4d586e323d7d17" Name="Diagram1">
+      <Diagram DiagramId="9aa4831bc8064c189a08c1cfadeccc6a" Name="Diagram1">
         <EntityTypeShape EntityType="MyPetsModel.Adminstrator" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyPetsModel.Baike" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.Collect" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.Goods" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.GoodsComment" Width="1.5" PointX="7.5" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.Order" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.OrderDetail" Width="1.5" PointX="10.5" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.Post" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.BaikeAnswer" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.BaikeQuestion" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.Collect" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.Goods" Width="1.5" PointX="5.25" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.GoodsComment" Width="1.5" PointX="7.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.Order" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.OrderDetail" Width="1.5" PointX="10.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.Post" Width="1.5" PointX="3" PointY="25.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyPetsModel.PrivateMsg" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.Response" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.Shop" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.ShopRecommend" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.UserInfo" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.ResponAnswer" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.Response" Width="1.5" PointX="5.25" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.Shop" Width="1.5" PointX="3" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.ShopCart" Width="1.5" PointX="7.5" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.ShopRecommend" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.UserInfo" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <AssociationConnector Association="MyPetsModel.FK_BaikeAnswer_BaikeQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="MyPetsModel.FK_ResponAnswer_BaikeAnswer" ManuallyRouted="false" />
+        <AssociationConnector Association="MyPetsModel.FK_BaikeQuestion_UserInfo" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_Collect_Shop" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_Collect_UserInfo" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_Goods_Shop1" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_GoodsComment_Goods" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_OrderDetail_Goods" ManuallyRouted="false" />
+        <AssociationConnector Association="MyPetsModel.FK_ShopCart_Goods" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_GoodsComment_UserInfo" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_Order_UserInfo" ManuallyRouted="false" />
-        <AssociationConnector Association="MyPetsModel.FK_OrderDetail_Order" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_OrderDetail_UserInfo" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_Post_UserInfo" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_Response_Post" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_Shop_Shop" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MyPetsModel.BaikeAnswer" Width="1.5" PointX="5.25" PointY="7.375" />
-        <EntityTypeShape EntityType="MyPetsModel.BaikeQuestion" Width="1.5" PointX="3" PointY="7.125" />
-        <AssociationConnector Association="MyPetsModel.FK_BaikeAnswer_BaikeQuestion" />
-        <AssociationConnector Association="MyPetsModel.FK_BaikeQuestion_UserInfo" />
-        <AssociationConnector Association="MyPetsModel.FK_BaikeAnswer_BaikeQuestion1" />
-        <EntityTypeShape EntityType="MyPetsModel.ResponAnswer" Width="1.5" PointX="7.5" PointY="7.625" />
-        <AssociationConnector Association="MyPetsModel.FK_ResponAnswer_BaikeAnswer" />
-        <EntityTypeShape EntityType="MyPetsModel.ShopCart" Width="1.5" PointX="7.5" PointY="18.625" />
-        <AssociationConnector Association="MyPetsModel.FK_ShopCart_Goods" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -19,10 +19,9 @@ namespace MyPets.Model
         public int DetailSum { get; set; }
         public int DetailCount { get; set; }
         public int UserId { get; set; }
-        public int OrderId { get; set; }
+        public string OrderNumber { get; set; }
     
         public virtual Goods Goods { get; set; }
-        public virtual Order Order { get; set; }
         public virtual UserInfo UserInfo { get; set; }
     }
 }
