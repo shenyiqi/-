@@ -185,5 +185,23 @@ namespace MyPets.Controllers
             Session["UserName"] = null;
             return RedirectToAction("Index");
         }
+        public ActionResult Comment(int id)//评价
+        {
+            if (Session["UserName"] != null)
+            {
+                string name = Session["UserName"].ToString();
+                var cart = ShopCartServices.LoadEntities(c => c.GoodsId == id).FirstOrDefault();
+                
+                    var good = goodsService.LoadEntities(g => g.GoodsId == id).FirstOrDefault();
+                    ShopCartServices.AddEntity(new ShopCart
+                    {
+                        GoodsId = good.GoodsId,                      
+                        UserName = name
+                    });
+                    db.SaveChanges();
+                    return Content("<script>alert('评价成功');history.go(-1);</script>");
+            }
+            else return Content("<script>alert('您还未登陆！！');history.go(-1);</script>");
+        }
     }
 }

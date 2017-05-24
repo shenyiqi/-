@@ -65,19 +65,31 @@
                                     <span style="color: red; font-size: 30px; ">￥@Html.DisplayFor(a => Model.GoodsPrice)</span>
                                 </div>
                             </div>
+                            <div class="demo">
+                                <!-- 在输入框加入id -->
+                                <input type="text" class="cityinput" id="citySelect" placeholder="请选择你所在城市">
+                                <script type="text/javascript">
+                                 var test = new Vcity.CitySelector({ input: 'citySelect' });
+                                </script>
 
+                            </div>
+                          
                             <div class="num">
-                                数量:
-                                <input class="reduc" type="button" value="-" />
-                                <input type="text" value="1" class="multil" name="sum" />
-                                <input class="add" type="button" value="+" />
+                                <div style="float:left;">
+                                    数量:
+                                    <input class="reduc" type="button" value="-" />
+                                    <input type="text" value="1" class="multil" name="sum" />
+                                    <input class="add" type="button" value="+" />
+                                </div>    
+                                    <div style="margin-left:180px;margin-top:40px;color:#808080">库存:@Html.DisplayFor(a => Model.GoodsStock)</div>
+                                   
                             </div>
                             @*@Html.Hidden("id", @Model.GoodsId)*@
                             <div style="margin-top:30px;margin-left:300px;">
                                 <a href="@Url.Action("jiesuan")">
-                                    <input id = "Button1" type = "button" value = "立即购买" />
-                                </a >
-                            </div >
+                                    <input id="Button1" type="button" value="立即购买" />
+                                </a>
+                            </div>
                         </div >
                     }
                 </div >
@@ -125,11 +137,12 @@
                     </div>
                 </div>
                 @*评价*@
+
                 <div class="pingjia">
                     <div id="pingjia1">商品评论</div>
                     <div style="height:110px;border-bottom :1px solid #808080;border-top :1px solid #808080;">
                         <div class="pingjia2">
-                            <p><span style="font-size:50px;font-weight:600;color:red;">4.9</span> </p>
+                            <p><span style="font-size:50px;font-weight:600;color:red;">5.0</span> </p>
                             <p>数量</p>
                         </div>
                         <div class="pingjia3">

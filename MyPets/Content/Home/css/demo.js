@@ -1,80 +1,3 @@
-	//$(function() {
-	//				totl();
-	//				adddel()
-	//					//全选
-	//				$("#all").click(function() {
-	//						all = $(this).prop("checked")
-	//						$(".Each").each(function() {
-	//							$(this).prop("checked", all);
-	//						})
-	//					})
-	//					//删除当前行
-	//				$(".del").each(function() {
-	//						$(this).click(function() {
-	//						    $(this).parent().remove();
-	//						    totl();
-	//							if($(".imfor").length == 0) {
-	//								$("#susum").text(0);
-	//							}
-								
-	//						})
-	//				})
-		
-	//					//全选删除										
-	//				$(".foot_del").click(function() {
-	//					$(".Each").each(function() {
-	//						if($(this).prop('checked')) {
-	//							$(this).parents(".imfor").remove();
-	//							totl();
-	//							if($(".imfor").length == 0) {
-	//								$("#susum").text(0);
-	//							}
-	//						}
-	//					})
-
-	//				})
-
-	//			})
-	//			//合计
-	//function totl() {
-	//			var sum = 0;
-	//			$(".totle").each(function() {
-	//				sum += parseFloat($(this).text());
-	//				$("#susum").text(sum);
-	//			})
-	//		}
-	//function adddel(){
-	//			//小计和加减
-	//				//加
-	//				$(".add").each(function() {
-	//						$(this).click(function() {
-	//							var $multi = 0;
-	//							var vall = $(this).prev().val();
-	//							vall++;
-	//							$(this).prev().val(vall);
-	//							$multi = parseFloat(vall) * parseFloat($(this).parent().prev().text());
-	//							$(this).parent().next().text(Math.round($multi));
-	//							totl();
-	//						})
-
-	//					})
-	//					//减
-	//				$(".reduc").each(function() {
-	//						$(this).click(function() {
-	//							var $multi1 = 0;
-	//							var vall1 = $(this).next().val();
-	//							vall1--;
-	//							if(vall1 <= 0) {
-	//								vall1 = 1;
-	//							}
-	//							$(this).next().val(vall1);
-	//							$multi1 = parseFloat(vall1) * parseFloat($(this).parent().prev().text());
-	//							$(this).parent().next().text(Math.round($multi1));
-	//							totl();
-	//						})
-
-	//					})
-	//		}
 /**
  * Created by an www.sucaijiayuan.com
  */
@@ -85,7 +8,7 @@ window.onload = function () {
             var els = document.getElementsByTagName('*');
             for (var i = 0, len = els.length; i < len; i++) {
 
-                if (els[i].className.indexOf(cls + ' ') >= 0 || els[i].className.indexOf(' ' + cls + ' ') >= 0 || els[i].className.indexOf(' ' + cls) >= 0) {
+                if (els[i].className.indexOf(cls + ' ') >=0 || els[i].className.indexOf(' ' + cls + ' ') >=0 || els[i].className.indexOf(' ' + cls) >=0) {
                     ret.push(els[i]);
                 }
             }
@@ -106,28 +29,28 @@ window.onload = function () {
 
     // 更新总数和总价格，已选浮层
     function getTotal() {
-        var seleted = 0;
-        var price = 0;
-        var HTMLstr = '';
-        for (var i = 0, len = tr.length; i < len; i++) {
-            if (tr[i].getElementsByTagName('input')[0].checked) {
-                tr[i].className = 'on';
-                seleted += parseInt(tr[i].getElementsByTagName('input')[1].value);
-                price += parseFloat(tr[i].cells[4].innerHTML);
-                HTMLstr += '<div><img src="' + tr[i].getElementsByTagName('img')[0].src + '"><span class="del" index="' + i + '">取消选择</span></div>'
-            }
-            else {
-                tr[i].className = '';
-            }
-        }
-        selectedTotal.innerHTML = seleted;
-        priceTotal.innerHTML = price.toFixed(2);
-        selectedViewList.innerHTML = HTMLstr;
-
-        if (seleted == 0) {
-            foot.className = 'foot';
-        }
-    }
+		var seleted = 0;
+		var price = 0;
+		var HTMLstr = '';
+		for (var i = 0, len = tr.length; i < len; i++) {
+			if (tr[i].getElementsByTagName('input')[0].checked) {
+				tr[i].className = 'on';
+				seleted += parseInt(tr[i].getElementsByTagName('input')[1].value);
+				price += parseFloat(tr[i].cells[4].innerHTML);
+				HTMLstr += '<div><img src="' + tr[i].getElementsByTagName('img')[0].src + '"><span class="del" index="' + i + '">取消选择</span></div>'
+			}
+			else {
+				tr[i].className = '';
+			}
+		}	
+		selectedTotal.innerHTML = seleted;
+		priceTotal.innerHTML = price.toFixed(2);
+		selectedViewList.innerHTML = HTMLstr;
+	
+		if (seleted == 0) {
+			foot.className = 'foot';
+		}
+	}
     // 计算单行价格
     function getSubtotal(tr) {
         var cells = tr.cells;
@@ -140,13 +63,13 @@ window.onload = function () {
         //如果数目只有一个，把-号去掉
         if (countInput.value == 1) {
             span.innerHTML = '';
-        } else {
+        }else{
             span.innerHTML = '-';
         }
     }
 
     // 点击选择框
-    for (var i = 0; i < selectInputs.length; i++) {
+    for(var i = 0; i < selectInputs.length; i++ ){
         selectInputs[i].onclick = function () {
             if (this.className.indexOf('check-all') >= 0) { //如果是全选，则吧所有的选择框选中
                 for (var j = 0; j < selectInputs.length; j++) {
@@ -173,8 +96,8 @@ window.onload = function () {
     selectedViewList.onclick = function (e) {
         var e = e || window.event;
         var el = e.srcElement;
-        if (el.className == 'del') {
-            var input = tr[el.getAttribute('index')].getElementsByTagName('input')[0]
+        if (el.className=='del') {
+            var input =  tr[el.getAttribute('index')].getElementsByTagName('input')[0]
             input.checked = false;
             input.onclick();
         }
@@ -241,7 +164,7 @@ window.onload = function () {
         }
         getTotal(); //更新总数
     }
-    console.log("\u767e\u5ea6\u641c\u7d22\u3010\u7d20\u6750\u5bb6\u56ed\u3011\u4e0b\u8f7d\u66f4\u591aJS\u7279\u6548\u4ee3\u7801");
+	console.log("\u767e\u5ea6\u641c\u7d22\u3010\u7d20\u6750\u5bb6\u56ed\u3011\u4e0b\u8f7d\u66f4\u591aJS\u7279\u6548\u4ee3\u7801");
     // 默认全选
     checkAllInputs[0].checked = true;
     checkAllInputs[0].onclick();

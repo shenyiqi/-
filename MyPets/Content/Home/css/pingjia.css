@@ -1,0 +1,88 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #666;
+    font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
+}
+
+.all {
+    width: 1100px;
+ 
+    margin: 0 auto;
+}
+
+.top {
+    background-color: #efefef;
+    height: 35px;
+    line-height: 35px;
+    border-bottom:1px solid #ff6a00;
+}
+
+.top span {
+        background-color: #ff6a00;
+        color: white;
+        display: block;
+        width: 140px;
+        text-align: center;
+        font-weight: 800;
+    }
+
+.main {
+   
+     border: 1px solid #efefef;
+}
+/*.main.name,
+.main.neirong
+{
+    margin-top:30px;
+
+}*/
+.name{
+    width:140px;
+    float:left;
+    margin-left:50px;
+   margin-top:30px;
+}
+.tupian {
+    width: 100px;
+    height:100px;
+    display:block;
+}
+.neirong{
+    border:1px solid #808080;
+    width:850px;
+    margin-left:200px;margin-top:30px;
+    
+}
+.range{
+    height:40px;
+}
+/*.neirong .pingjia{
+    border:1px solid #000000;
+    width:840px;
+    margin-left:5px;
+    margin-bottom:5px;
+    height:150px;
+}*/
+#Text1{ border:1px solid #000000;
+    width:840px;
+    margin-left:5px;
+    margin-bottom:5px;
+    height:150px;   
+}
+#Button1{
+   
+    width:100px;
+    height:35px;
+    background-color:#47a3fe;
+    font-weight:800;
+    color:white;
+    text-align:center;
+    line-height:35px;
+    margin-top:30px;
+   border :none;
+
+}

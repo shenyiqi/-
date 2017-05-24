@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Comment";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+@model IEnumerable<MyPets.Model.GoodsComment>  
+    @model IEnumerable<MyPets.Model.Order>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>评价</title>
+
+    <link href="~/Content/Home/css/pingjia.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="all">
+        <div class="top">
+            <span>评价宝贝</span>
+        </div>
+        @foreach( var b in Model){
+        <div class="main">
+            <div class="name">       
+                <img src="@Url.Content(@b.Goods.GoodsImg1)" class="tupian" />
+                <span>@(b.Goods.GoodsName)</span>
+            </div>
+            <div class="neirong">
+                <div class="range">
+                    等级
+                </div>
+                <div>
+                    <div class="pingjia">
+                        <input id="Text1" type="text" placeholder="请输入想评价的内容" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    <div style="margin:0 auto;">
+    <input id="Button1" type="button" value="发表评论" />
+</div>
+</body>
+</html>
