@@ -9,8 +9,8 @@
     {
         <div class="col-md-4">
             <div class="single-wid-product">
-                <a href="single-product.html"><img src="@Url.Content(item.GoodsImg1)" alt="" class="product-thumb"></a>
-                <h2><a href="single-product.html">耐威克狗粮 鸡肉味泰迪比熊通用小型犬幼犬粮2.5kg</a></h2>
+                <a href="@Url.Action("GoodsDetail",new {goodsid=item.GoodsId })"><img src="@Url.Content(item.GoodsImg1)" alt="" class="product-thumb"></a>
+                <h2><a href="@Url.Action("GoodsDetail",new {goodsid=item.GoodsId })">耐威克狗粮 鸡肉味泰迪比熊通用小型犬幼犬粮2.5kg</a></h2>
                 <div class="product-wid-rating">
                     @if (item.GoodsRange == "rateit")
                 {

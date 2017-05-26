@@ -1819,6 +1819,9 @@
     <Content Include="Views\Store\PartialCatGoods.cshtml" />
     <Content Include="Views\Store\PartialLittleGoods.cshtml" />
     <Content Include="Views\Store\PartialWaterGoods.cshtml" />
+    <Content Include="Views\Shared\_LayouStore.cshtml" />
+    <Content Include="Views\Store\GoodsDetail.cshtml" />
+    <Content Include="Views\Store\SearchShopGoods.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,7 +18,7 @@
 
     <!-- Bootstrap -->
 
-    <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+  
     <!-- Font Awesome -->
     <link href="~/Content/Admin/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/Store/css/owl.carousel.css" rel="stylesheet" />
@@ -26,7 +26,7 @@
     <link href="~/Content/Store/css/owl.carousel.css" rel="stylesheet" />
     <link href="~/Content/Store/css/style.css" rel="stylesheet" />
     <link href="~/Content/Store/css/responsive.css" rel="stylesheet" />
-
+    <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -42,24 +42,34 @@
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user"></i>个人中心</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> 收藏夹</a></li>
+                            <li>
+                                @if (Session["UserName"] == null)
+                                {
+                                    <a href="@Url.Action("Login","Register")"><i class="fa fa-user"></i>登录账号</a>
+                                }
+                                else
+                                {
+                                    <a href="#"><i class="fa fa-user"></i>个人中心</a>
+                                }
+                            </li>
+                            <li><a href="@Url.Action("CollectStore")"><i class="fa fa-heart"></i> 收藏店铺</a></li>
                             <li><a href="cart.html"><i class="fa fa-user"></i> 我的购物车</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-user"></i> 确认信息</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i>登录注册</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-md-4">
-                    <div class="header-right">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="goods" placeholder="Search for...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">搜索</button>
-                            </span>
+                    @using (Html.BeginForm("SearchShopGoods", "Store",FormMethod.Post))
+                    {
+                        <div class="header-right">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="searchthing" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">搜索</button>
+                                </span>
+                            </div>
                         </div>
-                    </div>
+                    }
                     @*<div class="header-right">
                             <ul class="list-unstyled list-inline"></ul>
                         </div>*@
@@ -207,10 +217,10 @@
                                         <img src="@Url.Content(dgoods.GoodsImg1)" alt="">
                                         <div class="product-hover">
                                             <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> 查看细节</a>
+                                            <a href="@Url.Action("GoodsDetail", new { goodsid = dgoods.GoodsId })" class="view-details-link"><i class="fa fa-link"></i> 查看细节</a>
                                         </div>
                                     </div>
-                                    <h2><a href="single-product.html">@dgoods.GoodsName</a></h2>
+                                    <h2><a href="@Url.Action("GoodsDetail", new { goodsid = dgoods.GoodsId })">@dgoods.GoodsName</a></h2>
                                     <div class="product-carousel-price">
                                         <ins>@dgoods.DiscountPrice</ins> <del>@dgoods.GoodsPrice</del>
                                     </div>
@@ -237,11 +247,11 @@
                 </div><!-- /.col-lg-6 -->
                 <div class="col-lg-5">
                     @*<div class="input-group">
-                        <input type="text" class="form-control" name="goods" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit"></button>
-                        </span>
-                    </div>*@
+                            <input type="text" class="form-control" name="goods" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit"></button>
+                            </span>
+                        </div>*@
                 </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
             <br /><br />
