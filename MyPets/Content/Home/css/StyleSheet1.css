@@ -70,12 +70,25 @@
 .add{
     width:25px;
 }
-#Button1{
-Height:40px;Width:110px;background-color:#ff6a00;border-width:0px;color:white;
-font-weight:600;
+#Button1{margin-left:80px;
+Height:40px;Width:130px;background-color:#ee5533;border-width:0px;color:white;
+font-size:15px;
+}
+#Button1:hover{background-color:red;cursor:pointer;}
+
+#Button2{margin-left:10px;
+Height:40px;Width:150px;background-color:#fdf2f0;border:1px solid #ee5533;color:#f4a38e;
+font-size:16px;
+}
+#Button2:hover{cursor:pointer;color:#c64e5a; font-weight:800;}
+.shoucang{margin-left:10px;
+    color:black;
+}
+.shoucang:hover{color:red;
+text-decoration:none;
+cursor:pointer;
 }
 
-#Button1:hover{background-color:red;color:white;cursor:pointer;}
 
 /*右边*/
 .you{

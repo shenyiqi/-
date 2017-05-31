@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     @*中间*@
-                    @using (Html.BeginForm("AddToCart","Home", FormMethod.Post))
+                    @using (Html.BeginForm("AddToCart", "Home", FormMethod.Post))
                     {
                         <div class="zhong">
                             <div class="name">@Html.DisplayFor(a => Model.GoodsName)</div>
@@ -65,105 +65,105 @@
                                     <span style="color: red; font-size: 30px; ">￥@Html.DisplayFor(a => Model.GoodsPrice)</span>
                                 </div>
                             </div>
-                            <div class="demo">
-                                <!-- 在输入框加入id -->
-                                <input type="text" class="cityinput" id="citySelect" placeholder="请选择你所在城市">
-                                <script type="text/javascript">
-                                 var test = new Vcity.CitySelector({ input: 'citySelect' });
-                                </script>
-
-                            </div>
-                          
                             <div class="num">
                                 <div style="float:left;">
                                     数量:
                                     <input class="reduc" type="button" value="-" />
                                     <input type="text" value="1" class="multil" name="sum" />
                                     <input class="add" type="button" value="+" />
-                                </div>    
-                                    <div style="margin-left:180px;margin-top:40px;color:#808080">库存:@Html.DisplayFor(a => Model.GoodsStock)</div>
-                                   
+                                </div>
+                                <div style="margin-left:180px;margin-top:40px;color:#808080">
+                                    库存:@Html.DisplayFor(a => Model.GoodsStock)
+                                </div>
                             </div>
                             @*@Html.Hidden("id", @Model.GoodsId)*@
-                            <div style="margin-top:30px;margin-left:300px;">
-                                <a href="@Url.Action("jiesuan")">
-                                    <input id="Button1" type="button" value="立即购买" />
-                                </a>
+                            <div style="margin-top:50px;">
+                                <div style="float:left">
+                                    <a href="@Url.Action("jiesuan")">
+                                        <input id="Button1" type="button" value="立即购买" />
+                                    </a>
+                                </div>
+                                <div style="float:left;">
+                                    <a href="@Url.Action("AddToCart",new {id=Model.GoodsId})">
+                                        <input id="Button2" type="button" value="▲加入购物车" />
+                                    </a>
+                                </div>
+                                <div style="height :40px;line-height:40px;">
+                                    <a class="shoucang" href="@Url.Action("AddToCollect",new{id=Model.GoodsId ,Type="商品"})">☆收藏该商品</a>
+                                </div>
                             </div>
-                        </div >
+                        </div>
                     }
-                </div >
+                </div>
+                @*右边*@
+                <div class="you">
+                    <div style="text-align: center; color:#c2a5b2; margin: 20px;">
+                        <div style="float:left;width:33%">
 
-                    @*右边*@
-                    <div class="you">
-                        <div style="text-align: center; color:#c2a5b2; margin: 20px;">
-                            <div style="float:left;width:33%">
+                            <img src="~/Content/Home/img/index/btn_z.jpg" />
+                            <p>100%</p>
+                            <p>正品保障</p>
+                        </div>
+                        <div style="float:left;width:33%">
+                            <img src="~/Content/Home/img/index/btn_c.jpg" />
+                            <p>全省</p>
+                            <p>免运费</p>
+                        </div>
+                        <div style="float:left;width:33%">
 
-                                <img src="~/Content/Home/img/index/btn_z.jpg" />
-                                <p>100%</p>
-                                <p>正品保障</p>
-                            </div>
-                            <div style="float:left;width:33%">
-                         
-                                <img src="~/Content/Home/img/index/btn_c.jpg" />
-                                <p>全省</p>
-                                <p>免运费</p>
-                            </div>
-                            <div style="float:left;width:33%">
-
-                                <img src="~/Content/Home/img/index/btn_q.jpg" />
-                                <p>7天</p>
-                                <p>无忧退换</p>
-                            </div>
-                            <br /><br />
+                            <img src="~/Content/Home/img/index/btn_q.jpg" />
+                            <p>7天</p>
+                            <p>无忧退换</p>
                         </div>
                         <br /><br />
-                        <div class="two">
-                            <p>商品编号：@Html.DisplayFor(a => Model.GoodsId)</p><br />
-                            <p>已　　售：<span style="color:red;">@Html.DisplayFor(a => Model.SellNum)</span></p><br />
-                            <p>  满意指数：5.0分</p><br />
-                            <p> <a href="#pingjia1">已有:@Html.DisplayFor(a => Model.SellNum)评论</a></p>
-                        </div>
-                        <div class="two">
-                            <div class="ma">                         
-                                <img src="~/Content/Home/img/index/PetsCode.png"  style="height:58px;width:58px;"/>
-                            </div>
-                            <div class="three">
-                                <p> &nbsp;注册送100元，</p>
-                                <br />
-                                <p>&nbsp;首单再送50元</p>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                @*评价*@
-
-                <div class="pingjia">
-                    <div id="pingjia1">商品评论</div>
-                    <div style="height:110px;border-bottom :1px solid #808080;border-top :1px solid #808080;">
-                        <div class="pingjia2">
-                            <p><span style="font-size:50px;font-weight:600;color:red;">5.0</span> </p>
-                            <p>数量</p>
-                        </div>
-                        <div class="pingjia3">
-                            <div>好评:</div>
-                            <div>中评:</div>
-                            <div>差评:</div>
-                        </div>
+                    <br /><br />
+                    <div class="two">
+                        <p>商品编号：@Html.DisplayFor(a => Model.GoodsId)</p><br />
+                        <p>已　　售：<span style="color:red;">@Html.DisplayFor(a => Model.SellNum)</span></p><br />
+                        <p>  满意指数：5.0分</p><br />
+                        <p> <a href="#pingjia1">已有:@Html.DisplayFor(a => Model.SellNum)评论</a></p>
                     </div>
-                    <div style="height:150px;border-bottom :1px dashed  #808080;">
-                        <div class="pingjia4">
-                            <div>用户头像</div>
-                            <div>name</div>
+                    <div class="two">
+                        <div class="ma">
+                            <img src="~/Content/Home/img/index/PetsCode.png" style="height:58px;width:58px;" />
                         </div>
-                        <div class="pingjia5">
-                            <div style="height:25px">评分</div>
-                            <div style="height:80px;">评价内容</div>
-                            <div>时间</div>
+                        <div class="three">
+                            <p> &nbsp;注册送100元，</p>
+                            <br />
+                            <p>&nbsp;首单再送50元</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
-    </body>
+            @*评价*@
+
+            <div class="pingjia">
+                <div id="pingjia1">商品评论</div>
+                <div style="height:110px;border-bottom :1px solid #808080;border-top :1px solid #808080;">
+                    <div class="pingjia2">
+                        <p><span style="font-size:50px;font-weight:600;color:red;">5.0</span> </p>
+                        <p>数量</p>
+                    </div>
+                    <div class="pingjia3">
+                        <div>好评:</div>
+                        <div>中评:</div>
+                        <div>差评:</div>
+                    </div>
+                </div>
+                <div style="height:150px;border-bottom :1px dashed  #808080;">
+                    <div class="pingjia4">
+                        <div>用户头像</div>
+                        <div>name</div>
+                    </div>
+                    <div class="pingjia5">
+                        <div style="height:25px">评分</div>
+                        <div style="height:80px;">评价内容</div>
+                        <div>时间</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
 </html>

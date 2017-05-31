@@ -1,119 +1,13 @@
-/** {
-	font-size: 12px;
-	vertical-align: middle;
-	margin: 0;
-	padding: 0;
-}*/
-/*总的表格*/
-
-/*/*.imfor_top div {float: left;  }
-/* 运费*/
-/*.yun {
-    line-height: 50px;
-    height: 50px;
-}
-
-.yunfei {
-    float: left;
-    color: red;
-    font-size: 15px;
-}
-
-.right {
-    float: right;
-}
-
-    .right a:hover {
-        color: red;
-        cursor: pointer;
-    }*/
-/*.imfor_top{
-            background-color: #efefef;
-            color: #666666;          
-           text-align: center;	
-           height:40px;
-           line-height:40px;
-           border-top:2px #f72525 solid ;   
-          }
-
-.imfor{ 
-       text-align: center;
-       height:120px; 
-       border-style:solid;
-       border-width:1px;
-       border-color:#efefef
-}
-.imfor div {
-    float: left;
-}
-#all{margin-left:5px;}
-/*商品*/
-/*.pudc{margin-top:10px;}
-.pudc_top {width: 310px;}
-.tupian{width:80px;height:80px; }
-.tupian a{border-style: none;
-           border-color: inherit;
-            border-width: 0; 
-            vertical-align: middle;
-
-}
-
-.name{width:210px;margin-left:10px;
-      margin-top:10px;
-     
-}
-.na{text-decoration:none; color:black}
-.na:hover{color:red;cursor: pointer;}*/
-/*选择*/
-/*.check_top{}
-.check{width:50px; margin-top:10px;}*/
-/*单价*/
-/*.pices,
-.pices_top {width:100px;}
-.pices{color:red;margin-top:10px;}*/
-/*数量*/
-/*.num {margin-top:10px;width: 130px;
-}
-.num_top {width: 130px;}
-.multil{width:35px; text-align:center;}
-.reduc{
-    width:10px;
-}
-总价格
-.totle,
-.totle_top {width: 100px;}
-.totle{color:red;margin-top:10px;}
-删除
-.del{width: 100px;margin-top:10px; }
-.del_top {	width: 100px;	cursor: pointer;}
-
-下面
-.foot div{ margin-top:20px;}
-.foot_d{width:130px;float:left;font-weight:bold;}
-.foot_d:hover{color:red; cursor: pointer;}
-
-.foot_del{width:100px;float:left; font-weight:bold;}
-.foot_del:hover{color:red; cursor: pointer;}
-
-.foot_tol{width:200px;float:right;}
-.foot_cash{width:100px;float:right;}
-.jiesuan{border-width:0px;background-color:#ff6a00;width:80px;height:30px;color:white;cursor: pointer;font-size:15px;}
-.jiesuan:hover{cursor: pointer;background-color:red;}
-#susum{color:red;font-size:30px;}*/
-
-
 *{margin:0;padding:0;list-style-type:none;}
 a{color:#666;text-decoration:none;}
 table{border-collapse:collapse;border-spacing:0;border:0;}
 body{color:#666;font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .clearfix{display:inline-table}
-*html.clearfix{height:1%}
 .clearfix{display:block}
 *+html .clearfix{min-height:1%}
 .fl{float:left;}
 .fr{float:right;}
-/*素材家园 - www.sucaijiayuan.com*/
 .catbox{width:940px;margin:100px auto;}
 .catbox table{text-align:center;width:100%;}
 .catbox table th,.catbox table td{border:1px solid #CADEFF;}

@@ -1,44 +1,50 @@
-﻿
-@{
-    ViewBag.Title = "Comment";
-    Layout = "~/Views/Shared/_LayoutHome.cshtml";
-}
-@model IEnumerable<MyPets.Model.GoodsComment>  
-    @model IEnumerable<MyPets.Model.Order>
+﻿@{
+        ViewBag.Title = "Comment";
+        Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    }
+   @model MyPets.Model.GoodsComment
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>评价</title>
-
     <link href="~/Content/Home/css/pingjia.css" rel="stylesheet" />
 </head>
 <body>
     <div class="all">
         <div class="top">
             <span>评价宝贝</span>
-        </div>
-        @foreach( var b in Model){
-        <div class="main">
-            <div class="name">       
-                <img src="@Url.Content(@b.Goods.GoodsImg1)" class="tupian" />
-                <span>@(b.Goods.GoodsName)</span>
-            </div>
-            <div class="neirong">
-                <div class="range">
-                    等级
+        </div> 
+            <div class="main">
+                <div class="name">
+                    @*<img src="@Url.Content(Model.Goods.GoodsImg1)" class="tupian" />*@
+                    <span>@*@(Model.Goods.GoodsName)*@</span>
+                </div>
+                <div class="neirong">
+                    <div class="range">
+                        <label for="InputType">满意度（5很满意）</label>
+                        <select class="form-control" id="InputType" name="InputType" style="width:730px;">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <div class="pingjia">
-                        <input id="Text1" type="text" placeholder="请输入想评价的内容" />
+                        <input id="Text1" type="text" name="man" placeholder="请输入想评价的内容" />
                     </div>
                 </div>
             </div>
-        </div>
-        }
+        
     </div>
     <div style="margin:0 auto;">
-    <input id="Button1" type="button" value="发表评论" />
-</div>
+        @*<a href="@Url.Action(" AddToGoodsComment",new { id =Model.GoodsId})">
+            <input id="Button1" type="button" value="发表评论" />
+        </a>*@
+
+    </div>
 </body>
 </html>
