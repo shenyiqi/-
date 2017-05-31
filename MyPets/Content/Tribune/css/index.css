@@ -1,0 +1,352 @@
+/*全局reset*/
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+
+/*-------------------首页顶部-------------------*/
+
+#index_top {
+	width: 100%;
+	height: 36px;
+	border-bottom: 1px solid #DDDDDD;
+	font-size: 13px;
+}
+#index_top a{
+	color: RGB(51,51,51);
+	text-decoration: none;
+}
+#index_top a:hover {
+	color: RGB(238, 85, 51);
+}
+
+#index_top .content {
+	width: 1190px;
+	height: 36px;
+	margin: 0 auto;
+	position: relative;	
+}
+
+#index_top .content div {
+	float: left;
+}
+
+#index_top .favorite {
+	width: 124px;
+	height: 36px;
+	text-align: center;
+	line-height: 36px;
+	color: RGB(102, 102, 102);
+	cursor: pointer;
+}
+
+#index_top .favorite:hover {
+	color: RGB(238, 85, 51);
+
+}
+#index_top .index_topRight{
+	position: absolute;
+    display: block;
+    height: 16px;
+    line-height: 16px;
+	right: 0;
+	top: 10px;
+	
+}
+#index_top .index_topRight li{
+	list-style: none;
+    padding:0 10px ;
+    border-right: solid 1px RGB(204,204,204);
+	float: left;
+}
+
+
+/*-----------------首页顶部结束--------------------*/
+
+
+/*-------------------搜索框部分-----------------------*/
+
+#search {
+	width: 1190px;
+	height: 130px;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+#search img {
+	margin: 15px 0;
+}
+#search .search_mid{
+	position: absolute;
+	top: 43px;
+	left: 300px;
+}
+#search .search_mid input{
+	float: left;
+}
+#searchTxtBox{
+	width: 516px;
+	height: 44px;
+	text-indent: 10px;
+	font-size: 16px;
+	color: RGB(51,51,51);
+	border: solid 3px RGB(238,85,51);
+}
+#searchBtn{
+	width: 80px;
+	height: 44px;
+	border: none;
+	background: RGB(238,85,51);
+	font-size: 18px;
+	color: white;
+	cursor: pointer;
+}
+
+
+/*-------------------搜索框部分结束--------------------*/
+
+
+
+#TribuneContent{
+	width:1200px;
+	margin:0 auto;
+	overflow: hidden;
+	position: relative;
+}
+#TribuneContent div{
+	float: left;
+}
+#TribuneContent .LeftPart{
+	width:886px;
+	overflow: hidden;
+	background: RGB(242,242,242);
+	border-radius: 5px;
+	height: 1200px;
+}
+#TribuneContent .postingsGuide{
+	font-size: 14px;
+	font-weight: 700;
+	margin: 10px 10px 5px;
+}
+
+
+/*---------------------------------帖子展览模板---------------------------------*/
+.postingsModel:hover{
+	background: white;
+}
+.postingsModel{
+	width:870px;
+	height: 70px;
+	border-bottom: 1px solid RGB(229,229,229);
+	margin-left: 6px;
+	border-radius: 5px;
+}
+.postingsModel .postingsContent{
+	width: 846px;
+	height: 44px;
+	margin-top:13px ;
+}
+.postingsModel div{
+	float: left;
+}
+.postingsModel .UserPhotoContent{
+	width:44px;
+	height:44px;
+	border: 1px solid RGB(204,204,204);
+	margin-left:13px;
+}
+.postingsModel .userPhoto{
+	width:40px;
+	height:40px;
+    margin:1px;
+}
+.postingsModel .belongType{
+	width:80px;
+	height: 30px;
+	color: RGB(0,0,0);
+}
+.postingsModel .postingsTitle{
+	width: 647px;
+	height: 30px;
+}
+.postingsModel .postingsTitle a{
+	text-decoration: none;
+	color: RGB(101,109,120);
+}
+.postingsModel .postingsTitle a:hover{
+	color: RGB(255,102,0);
+}
+.postingsModel .replyNum{
+	width: 60px;
+	height: 30px;
+	text-align: right;
+	font-size: 20px;
+	color: RGB(101,109,120);
+}
+.postingsModel .postingsDetail{
+	width: 697px;
+	height: 16px;
+	font-size: 12px;
+	color: RGB(170,170,185);
+}
+.postingsModel .postingsWriter{
+	margin-left: 10px;
+}
+
+
+/*----------------------------------帖子展览模板结束--------------------------*/
+
+
+/*----------------------------右边部分------------------------------------*/
+#TribuneContent .RightPart{
+	margin-left: 14px;
+	width:300px;
+}
+#TribuneContent .RightPart .Personal{
+	width: 298px;
+	height: 200px;
+	margin-bottom: 14px;
+	border-radius: 5px;
+	border: 1px solid RGB(151,151,151);
+	font-size: 14px;
+}
+#TribuneContent .RightPart .Personal div{
+	float: left;
+}
+#TribuneContent .Personal .PersonalPhoto{
+	width: 100px;
+	height: 100px;
+	margin-left: 20px;
+	margin-top: 20px;
+	border: 1px solid RGB(204,204,204);
+}
+#TribuneContent .Personal .PersonalPhoto img{
+	width: 90px;
+	height:90px;
+    margin:4px;
+}
+#TribuneContent .Personal .userName{
+	width: 150px;
+	height: 30px;
+	margin-top: 35px;
+	margin-left: 10px;
+}
+#TribuneContent .Personal .userLevel{
+	width: 150px;
+	height: 30px;
+	margin-left: 10px;
+}
+#TribuneContent .Personal .userPostCount{
+	width: 150px;
+	height: 30px;
+	margin-left: 10px;
+	margin-bottom: 8px;
+}
+#TribuneContent .Personal .publishPost{
+	width: 130px;
+	height:40px ;
+	background: RGB(255,102,0);
+	margin-top:8px ;
+	margin-left: 20px;
+	text-align: center;
+	line-height: 40px;
+	cursor: pointer;
+	color: white;
+	border-radius:5px 0 0 5px;
+}
+#TribuneContent .Personal .PersonalCenter{
+	width: 130px;
+	height:40px ;
+	background: RGB(40,151,197);
+	margin-top:8px ;
+	text-align: center;
+	line-height: 40px;
+	cursor: pointer;
+	border-radius:0 5px 5px 0;
+}
+#TribuneContent .Personal a{
+    text-decoration:none;
+    color:white;
+}
+
+
+
+
+#TribuneContent .RightPart .postingsType{
+	width: 300px;
+	height: 120px;
+	margin-bottom: 14px;
+	border-radius: 5px;
+	text-align: center;
+}
+#TribuneContent .RightPart .postingsType table{
+	width: 300px;
+	height: 120px;
+    border-radius: 5px;
+    font-size: 15px;
+    background: RGB(242,242,242);
+}
+.typeBlock:hover{
+	background: RGB(255,102,0);
+	color: white;
+	cursor: pointer;
+	border-radius: 5px;
+}
+#TribuneContent .RightPart .finePostingsContent{
+	border-radius: 5px;
+	background: RGB(242,242,242);
+}
+#TribuneContent .finePositings{
+	width:268px;
+	height: 36px;
+	line-height: 36px;
+	margin-left: 16px;
+	font-size: 14px;
+	font-weight: 500;
+	border-bottom: 1px solid RGB(236,236,236);
+	overflow: hidden;
+}
+#TribuneContent .finePositings:hover{
+	cursor: pointer;
+	color: RGB(255,102,0);
+}
+#TribuneContent .finePoTop{
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	color: RGB(67,74,84);
+	text-indent: 15px;
+	font-size: 14px;
+	font-weight: 700;
+	border-bottom: 1px solid RGB(229,229,229);
+}
+/*-----------小火箭标志-------------*/
+#toTop{
+	position: fixed;
+	bottom: 0;
+    cursor:pointer;
+}
+
+/*---------------------------------发帖框部分-------------------------------------*/
+#publishPart{
+    width:800px;
+    height:500px;
+    position:fixed;
+    left:20%;
+    top:20%;
+    background:gray;
+    opacity:0.6;
+    display:none;
+}
+
+
+
+
+
+
+
+
+

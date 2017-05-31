@@ -229,6 +229,7 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\TribuneController.cs" />
     <Compile Include="Controllers\ValidateCodeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1666,6 +1667,14 @@
     <Content Include="Content\Store\js\main.js" />
     <Content Include="Content\Store\js\owl.carousel.min.js" />
     <Content Include="Content\Store\js\script.slider.js" />
+    <Content Include="Content\Tribune\css\index.css" />
+    <Content Include="Content\Tribune\css\postings.css" />
+    <Content Include="Content\Tribune\img\logo.png" />
+    <Content Include="Content\Tribune\img\postingsImg.jpg" />
+    <Content Include="Content\Tribune\img\toTop.png" />
+    <Content Include="Content\Tribune\img\userPhoto.jpg" />
+    <Content Include="Content\Tribune\js\index.js" />
+    <Content Include="Content\Tribune\js\postings.js" />
     <Content Include="Content\留言富文本\main.css" />
     <Content Include="Content\留言富文本\main.js" />
     <Content Include="Content\留言富文本\sinaFaceAndEffec.css" />
@@ -1822,6 +1831,8 @@
     <Content Include="Views\Shared\_LayouStore.cshtml" />
     <Content Include="Views\Store\GoodsDetail.cshtml" />
     <Content Include="Views\Store\SearchShopGoods.cshtml" />
+    <Content Include="Views\Tribune\Index.cshtml" />
+    <Content Include="Views\Tribune\Postings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
