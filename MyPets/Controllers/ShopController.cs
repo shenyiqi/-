@@ -21,7 +21,7 @@ namespace MyPets.Controllers
         public ActionResult Index(string user)//int? id表示可以为空的整数=nullable<id> 从个人中心传过id
         {
             var id = UserServices.LoadEntities(u => u.UserName == user).FirstOrDefault();
-            if (id.IsSeller)
+            if (id.IsSeller==true)
             {
                 var shop = ShopServices.LoadEntities(s => s.UserId == id.UserId).FirstOrDefault();
                 Session["ShopId"] = shop.ShopId;

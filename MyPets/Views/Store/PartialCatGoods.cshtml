@@ -1,0 +1,63 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<MyPets.Model.Goods>
+@{
+    Layout = null;
+}
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="single-wid-product">
+                <a href="@Url.Action("GoodsDetail",new {goodsid=item.GoodsId })"><img src="@Url.Content(item.GoodsImg1)" alt="" class="product-thumb"></a>
+                <h2><a href="@Url.Action("GoodsDetail",new {goodsid=item.GoodsId })">@item.GoodsName</a></h2>
+                <div class="product-wid-rating">
+                    @if (item.GoodsRange == "rateit")
+                {
+                        <i class="fa fa-star"></i>
+                    }
+                    else if (item.GoodsRange == "rateit1")
+                    {
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    }
+                    else if (item.GoodsRange == "rateit2")
+                    {
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    }
+                    else if (item.GoodsRange == "rateit3")
+                    {
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    }
+                </div>
+                <div class="product-wid-price">
+                    @if (item.IsDiscount == true)
+                {
+                        <ins>@item.DiscountPrice</ins> <del>@item.GoodsPrice</del>
+                    }
+                    else
+                    {
+                        <ins>@item.GoodsPrice</ins>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div style="text-align:center;">
+    @Html.PagedListPager(Model, page => Url.Action("PartialCatGoods", "Store", new { page, type = @ViewBag.series }),
+                 PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                                            new AjaxOptions
+                                            {
+                                                HttpMethod = "GET",
+                                                InsertionMode = InsertionMode.Replace,
+                                                UpdateTargetId = "PartialCatGoods"
+                                            }))
+</div>
+
+

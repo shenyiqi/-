@@ -228,6 +228,7 @@
     <Compile Include="Controllers\PersonalCenterController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\ValidateCodeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1383,9 +1384,7 @@
     <Content Include="Content\Baike\js\bootstrap3-wysihtml5.all.min.js" />
     <Content Include="Content\Baike\js\jquery.cxslide.min.js" />
     <Content Include="Content\Baike\js\slides.js" />
-    <Content Include="Content\Home\css\demo.js" />
     <Content Include="Content\Home\css\index.css" />
-    <Content Include="Content\Home\css\pingjia.css" />
     <Content Include="Content\Home\css\shangpin.css" />
     <Content Include="Content\Home\css\style.css" />
     <Content Include="Content\Home\css\StyleSheet1.css" />
@@ -1415,7 +1414,6 @@
     <Content Include="Content\Home\js\goods.js" />
     <Content Include="Content\Home\js\index.js" />
     <Content Include="Content\Home\js\js.js" />
-    <Content Include="Content\Home\js\style.css" />
     <Content Include="Content\PersonalCenter\css\animate.min.css" />
     <Content Include="Content\PersonalCenter\css\bootstrap.min.css" />
     <Content Include="Content\PersonalCenter\css\demo.css" />
@@ -1658,9 +1656,10 @@
     <Content Include="Content\Store\css\owl.carousel.css" />
     <Content Include="Content\Store\css\responsive.css" />
     <Content Include="Content\Store\css\style.css" />
-    <Content Include="Content\Store\img\1b9e335ae7d8ade0ea34cede3708f063.jpg" />
-    <Content Include="Content\Store\img\6b88d4760e043602d846c96dc24de9e4.jpg" />
-    <Content Include="Content\Store\img\e415c85aefc23bd74cee33f52faff7bb.jpg" />
+    <Content Include="Content\Store\img\storeslide2.jpg" />
+    <Content Include="Content\Store\img\storeslide3.jpg" />
+    <Content Include="Content\Store\img\storeslide1.jpg" />
+    <Content Include="Content\Store\img\storeslide4.jpg" />
     <Content Include="Content\Store\js\bxslider.min.js" />
     <Content Include="Content\Store\js\jquery.easing.1.3.min.js" />
     <Content Include="Content\Store\js\jquery.sticky.js" />
@@ -1814,7 +1813,15 @@
     <Content Include="Views\Admin\EditShopGoods.cshtml" />
     <Content Include="Views\Baike\PartialShowQuiz.cshtml" />
     <Content Include="Views\Demo\Demo.cshtml" />
-    <Content Include="Views\Home\Comment.cshtml" />
+    <Content Include="Views\Store\Index.cshtml" />
+    <Content Include="Views\Store\PartialAllGoods.cshtml" />
+    <Content Include="Views\Store\PartialDogGoods.cshtml" />
+    <Content Include="Views\Store\PartialCatGoods.cshtml" />
+    <Content Include="Views\Store\PartialLittleGoods.cshtml" />
+    <Content Include="Views\Store\PartialWaterGoods.cshtml" />
+    <Content Include="Views\Shared\_LayouStore.cshtml" />
+    <Content Include="Views\Store\GoodsDetail.cshtml" />
+    <Content Include="Views\Store\SearchShopGoods.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1825,7 +1832,6 @@
     <Folder Include="Content\Register\js\" />
     <Folder Include="Content\Shop\upload\Store\" />
     <Folder Include="ViewModel\" />
-    <Folder Include="Views\Store\" />
     <Folder Include="Views\ValidateCode\" />
   </ItemGroup>
   <ItemGroup>
