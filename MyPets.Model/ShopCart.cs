@@ -15,7 +15,7 @@ namespace MyPets.Model
     public partial class ShopCart
     {
         public int CartId { get; set; }
-        public Nullable<int> GoodsId { get; set; }
+        public int GoodsId { get; set; }
         public int GoodsSum { get; set; }
         public string UserName { get; set; }
     
