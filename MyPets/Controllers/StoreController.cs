@@ -16,6 +16,7 @@ namespace MyPets.Controllers
         IBLL.IGoodsServices GoodsService = new BLL.GoodsServices();
         IBLL.ICollectServices CollectService = new BLL.CollectServices();
         IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
+        IBLL.IShopCartServices ShopCartServices = new BLL.ShopCartServices();
         IDBSession db = new DBSession();
         public ActionResult Index(int? shopid)
         {
@@ -24,6 +25,18 @@ namespace MyPets.Controllers
             ViewData["discountgoods"] = discountgoods; //促销商品
             ViewBag.shopid = id;
             Session["shopid"] = id;
+            Session["hascollect"] = "no";  //判断是否收藏
+            if (Session["UserName"] != null)
+            {
+                var name = Session["UserName"].ToString();
+                var user = UserInfoServices.LoadEntities(u => u.UserName == name).FirstOrDefault();
+                var collect = CollectService.LoadEntities(c => c.UserId == user.UserId).FirstOrDefault();
+                if (collect == null)
+                {
+                    Session["hascollect"] = "no";
+                }
+                else Session["hascollect"] = "yes";
+            }
             return View();
         }
         public ActionResult PartialAllGoods(int? page)//全部
@@ -112,7 +125,7 @@ namespace MyPets.Controllers
             ViewData["relatedgoods"] = relatedgoods;
             return View(goods);
         }
-        public ActionResult CollectStore()
+        public ActionResult CollectStore() //收藏店铺
         {
             if (Session["UserName"] == null)
             {
@@ -123,20 +136,23 @@ namespace MyPets.Controllers
                 var id = Convert.ToInt32(Session["shopid"]);
                 var name = Session["UserName"].ToString();
                 var userid = UserInfoServices.LoadEntities(u => u.UserName == name).FirstOrDefault();
-                var charge = CollectService.LoadEntities(c => c.ShopId == id && c.UserId == userid.UserId).FirstOrDefault();
-                if (charge == null)
+                CollectService.AddEntity(new Model.Collect
                 {
-                    CollectService.AddEntity(new Model.Collect
-                    {
-                        ShopId = Convert.ToInt32(Session["shopid"]),
-                        UserId = userid.UserId
-                    });
-                    db.SaveChanges();
-                    return Content("<script>alert('收藏成功！');history.go(-1);</script>");
-                }
-                else return Content("<script>alert('您已经收藏该店铺啦！');history.go(-1);</script>");
+                    ShopId = Convert.ToInt32(Session["shopid"]),
+                    UserId = userid.UserId
+                });
+                db.SaveChanges();
+                return Content("<script>alert('收藏成功！');window.location.href='/Store/Index'</script>");
             }
-
+        }
+        public ActionResult CancleCollect() //取消收藏
+        {
+            var name = Session["UserName"].ToString();
+            var user = UserInfoServices.LoadEntities(u => u.UserName == name).FirstOrDefault();
+            var del = CollectService.LoadEntities(c => c.UserId == user.UserId).FirstOrDefault();
+            CollectService.DeleteEntity(del);
+            Session["hascollect"] = "no";
+            return RedirectToAction("Index");
         }
         public ActionResult SearchShopGoods(string searchthing) //店内搜索
         {
@@ -144,6 +160,28 @@ namespace MyPets.Controllers
             var goods = GoodsService.LoadEntities(g => g.ShopId == id && g.GoodsName.Contains(searchthing)).ToList();
             return View(goods);
         }
+        public ActionResult PartialCart()
+        {
+            var name = Session["UserName"].ToString();
+            int countsum = 0;
+            var cart = ShopCartServices.LoadEntities(s => s.UserName == name).ToList();
+            ViewBag.sum = cart.Count(); //统计购物车数量
+            for (int i = 0; i < cart.Count(); i++)
+            {
+                int a = cart[i].GoodsId;
+                var goods = GoodsService.LoadEntities(g => g.GoodsId == a).FirstOrDefault();
+                if (goods.IsDiscount)
+                {
+                    countsum = countsum + cart[i].GoodsSum * Convert.ToInt32(goods.DiscountPrice);
+                }
+                else countsum = countsum + cart[i].GoodsSum * Convert.ToInt32(goods.GoodsPrice);
+
+            }
+            ViewBag.count = countsum;
+            return PartialView();
+        }
+
+
         public ActionResult LoginOff()
         {
             Session["UserName"] = null;

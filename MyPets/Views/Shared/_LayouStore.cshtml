@@ -36,7 +36,23 @@
                                     <a href="#"><i class="fa fa-user"></i>个人中心</a>
                                 }
                             </li>
-                            <li><a href="@Url.Action("CollectStore")"><i class="fa fa-heart"></i> 收藏店铺</a></li>
+                            <li>
+                                @if (Session["UserName"] == null)
+                                {
+                                    <a href="@Url.Action("CollectStore")"><i class="fa fa-heart"></i> 收藏店铺</a>
+                                }
+                                else
+                                {
+                                    if (Session["hascollect"].ToString() == "no")
+                                    {
+                                        <a href="@Url.Action("CollectStore")"><i class="fa fa-heart"></i> 收藏店铺</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("CancleCollect")"><i class="fa fa-heart" style="color:#ff0000;"></i> 取消收藏</a>
+                                    }
+                                }
+                            </li>
                             <li><a href="cart.html"><i class="fa fa-user"></i> 我的购物车</a></li>
                         </ul>
                     </div>
@@ -67,13 +83,22 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./">馨馨爱宠 @ViewBag.Title</a></h1>
+                        <h1><a href="./">馨馨爱宠</a></h1>
                     </div>
                 </div>
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+
+                        @if (Session["UserName"] != null)
+                        { 
+                            Html.RenderAction("PartialCart");
+                            @*<a href="cart.html">Cart - <span class="cart-amunt">$@ViewBag.sum</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">@ViewBag.count</span></a>*@
+                        }
+                        else
+                        {
+                            <a href="javascript:;">Cart - <span class="cart-amunt">$0</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
+                        }
                     </div>
                 </div>
             </div>
@@ -93,12 +118,10 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">首页</a></li>
-                        <li><a href="shop.html">店铺页面</a></li>
-                        <li><a href="single-product.html">商品页面</a></li>
-                        <li><a href="cart.html">购物车</a></li>
-                        <li><a href="checkout.html">核对信息</a></li>
-
+                        <li class="active"><a href="@Url.Action("Index")">首页</a></li>
+                        <li><a href="@Url.Action("Index")">店铺页面</a></li>
+                        <li><a href="javascript:;">商品页面</a></li>
+                        <li><a href="@Url.Action("jiesuan","Home")">购物车</a></li>
                     </ul>
                 </div>
             </div>

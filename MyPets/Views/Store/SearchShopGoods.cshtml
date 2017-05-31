@@ -3,37 +3,14 @@
     ViewBag.Title = "SearchShopGoods";
     Layout = "~/Views/Shared/_LayouStore.cshtml";
 }
-<div class="row">
+<br /><br />
+<div class="row" style="width:76%;margin:0 auto;">
     @foreach (var item in Model)
     {
         <div class="col-md-4">
             <div class="single-wid-product">
                 <a href="@Url.Action("GoodsDetail",new {goodsid=item.GoodsId })"><img src="@Url.Content(item.GoodsImg1)" alt="" class="product-thumb"></a>
                 <h2><a href="@Url.Action("GoodsDetail",new {goodsid=item.GoodsId })">@item.GoodsName</a></h2>
-                @*<div class="product-wid-rating">
-                        @if (item.GoodsRange == "rateit    ")
-                        {
-                            <i class="fa fa-star"></i>
-                        }
-                        else if (item.GoodsRange == "rateit1    ")
-                        {
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        }
-                        else if (item.GoodsRange == "rateit2    ")
-                        {
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        }
-                        else if (item.GoodsRange == "rateit3    ")
-                        {
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        }
-                    </div>*@
                 <div class="product-wid-price">
                     @if (item.IsDiscount == true)
                     {

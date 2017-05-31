@@ -90,11 +90,12 @@
                                     }
                                 </div>
 
-                                <form action="" class="cart">
+                                <form action="/Home/AddToCart" class="cart">
                                     <div class="quantity">
-                                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                        <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="sum" min="1" step="1">
                                     </div>
-                                    <button class="add_to_cart_button" type="submit">加入购物车</button>
+                                    @Html.Hidden("id",Model.GoodsId)
+                                    <button type="submit" class="add_to_cart_button">加入购物车</button>
                                 </form>
 
                                 <div class="product-inner-category">
@@ -146,7 +147,7 @@
                                     <div class="product-f-image">
                                         <img src="@Url.Content(b.GoodsImg1)" alt="">
                                         <div class="product-hover">
-                                            <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
+                                            <a href="@Url.Action("AddToCart","Home",new { id=b.GoodsId})" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
                                             <a href="@Url.Action("GoodsDetail",new {goodsid=b.GoodsId })" class="view-details-link"><i class="fa fa-link"></i> 查看细节</a>
                                         </div>
                                     </div>

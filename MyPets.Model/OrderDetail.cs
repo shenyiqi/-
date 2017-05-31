@@ -20,6 +20,7 @@ namespace MyPets.Model
         public int DetailCount { get; set; }
         public int UserId { get; set; }
         public string OrderNumber { get; set; }
+        public bool OrderState { get; set; }
     
         public virtual Goods Goods { get; set; }
         public virtual UserInfo UserInfo { get; set; }

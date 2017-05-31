@@ -17,9 +17,12 @@ namespace MyPets.Controllers
         IBLL.IGoodsServices GoodsServices = new BLL.GoodsServices();
         IBLL.IShopServices ShopServices = new BLL.ShopServices();
         IBLL.IUserInfoServices UserServices = new BLL.UserInfoServices();
+        IBLL.IOrderDetailServices OrderDetailServices = new BLL.OrderDetailServices();
+        IBLL.IOrderServices OrderServices = new BLL.OrderServices();
         IDBSession db = new DBSession();
         public ActionResult Index(string user)//int? id表示可以为空的整数=nullable<id> 从个人中心传过id
         {
+            user = "用户1";
             var id = UserServices.LoadEntities(u => u.UserName == user).FirstOrDefault();
             if (id.IsSeller==true)
             {
@@ -135,9 +138,21 @@ namespace MyPets.Controllers
                 return Content("<script>;alert('请不要漏掉图片哦!')</script>");
             }
         }
-        public ActionResult Order()
+        public ActionResult Order() //显示订单
         {
+            var shopid = Convert.ToInt32(Session["ShopId"]);
+            var order = OrderDetailServices.LoadEntities(o => o.Goods.ShopId == shopid&&o.OrderState==false).ToList();
+            ViewData["order"] = order;
+            var deliver= OrderDetailServices.LoadEntities(o => o.Goods.ShopId == shopid && o.OrderState == true).ToList();
+            ViewData["deliver"] = deliver;
             return View();
+        }
+        public ActionResult AcceptOrder(int id)
+        {
+            var state = OrderDetailServices.LoadEntities(o => o.GoodsId == id).FirstOrDefault();
+            state.OrderState = true;
+            OrderDetailServices.EditEntity(state);
+            return RedirectToAction("Order");
         }
         public ActionResult UpDiscountGoods()
         {

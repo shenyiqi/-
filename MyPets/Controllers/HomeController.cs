@@ -90,27 +90,31 @@ namespace MyPets.Controllers
             return View(gougou);
         }
 
-        public ActionResult AddToCart(int id, int? sum)
+        public ActionResult AddToCart(int id, string sum)
         {
             if (Session["UserName"] != null)
             {
                 string name = Session["UserName"].ToString();
                 var cart = ShopCartServices.LoadEntities(c => c.GoodsId == id).FirstOrDefault();
+                if (sum == null)
+                {
+                    sum = "1";
+                }
                 if (cart == null)
                 {
                     var good = goodsService.LoadEntities(g => g.GoodsId == id).FirstOrDefault();
                     ShopCartServices.AddEntity(new ShopCart
                     {
                         GoodsId = good.GoodsId,
-                        GoodsSum = (sum ?? 1),
+                        GoodsSum = Convert.ToInt32(sum),
                         UserName = name
                     });
                     db.SaveChanges();
-                    return Content("<script>alert('商品成功加入购物车！');history.go(-1);</script>");
+                    return Content("<script>alert('商品成功加入购物车！');window.location.href=document.referrer;</script>");
                 }
                 else
                 {
-                    return Content("<script>alert('商品已经加入购物车啦！');history.go(-1);</script>");
+                    return Content("<script>alert('商品已经加入购物车啦！');history.go(-1);</script>"); 
                 }
 
             }

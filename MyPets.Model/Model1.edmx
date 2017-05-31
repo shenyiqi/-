@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MyPetsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MyPetsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adminstrator">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -55,6 +55,7 @@
             <PropertyRef Name="CollectId" />
           </Key>
           <Property Name="CollectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
           <Property Name="ShopId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
@@ -74,7 +75,7 @@
           <Property Name="GoodsPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="GoodsDescribe" Type="nvarchar(max)" />
           <Property Name="IsDiscount" Type="bit" Nullable="false" />
-          <Property Name="DiscountPrice" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="DiscountPrice" Type="decimal" Precision="10" Scale="2" />
           <Property Name="GoodsStock" Type="int" Nullable="false" />
           <Property Name="ShopId" Type="int" Nullable="false" />
           <Property Name="SellNum" Type="int" />
@@ -114,6 +115,7 @@
           <Property Name="DetailCount" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="OrderNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderState" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -177,7 +179,7 @@
             <PropertyRef Name="CartId" />
           </Key>
           <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="GoodsId" Type="int" />
+          <Property Name="GoodsId" Type="int" Nullable="false" />
           <Property Name="GoodsSum" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -373,7 +375,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ShopCart_Goods">
-          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
           <End Role="ShopCart" Type="Self.ShopCart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Goods">
@@ -463,8 +465,7 @@
             <End Role="ShopCart" EntitySet="ShopCart" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyPetsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -525,6 +526,7 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Shop" Relationship="Self.FK_Collect_Shop" FromRole="Collect" ToRole="Shop" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_Collect_UserInfo" FromRole="Collect" ToRole="UserInfo" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Goods">
           <Key>
@@ -542,7 +544,7 @@
           <Property Name="GoodsPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="GoodsDescribe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDiscount" Type="Boolean" Nullable="false" />
-          <Property Name="DiscountPrice" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="DiscountPrice" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="GoodsStock" Type="Int32" Nullable="false" />
           <Property Name="ShopId" Type="Int32" Nullable="false" />
           <Property Name="SellNum" Type="Int32" />
@@ -591,6 +593,7 @@
           <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Goods" Relationship="Self.FK_OrderDetail_Goods" FromRole="OrderDetail" ToRole="Goods" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_OrderDetail_UserInfo" FromRole="OrderDetail" ToRole="UserInfo" />
+          <Property Name="OrderState" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -661,7 +664,7 @@
             <PropertyRef Name="CartId" />
           </Key>
           <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GoodsId" Type="Int32" />
+          <Property Name="GoodsId" Type="Int32" Nullable="false" />
           <Property Name="GoodsSum" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Goods" Relationship="Self.FK_ShopCart_Goods" FromRole="ShopCart" ToRole="Goods" />
@@ -794,7 +797,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ShopCart_Goods">
-          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
           <End Role="ShopCart" Type="Self.ShopCart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Goods">
@@ -1014,6 +1017,7 @@
           <EntitySetMapping Name="Collect">
             <EntityTypeMapping TypeName="MyPetsModel.Collect">
               <MappingFragment StoreEntitySet="Collect">
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="CollectId" ColumnName="CollectId" />
                 <ScalarProperty Name="ShopId" ColumnName="ShopId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1072,6 +1076,7 @@
           <EntitySetMapping Name="OrderDetail">
             <EntityTypeMapping TypeName="MyPetsModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="OrderState" ColumnName="OrderState" />
                 <ScalarProperty Name="DetailId" ColumnName="DetailId" />
                 <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
                 <ScalarProperty Name="DetailSum" ColumnName="DetailSum" />
