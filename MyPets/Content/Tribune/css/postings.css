@@ -1,0 +1,210 @@
+/*全局reset*/
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+
+/*-------------------首页顶部-------------------*/
+
+#index_top {
+	width: 100%;
+	height: 36px;
+	border-bottom: 1px solid #DDDDDD;
+	font-size: 13px;
+}
+#index_top a{
+	color: RGB(51,51,51);
+	text-decoration: none;
+}
+#index_top a:hover {
+	color: RGB(238, 85, 51);
+}
+
+#index_top .content {
+	width: 1190px;
+	height: 36px;
+	margin: 0 auto;
+	position: relative;	
+}
+
+#index_top .content div {
+	float: left;
+}
+
+#index_top .favorite {
+	width: 124px;
+	height: 36px;
+	text-align: center;
+	line-height: 36px;
+	color: RGB(102, 102, 102);
+	cursor: pointer;
+}
+
+#index_top .favorite:hover {
+	color: RGB(238, 85, 51);
+
+}
+#index_top .index_topRight{
+	position: absolute;
+    display: block;
+    height: 16px;
+    line-height: 16px;
+	right: 0;
+	top: 10px;
+	
+}
+#index_top .index_topRight li{
+	list-style: none;
+    padding:0 10px ;
+    border-right: solid 1px RGB(204,204,204);
+	float: left;
+}
+
+
+/*-----------------首页顶部结束--------------------*/
+
+
+/*-----------------帖子内容部分-------------------*/
+
+.postings{
+	width: 1190px;
+	margin: 0 auto;
+    overflow: hidden;
+}
+.postings div{
+	float: left;
+
+}
+.postings .postingsTop{
+	width: 1188px;
+	height: 48px;
+	background: RGB(245,247,250);
+	border: 1px solid RGB(229,229,229);
+	line-height: 48px;
+	font-size: 14px;
+}
+.postings .postingsTop .paging{
+	margin-left: 20px;
+}
+.postings .postingsTitlePart{
+	width: 1188px;
+	height: 58px;	
+	font-size: 16px;
+	background: RGB(255,255,255);
+	border-bottom: 1px solid RGB(187,189,191);
+	border-left:  1px solid RGB(229,229,229);
+	border-right:  1px solid RGB(229,229,229);
+}
+.postings .postingsTitlePart .postingsTitle{
+    width:900px;
+    height: 58px;
+    text-indent: 1em;
+    line-height: 58px;
+}
+.postings .postingsTitlePart input{
+	width: 66px;
+	height: 24px;
+	float: right;
+	margin-top: 16px;
+	margin-right: 10px;
+    font-size:14px;
+}
+.postings .postingsReply .postingsFloorContent{
+	width:1190px;
+}
+.postings .postingsReply .postingsFloor{
+	width: 1188px;
+	border: 1px solid RGB(225,228,230);
+	border-top: none;
+	overflow: hidden;
+}
+.postings .postingsReply .postingsFloor div{
+	float: left;
+}
+.postingsFloor .postingsFloorLeft{
+	width: 220px;
+	height:260px;
+}
+.postingsFloor .postingsFloorLeft .userPhoto{
+	width: 132px;
+	height: 132px;
+	border: 1px solid RGB(204,204,204);
+	margin-left: 40px;
+	margin-top: 20px;
+}
+.postingsFloor .postingsFloorLeft .userPhoto img{
+	width: 124px;
+	height: 124px;
+	margin:3px;
+}
+.postingsFloor .postingsFloorLeft .userName{
+	width: 132px;
+	height: 20px;
+	margin: 10px 0 0 40px;
+	font-size: 14px;
+	text-align: center;
+	color: RGB(45,100,179);
+}
+.postingsFloor .postingsFloorLeft .userLevel{
+	width: 132px;
+	height: 20px;
+	margin: 5px 0 0 40px;
+	font-size: 14px;
+	text-align: center;
+	border: 1px dashed RGB(161,161,161);
+}
+
+.postingsFloor .postingsFloorRight{
+	width: 960px;
+}
+.postingsFloor .postingsFloorRight .postingsText{
+	width: 900px;
+	margin-top: 20px;
+	margin-left: 30px;
+	margin-bottom: 10px;
+}
+.postingsFloor .postingsFloorRight .postingsImg{
+	width: 900px;
+	margin-left: 30px;
+    margin-bottom:10px;
+}
+
+
+/*---------------------------------小火箭标志--------------------------------*/
+#toTop{
+	position: fixed;
+	bottom: 0;
+	right: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------帖子内容部分结束-------------------*/

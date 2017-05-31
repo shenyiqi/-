@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link href="~/Content/Tribune/css/index.css" rel="stylesheet" />
+    <script src="~/Content/Tribune/js/index.js"></script>
+</head>
+<body>
+    <!--首页顶部-->
+    <div id="index_top">
+        <div class="content">
+            <div class="favorite">收藏宠物之家</div>
+            <ul class="index_topRight">
+                <li>
+                    <a href="">登录</a>
+                </li>
+                <li>
+                    <a href="">注册</a>
+                </li>
+                <li>
+                    <a href="">手机版</a>
+                </li>
+                <li>
+                    <a href="">宠物百科</a>
+                </li>
+                <li>
+                    <a href="">商城首页</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--首页顶部结束-->
+    <!--搜索框部分-->
+    <div id="search">
+        <img src="~/Content/Tribune/img/logo.png" />
+        <div class="search_mid">
+            <input type="text" name="" id="searchTxtBox" value="" />
+            <input type="button" name="searchBtn" id="searchBtn" value="搜索" />
+        </div>
+
+    </div>
+
+    <!--搜索框部分结束-->
+
+    <div id="TribuneContent">
+        <!--左边部分-->
+        <div class="LeftPart">
+            <!--小指南-->
+            <div class="postingsGuide">推荐资讯【置顶】</div>
+            <!--小指南-->
+            <div class="postingsModel">
+                <div class="postingsContent">
+                    <div class="UserPhotoContent">
+                        <img class="userPhoto" src="~/Content/Tribune/img/userPhoto.jpg" />
+                    </div>
+                    <div class="belongType">【求助帖】</div>
+                    <div class="postingsTitle"><a href="">家里的狗狗突然不吃食了，怎么回事</a></div>
+                    <div class="replyNum">7845</div>
+                    <div class="postingsDetail">
+                        <span class="postingsWriter">古灵精怪</span>&nbsp;于&nbsp;<span class="postingsTime">2017-5-22</span>&nbsp;发表
+                    </div>
+
+                </div>
+            </div>
+            <div class="postingsModel">
+                <div class="postingsContent">
+                    <div class="UserPhotoContent">
+                        <img class="userPhoto" src="~/Content/Tribune/img/userPhoto.jpg" />
+                    </div>
+                    <div class="belongType">【求助帖】</div>
+                    <div class="postingsTitle"><a href="">家里的狗狗突然不吃食了，怎么回事</a></div>
+                    <div class="replyNum">7845</div>
+                    <div class="postingsDetail">
+                        <span class="postingsWriter">古灵精怪</span>&nbsp;于&nbsp;<span class="postingsTime">2017-5-22</span>&nbsp;发表
+                    </div>
+
+                </div>
+            </div>
+            <!--小指南-->
+            <div class="postingsGuide">最新发布</div>
+            <!--小指南-->
+            <div class="postingsModel">
+                <div class="postingsContent">
+                    <div class="UserPhotoContent">
+                        <img class="userPhoto" src="~/Content/Tribune/img/userPhoto.jpg" />
+                    </div>
+                    <div class="belongType">【求助帖】</div>
+                    <div class="postingsTitle"><a href="">家里的狗狗突然不吃食了，怎么回事</a></div>
+                    <div class="replyNum">7845</div>
+                    <div class="postingsDetail">
+                        <span class="postingsWriter">古灵精怪</span>&nbsp;于&nbsp;<span class="postingsTime">2017-5-22</span>&nbsp;发表
+                    </div>
+
+                </div>
+            </div>
+            <div class="postingsModel">
+                <div class="postingsContent">
+                    <div class="UserPhotoContent">
+                        <img class="userPhoto" src="~/Content/Tribune/img/userPhoto.jpg" />
+                    </div>
+                    <div class="belongType">【求助帖】</div>
+                    <div class="postingsTitle"><a href="">家里的狗狗突然不吃食了，怎么回事</a></div>
+                    <div class="replyNum">7845</div>
+                    <div class="postingsDetail">
+                        <span class="postingsWriter">古灵精怪</span>&nbsp;于&nbsp;<span class="postingsTime">2017-5-22</span>&nbsp;发表
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--左边部分结束-->
+        <!--右边部分-->
+        <div class="RightPart">
+            <!--个人部分-->
+            <div class="Personal">
+                <!--头像-->
+                <div class="PersonalPhoto">
+                    <img src="~/Content/Tribune/img/userPhoto.jpg" alt="" />
+                </div>
+                <!--昵称-->
+                <div class="userName">昵称：古灵精怪</div>
+                <!--等级-->
+                <div class="userLevel">等级：Lv.10</div>
+                <!--帖子数-->
+                <div class="userPostCount">发帖数：120</div>
+                <!--我要发帖-->
+                <div class="publishPost">@Html.ActionLink("我要发帖","Publish","Tribune")</div>
+                <!--去往个人中心-->
+                <div class="PersonalCenter">个人中心</div>
+
+            </div>
+            <!--个人部分结束-->
+
+
+
+
+
+
+
+            <div class="postingsType">
+                <table>
+                    <tr>
+                        <td colspan="2" style="font-size: 14px;font-weight: 700;background: RGB(151,151,151);border-radius: 5px 5px 0 0;">帖子分类</td>
+                    </tr>
+                    <tr>
+                        <td class="typeBlock">问题求助</td>
+                        <td class="typeBlock">故事分享</td>
+                    </tr>
+                    <tr>
+                        <td class="typeBlock">动态交流</td>
+                        <td class="typeBlock">专家建议</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="finePostingsContent">
+                <div class="finePoTop">精华帖</div>
+                <div class="finePositings">1.<span class="finePoTitle">如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗</span></div>
+                <div class="finePositings">2.<span class="finePoTitle">如何养狗</span></div>
+                <div class="finePositings">3.<span class="finePoTitle">如何养狗</span></div>
+                <div class="finePositings">4.<span class="finePoTitle">如何养狗</span></div>
+                <div class="finePositings">5.<span class="finePoTitle">如何养狗</span></div>
+                <div class="finePositings">6.<span class="finePoTitle">如何养狗</span></div>
+                <div class="finePositings">7.<span class="finePoTitle">如何养狗</span></div>
+                <div class="finePositings">8.<span class="finePoTitle">如何养狗</span></div>
+                <div class="finePositings">9.<span class="finePoTitle">如何养狗</span></div>
+                <div class="finePositings" style="border-bottom: none;">10.<span class="finePoTitle">如何养狗</span></div>
+            </div>
+        </div>
+        <!--右边部分结束-->
+
+        <img id="toTop" src="~/Content/Tribune/img/toTop.png" alt="" />
+
+        <!--发帖框-->
+           <div id="publishPart">
+
+
+
+
+
+           </div>
+
+
+
+
+
+        <!--发帖框结束-->
+        
+
+    </div>
+
+</body>
+</html>
