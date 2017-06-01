@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Comments";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+@model IEnumerable<MyPets.Model.GoodsComment>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>评价</title>
+    <link href="~/Content/Home/css/GoodsComment.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1">
+        <div class="pingjia">
+            <div id="pingjia1">商品评价</div>
+            <div style="height:60px;border-bottom :1px solid #808080;border-top :1px solid #808080;">
+                <div class="pingjia3">
+                    <div style="float:left;">评价满意度:(1表示不满意，6表示非常棒！）</div>
+                    <select class="form-control" id="InputType" name="InputType" style="width:100px;">
+                        <option>6</option>
+                        <option>5</option>
+                        <option>4</option>
+                        <option>3</option>
+                        <option>2</option>
+                        <option>1</option>
+                    </select>
+                </div>
+            </div>
+            <div style="height:185px;border-bottom :1px dashed  #808080;">
+                <div class="pingjia4">
+                    <div>商品图片</div>
+                    <div>name</div>
+                </div>
+                <div class="pingjia5">
+                    <div style="float:right;">时间</div>
+                    <div class="neirong">
+                        <input style="width:800px;height:160px;" id="Text1" type="text" name="man" placeholder="你的评价是对我们的肯定！" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</body>
+</html>

@@ -9,16 +9,34 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>结算</title>
+    <script src="~/Content/Home/js/area.js"></script>
      <link href="~/Content/Home/js/style.css" rel="stylesheet" />
      <script src="~/Content/Home/css/demo.js"></script>   
 </head>
 <body>
-    <div style="position:absolute;left:330px;margin-top:33px;" >
-        <div style="float:left;">您的地址：
-           </div>
-        <div class="pingjia">
-            <input style="width:450px;" id="Text1" type="text" name="man" placeholder="请输入你的详细地址" />
+    <div style="position:absolute;left:330px;margin-top:20px;" >    
+            <div class="info">
+                <div>
+                    您的地址：<select id="s_province" name="s_province"></select>&nbsp;&nbsp;
+                    <select id="s_city" name="s_city"></select>&nbsp;&nbsp;
+                    <select id="s_county" name="s_county"></select>
+                    <script type="text/javascript">_init_area();</script>
+                </div>
+                <div id="show"></div>
+        
+            <script type="text/javascript">
+            var Gid = document.getElementById;
+            var showArea = function () {
+                Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
+                Gid('s_city').value + " - 县/区" +
+                Gid('s_county').value + "</h3>"
+            }
+            Gid('s_county').setAttribute('onchange', 'showArea()');
+            </script>
+            </div>
+        <div style="margin-top:10px; " >
+            <input style="width:500px;" id="Text1" type="text" name="man" placeholder="请输入你的详细地址" />
         </div>
     </div>
    <div  style="position:absolute;left:1200px;margin-top:65px;" ><a href="@Url.Action("Index")">继续购物》</a></div>

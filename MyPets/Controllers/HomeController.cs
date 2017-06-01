@@ -195,16 +195,11 @@ namespace MyPets.Controllers
             Session["UserName"] = null;
             return RedirectToAction("Index");
         }
-        public ActionResult Comment()//评价
+        public ActionResult Comments()//评价
         {
-            if (Session["UserName"] != null)
-            {
-                var name = Session["UserName"].ToString();
-                var comment = GoodsCommentServices.LoadEntities(b => b.UserInfo.UserName == name).ToList();
-                return View(comment);
-            }
-          
-            else return Content("<script>alert('您还未登录？');history.go(-1);</script>");
+        //        var name = Session["UserName"].ToString();
+                //var comment = GoodsCommentServices.LoadEntities(b => b.UserInfo.UserName == name).ToList();
+                return View();     
         }
         public ActionResult AddToCollect(int id, string type)//加入收藏
         {
@@ -220,7 +215,7 @@ namespace MyPets.Controllers
                     {
                         ShopId = good.GoodsId,
                         UserId = User.UserId,
-                        //Type = type
+                        Type = type
                     });
                     db.SaveChanges();
                     return Content("<script>alert('商品收藏成功！');history.go(-1);</script>");
@@ -232,10 +227,6 @@ namespace MyPets.Controllers
             }
             else return Content("<script>alert('您还未登陆！！');history.go(-1);</script>");
         }
-
-
-
-
 
         //public ActionResult AddToGoodsComment(int id)//评论
         //{
