@@ -104,6 +104,15 @@ namespace MyPets.Controllers
             }
             else return View("PartialWaterGoods", watergoods.ToPagedList(pageNumber, pageSize));
         }
+        public ActionResult SearchGoods(string goods, int? page) //搜索
+        {
+            int id = Convert.ToInt32(Session["shopid"]);
+            var shopgoods = GoodsService.LoadEntities(g => g.ShopId == id && g.GoodsName.Contains(goods)).ToList();
+            int pageSize = 9;
+            int pageNumber = (page ?? 1);
+            ViewBag.goods = goods;
+            return View(shopgoods.ToPagedList(pageNumber, pageSize));
+        }
         public ActionResult GoodsDetail(int goodsid)
         {
             int id = Convert.ToInt32(Session["shopid"]);
@@ -145,15 +154,11 @@ namespace MyPets.Controllers
             Session["hascollect"] = "no";
             return RedirectToAction("Index");
         }
-        public ActionResult SearchShopGoods(string searchthing,int? page) //店内搜索
+        public ActionResult SearchShopGoods(string searchthing) //店内搜索
         {
             var id = Convert.ToInt32(Session["shopid"]);
             var goods = GoodsService.LoadEntities(g => g.ShopId == id && g.GoodsName.Contains(searchthing)).ToList();
-            int pageSize = 15;
-            int pageNumber = (page ?? 1);
-            ViewBag.goods = searchthing;
-            return View(goods.ToPagedList(pageNumber, pageSize));
-            
+            return View(goods);
         }
         public ActionResult PartialCart()
         {

@@ -17,7 +17,7 @@ namespace MyPets.Model
         public int DetailId { get; set; }
         public int GoodsId { get; set; }
         public int DetailSum { get; set; }
-        public decimal DetailCount { get; set; }
+        public int DetailCount { get; set; }
         public int UserId { get; set; }
         public string OrderNumber { get; set; }
         public bool OrderState { get; set; }

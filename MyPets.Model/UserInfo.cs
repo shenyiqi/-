@@ -54,5 +54,10 @@ namespace MyPets.Model
         public virtual ICollection<Post> Post { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shop> Shop { get; set; }
+
+        public static implicit operator int(UserInfo v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

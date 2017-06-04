@@ -42,6 +42,5 @@ namespace MyPets.Model
         public virtual DbSet<ShopCart> ShopCart { get; set; }
         public virtual DbSet<ShopRecommend> ShopRecommend { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
-        public virtual DbSet<GoodsResponseComment> GoodsResponseComment { get; set; }
     }
 }

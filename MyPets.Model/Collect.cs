@@ -15,9 +15,9 @@ namespace MyPets.Model
     public partial class Collect
     {
         public int CollectId { get; set; }
-        public string Type { get; set; }
         public int ShopId { get; set; }
         public int UserId { get; set; }
+        public string Type { get; set; }
     
         public virtual Shop Shop { get; set; }
         public virtual UserInfo UserInfo { get; set; }

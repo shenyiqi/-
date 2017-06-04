@@ -182,22 +182,6 @@ namespace MyPets.DALFactory
             set { _GoodsCommentDal = value; }
         }
         /// <summary>
-        /// 商品评论回复
-        /// </summary>
-        private IGoodsResponseCommentDal _GoodsResponseCommentDal;
-        public IGoodsResponseCommentDal GoodsResponseCommentDal
-        {
-            get
-            {
-                if (_GoodsResponseCommentDal == null)
-                {
-                    _GoodsResponseCommentDal = AbstractFactory.CreateGoodsResponseCommentDal();
-                }
-                return _GoodsResponseCommentDal;
-            }
-            set { _GoodsResponseCommentDal = value; }
-        }
-        /// <summary>
         /// 创建数据操作类OrderDal的实例
         /// </summary>
         private IOrderDal _OrderDal;
