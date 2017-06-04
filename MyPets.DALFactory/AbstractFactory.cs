@@ -62,6 +62,11 @@ namespace MyPets.DALFactory
             string fullClassName = NameSpace + ".GoodsCommentDal";
             return CreateInstance(fullClassName) as IGoodsCommentDal;
         }
+        public static IGoodsResponseCommentDal CreateGoodsResponseCommentDal()
+        {
+            string fullClassName = NameSpace + ".GoodsResponseCommentDal";
+            return CreateInstance(fullClassName) as IGoodsResponseCommentDal;
+        }
         public static IOrderDal CreateOrderDal()
         {
             string fullClassName = NameSpace + ".OrderDal";

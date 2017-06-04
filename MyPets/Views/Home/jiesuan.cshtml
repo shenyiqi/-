@@ -1,86 +1,100 @@
-﻿
+﻿@model IEnumerable<MyPets.Model.ShopCart>
 @{
     ViewBag.Title = "jiesuan";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
-@model IEnumerable<MyPets.Model.ShopCart>
-<!DOCTYPE html>
+@section jiesuan{
+    <link href="~/Content/Home/css/style.css" rel="stylesheet" />
+    <script src="~/Content/Home/js/js.js"></script>
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-     <link href="~/Content/Home/js/style.css" rel="stylesheet" />
-     <script src="~/Content/Home/css/demo.js"></script>   
-</head>
-<body>
-    <div style="position:absolute;left:330px;margin-top:33px;" >
-        <div style="float:left;">您的地址：
-           </div>
-        <div class="pingjia">
-            <input style="width:450px;" id="Text1" type="text" name="man" placeholder="请输入你的详细地址" />
-        </div>
+<div style="position:absolute;left:330px;margin-top:33px;">
+    <div style="float:left;">
+        您的地址：
     </div>
-   <div  style="position:absolute;left:1200px;margin-top:65px;" ><a href="@Url.Action("Index")">继续购物》</a></div>
-    <div class="catbox">
+    <div class="pingjia">
+        <input style="width:450px;" id="Text1" type="text" name="man" placeholder="请输入你的详细地址" />
+    </div>
+</div>
+<div style="position:absolute;left:1200px;margin-top:65px;"><a href="@Url.Action("Index")">继续购物》</a></div>
+<div class="catbox">
+    @using (Html.BeginForm("PayGoods","Home",FormMethod.Post))
+    {
         <table id="cartTable">
             <thead>
                 <tr>
-                    <th>
+                    <th style="text-align:center">
                         <label>
                             <input class="check-all check" type="checkbox" />&nbsp;&nbsp;全选
                         </label>
                     </th>
-                    <th>商品</th>
-                    <th>单价</th>
-                    <th>数量</th>
-                    <th>小计</th>
-                    <th>操作</th>
+                    <th style="text-align:center">商品</th>
+                    <th style="text-align:center">单价</th>
+                    <th style="text-align:center">数量</th>
+                    <th style="text-align:center">小计</th>
+                    <th style="text-align:center">操作</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var b in Model)
                 {
                     <tr>
-                        <td>
+                        <td style="width:60px;">
                             <input class="check-one check" type="checkbox" />
                         </td>
                         <td class="goods">
-                            <a><img src="@Url.Content(@b.Goods.GoodsImg1)" /></a>
-                            
-                           <a><span>@(b.Goods.GoodsName)</span></a> 
+                            <img src="@Url.Content(@b.Goods.GoodsImg1)" style="width:60px;height:65px;" />
+                            <span style="margin-top:-4px;">@(b.Goods.GoodsName)</span>
                         </td>
-                        <td class="price">@(b.Goods.GoodsPrice)</td>
+                        <td class="price">
+                            @if (b.Goods.IsDiscount)
+                            {
+                                @b.Goods.DiscountPrice
+                            }
+                            else
+                            {
+                                @b.Goods.GoodsPrice
+                            }
+                        </td>
                         <td class="count">
                             <span class="reduce">-</span>
-                            <input class="input" type="text" value="1" />
+                            <input class="input" type="text" value="@b.GoodsSum" name="goodssum"/>
                             <span class="add">+</span>
                         </td>
-                        <td class="subtotal">@(b.Goods.GoodsPrice)</td>
-                        <td class="operation">
-                           <a href=""@Url.Action("Delect", new{id=@b.GoodsId})>
-                            <span class="delete">删除</span></a>
+                        <td class="subtotal">
+                            @if (b.Goods.IsDiscount)
+                            {
+                                @b.Goods.DiscountPrice
+                            }
+                            else
+                            {
+                                @b.Goods.GoodsPrice
+                            }
                         </td>
-
+                        <td class="operation">
+                            <span class="delete">@Html.ActionLink("删除", "Delect", new { id = b.GoodsId }, new { onclick = "return confirm('确认删除吗')" }) </span>
+                        </td>
                     </tr>
+                    @Html.Hidden("goodsid",b.GoodsId)
+                    @Html.Hidden("checkbox2","", new { @class = "checkbox2" })
                 }
             </tbody>
         </table>
-        <div class="foot" id="foot">
-            <label class="fl select-all"><input type="checkbox" class="check-all check" />&nbsp;&nbsp;全选</label>
-            <a class="fl delete" id="deleteAll" href="javascript:;">删除</a>
-            <div class="fr closing" onclick="getTotal();">结 算</div>
-            <input type="hidden" id="cartTotalPrice" />
-            <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
-            <div class="fr selected" id="selected">已选商品<span id="selectedTotal">0</span>件<span class="arrow up">︽</span><span class="arrow down">︾</span></div>
-            <div class="selected-view">
-                <div id="selectedViewList" class="clearfix">
-                    <div><img src="images/1.jpg"><span>取消选择</span></div>
+            <div class="foot" id="foot">
+                <label class="fl select-all"><input type="checkbox" class="check-all check" />&nbsp;&nbsp;全选</label>
+                <a class="fl delete" id="deleteAll" href="javascript:;">@Html.ActionLink("删除","ClearCart",new {name=Session["UserName"].ToString() }, new { onclick="return confirm('确定要清空购物车吗？')" })</a>
+                <div class="fr closing"><input type="submit" value="结 算" class="btn btn-danger" id="subbtn" /></div>
+                <input type="hidden" id="cartTotalPrice" />
+                <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
+                <input type="hidden" id="TotalPrice" name="TotalPrice" value="" />
+                <div class="fr selected" id="selected">已选商品<span id="selectedTotal">0</span>件<span class="arrow up">︽</span><span class="arrow down">︾</span></div>
+                <div class="selected-view">
+                    <div id="selectedViewList" class="clearfix">
+                        <div><img src="images/1.jpg"><span>取消选择</span></div>
+                    </div>
+                    <span class="arrow">◆<span>◆</span></span>
                 </div>
-                <span class="arrow">◆<span>◆</span></span>
             </div>
-        </div>
-    </div>
-    
-</body>
-</html>
+    }
+</div>
+

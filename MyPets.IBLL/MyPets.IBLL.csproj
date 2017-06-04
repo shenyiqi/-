@@ -47,6 +47,7 @@
     <Compile Include="IBaseServices.cs" />
     <Compile Include="ICollectServices.cs" />
     <Compile Include="IGoodsCommentServices.cs" />
+    <Compile Include="IGoodsResponseCommentServices.cs" />
     <Compile Include="IGoodsServices.cs" />
     <Compile Include="IResponAnswerServices.cs" />
     <Compile Include="IOrderDetailServices.cs" />

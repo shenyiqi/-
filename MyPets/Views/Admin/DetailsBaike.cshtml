@@ -1,0 +1,67 @@
+﻿@model MyPets.Model.Baike
+
+@{
+    ViewBag.Title = "DetailsBaike";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DetailsBaike</h2>
+
+<div>
+    <h4>Baike</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           所属系列
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaikeSeries)
+        </dd>
+
+        <dt>
+            类别
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaikeType)
+        </dd>
+
+        <dt>
+           标题
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaikeTitle)
+        </dd>
+
+        <dt>
+           描述
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaikeDescribe)
+        </dd>
+
+        <dt>
+           具体内容
+        </dt>
+     
+        <dd style="margin-top:30px;">
+            @Html.Raw(Model.BaikeContent)
+        </dd>
+
+        <dt>
+            发布时间
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaikeTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("编辑", "EditBaike", new { id = Model.BaikeId }) |
+    @Html.ActionLink("Back to List", "BaikeManagement")
+</p>

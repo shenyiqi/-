@@ -1,0 +1,55 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<MyPets.Model.Baike>
+
+@{
+    ViewBag.Title = "BaikeManagement";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>BaikeManagement</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            BaikeType
+        </th>
+        <th>
+            BaikeTitle 
+        </th>
+        <th>
+            BaikeDescribe
+        </th>
+        <th>
+            BaikeTime 
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaikeType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaikeTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaikeDescribe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaikeTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditBaike", new { id=item.BaikeId }) |
+            @Html.ActionLink("Details", "DetailsBaike", new { id=item.BaikeId }) |
+            @Html.ActionLink("Delete", "DeleteBaike", new { id=item.BaikeId },new {onclick="return confirm('确认删除吗？')" })
+        </td>
+    </tr>
+}
+
+</table>
+<div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("BaikeManagement", "Admin", new { page, txttype = @ViewData["type"] }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 5 })</div>

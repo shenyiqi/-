@@ -49,6 +49,7 @@
     <Compile Include="IDBSession.cs" />
     <Compile Include="IGoodsCommentDal.cs" />
     <Compile Include="IGoodsDal.cs" />
+    <Compile Include="IGoodsResponseCommentDal.cs" />
     <Compile Include="IOrderDal.cs" />
     <Compile Include="IOrderDetailDal.cs" />
     <Compile Include="IPostDal.cs" />
