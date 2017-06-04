@@ -1833,11 +1833,10 @@
     <Content Include="Views\Store\SearchShopGoods.cshtml" />
     <Content Include="Views\Tribune\Index.cshtml" />
     <Content Include="Views\Tribune\Postings.cshtml" />
-    <Content Include="Views\Shop\EditGoods.cshtml" />
-    <Content Include="Views\Shop\AnswerComment.cshtml" />
-    <Content Include="Views\Admin\BaikeManagement.cshtml" />
-    <Content Include="Views\Admin\DetailsBaike.cshtml" />
-    <Content Include="Views\Admin\EditBaike.cshtml" />
+    <Content Include="Views\PersonalCenter\basicinformation.cshtml" />
+    <Content Include="Views\PersonalCenter\goodsreview.cshtml" />
+    <Content Include="Views\PersonalCenter\myshop.cshtml" />
+    <Content Include="Views\PersonalCenter\privatenews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,8 +1,9 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "goodsreview";
 }
 
+<h2>goodsreview</h2>
 <!doctype html>
 <html lang="en">
 <head>
@@ -113,12 +114,8 @@
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
 
-            <!--
+            <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
-                Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-                Tip 2: you can also add an image using data-image tag
-
-            -->
 
             <div class="sidebar-wrapper">
                 <div class="logo">
@@ -128,7 +125,7 @@
                 </div>
 
                 <ul class="nav">
-                    <li class="active">
+                    <li>
                         <a href="myorder.html">
                             <i class="pe-7s-graph"></i>
                             <p>我的订单</p>
@@ -146,7 +143,7 @@
                             <p>私信</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="goodsreview.html">
                             <i class="pe-7s-news-paper"></i>
                             <p>商品评论</p>
@@ -174,36 +171,28 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">我的订单</a>
+                        <a class="navbar-brand" href="#">商品评论</a>
                     </div>
                     <div class="collapse navbar-collapse">
 
+                        </ul>
                     </div>
                 </div>
             </nav>
 
 
             <div class="content">
+
                 <form method="post" action="#">
                     <table cellspacing="0" class="shop_table cart">
                         <thead>
                             <tr>
-                                <th class="product-remove">订单编号</th>
-                                <th class="product-thumbnail">&nbsp;</th>
-                                <th class="product-name"><input type="submit" value="所有订单"></th>
-                                <th class="product-quantity"><input type="submit" value="已完成订单"></th>
-                                <th class="product-price"><input type="submit" value="未完成订单"></th>
-                                <th class="product-appraise">评价</th>
-                            </tr>
-                        </thead>
-                        <thead>
-                            <tr>
                                 <th class="product-remove">&nbsp;</th>
-                                <th class="product-thumbnail">商品</th>
-                                <th class="product-name">单价</th>
-                                <th class="product-quantity">数量</th>
-                                <th class="product-price">状态</th>
-                                <th class="product-appraise">评价</th>
+                                <th class="product-thumbnail">&nbsp;</th>
+                                <th class="product-name">商品</th>
+                                <th class="product-price">价格</th>
+                                <th class="product-quantity">评价</th>
+                                <th class="product-subtotal">追加评价</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -217,25 +206,25 @@
                                 </td>
 
                                 <td class="product-name">
-                                    <a href="single-product.html">146</a>
-                                </td>
-
-                                <td class="product-quantity">
-                                    <span class="amount">1</span>
+                                    <a href="single-product.html">耐威克狗粮</a>
                                 </td>
 
                                 <td class="product-price">
-                                    <span class="amount">已完成</span>
+                                    <span class="amount">146.00</span>
                                 </td>
 
                                 <td class="product-appraise">
-                                    <span class="amount">好评</span>
+                                    <div class="quantity buttons_added">
+                                        <span class="amount"> 好评</span>
+
+                                    </div>
+                                </td>
+
+                                <td class="product-advice">
+                                    <span class="amount">  <form action=""><input type="text" placeholder="追加评价..."></span>
                                 </td>
                             </tr>
 
-
-
-                            </tr>
                             <tr class="cart_item">
                                 <td class="product-remove">
                                     <a title="Remove this item" class="remove" href="#">2</a>
@@ -246,21 +235,24 @@
                                 </td>
 
                                 <td class="product-name">
-                                    <a href="single-product.html">146</a>
-                                </td>
-
-                                <td class="product-quantity">
-                                    <span class="amount">1</span>
+                                    <a href="single-product.html">耐威克狗粮</a>
                                 </td>
 
                                 <td class="product-price">
-                                    <span class="amount">未完成</span>
+                                    <span class="amount">146.00</span>
                                 </td>
 
                                 <td class="product-appraise">
-                                    <span class="amount"><input type="submit" value="去评价"></span>
+                                    <div class="quantity buttons_added">
+                                        <span class="amount"> 好评</span>
+
+                                    </div>
                                 </td>
 
+                                <td class="product-advice">
+                                    <span class="amount">  <form action=""><input type="text" placeholder="追加评价..."></span>
+                                </td>
+                            </tr>
                             <tr class="cart_item">
                                 <td class="product-remove">
                                     <a title="Remove this item" class="remove" href="#">3</a>
@@ -271,22 +263,24 @@
                                 </td>
 
                                 <td class="product-name">
-                                    <a href="single-product.html">146</a>
-                                </td>
-
-                                <td class="product-quantity">
-                                    <span class="amount">1</span>
+                                    <a href="single-product.html">耐威克狗粮</a>
                                 </td>
 
                                 <td class="product-price">
-                                    <span class="amount">已完成</span>
+                                    <span class="amount">146.00</span>
                                 </td>
 
                                 <td class="product-appraise">
-                                    <span class="amount"><input type="submit" value="去评价"></span>
+                                    <div class="quantity buttons_added">
+                                        <span class="amount">好评</span>
+
+                                    </div>
+                                </td>
+
+                                <td class="product-advice">
+                                    <span class="amount">  <form action=""><input type="text" placeholder="追加评价..."></span>
                                 </td>
                             </tr>
-
                             <tr class="cart_item">
                                 <td class="product-remove">
                                     <a title="Remove this item" class="remove" href="#">4</a>
@@ -297,28 +291,36 @@
                                 </td>
 
                                 <td class="product-name">
-                                    <a href="single-product.html">146</a>
-                                </td>
-
-                                <td class="product-quantity">
-                                    <span class="amount">1</span>
+                                    <a href="single-product.html">耐威克狗粮</a>
                                 </td>
 
                                 <td class="product-price">
-                                    <span class="amount">已完成</span>
+                                    <span class="amount">146.00</span>
                                 </td>
 
                                 <td class="product-appraise">
-                                    <span class="amount">中评</span>
+                                    <div class="quantity buttons_added">
+                                        <span class="amount">好评</span>
+
+                                    </div>
+                                </td>
+
+                                <td class="product-advice">
+                                    <span class="amount">  <form action=""><input type="text" placeholder="追加评价..."></span>
                                 </td>
                             </tr>
-
+                            </tr>
+                            <tr>
+                                <td class="actions" colspan="6">
+                                    <input type="submit" value="发表评论" name="proceed" class="checkout-button button alt wc-forward">
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </form>
 
-            </div>
 
+            </div>
 
             <footer class="footer">
                 <div class="container-fluid">
@@ -347,9 +349,9 @@
                         </ul>
                     </nav>
 
-                    </p>
                 </div>
             </footer>
+
 
         </div>
     </div>
@@ -379,21 +381,5 @@
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="~/Content/PersonalCenter/js/demo.js"></script>
 
-<script type="text/javascript">
-    	$(document).ready(function(){
-
-        	demo.initChartist();
-
-        	$.notify({
-            	icon: 'pe-7s-gift',
-            	message: "Welcome to <b>My Pet</b> - a beautiful paradise for pets."
-
-            },{
-                type: 'info',
-                timer: 4000
-            });
-
-    	});
-</script>
-
 </html>
+
