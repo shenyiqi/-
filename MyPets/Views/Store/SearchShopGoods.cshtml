@@ -1,6 +1,8 @@
-﻿@model IEnumerable<MyPets.Model.Goods>
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<MyPets.Model.Goods>
 @{
-    ViewBag.Title = "SearchShopGoods";
+    ViewBag.Title = "商品搜索";
     Layout = "~/Views/Shared/_LayouStore.cshtml";
 }
 <br /><br />
@@ -24,5 +26,7 @@
             </div>
         </div>
     }
+    <div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("SearchShopGoods", "Store", new { page, searchthing = @ViewBag.goods }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 5 })</div>
 </div>
+
 

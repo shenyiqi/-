@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MyPetsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MyPetsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adminstrator">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -91,13 +91,24 @@
           <Property Name="CommentTime" Type="datetime" Nullable="false" />
           <Property Name="GoodsId" Type="int" Nullable="false" />
           <Property Name="UsersId" Type="int" Nullable="false" />
+          <Property Name="IsReply" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GoodsResponseComment">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentId" Type="int" Nullable="false" />
+          <Property Name="AnswerContent" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AnswerTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderId" />
           </Key>
           <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderCount" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="OrderCount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="OrderTime" Type="datetime" Nullable="false" />
           <Property Name="OrderAddress" Type="nvarchar(max)" Nullable="false" />
@@ -112,7 +123,7 @@
           <Property Name="DetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GoodsId" Type="int" Nullable="false" />
           <Property Name="DetailSum" Type="int" Nullable="false" />
-          <Property Name="DetailCount" Type="int" Nullable="false" />
+          <Property Name="DetailCount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="OrderNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OrderState" Type="bit" Nullable="false" />
@@ -290,6 +301,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GoodsResponseComment_GoodsComment">
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="1" />
+          <End Role="GoodsResponseComment" Type="Self.GoodsResponseComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsComment">
+              <PropertyRef Name="CommentId" />
+            </Principal>
+            <Dependent Role="GoodsResponseComment">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_UserInfo">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -394,6 +417,7 @@
           <EntitySet Name="Collect" EntityType="Self.Collect" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GoodsComment" EntityType="Self.GoodsComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoodsResponseComment" EntityType="Self.GoodsResponseComment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
@@ -432,6 +456,10 @@
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="GoodsComment" EntitySet="GoodsComment" />
           </AssociationSet>
+          <AssociationSet Name="FK_GoodsResponseComment_GoodsComment" Association="Self.FK_GoodsResponseComment_GoodsComment">
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+            <End Role="GoodsResponseComment" EntitySet="GoodsResponseComment" />
+          </AssociationSet>
           <AssociationSet Name="FK_Order_UserInfo" Association="Self.FK_Order_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="Order" EntitySet="Order" />
@@ -465,7 +493,8 @@
             <End Role="ShopCart" EntitySet="ShopCart" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyPetsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -522,11 +551,11 @@
             <PropertyRef Name="CollectId" />
           </Key>
           <Property Name="CollectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ShopId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Shop" Relationship="Self.FK_Collect_Shop" FromRole="Collect" ToRole="Shop" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_Collect_UserInfo" FromRole="Collect" ToRole="UserInfo" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Goods">
           <Key>
@@ -564,15 +593,28 @@
           <Property Name="CommentTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="GoodsId" Type="Int32" Nullable="false" />
           <Property Name="UsersId" Type="Int32" Nullable="false" />
+          <Property Name="IsReply" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Goods" Relationship="Self.FK_GoodsComment_Goods" FromRole="GoodsComment" ToRole="Goods" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_GoodsComment_UserInfo" FromRole="GoodsComment" ToRole="UserInfo" />
+          <NavigationProperty Name="GoodsResponseComment" Relationship="Self.FK_GoodsResponseComment_GoodsComment" FromRole="GoodsComment" ToRole="GoodsResponseComment" />
+        </EntityType>
+        <EntityType Name="GoodsResponseComment">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentId" Type="Int32" Nullable="false" />
+          <Property Name="AnswerContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnswerTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="GoodsComment" Relationship="Self.FK_GoodsResponseComment_GoodsComment" FromRole="GoodsResponseComment" ToRole="GoodsComment" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderId" />
           </Key>
           <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderCount" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="OrderCount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="OrderTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="OrderAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -588,12 +630,12 @@
           <Property Name="DetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GoodsId" Type="Int32" Nullable="false" />
           <Property Name="DetailSum" Type="Int32" Nullable="false" />
-          <Property Name="DetailCount" Type="Int32" Nullable="false" />
+          <Property Name="DetailCount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderState" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Goods" Relationship="Self.FK_OrderDetail_Goods" FromRole="OrderDetail" ToRole="Goods" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_OrderDetail_UserInfo" FromRole="OrderDetail" ToRole="UserInfo" />
-          <Property Name="OrderState" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -820,6 +862,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GoodsResponseComment_GoodsComment">
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="1" />
+          <End Role="GoodsResponseComment" Type="Self.GoodsResponseComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsComment">
+              <PropertyRef Name="CommentId" />
+            </Principal>
+            <Dependent Role="GoodsResponseComment">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_UserInfo">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -888,6 +942,7 @@
           <EntitySet Name="Collect" EntityType="Self.Collect" />
           <EntitySet Name="Goods" EntityType="Self.Goods" />
           <EntitySet Name="GoodsComment" EntityType="Self.GoodsComment" />
+          <EntitySet Name="GoodsResponseComment" EntityType="Self.GoodsResponseComment" />
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
           <EntitySet Name="Post" EntityType="Self.Post" />
@@ -937,6 +992,10 @@
           <AssociationSet Name="FK_GoodsComment_UserInfo" Association="Self.FK_GoodsComment_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="GoodsComment" EntitySet="GoodsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GoodsResponseComment_GoodsComment" Association="Self.FK_GoodsResponseComment_GoodsComment">
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+            <End Role="GoodsResponseComment" EntitySet="GoodsResponseComment" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_UserInfo" Association="Self.FK_Order_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfo" />
@@ -1017,8 +1076,8 @@
           <EntitySetMapping Name="Collect">
             <EntityTypeMapping TypeName="MyPetsModel.Collect">
               <MappingFragment StoreEntitySet="Collect">
-                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="CollectId" ColumnName="CollectId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="ShopId" ColumnName="ShopId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
@@ -1056,6 +1115,18 @@
                 <ScalarProperty Name="CommentTime" ColumnName="CommentTime" />
                 <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
                 <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+                <ScalarProperty Name="IsReply" ColumnName="IsReply" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsResponseComment">
+            <EntityTypeMapping TypeName="MyPetsModel.GoodsResponseComment">
+              <MappingFragment StoreEntitySet="GoodsResponseComment">
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="AnswerContent" ColumnName="AnswerContent" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AnswerTime" ColumnName="AnswerTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1076,13 +1147,13 @@
           <EntitySetMapping Name="OrderDetail">
             <EntityTypeMapping TypeName="MyPetsModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
-                <ScalarProperty Name="OrderState" ColumnName="OrderState" />
                 <ScalarProperty Name="DetailId" ColumnName="DetailId" />
                 <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
                 <ScalarProperty Name="DetailSum" ColumnName="DetailSum" />
                 <ScalarProperty Name="DetailCount" ColumnName="DetailCount" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="OrderState" ColumnName="OrderState" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

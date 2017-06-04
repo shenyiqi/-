@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MyPets.Model.GoodsComment>
+
+@{
+    ViewBag.Title = "AnswerComment";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
+<h2>回复评论</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            编号
+        </th>
+        <th>
+            评论内容
+        </th>
+        <th>
+            评论等级
+        </th>
+        <th>
+            评论时间
+        </th>
+        <th>
+            商品名
+        </th>
+        <th>
+            用户名
+        </th>
+        <th>操作</th>
+    </tr>
+    @{string tempid; }
+    @foreach (var item in Model)
+    {
+        tempid = "ans" + item.CommentId;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentRange)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoodsId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsersId)
+            </td>
+            <td>
+                <a href="javascript:;" onclick="document.getElementById('@tempid').style.display=document.getElementById('@tempid').style.display==''?'none':''">回复</a>
+            </td>
+        </tr>
+        <tr id="@tempid" style="display:none;">
+            <td colspan="7">
+                @using (Html.BeginForm())
+                {
+                    @Html.Hidden("commentId", item.CommentId)
+                    <textarea class="form-control" placeholder="请输入回复内容..." rows="3" name="replycontent"></textarea>
+                    <input type="submit" value="回复" class="btn btn-default" style="float:right;margin-top:3px;" />
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>

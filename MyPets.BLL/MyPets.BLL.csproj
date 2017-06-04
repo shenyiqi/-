@@ -47,6 +47,7 @@
     <Compile Include="BaseServices.cs" />
     <Compile Include="CollectServices.cs" />
     <Compile Include="GoodsCommentServices.cs" />
+    <Compile Include="GoodsResponseCommentServices.cs" />
     <Compile Include="GoodsServices.cs" />
     <Compile Include="MailHelper.cs" />
     <Compile Include="OrderDetailServices.cs" />

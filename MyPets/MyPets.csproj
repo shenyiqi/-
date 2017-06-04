@@ -1386,6 +1386,7 @@
     <Content Include="Content\Baike\js\jquery.cxslide.min.js" />
     <Content Include="Content\Baike\js\slides.js" />
     <Content Include="Content\Home\css\index.css" />
+    <Content Include="Content\Home\css\pingjia.css" />
     <Content Include="Content\Home\css\shangpin.css" />
     <Content Include="Content\Home\css\style.css" />
     <Content Include="Content\Home\css\StyleSheet1.css" />
@@ -1833,6 +1834,17 @@
     <Content Include="Views\Store\SearchShopGoods.cshtml" />
     <Content Include="Views\Tribune\Index.cshtml" />
     <Content Include="Views\Tribune\Postings.cshtml" />
+    <Content Include="Views\PersonalCenter\basicinformation.cshtml" />
+    <Content Include="Views\PersonalCenter\goodsreview.cshtml" />
+    <Content Include="Views\PersonalCenter\myshop.cshtml" />
+    <Content Include="Views\PersonalCenter\privatenews.cshtml" />
+    <Content Include="Views\Admin\BaikeManagement.cshtml" />
+    <Content Include="Views\Admin\EditBaike.cshtml" />
+    <Content Include="Views\Admin\DetailsBaike.cshtml" />
+    <Content Include="Views\Shop\AnswerComment.cshtml" />
+    <Content Include="Views\Shop\EditGoods.cshtml" />
+    <Content Include="Views\Home\Comment.cshtml" />
+    <Content Include="Views\Store\PartialCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

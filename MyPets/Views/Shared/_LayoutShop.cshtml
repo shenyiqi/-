@@ -12,7 +12,7 @@
     <link href="~/Content/Shop/css/custom.css" rel="stylesheet" />
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    @RenderSection("Head",false)
+    @RenderSection("Head", false)
 
 </head>
 <body>
@@ -86,7 +86,7 @@
                         <a href="@Url.Action("Order")"><i class="fa fa-anchor"></i>用户订单</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-sign-in "></i>商品评论</a>
+                        <a href="@Url.Action("AnswerComment")"><i class="fa fa-sign-in "></i>商品评论</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-sitemap "></i>待定<span class="fa arrow"></span></a>
@@ -122,7 +122,7 @@
         </nav>
         <div id="page-wrapper">
             <div id="page-inner">
-               @RenderBody()
+                @RenderBody()
             </div>
         </div>
     </div>

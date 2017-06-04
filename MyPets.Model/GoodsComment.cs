@@ -14,14 +14,23 @@ namespace MyPets.Model
     
     public partial class GoodsComment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public GoodsComment()
+        {
+            this.GoodsResponseComment = new HashSet<GoodsResponseComment>();
+        }
+    
         public int CommentId { get; set; }
         public string CommentContent { get; set; }
         public string ContentRange { get; set; }
         public System.DateTime CommentTime { get; set; }
         public int GoodsId { get; set; }
         public int UsersId { get; set; }
+        public bool IsReply { get; set; }
     
         public virtual Goods Goods { get; set; }
         public virtual UserInfo UserInfo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GoodsResponseComment> GoodsResponseComment { get; set; }
     }
 }
