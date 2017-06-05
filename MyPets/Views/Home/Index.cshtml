@@ -10,7 +10,6 @@
     <meta charset="utf-8">
     <title></title>
     <link href="~/Content/Home/css/index.css" rel="stylesheet" />
-    <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="~/Content/Home/js/index.js"></script>
@@ -32,21 +31,22 @@
                 }
                 else
                 {
-                    <li>
-                        <div class="dropdown">
-                            <div id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                <a href="javascript:;" style="color:#9C3;">@Session["UserName"]</a>
-                                <span class="caret"></span>
+                    @*<li>
+                            <div class="dropdown">
+                                <div id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <a href="javascript:;" style="color:#9C3;">@Session["UserName"]</a>
+                                    <span class="caret"></span>
+                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="@Url.Action("LoginOff")">退出登录</a></li>
+                                </ul>
                             </div>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="@Url.Action("Index","PersonalCenter",new { user=Session["UserName"]})">个人中心</a></li>
-                                <li><a href="@Url.Action("LoginOff")">退出登录</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                        </li>*@
+                    <li><a href="javascript:;" style="color:#9C3;">@Session["UserName"]</a></li>
+                    <li><a href="@Url.Action("LoginOff")">退出登录</a></li>
                 }
                 <li>
-                    <a href="">手机版</a>
+                    <a href="@Url.Action("Index","PersonalCenter",new { user=Session["UserName"]})">个人中心</a>
                 </li>
                 <li>
                     <a href="">关注宠物之家</a>
@@ -70,8 +70,9 @@
                 </ul>
             </div>
             <div class="search_mid">
+                @Html.Hidden("typeNum", "1")
                 <input type="text" name="searchInput" id="searchTxtBox" value="" placeholder="狗粮" />
-                <input type="submit" name="searchBtn" id="searchBtn" value="搜索" onclick="search()" />
+                <input type="submit" name="searchBtn" id="searchBtn" value="搜索" />
             </div>
         }
     </div>
@@ -641,27 +642,44 @@
         </div>
         <div class="famousShop">
             <div style="margin-left:0;">
-                <img src="~/Content/Home/img/shopimg/shop1.jpg" />
+                <a href="@Url.Action("Index","Store",new { shopid=1 })">
+                    <img src="~/Content/Home/img/shopimg/shop1.jpg" />
+                </a>
             </div>
             <div>
-                <img src="~/Content/Home/img/shopimg/shop2.jpg" />
-                <img class="bottomShop" src="~/Content/Home/img/shopimg/shop3.jpg" />
+                <a href="@Url.Action("Index","Store",new { shopid=2 })">
+                    <img src="~/Content/Home/img/shopimg/shop2.jpg" />
+                </a>
+                <a href="@Url.Action("Index","Store",new { shopid=3 })">
+                    <img class="bottomShop" src="~/Content/Home/img/shopimg/shop3.jpg" />
+                </a>
             </div>
             <div>
-                <img src="~/Content/Home/img/shopimg/shop4.jpg" />
+                <a href="@Url.Action("Index","Store",new { shopid=4 })">
+                    <img src="~/Content/Home/img/shopimg/shop4.jpg" />
+                </a>
             </div>
             <div>
-                <img src="~/Content/Home/img/shopimg/shop5.jpg" />
-                <img class="bottomShop" src="~/Content/Home/img/shopimg/shop6.jpg" />
+                <a href="@Url.Action("Index","Store",new { shopid=5 })">
+                    <img src="~/Content/Home/img/shopimg/shop5.jpg" />
+                </a>
+                <a href="@Url.Action("Index","Store",new { shopid=6 })">
+                    <img class="bottomShop" src="~/Content/Home/img/shopimg/shop6.jpg" />
+                </a>
             </div>
             <div>
-                <img src="~/Content/Home/img/shopimg/shop7.jpg" />
+                <a href="@Url.Action("Index","Store",new { shopid=7 })">
+                    <img src="~/Content/Home/img/shopimg/shop7.jpg" />
+                </a>
             </div>
             <div>
-                <img src="~/Content/Home/img/shopimg/shop8.jpg" />
-                <img class="bottomShop" src="~/Content/Home/img/shopimg/shop9.jpg" />
+                <a href="@Url.Action("Index","Store",new { shopid=8 })">
+                    <img src="~/Content/Home/img/shopimg/shop8.jpg" />
+                </a>
+                <a href="@Url.Action("Index","Store",new { shopid=9 })">
+                    <img class="bottomShop" src="~/Content/Home/img/shopimg/shop9.jpg" />
+                </a>
             </div>
-
         </div>
 
         <div class="boxOne">

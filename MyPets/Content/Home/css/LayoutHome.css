@@ -1,0 +1,191 @@
+﻿/*全局reset*/
+
+* {
+	padding: 0;
+	margin: 0;
+    font-family:微软雅黑;
+}
+
+
+/*-------------------首页顶部-------------------*/
+
+#index_top {
+	width: 100%;
+	height: 36px;
+	border-bottom: 1px solid #DDDDDD;
+	font-size: 13px;
+}
+#index_top a{
+	color: RGB(51,51,51);
+	text-decoration: none;
+}
+#index_top a:hover {
+	color: RGB(238, 85, 51);
+}
+
+#index_top .content {
+	width: 1190px;
+	height: 36px;
+	margin: 0 auto;
+	position: relative;	
+}
+
+#index_top .content div {
+	float: left;
+}
+
+#index_top .favorite {
+	width: 124px;
+	height: 36px;
+	text-align: center;
+	line-height: 36px;
+	color: RGB(102, 102, 102);
+	cursor: pointer;
+}
+
+#index_top .favorite:hover {
+	color: RGB(238, 85, 51);
+
+}
+#index_top .index_topRight{
+	position: absolute;
+    display: block;
+    height: 16px;
+    line-height: 16px;
+	right: 0;
+	top: 10px;
+	
+}
+#index_top .index_topRight li{
+	list-style: none;
+    padding:0 10px ;
+    border-right: solid 1px RGB(204,204,204);
+	float: left;
+}
+
+
+/*-----------------首页顶部结束--------------------*/
+
+
+/*-------------------搜索框部分-----------------------*/
+
+#search {
+	width: 1190px;
+	height: 130px;
+	margin: 0 auto;
+	position: relative;
+}
+#search .searchType{
+    position:absolute;
+    top:13px;
+    left:300px;
+    height:36px;
+    width:100px;
+    background:RGB(255,255,255);
+}
+#search .searchType li{
+    list-style:none;
+    float:left;
+    text-align:center;
+    width:50px;
+    line-height:36px;
+    color:RGB(238,85,51);
+    cursor:pointer;
+}
+#search .searchType li:hover{
+    background:RGB(255,238,229);
+}
+
+#search img {
+	margin: 15px 0;
+}
+#search .search_mid{
+	position: absolute;
+	top: 43px;
+	left: 300px;
+}
+#search .search_mid input{
+	float: left;
+}
+#searchTxtBox{
+	width: 516px;
+	height: 44px;
+	text-indent: 10px;
+	font-size: 16px;
+	color: RGB(51,51,51);
+	border: solid 3px RGB(238,85,51);
+}
+#searchBtn{
+	width: 80px;
+	height: 44px;
+	border: none;
+	background: RGB(238,85,51);
+	font-size: 18px;
+	color: white;
+	cursor: pointer;
+}
+/*-------------------搜索框部分结束--------------------*/
+
+/*----------------------导航栏--------------------*/
+
+#navigation_bar {
+	width: 100%;
+	height: 36px;
+	background: RGB(238, 85, 51);
+}
+
+
+/*设置导航栏css属性*/
+
+#navigation_bar .vital_part {
+	width: 1190px;
+	height: 36px;
+	background: RGB(238, 85, 51);
+	margin: 0 auto;
+	color: white;
+	position: relative;
+}
+
+#navigation_bar .vital_part a {
+	height: 36px;
+	color: white;
+	line-height: 36px;
+	margin: 0 auto;
+	padding: 0 17px;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+	float: left;
+}
+
+#navigation_bar .vital_part .all_type {
+	width: 190px;
+	height: 36px;
+	text-align: left;
+	text-indent: 10px;
+	background: RGB(204, 34, 0);
+	overflow: hidden;
+	padding: 0;
+}
+
+#navigation_bar .vital_part .navigation {
+	height: 36px;
+}
+
+#navigation_bar .vital_part .navigation a:hover {
+	background: RGB(154, 0, 0);
+}/*添加移入css属性*/
+
+#navigation_bar .shopping_cart {
+	position: absolute;
+	right: 0;
+	/*设置购物车在右侧*/
+	width: 110px;
+	background: RGB(204, 34, 0);
+}/*导航栏的购物车css属性*/
+
+
+
+
+
+/*--------------------导航栏结束------------------------*/

@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/Content/Home/css/index.css" rel="stylesheet" />
+    <link href="~/Content/Home/css/LayoutHome.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Content/Home/js/index.js"></script>
     <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -71,7 +71,7 @@
                 <a href="" class="all_type">全部商品分类</a>
                 <a href="@Url.Action("jiesuan")" class="shopping_cart">购物车</a>
                 <div class="navigation">
-                    <a href="@Url.Action("Index","Home")" class="index">首页</a>
+                    <a href="@Url.Action("Index","Home")">首页</a>
                     <a href="@Url.Action("Shangpin",new { keyword="狗粮",type="狗"})">狗狗</a>
                     <a href="@Url.Action("Shangpin",new { keyword="猫",type="猫"})">猫猫</a>
                     <a href="">小宠</a>

@@ -7,8 +7,10 @@ $(function(){
         $(this).css({ "background": "RGB(238,85,51)", "color": "RGB(255,255,255)" }).siblings().css({ "background": "", "color": "" });
         if ($(this).text() == "店铺") {
             $("#searchTxtBox").prop('placeholder', '店铺1');
+            $("#typeNum").val() = 2;
         }else {
             $("#searchTxtBox").prop('placeholder', '狗粮');
+            $("#typeNum").val() = 1;
         } 
     })
 

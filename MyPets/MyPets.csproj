@@ -85,6 +85,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcPager, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcPager.1.0.0\lib\MvcPager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PagedList">
       <HintPath>..\packages\PagedList\PagedList.dll</HintPath>
     </Reference>
@@ -1386,7 +1390,9 @@
     <Content Include="Content\Baike\js\jquery.cxslide.min.js" />
     <Content Include="Content\Baike\js\slides.js" />
     <Content Include="Content\Home\css\index.css" />
+    <Content Include="Content\Home\css\LayoutHome.css" />
     <Content Include="Content\Home\css\pingjia.css" />
+    <Content Include="Content\Home\css\searchGoods.css" />
     <Content Include="Content\Home\css\shangpin.css" />
     <Content Include="Content\Home\css\style.css" />
     <Content Include="Content\Home\css\StyleSheet1.css" />
@@ -1845,6 +1851,8 @@
     <Content Include="Views\Shop\EditGoods.cshtml" />
     <Content Include="Views\Home\Comment.cshtml" />
     <Content Include="Views\Store\PartialCart.cshtml" />
+    <Content Include="Views\Home\SearchGoods.cshtml" />
+    <Content Include="Views\Home\SearchShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

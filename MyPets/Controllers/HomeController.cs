@@ -20,6 +20,7 @@ namespace MyPets.Controllers
         IBLL.IOrderServices OrderServices = new BLL.OrderServices();
         IBLL.IOrderDetailServices OrderDeailServices = new BLL.OrderDetailServices();
         IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
+        IBLL.IShopServices shopServices = new BLL.ShopServices();
         IDBSession db = new DBSession();
 
         public ActionResult Index()
@@ -64,14 +65,34 @@ namespace MyPets.Controllers
             var reptileFood = goodsService.LoadEntities(g => g.SeriesName == "爬虫用品" && g.TypeName == "日用品").Take(10).ToList();
             ViewData["reptilefood"] = reptileFood;
 
+            //店铺部分
+            var shop = shopServices.LoadEntities(s => true).Take(9).ToList();
+            ViewData["shop"] = shop;
+
 
             return View();
         }
 
-        public ActionResult Search()
+        public ActionResult Search(string typeNum,string searchInput)//搜索判断
         {
-
-            return View();
+            if (typeNum == "1")
+            {                
+                return RedirectToAction("SearchGoods",new { searchInput,typeNum });
+            }
+            else
+            {                
+                return RedirectToAction("SearchShop",new { searchInput,typeNum });
+            }            
+        }
+        public ActionResult SearchGoods(string typeNum, string searchInput)//搜索商品展示页面
+        {
+            var searchGoods = goodsService.LoadEntities(g => g.GoodsName.Contains(searchInput) || g.TypeName.Contains(searchInput)).ToList();
+            return View(searchGoods);                 
+        }
+        public ActionResult SearchShop(string typeNum, string searchInput)//搜索店铺展示页面
+        {
+            var searchShops = shopServices.LoadEntities(g => g.ShopName.Contains(searchInput)).ToList();
+            return View(searchShops);
         }
 
         public ActionResult About()
