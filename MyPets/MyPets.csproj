@@ -1413,6 +1413,7 @@
     <Content Include="Content\Home\img\icons\icon.png" />
     <Content Include="Content\Home\img\icons\toolbar.png" />
     <Content Include="Content\Home\img\index\PetsCode.png" />
+    <Content Include="Content\Home\js\area.js" />
     <Content Include="Content\Home\js\goods.js" />
     <Content Include="Content\Home\js\index.js" />
     <Content Include="Content\Home\js\js.js" />
@@ -1845,6 +1846,7 @@
     <Content Include="Views\Shop\EditGoods.cshtml" />
     <Content Include="Views\Home\Comment.cshtml" />
     <Content Include="Views\Store\PartialCart.cshtml" />
+    <Content Include="Views\PersonalCenter\Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

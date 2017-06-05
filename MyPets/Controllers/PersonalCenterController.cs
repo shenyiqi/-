@@ -24,5 +24,9 @@ namespace MyPets.Controllers
         {
             return View();
         }
-	}
+        public ActionResult Comment()
+        {
+            return View();
+        }
+    }
 }
