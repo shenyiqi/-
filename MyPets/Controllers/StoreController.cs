@@ -147,13 +147,16 @@ namespace MyPets.Controllers
         }
         public ActionResult SearchShopGoods(string searchthing, int? page) //店内搜索
         {
-            var id = Convert.ToInt32(Session["shopid"]);
-            var goods = GoodsService.LoadEntities(g => g.ShopId == id && g.GoodsName.Contains(searchthing)).ToList();
-            int pageSize = 15;
-            int pageNumber = (page ?? 1);
-            ViewBag.goods = searchthing;
-            return View(goods.ToPagedList(pageNumber, pageSize));
-
+            if (searchthing != "")
+            {
+                var id = Convert.ToInt32(Session["shopid"]);
+                var goods = GoodsService.LoadEntities(g => g.ShopId == id && g.GoodsName.Contains(searchthing)).ToList();
+                int pageSize = 15;
+                int pageNumber = (page ?? 1);
+                ViewBag.goods = searchthing;
+                return View(goods.ToPagedList(pageNumber, pageSize));
+            }
+            else return Content("<script>alert('搜索不能为空！');history.go(-1);</script>");
         }
         public ActionResult PartialCart()
         {

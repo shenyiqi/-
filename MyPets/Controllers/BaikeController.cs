@@ -54,13 +54,17 @@ namespace MyPets.Controllers
         }
         public ActionResult Search(string txtBaikeTitle, int? page)//显示搜索的百科
         {
-            int pageSize = 5;
-            int pageNumber = (page ?? 1);
-            ViewBag.search = txtBaikeTitle;
-            var baike = BaikeServices.LoadEntities(b => b.BaikeTitle.Contains(txtBaikeTitle)).ToList();
-            ViewBag.num = baike.Count();
-            ViewData["search"] = txtBaikeTitle;
-            return View(baike.ToPagedList(pageNumber, pageSize));
+            if (txtBaikeTitle != "")
+            {
+                int pageSize = 5;
+                int pageNumber = (page ?? 1);
+                ViewBag.search = txtBaikeTitle;
+                var baike = BaikeServices.LoadEntities(b => b.BaikeTitle.Contains(txtBaikeTitle)).ToList();
+                ViewBag.num = baike.Count();
+                ViewData["search"] = txtBaikeTitle;
+                return View(baike.ToPagedList(pageNumber, pageSize));
+            }
+            else return Content("<script>alert('搜索不能为空！');history.go(-1);</script>");
         }
         public ActionResult ShowAd1()
         {

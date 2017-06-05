@@ -1,16 +1,13 @@
-@charset "utf-8";
 *{margin:0;padding:0;list-style-type:none;}
 a{color:#666;text-decoration:none;}
 table{border-collapse:collapse;border-spacing:0;border:0;}
 body{color:#666;font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .clearfix{display:inline-table}
-.clearfix{height:1%}
 .clearfix{display:block}
 *+html .clearfix{min-height:1%}
 .fl{float:left;}
 .fr{float:right;}
-/*素材家园 - www.sucaijiayuan.com*/
 .catbox{width:940px;margin:100px auto;}
 .catbox table{text-align:center;width:100%;}
 .catbox table th,.catbox table td{border:1px solid #CADEFF;}
@@ -27,10 +24,9 @@ clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .count .add, .count input, .count .reduce{float:left;margin-right:-1px;position:relative;z-index:0;}
 .count .add, .count .reduce{height:23px;width:17px;border:1px solid #e5e5e5;background:#f0f0f0;text-align:center;line-height:23px;color:#444;}
 .count .add:hover, .count .reduce:hover{color:#f50;z-index:3;border-color:#f60;cursor:pointer;}
-.count input{width:35px;height:23px;line-height:15px;border:1px solid #aaa;color:#343434;text-align:center;padding:4px 0;background-color:#fff;z-index:2;}
+.count-input{width:50px;height:15px;line-height:15px;border:1px solid #aaa;color:#343434;text-align:center;padding:4px 0;background-color:#fff;z-index:2;}
 .subtotal{width:150px;color:red;font-weight:bold;}
 .operation span:hover,a:hover{cursor:pointer;color:red;text-decoration:underline;}
-
 .foot{margin-top:0px;color:#666;height:48px;border:1px solid #c8c8c8;border-top:0;background-color:#eaeaea;background-image:linear-gradient(RGB(241,241,241),RGB(226,226,226));position:relative;z-index:8;}
 .foot div, .foot a{line-height:48px;height:48px;}
 .foot .select-all{width:80px;height:48px;line-height:48px;color:#666;text-align:center;}
@@ -56,3 +52,12 @@ clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 #selectedViewList div img{width:100px;height:80px;margin-right:10px;float:left;}
 #selectedViewList div span{display:none;color:#ffffff;font-size:12px;position:absolute;top:0px;right:0px;width:60px;height:18px;line-height:18px;text-align:center;background:#000;cursor:pointer;}
 #selectedViewList div:hover span{display:block;}
+
+
+/*地址*/
+
+
+.info select{ border:1px #993300 solid; background:#FFFFFF; cursor:pointer;}
+.info{ float:left;  text-align:center;}
+.info #show{ color:#3399FF; }
+.bottom{ text-align:right; font-size:12px; color:#CCCCCC; width:1000px;}

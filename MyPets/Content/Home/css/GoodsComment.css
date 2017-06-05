@@ -1,0 +1,41 @@
+﻿*{
+    margin:0;
+    padding:0;
+}
+body {
+}
+.pingjia{
+   border:1px solid #ccc;
+   margin-top:50px; width:960px;
+  margin-left:300px;
+   border-top:2px solid red;
+}
+#pingjia1{ color :red;
+    font-size:25px;
+    margin-left:10px;   
+    line-height:50px;
+    height:50px;
+   
+}
+.pingjia3{
+    padding-top:10px;
+     margin-left:30px;
+     text-align:center;
+}
+.pingjia4{
+    float:left;width:150px;
+    text-align:center;
+    margin-top:10px;
+}
+.pingjia5{
+float:left;
+margin-top:3px;
+/*border:1px solid #ccc;*/
+}
+.neirong{
+
+}
+#Text1{
+    text-decoration:none;
+}
+

@@ -143,7 +143,7 @@ namespace MyPets.Controllers
             baike.BaikeDescribe = BaikeDescribe;
             baike.BaikeContent = content;
             BaikeServices.EditEntity(baike);
-            return Content("<script>alert('修改成功');window.location.href=document.referrer;</script>");
+            return Content("<script>alert('修改成功');window.location.href='/Admin/BaikeManagement';</script>");
         }
         public ActionResult DetailsBaike(int id)
         {

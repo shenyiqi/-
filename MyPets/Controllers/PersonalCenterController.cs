@@ -24,5 +24,25 @@ namespace MyPets.Controllers
         {
             return View();
         }
-	}
+        public ActionResult Comment()
+        {
+            return View();
+        }
+        public ActionResult basicinformation()
+        {
+            return View();
+        }
+        public ActionResult goodsreview()
+        {
+            return View();
+        }
+        public ActionResult myshop()
+        {
+            return View();
+        }
+        public ActionResult privatenews()
+        {
+            return View();
+        }
+    }
 }

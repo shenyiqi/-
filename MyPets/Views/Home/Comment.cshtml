@@ -1,50 +1,41 @@
 ﻿@{
-        ViewBag.Title = "Comment";
-        Layout = "~/Views/Shared/_LayoutHome.cshtml";
-    }
-   @model MyPets.Model.GoodsComment
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>评价</title>
-    <link href="~/Content/Home/css/pingjia.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="all">
-        <div class="top">
-            <span>评价宝贝</span>
-        </div> 
-            <div class="main">
-                <div class="name">
-                    @*<img src="@Url.Content(Model.Goods.GoodsImg1)" class="tupian" />*@
-                    <span>@*@(Model.Goods.GoodsName)*@</span>
-                </div>
-                <div class="neirong">
-                    <div class="range">
-                        <label for="InputType">满意度（5很满意）</label>
-                        <select class="form-control" id="InputType" name="InputType" style="width:730px;">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <div class="pingjia">
-                        <input id="Text1" type="text" name="man" placeholder="请输入想评价的内容" />
-                    </div>
-                </div>
-            </div>
-        
-    </div>
-    <div style="margin:0 auto;">
-        @*<a href="@Url.Action(" AddToGoodsComment",new { id =Model.GoodsId})">
-            <input id="Button1" type="button" value="发表评论" />
-        </a>*@
+    ViewBag.Title = "Comment";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+@model MyPets.Model.GoodsComment
+@section jiesuan{
+    <link href="~/Content/Home/css/GoodsComment.css" rel="stylesheet" />
+}
 
+<form id="form1">
+    <div class="pingjia">
+        <div id="pingjia1">商品评价</div>
+        <div style="height:60px;border-bottom :1px solid #808080;border-top :1px solid #808080;">
+            <div class="pingjia3">
+                <div style="float:left;">评价满意度:(1表示不满意，6表示非常棒！）</div>
+                <select class="form-control" id="InputType" name="InputType" style="width:100px;">
+                    <option>6</option>
+                    <option>5</option>
+                    <option>4</option>
+                    <option>3</option>
+                    <option>2</option>
+                    <option>1</option>
+                </select>
+            </div>
+        </div>
+        <div style="height:185px;border-bottom :1px dashed  #808080;">
+            <div class="pingjia4">
+                <div>商品图片</div>
+                <div>name</div>
+            </div>
+            <div class="pingjia5">
+                <div style="float:right;">@DateTime.Now</div>
+                <div class="neirong">
+                    <input style="width:800px;height:160px;" id="Text1" type="text" name="man" placeholder="你的评价是对我们的肯定！" />
+                </div>
+
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</form>
+
