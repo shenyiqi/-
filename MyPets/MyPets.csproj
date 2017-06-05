@@ -1419,7 +1419,6 @@
     <Content Include="Content\Home\js\index.js" />
     <Content Include="Content\Home\js\js.js" />
     <Content Include="Content\PersonalCenter\css\animate.min.css" />
-    <Content Include="Content\PersonalCenter\css\bootstrap.min.css" />
     <Content Include="Content\PersonalCenter\css\demo.css" />
     <Content Include="Content\PersonalCenter\css\light-bootstrap-dashboard.css" />
     <Content Include="Content\PersonalCenter\css\pe-icon-7-stroke.css" />

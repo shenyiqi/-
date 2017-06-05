@@ -22,7 +22,7 @@ namespace MyPets.Controllers
         IBLL.IGoodsCommentServices GoodsCommentServices = new BLL.GoodsCommentServices();
         IBLL.IGoodsResponseCommentServices GoodsResponseCommentServices = new BLL.GoodsResponseCommentServices();
         IDBSession db = new DBSession();
-        public ActionResult Index(string user)//int? id表示可以为空的整数=nullable<id> 从个人中心传过id
+        public ActionResult Index(string user)
         {
             user = "用户1";
             Session["UserName"] = user;
