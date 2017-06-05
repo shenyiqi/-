@@ -115,10 +115,42 @@ namespace MyPets.Controllers
         {
             return View();
         }
-        public ActionResult OrderManagement()
+        public ActionResult BaikeManagement(int? page)
         {
-            return View();
+            int PageSize = 8;
+            int PageNumber = (page ?? 1);
+            var baike = BaikeServices.LoadEntities(b => true).ToList();
+            return View(baike.ToPagedList(PageNumber, PageSize));
         }
+        public ActionResult DeleteBaike(int id)
+        {
+            var baike = BaikeServices.LoadEntities(b => b.BaikeId == id).FirstOrDefault();
+            return Content("<script>alert('删除成功');window.location.href=document.referrer;</script>");
+        }
+        public ActionResult EditBaike(int id)
+        {
+            var baike = BaikeServices.LoadEntities(b => b.BaikeId == id).FirstOrDefault();
+            return View(baike);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult EditBaike(string BaikeId, string BaikeTitle, string BaikeDescribe, FormCollection fc)
+        {
+            int id = Convert.ToInt32(BaikeId);
+            var baike = BaikeServices.LoadEntities(b => b.BaikeId == id).FirstOrDefault();
+            var content = fc["Bcontent"];
+            baike.BaikeTitle = BaikeTitle;
+            baike.BaikeDescribe = BaikeDescribe;
+            baike.BaikeContent = content;
+            BaikeServices.EditEntity(baike);
+            return Content("<script>alert('修改成功');window.location.href=document.referrer;</script>");
+        }
+        public ActionResult DetailsBaike(int id)
+        {
+            var baike = BaikeServices.LoadEntities(b => b.BaikeId == id).FirstOrDefault();
+            return View(baike);
+        }
+
         public ActionResult Entry()
         {
             return View();

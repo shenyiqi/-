@@ -32,6 +32,7 @@ namespace MyPets.Model
         public virtual DbSet<Collect> Collect { get; set; }
         public virtual DbSet<Goods> Goods { get; set; }
         public virtual DbSet<GoodsComment> GoodsComment { get; set; }
+        public virtual DbSet<GoodsResponseComment> GoodsResponseComment { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderDetail> OrderDetail { get; set; }
         public virtual DbSet<Post> Post { get; set; }

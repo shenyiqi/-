@@ -12,14 +12,14 @@ namespace MyPets.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Collect
+    public partial class GoodsResponseComment
     {
-        public int CollectId { get; set; }
-        public string Type { get; set; }
-        public int ShopId { get; set; }
-        public int UserId { get; set; }
+        public int AnswerId { get; set; }
+        public int CommentId { get; set; }
+        public string AnswerContent { get; set; }
+        public string UserName { get; set; }
+        public System.DateTime AnswerTime { get; set; }
     
-        public virtual Shop Shop { get; set; }
-        public virtual UserInfo UserInfo { get; set; }
+        public virtual GoodsComment GoodsComment { get; set; }
     }
 }

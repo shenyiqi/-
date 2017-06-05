@@ -60,6 +60,7 @@
     <Compile Include="DbContextFactory.cs" />
     <Compile Include="GoodsCommentDal.cs" />
     <Compile Include="GoodsDal.cs" />
+    <Compile Include="GoodsResponseCommentDal.cs" />
     <Compile Include="OrderDal.cs" />
     <Compile Include="OrderDetailDal.cs" />
     <Compile Include="PostDal.cs" />

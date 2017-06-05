@@ -13,7 +13,7 @@ namespace MyPets.Controllers
     public class HomeController : Controller
     {
         IBLL.IUserInfoServices UserInfoService = new BLL.UserInfoServices();
-        IBLL.ICollectServices CollectService = new BLL.CollectServices();        
+        IBLL.ICollectServices CollectService = new BLL.CollectServices();
         IBLL.IGoodsServices goodsService = new BLL.GoodsServices();
         IBLL.IGoodsCommentServices GoodsCommentServices = new BLL.GoodsCommentServices();
         IBLL.IShopCartServices ShopCartServices = new BLL.ShopCartServices();
@@ -21,7 +21,7 @@ namespace MyPets.Controllers
         IBLL.IOrderDetailServices OrderDeailServices = new BLL.OrderDetailServices();
         IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
         IDBSession db = new DBSession();
-       
+
         public ActionResult Index()
         {
             Session["UserName"] = "用户1";
@@ -118,7 +118,7 @@ namespace MyPets.Controllers
                 }
                 else
                 {
-                    return Content("<script>alert('商品已经加入购物车啦！');history.go(-1);</script>"); 
+                    return Content("<script>alert('商品已经加入购物车啦！');history.go(-1);</script>");
                 }
 
             }
@@ -145,15 +145,16 @@ namespace MyPets.Controllers
         {
             var del = ShopCartServices.LoadEntities(s => s.GoodsId == id).FirstOrDefault();
             ShopCartServices.DeleteEntity(del);
-            return RedirectToAction("jiesuan");
+            return Content("<script>alert('删除成功');window.location.href=document.referrer;</script>");
         }
         [HttpPost]
         public ActionResult PayGoods() //商品购买
         {
             var name = Session["UserName"].ToString();
-            string[] goodsid = Request.Params.GetValues("goodsid");
-            string[] goodssum = Request.Params.GetValues("goodssum");
-            var count = Convert.ToInt32(Request["susum"]);
+            string[] goodsid = Request.Params.GetValues("goodsid"); //商品id
+            string[] goodssum = Request.Params.GetValues("goodssum");//数量
+            string[] check = Request.Params.GetValues("checkbox2");//判断是否选中
+            var count = Convert.ToDecimal(Request["TotalPrice"]);
             var user = UserInfoServices.LoadEntities(u => u.UserName == name).FirstOrDefault(); //获取用户
             Random rd = new Random();
             var orderlength = 12;
@@ -166,7 +167,7 @@ namespace MyPets.Controllers
             OrderServices.AddEntity(new Order  //形成订单表
             {
                 UserId = user.UserId,
-                OrderAddress = "带填",
+                OrderAddress = "待填",
                 OrderTime = DateTime.Now,
                 OrderState = false,
                 OrderCount = count,
@@ -174,18 +175,31 @@ namespace MyPets.Controllers
             });
             for (int i = 0; i < goodsid.Length; i++)
             {
-                int id = Convert.ToInt32(goodsid[i]);
-                int sum = Convert.ToInt32(goodssum[i]);
-                int countprice = id * sum;
-                OrderDeailServices.AddEntity(new OrderDetail  //订单明细表
+                if (check[i] == "1")
                 {
-                    GoodsId=id,
-                    DetailSum=sum,
-                    UserId=user.UserId,
-                    DetailCount=countprice,
-                    OrderNumber=number
-                });
-               
+                    int id = Convert.ToInt32(goodsid[i]);
+                    var goods = goodsService.LoadEntities(g => g.GoodsId == id).FirstOrDefault();
+                    decimal price; //商品价格
+                    if (goods.IsDiscount)
+                    {
+                        price = (goods.DiscountPrice ?? 1);
+                    }
+                    else
+                    {
+                        price = goods.GoodsPrice;
+                    }
+                    int sum = Convert.ToInt32(goodssum[i]);
+                    decimal countprice = price * sum;
+                    OrderDeailServices.AddEntity(new OrderDetail  //订单明细表
+                    {
+                        GoodsId = id,
+                        DetailSum = sum,
+                        UserId = user.UserId,
+                        DetailCount = countprice,
+                        OrderNumber = number,
+                        OrderState = false
+                    });
+                }
             }
             db.SaveChanges();
             return Content("<script>alert('成功购买！');history.go(-1);</script>");
@@ -195,18 +209,23 @@ namespace MyPets.Controllers
             Session["UserName"] = null;
             return RedirectToAction("Index");
         }
-        public ActionResult Comments()//评价
+        public ActionResult Comment()//评价
         {
-        //        var name = Session["UserName"].ToString();
-                //var comment = GoodsCommentServices.LoadEntities(b => b.UserInfo.UserName == name).ToList();
-                return View();     
+            if (Session["UserName"] != null)
+            {
+                var name = Session["UserName"].ToString();
+                var comment = GoodsCommentServices.LoadEntities(b => b.UserInfo.UserName == name).ToList();
+                return View(comment);
+            }
+
+            else return Content("<script>alert('您还未登录？');history.go(-1);</script>");
         }
         public ActionResult AddToCollect(int id, string type)//加入收藏
         {
             if (Session["UserName"] != null)
             {
                 string name = Session["UserName"].ToString();
-                var User= UserInfoService.LoadEntities(c => c.UserName == name).FirstOrDefault();
+                var User = UserInfoService.LoadEntities(c => c.UserName == name).FirstOrDefault();
                 var Table = CollectService.LoadEntities(c => c.ShopId == id).FirstOrDefault();
                 if (Table == null)
                 {
@@ -215,7 +234,7 @@ namespace MyPets.Controllers
                     {
                         ShopId = good.GoodsId,
                         UserId = User.UserId,
-                        Type = type
+                        //Type = type
                     });
                     db.SaveChanges();
                     return Content("<script>alert('商品收藏成功！');history.go(-1);</script>");
@@ -227,6 +246,19 @@ namespace MyPets.Controllers
             }
             else return Content("<script>alert('您还未登陆！！');history.go(-1);</script>");
         }
+        public ActionResult ClearCart(string name) //清空购物车
+        {
+            var cart = ShopCartServices.LoadEntities(s => s.UserName == name).ToList();
+            for (int i = 0; i < cart.Count; i++)
+            {
+                ShopCartServices.DeleteEntity(cart[i]);
+            }
+            db.SaveChanges();
+            return Content("<script>alert('删除成功');window.location.href=document.referrer;</script>");
+        }
+
+
+
 
         //public ActionResult AddToGoodsComment(int id)//评论
         //{
