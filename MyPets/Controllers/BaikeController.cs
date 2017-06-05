@@ -64,7 +64,7 @@ namespace MyPets.Controllers
                 ViewData["search"] = txtBaikeTitle;
                 return View(baike.ToPagedList(pageNumber, pageSize));
             }
-            else return Content("<script>alert('搜索不能为空！');history(-1)</script>");
+            else return Content("<script>alert('搜索不能为空！');history.go(-1);</script>");
         }
         public ActionResult ShowAd1()
         {
