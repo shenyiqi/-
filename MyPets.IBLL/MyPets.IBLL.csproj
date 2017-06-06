@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAdminServices.cs" />
+    <Compile Include="IBaikeActivityServices.cs" />
     <Compile Include="IBaikeAnswerServices.cs" />
     <Compile Include="IBaikeQuestionServices.cs" />
     <Compile Include="IBaikeServices.cs" />

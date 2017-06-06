@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MyPets.Model.BaikeActivity>
+
+@{
+    ViewBag.Title = "AdManagement";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section part{
+    <style>
+      .imgtobig:hover{
+         transform: scale(4,2.5);  
+      }
+    </style>
+    }
+<h2>广告管理</h2>
+<p>
+    @Html.ActionLink("发布广告", "CreateAd")
+</p>
+<table class="table">
+    <tr>
+        <th style="width:50px;">
+            编号
+        </th>
+        <th>
+            图片
+        </th>
+        <th>
+            标题
+        </th>
+        <th>
+            内容
+        </th>
+        <th style="text-align:center;">
+            操作
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivedId)
+            </td>
+            <td>
+                <img src="@Url.Content(item.ActivedImg)" style="width:100px;height:100px;" class="imgtobig" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivedTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivedContent)
+            </td>
+            <td style="width:60px;text-align:center;">
+                @Html.ActionLink("编辑", "EditAd", new { id=item.ActivedId}) 
+                <br />
+                @Html.ActionLink("删除", "DeleteAd", new { id = item.ActivedId },new {onclick="return confirm('确定要删除吗？')" })
+            </td>
+        </tr>
+    }
+
+</table>

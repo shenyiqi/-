@@ -22,7 +22,7 @@
     <![endif]-->
     <link href="~/Content/Admin/css/foundation.min.css" rel="stylesheet" />
     <link href="~/Content/Admin/css/all.css" rel="stylesheet" />
-  
+   @RenderSection("part",false)
 </head>
 <body>
     <!-- Left column -->
@@ -45,7 +45,8 @@
                     <li><a href="@Url.Action("UserManagement")"><i class="fa fa-bar-chart fa-fw"></i>用户管理</a></li>
                     <li><a href="@Url.Action("ShopManagement")"><i class="fa fa-database fa-fw"></i>店铺管理</a></li>
                     <li><a href="@Url.Action("GoodsEntry")"><i class="fa fa-map-marker fa-fw"></i>商品管理</a></li>
-                    <li><a href="@Url.Action("BaikeManagement")"><i class="fa fa-users fa-fw"></i>百科管理</a></li>
+                    <li><a href="@Url.Action("BaikeManagement")"><i class="fa fa-bars fa-fw"></i>百科管理</a></li>
+                    <li><a href="@Url.Action("AdManagement")"><i class="fa fa-bar-chart fa-fw"></i>广告管理</a></li>
                     <li><a href="@Url.Action("PostManagement")"><i class="fa fa-sliders fa-fw"></i>帖子管理</a></li>
                     <li><a href="@Url.Action("LoginOff")"><i class="fa fa-eject fa-fw"></i>退出</a></li>
                 </ul>

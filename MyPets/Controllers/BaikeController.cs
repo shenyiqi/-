@@ -18,6 +18,7 @@ namespace MyPets.Controllers
         IBLL.IBaikeAnswerServices BaikeAnswerServices = new BLL.BaikeAnswerServices();
         IBLL.IResponAnswerServices ResponAnswerServices = new BLL.ResponAnswerServices();
         IBLL.IUserInfoServices UserInfoServices = new BLL.UserInfoServices();
+        IBLL.IBaikeActivityServices BaikeActivityServices = new BLL.BaikeActivityServices();
         IDBSession db = new DBSession();
         public ActionResult Index()
         {
@@ -26,7 +27,9 @@ namespace MyPets.Controllers
             //        select b).Skip(6).Take(6);
             var dogBaike = BaikeServices.LoadEntities(b => b.BaikeSeries == "狗系列").Take(6).ToList();
             var dogTitle = BaikeServices.LoadEntities(b => b.BaikeSeries == "狗系列").OrderBy(b => Guid.NewGuid()).Skip(6).Take(6).ToList();
+            var BaikeActivity = BaikeActivityServices.LoadEntities(b => true).Take(4).ToList();
             ViewData["dog"] = dogBaike; ViewData["dogtitle"] = dogTitle;
+            ViewData["active"] = BaikeActivity;
             return View();
         }
         public ActionResult Show(int id) //显示单个百科
@@ -66,21 +69,11 @@ namespace MyPets.Controllers
             }
             else return Content("<script>alert('搜索不能为空！');history.go(-1);</script>");
         }
-        public ActionResult ShowAd1()
+        public ActionResult ShowAd(int activeid)
         {
-            return View();
-        }
-        public ActionResult ShowAd2()
-        {
-            return View();
-        }
-        public ActionResult ShowAd3()
-        {
-            return View();
-        }
-        public ActionResult ShowAd4()
-        {
-            return View();
+            var active = BaikeActivityServices.LoadEntities(b => b.ActivedId == activeid).FirstOrDefault();
+            ViewBag.Title = active.ActivedTitle;
+            return View(active);
         }
         public ActionResult Answer() //问答专区
         {
@@ -89,9 +82,9 @@ namespace MyPets.Controllers
         public ActionResult ParticalAnswer(int? type, int? page) //局部刷新分页
         {
             int t = (type ?? 1);
-            int pageSize = 6;
+            int pageSize = 9;
             int pageNumber = (page ?? 1);
-            var allBaike = BaikeQuestionServices.LoadEntities(b => true).ToList();
+            var allBaike = BaikeQuestionServices.LoadEntities(b => true).OrderByDescending(b=>b.QuestionTime).ToList();
             var goodsBaike = BaikeQuestionServices.LoadEntities(b => b.isChoiceness == true).ToList();
             switch (t)
             {
@@ -121,11 +114,15 @@ namespace MyPets.Controllers
         }
         public ActionResult SearchAnswer(string txtBaikeQuestion, int? page)
         {
-            int pageSize = 6;
-            int pageNumber = (page ?? 1);
-            ViewBag.question = txtBaikeQuestion;
-            var question = BaikeQuestionServices.LoadEntities(q => q.QuestionTitle.Contains(txtBaikeQuestion)).ToList();
-            return View(question.ToPagedList(pageNumber, pageSize));
+            if (txtBaikeQuestion != "")
+            {
+                int pageSize = 6;
+                int pageNumber = (page ?? 1);
+                ViewBag.question = txtBaikeQuestion;
+                var question = BaikeQuestionServices.LoadEntities(q => q.QuestionTitle.Contains(txtBaikeQuestion)).ToList();
+                return View(question.ToPagedList(pageNumber, pageSize));
+            }
+            else return Content("<script>alert('请输入关键字！');history.go(-1);</script>");
         }
         public ActionResult Quiz() //提问
         {
@@ -189,7 +186,8 @@ namespace MyPets.Controllers
                 QuestionId = Convert.ToInt32(Session["QuestionId"]),
                 UserId = userid,
                 AnswerContent = answercontent,
-                AnswerTime = DateTime.Now
+                AnswerTime = DateTime.Now,
+                ClickNum=0
 
             });
             if (addAnswer != null)

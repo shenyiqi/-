@@ -70,6 +70,22 @@ namespace MyPets.DALFactory
             set { _BaikeDal = value; }
         }
         /// <summary>
+        /// 百科轮播图
+        /// </summary>
+        private IBaikeActivityDal _BaikeActivityDal;
+        public IBaikeActivityDal BaikeActivityDal
+        {
+            get
+            {
+                if (_BaikeActivityDal == null)
+                {
+                    _BaikeActivityDal = AbstractFactory.CreateBaikeActivityDal();
+                }
+                return _BaikeActivityDal;
+            }
+            set { _BaikeActivityDal = value; }
+        }
+        /// <summary>
         /// 创建数据操作类IBaikeQuestionDal的实例
         /// </summary>
         private IBaikeQuestionDal _BaikeQuestionDal;

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MyPetsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MyPetsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adminstrator">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -26,6 +26,16 @@
           <Property Name="BaikeDescribe" Type="nvarchar(max)" />
           <Property Name="BaikeContent" Type="nvarchar(max)" Nullable="false" />
           <Property Name="BaikeTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BaikeActivity">
+          <Key>
+            <PropertyRef Name="ActivedId" />
+          </Key>
+          <Property Name="ActivedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActivedTitle" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ActivedContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ActivedImg" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ActicedDetail" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="BaikeAnswer">
           <Key>
@@ -412,6 +422,7 @@
         <EntityContainer Name="MyPetsModelStoreContainer">
           <EntitySet Name="Adminstrator" EntityType="Self.Adminstrator" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Baike" EntityType="Self.Baike" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BaikeActivity" EntityType="Self.BaikeActivity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaikeAnswer" EntityType="Self.BaikeAnswer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaikeQuestion" EntityType="Self.BaikeQuestion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Collect" EntityType="Self.Collect" Schema="dbo" store:Type="Tables" />
@@ -493,8 +504,7 @@
             <End Role="ShopCart" EntitySet="ShopCart" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyPetsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1017,7 +1027,18 @@
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="Shop" EntitySet="Shop" />
           </AssociationSet>
+          <EntitySet Name="BaikeActivity" EntityType="MyPetsModel.BaikeActivity" />
         </EntityContainer>
+        <EntityType Name="BaikeActivity">
+          <Key>
+            <PropertyRef Name="ActivedId" />
+          </Key>
+          <Property Name="ActivedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivedTitle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivedContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivedImg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActicedDetail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1251,6 +1272,17 @@
                 <ScalarProperty Name="IsSeller" ColumnName="IsSeller" />
                 <ScalarProperty Name="Range" ColumnName="Range" />
                 <ScalarProperty Name="Score" ColumnName="Score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaikeActivity">
+            <EntityTypeMapping TypeName="MyPetsModel.BaikeActivity">
+              <MappingFragment StoreEntitySet="BaikeActivity">
+                <ScalarProperty Name="ActicedDetail" ColumnName="ActicedDetail" />
+                <ScalarProperty Name="ActivedImg" ColumnName="ActivedImg" />
+                <ScalarProperty Name="ActivedContent" ColumnName="ActivedContent" />
+                <ScalarProperty Name="ActivedTitle" ColumnName="ActivedTitle" />
+                <ScalarProperty Name="ActivedId" ColumnName="ActivedId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

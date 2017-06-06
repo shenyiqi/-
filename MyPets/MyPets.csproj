@@ -1803,10 +1803,6 @@
     <Content Include="Views\Shared\_LayoutBaike.cshtml" />
     <Content Include="Views\Baike\Show.cshtml" />
     <Content Include="Views\Baike\ShowType.cshtml" />
-    <Content Include="Views\Baike\ShowAd1.cshtml" />
-    <Content Include="Views\Baike\ShowAd2.cshtml" />
-    <Content Include="Views\Baike\ShowAd3.cshtml" />
-    <Content Include="Views\Baike\ShowAd4.cshtml" />
     <Content Include="Views\Baike\Answer.cshtml" />
     <Content Include="Views\Baike\Quiz.cshtml" />
     <Content Include="Views\Baike\ShowQuiz.cshtml" />
@@ -1853,6 +1849,10 @@
     <Content Include="Views\Store\PartialCart.cshtml" />
     <Content Include="Views\Home\SearchGoods.cshtml" />
     <Content Include="Views\Home\SearchShop.cshtml" />
+    <Content Include="Views\Baike\ShowAd.cshtml" />
+    <Content Include="Views\Admin\AdManagement.cshtml" />
+    <Content Include="Views\Admin\EditAd.cshtml" />
+    <Content Include="Views\Admin\CreateAd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

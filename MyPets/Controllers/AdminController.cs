@@ -26,6 +26,7 @@ namespace MyPets.Controllers
         IBLL.IOrderDetailServices OrderDetailServices = new BLL.OrderDetailServices();
         IBLL.IOrderServices OrderServices = new BLL.OrderServices();
         IBLL.IPostServices PostServices = new BLL.PostServices();
+        IBLL.IBaikeActivityServices BaikeActivityServices = new BLL.BaikeActivityServices();
         IDBSession db = new DBSession();
         public ActionResult Index()
         {
@@ -43,7 +44,7 @@ namespace MyPets.Controllers
             var content = fc["Bcontent"];
             HttpPostedFileBase postimg = Request.Files["txtimg"];
             string filepath = postimg.FileName;
-            if (filepath == null)
+            if (filepath == "")
             {
                 return Content("<script>; alert('请选择图片！'); history.go(-1) </ script >");
             }
@@ -53,6 +54,7 @@ namespace MyPets.Controllers
                 string filename = filepath.Substring(filepath.LastIndexOf("//") + 1);
                 string serverpath = Server.MapPath("~/Content/Admin/Baike/img/upload/") + filename;
                 string relativepath = @"~/Content/Admin/Baike/img/upload/" + filename;
+                postimg.SaveAs(serverpath);
                 BaikeServices.AddEntity(new Baike()
                 {
                     BaikeTitle = txttitle,
@@ -111,9 +113,94 @@ namespace MyPets.Controllers
                 return View("EditShopGoods",goods.ToPagedList(PageNumber, PageSize));
             }
         }
-        public ActionResult AdManagement() //店铺推荐
+        public ActionResult AdManagement() //百科轮播图片
+        {
+            var ad = BaikeActivityServices.LoadEntities(b => true).ToList();
+            return View(ad);
+        }
+        public ActionResult EditAd(int id)//编辑
+        {
+            var ad = BaikeActivityServices.LoadEntities(b => b.ActivedId == id).FirstOrDefault();
+            return View(ad);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult EditAd(string ActivedId,string ActivedTitle,string ActivedContent) //编辑
+        {
+            int id = Convert.ToInt32(ActivedId);
+            HttpPostedFileBase postimg = Request.Files["activeimg"];
+            string filepath1 = postimg.FileName;
+            HttpPostedFileBase postdetail = Request.Files["activedetail"];
+            string filepath2 = postdetail.FileName;
+            var baike = BaikeActivityServices.LoadEntities(b => b.ActivedId == id).FirstOrDefault();
+            if (filepath1 == "")
+            {
+                baike.ActivedImg = baike.ActivedImg;
+            }
+            else
+            {
+                string filename1 = filepath1.Substring(filepath1.LastIndexOf("//") + 1);
+                string serverpath1 = Server.MapPath("~/Content/Baike/img/") + filename1;
+                string relativepath1 = @"~/Content/Baike/img/" + filename1;
+                postimg.SaveAs(serverpath1);
+                baike.ActivedImg = relativepath1;
+            }
+            if (filepath2 == "")
+            {
+                baike.ActicedDetail = baike.ActicedDetail;
+            }
+            else
+            {
+                string filename2 = filepath2.Substring(filepath2.LastIndexOf("//") + 1);
+                string serverpath2 = Server.MapPath("~/Content/Baike/img/") + filename2;
+                string relativepath2 = @"~/Content/Baike/img/" + filename2;
+                postimg.SaveAs(serverpath2);
+                baike.ActicedDetail = relativepath2;
+            }
+            baike.ActivedTitle = ActivedTitle;
+            baike.ActivedContent = ActivedContent;
+            BaikeActivityServices.EditEntity(baike);
+            db.SaveChanges();
+            return Content("<script>alert('编辑成功');window.location.href='/Admin/AdManagement';</script>");
+        }
+        public ActionResult CreateAd()
         {
             return View();
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CreateAd(BaikeActivity baike)
+        {
+            HttpPostedFileBase postimg = Request.Files["activeimg"];
+            HttpPostedFileBase postdetail = Request.Files["activedetail"];
+            string filepath1 = postimg.FileName;
+            string filepath2 = postdetail.FileName;
+            if (filepath1 == "" || filepath2 == "")
+            {
+                return Content("<script>;alert('图片和海报不能为空！');history.go(-1)</script >");
+            }
+            else
+            {
+                string filename1 = filepath1.Substring(filepath1.LastIndexOf("//") + 1);
+                string filename2 = filepath2.Substring(filepath2.LastIndexOf("//") + 1);
+                string serverpath1 = Server.MapPath("~/Content/Baike/img/") + filename1;
+                string serverpath2 = Server.MapPath("~/Content/Baike/img/") + filename2;
+                string relativepath1 = @"~/Content/Baike/img/" + filename1;
+                string relativepath2 = @"~/Content/Baike/img/" + filename2;
+                postimg.SaveAs(serverpath1);
+                postdetail.SaveAs(serverpath2);
+                baike.ActivedImg = relativepath1;
+                baike.ActicedDetail = relativepath2;
+                BaikeActivityServices.AddEntity(baike);
+                return Content("<script>alert('发布成功');window.location.href='/Admin/AdManagement';</script>");
+            }
+          
+        }
+        public ActionResult DeleteAd(int id)
+        {
+            var ad = BaikeActivityServices.LoadEntities(b => b.ActivedId == id).FirstOrDefault();
+            BaikeActivityServices.DeleteEntity(ad);
+            return Content("<script>alert('删除成功');window.location.href=document.referrer;</script>");
         }
         public ActionResult BaikeManagement(int? page)
         {

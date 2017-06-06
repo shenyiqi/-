@@ -147,34 +147,31 @@
                     <div id="ribbon_1"></div>
                     <div id="ribbon_2"></div>
                     <div id="slides">
-                        <div class="scroimg" style="left:0px;">
-                            <a href="@Url.Action("ShowAd4")"><img src="~/Content/Baike/img/ad2.jpg" width="950" height="350" alt="img"></a>
-                        </div>
-                        <div class="scrotext" style="bottom:0px;">
-                            <h4><a href="@Url.Action("ShowAd4")">干货分享——养犬新手必看知识合集</a></h4>
-                            <p>初养宠物犬，更多的新手饲主有着的是一种迷茫。因为狗狗是花了大价钱买来的，所以对待起来也不可能那么的随便。九层之台、起于累...</p>
-                        </div>
-                        <div class="scroimg" style="left: -950px;">
-                            <a href="@Url.Action("ShowAd1")"><img width="950" height="350" alt="img" src="/Content/Baike/img/ad3.jpg"></a>
-                        </div>
-                        <div class="scrotext" style="bottom: -950px;">
-                            <h4><a href="@Url.Action("ShowAd1")">你说我像饼？偶可是热带鱼之王七彩神仙！</a></h4>
-                            <p>七彩神仙鱼的辨识度很高，远远看去像块铁饼的就是了。七彩神仙可不是一般的观赏鱼，它是大名鼎鼎的热带鱼之王！！</p>
-                        </div>
-                        <div class="scroimg" style="left: -950px;">
-                            <a href="@Url.Action("ShowAd2")"><img width="950" height="350" alt="img" src="~/Content/Baike/img/ad4.jpg"></a>
-                        </div>
-                        <div class="scrotext" style="bottom:-950px;">
-                            <h4><a href="@Url.Action("ShowAd2")">爱猫无国界：各国猫文化大盘点</a></h4>
-                            <p>一方水土养一方喵，想不想在日本繁华的猫街沾沾招财猫的福气？或是在雨后的浪漫法兰西和你心目中的那只喵来场旷世绝恋？快上车，...</p>
-                        </div>
-                        <div class="scroimg" style="left:-950px;">
-                            <a href="@Url.Action("ShowAd3")"><img width="950" height="350" alt="img" src="~/Content/Baike/img/ad1.jpg"></a>
-                        </div>
-                        <div class="scrotext" style="bottom:-950px;">
-                            <h4><a href="@Url.Action("ShowAd3")">宠物夏季饲养全攻略</a></h4>
-                            <p>夏天对于各种宠物来说都是一个无比难熬的季节。但是主人们请不要担心，万能的波奇小编来啦。我们给大家支支招，学习一点消夏小知...</p>
-                        </div>
+                        @{ int count = 0;}
+                        @foreach (MyPets.Model.BaikeActivity baike in ViewData["active"] as List<MyPets.Model.BaikeActivity>)
+                        {
+                            if (count == 0)
+                            {
+                                <div class="scroimg" style="left:0px;">
+                                    <a href="@Url.Action("ShowAd",new { activeid=baike.ActivedId})"><img src="@Url.Content(baike.ActivedImg)" width="950" height="350" alt="img"></a>
+                                </div>
+                                <div class="scrotext" style="bottom:0px;">
+                                    <h4><a href="@Url.Action("ShowAd",new { activeid = baike.ActivedId })">@baike.ActivedTitle</a></h4>
+                                    <p>@baike.ActivedContent</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="scroimg" style="left: -950px;">
+                                    <a href="@Url.Action("ShowAd1")"><img width="950" height="350" alt="img" src="@Url.Content(baike.ActivedImg)"></a>
+                                </div>
+                                <div class="scrotext" style="bottom: -950px;">
+                                    <h4><a href="@Url.Action("ShowAd4")">@baike.ActivedTitle</a></h4>
+                                    <p>@baike.ActivedContent</p>
+                                </div>
+                            }
+                            continue;
+                        }
                         <div class="scroimg" style="left:-950px;">
                             <a href="@Url.Action("Answer")"><img width="950" height="350" alt="img" src="~/Content/Baike/img/ad5.jpg"></a>
                         </div>

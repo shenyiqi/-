@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAdminstratorDal.cs" />
+    <Compile Include="IBaikeActivityDal.cs" />
     <Compile Include="IBaikeAnswerDal.cs" />
     <Compile Include="IBaikeDal.cs" />
     <Compile Include="IBaikeQuestionDal.cs" />
