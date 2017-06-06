@@ -31,17 +31,6 @@
                 }
                 else
                 {
-                    @*<li>
-                            <div class="dropdown">
-                                <div id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <a href="javascript:;" style="color:#9C3;">@Session["UserName"]</a>
-                                    <span class="caret"></span>
-                                </div>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <li><a href="@Url.Action("LoginOff")">退出登录</a></li>
-                                </ul>
-                            </div>
-                        </li>*@
                     <li><a href="javascript:;" style="color:#9C3;">@Session["UserName"]</a></li>
                     <li><a href="@Url.Action("LoginOff")">退出登录</a></li>
                 }

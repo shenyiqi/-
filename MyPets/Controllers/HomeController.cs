@@ -7,6 +7,7 @@ using MyPets.Model;
 using MyPets.IDAL;
 using MyPets.DALFactory;
 using MyPets.BLL;
+using PagedList;
 
 namespace MyPets.Controllers
 {
@@ -84,10 +85,18 @@ namespace MyPets.Controllers
                 return RedirectToAction("SearchShop",new { searchInput,typeNum });
             }            
         }
-        public ActionResult SearchGoods(string typeNum, string searchInput)//搜索商品展示页面
+        public ActionResult SearchGoods(string typeNum, string searchInput,int? page)//搜索商品展示页面
         {
-            var searchGoods = goodsService.LoadEntities(g => g.GoodsName.Contains(searchInput) || g.TypeName.Contains(searchInput)).ToList();
-            return View(searchGoods);                 
+            if (searchInput != null)
+            {
+                int pageSize = 15;
+                int pageNumber = (page ?? 1);
+                var searchGoods = goodsService.LoadEntities(g => g.GoodsName.Contains(searchInput) || g.TypeName.Contains(searchInput)).ToList();
+                ViewData["search"] = searchInput;
+                return View(searchGoods.ToPagedList(pageNumber, pageSize));
+            }
+            else return Content("<script>alert('搜索不能为空！');history.go(-1);</script>");
+
         }
         public ActionResult SearchShop(string typeNum, string searchInput)//搜索店铺展示页面
         {
@@ -95,19 +104,6 @@ namespace MyPets.Controllers
             return View(searchShops);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
         public ActionResult Shangpin(string keyword, string type)
         {
             Session["sptype"] = type;
@@ -301,6 +297,19 @@ namespace MyPets.Controllers
         //    }
         //    else return Content("<script>alert('您还未登陆！！');history.go(-1);</script>");
         //}
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
 
     }
 }
