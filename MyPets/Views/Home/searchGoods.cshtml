@@ -1,10 +1,13 @@
 ﻿
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<MyPets.Model.Goods>
 @{
     ViewBag.Title = "searchGoods";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
-@model IEnumerable<MyPets.Model.Goods>
+@*@model IEnumerable<MyPets.Model.Goods>*@
 @section jiesuan{<link href="~/Content/Home/css/searchGoods.css" rel="stylesheet" />}
 
 
@@ -32,5 +35,5 @@
             </div>
         </div>
     }
-    @*<div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("GetType", "goods", new { page, txttype = @ViewData["type"] }))</div>*@
+    <div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("SearchGoods", "Home", new { page, searchInput = @ViewData["search"] }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 5 })</div>
 </div>

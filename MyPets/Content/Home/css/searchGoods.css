@@ -5,7 +5,8 @@
 #Container{
     width:1190px;
     margin:0 auto;
-    border:1px solid green;
+    border:2px solid RGB(238,85,51);
+    border-top:none;
     overflow:hidden;
 }
 
@@ -30,5 +31,5 @@
 .goumai:hover{background-color:red;color:white;cursor:pointer; text-decoration:none;}
 .product{
     float:left;
-    margin:5px 10px;
+    margin:20px 0 0 30px;
 }

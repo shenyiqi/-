@@ -55,13 +55,29 @@
         </div>
         <!--首页顶部结束-->
         <!--搜索框部分-->
-        <div id="search">
+        @*<div id="search">
             <img src="~/Content/Shop/img/logo.png" style="width:240px;height:100px;" />
             <div class="search_mid">
                 <input type="text" name="" id="searchTxtBox" value="" placeholder="狗粮" />
                 <input type="button" name="searchBtn" id="searchBtn" value="搜索" />
             </div>
-
+        </div>*@
+        <div id="search">
+            @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+            {
+                <img src="~/Content/Shop/img/logo.png" style="width:240px;height:100px;" />
+                <div class="searchType">
+                    <ul>
+                        <li class="beSelected" style="background:RGB(238,85,51);color:RGB(255,255,255);" name="Goods" id="Goods">商品</li>
+                        <li name="Shop" id="Shop">店铺</li>
+                    </ul>
+                </div>
+                <div class="search_mid">
+                    @Html.Hidden("typeNum", "1")
+                    <input type="text" name="searchInput" id="searchTxtBox" value="" placeholder="狗粮" />
+                    <input type="submit" name="searchBtn" id="searchBtn" value="搜索" />
+                </div>
+            }
         </div>
 
         <!--搜索框部分结束-->
