@@ -1,0 +1,63 @@
+﻿*{
+    margin:0;padding:0;
+}
+.main{ 
+  margin-left:100px;
+  margin-top:70px;
+ 
+  width:900px;
+}
+.top{
+   
+}
+.top div{
+    float:left;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    border-bottom:1px solid  #dddddd;
+    border-top:1px solid #dddddd;
+     border-left:1px solid  #dddddd;
+}
+.mbody{
+   height:170px;
+}
+.mbody div{
+    float:left;
+     text-align:center;
+     padding: 20px;
+      border-left:1px solid  #dddddd;
+       border-bottom:1px solid #dddddd; height:170px;
+}
+.num {
+    width: 170px;
+}
+.goods{
+    width:170px;
+}
+.price{
+    width:100px;
+}
+.name{
+    width :179px;
+}
+
+.time{
+    width:160px;
+}
+.qupingjia{
+    width:119px;
+      border-right:1px solid  #dddddd;
+
+}
+.qupingjia  a{
+    text-decoration:none;
+    cursor:pointer;
+
+}
+.qupingjia a:hover{
+  color:red;
+  font-size:14px;
+  font-weight:800;
+
+}

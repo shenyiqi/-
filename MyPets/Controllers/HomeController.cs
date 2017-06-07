@@ -14,6 +14,7 @@ namespace MyPets.Controllers
     public class HomeController : Controller
     {
         IBLL.IUserInfoServices UserInfoService = new BLL.UserInfoServices();
+        IBLL.IOrderDetailServices OrderDetailService = new BLL.OrderDetailServices();
         IBLL.ICollectServices CollectService = new BLL.CollectServices();
         IBLL.IGoodsServices goodsService = new BLL.GoodsServices();
         IBLL.IGoodsCommentServices GoodsCommentServices = new BLL.GoodsCommentServices();
@@ -140,7 +141,7 @@ namespace MyPets.Controllers
 
             }
             else return Content("<script>alert('您还未登陆！！');history.go(-1);</script>");
-        }
+        }     
         public ActionResult goumai(int id)
         {
             var wupin = goodsService.LoadEntities(b => b.GoodsId == id).FirstOrDefault();
@@ -165,78 +166,84 @@ namespace MyPets.Controllers
             return Content("<script>alert('删除成功');window.location.href=document.referrer;</script>");
         }
         [HttpPost]
-        public ActionResult PayGoods() //商品购买
+        public ActionResult PayGoods(string address_provinces, string s_city, string s_county, string address) //商品购买
         {
-            var name = Session["UserName"].ToString();
-            string[] goodsid = Request.Params.GetValues("goodsid"); //商品id
-            string[] goodssum = Request.Params.GetValues("goodssum");//数量
-            string[] check = Request.Params.GetValues("checkbox2");//判断是否选中
-            var count = Convert.ToDecimal(Request["TotalPrice"]);
-            var user = UserInfoServices.LoadEntities(u => u.UserName == name).FirstOrDefault(); //获取用户
-            Random rd = new Random();
-            var orderlength = 12;
-            var ordernumber = "";
-            for (var i = 0; i < orderlength; i++)
+            if (address_provinces == "" && s_city == "" && s_county == "" && address == "")
             {
-                ordernumber += rd.Next(10).ToString();
+                return Content("<script>alert('地址填写不完整！');history.go(-1);</script>");
+
             }
-            string number = ordernumber;//订单号
-            OrderServices.AddEntity(new Order  //形成订单表
+            else
             {
-                UserId = user.UserId,
-                OrderAddress = "待填",
-                OrderTime = DateTime.Now,
-                OrderState = false,
-                OrderCount = count,
-                OrderNumber = ordernumber
-            });
-            for (int i = 0; i < goodsid.Length; i++)
-            {
-                if (check[i] == "1")
+                var name = Session["UserName"].ToString();
+                string[] goodsid = Request.Params.GetValues("goodsid"); //商品id
+                string[] goodssum = Request.Params.GetValues("goodssum");//数量
+                string[] check = Request.Params.GetValues("checkbox2");//判断是否选中
+                var count = Convert.ToDecimal(Request["TotalPrice"]);
+                var user = UserInfoServices.LoadEntities(u => u.UserName == name).FirstOrDefault(); //获取用户
+                Random rd = new Random();
+                var orderlength = 12;
+                var ordernumber = "";
+                for (var i = 0; i < orderlength; i++)
                 {
-                    int id = Convert.ToInt32(goodsid[i]);
-                    var goods = goodsService.LoadEntities(g => g.GoodsId == id).FirstOrDefault();
-                    decimal price; //商品价格
-                    if (goods.IsDiscount)
-                    {
-                        price = (goods.DiscountPrice ?? 1);
-                    }
-                    else
-                    {
-                        price = goods.GoodsPrice;
-                    }
-                    int sum = Convert.ToInt32(goodssum[i]);
-                    decimal countprice = price * sum;
-                    OrderDeailServices.AddEntity(new OrderDetail  //订单明细表
-                    {
-                        GoodsId = id,
-                        DetailSum = sum,
-                        UserId = user.UserId,
-                        DetailCount = countprice,
-                        OrderNumber = number,
-                        OrderState = false
-                    });
+                    ordernumber += rd.Next(10).ToString();
                 }
+                string number = ordernumber;//订单号
+                OrderServices.AddEntity(new Order  //形成订单表
+                {
+                    UserId = user.UserId,
+                    OrderAddress = "address_provinces" + "s_city" + "s_county" + " address",
+                    OrderTime = DateTime.Now,
+                    OrderState = false,
+                    OrderCount = count,
+                    OrderNumber = ordernumber
+                });
+                db.SaveChanges();
+                var orderid = OrderServices.LoadEntities(o => true).OrderByDescending(o => o.OrderId).Take(1).FirstOrDefault();
+                for (int i = 0; i < goodsid.Length; i++)
+                {
+                    if (check[i] == "1")
+                    {
+                        int id = Convert.ToInt32(goodsid[i]);
+                        var goods = goodsService.LoadEntities(g => g.GoodsId == id).FirstOrDefault();
+                        decimal price; //商品价格
+                        if (goods.IsDiscount)
+                        {
+                            price = (goods.DiscountPrice ?? 1);
+                        }
+                        else
+                        {
+                            price = goods.GoodsPrice;
+                        }
+                        int sum = Convert.ToInt32(goodssum[i]);
+                        decimal countprice = price * sum;
+                        OrderDeailServices.AddEntity(new OrderDetail  //订单明细表
+                        {
+                            GoodsId = id,
+                            OrderId=orderid.OrderId,
+                            DetailSum = sum,
+                            UserId = user.UserId,
+                            DetailCount = countprice,
+                            OrderNumber = number,
+                            OrderState = false
+                        });
+                    }
+                }
+                db.SaveChanges();
+                return Content("<script>alert('成功购买！');history.go(-1);</script>");
             }
-            db.SaveChanges();
-            return Content("<script>alert('成功购买！');history.go(-1);</script>");
         }
         public ActionResult LoginOff()  //退出登录
         {
             Session["UserName"] = null;
             return RedirectToAction("Index");
         }
-        public ActionResult Comment()//评价
+        public ActionResult Comment(int id)//评价
         {
-            if (Session["UserName"] != null)
-            {
-                var name = Session["UserName"].ToString();
-                var comment = GoodsCommentServices.LoadEntities(b => b.UserInfo.UserName == name).ToList();
-                return View(comment);
-            }
-
-            else return Content("<script>alert('您还未登录？');history.go(-1);</script>");
-        }
+            var name = Session["UserName"].ToString();
+            var comment = goodsService.LoadEntities(b =>b.GoodsId==id).FirstOrDefault();
+            return View(comment);
+        }         
         public ActionResult AddToCollect(int id, string type)//加入收藏
         {
             if (Session["UserName"] != null)
@@ -250,8 +257,7 @@ namespace MyPets.Controllers
                     CollectService.AddEntity(new Collect
                     {
                         ShopId = good.GoodsId,
-                        UserId = User.UserId,
-                        //Type = type
+                        UserId = User.UserId,                      
                     });
                     db.SaveChanges();
                     return Content("<script>alert('商品收藏成功！');history.go(-1);</script>");
@@ -272,44 +278,36 @@ namespace MyPets.Controllers
             }
             db.SaveChanges();
             return Content("<script>alert('删除成功');window.location.href=document.referrer;</script>");
+        }    
+        [HttpPost]
+        public ActionResult AddToGoodsComment(string  id,string InputType ,string man)//评论
+        {          
+                string name = Session["UserName"].ToString();         
+                var x = UserInfoServices.LoadEntities(g => g.UserName == name).FirstOrDefault();
+            int f = Convert.ToInt32(id);
+                var good = GoodsCommentServices.LoadEntities(g => g.GoodsId ==f).FirstOrDefault();
+            GoodsCommentServices.AddEntity(new GoodsComment
+            {
+                CommentContent = man,
+                ContentRange = InputType,
+                CommentTime = DateTime.Now,
+                GoodsId = good.GoodsId,
+                UsersId = x.UserId,
+                IsReply = false                
+                }
+            );
+                db.SaveChanges();
+                return Content("<script>alert('评价成功');history.go(-1);</script>");       
         }
-
-
-
-
-        //public ActionResult AddToGoodsComment(int id)//评论
-        //{
-        //    if (Session["UserName"] != null)
-        //    {
-        //        string name = Session["UserName"].ToString();
-        //        var good = GoodsCommentServices.LoadEntities(g => g.GoodsId == id).FirstOrDefault();
-        //        ShopCartServices.AddEntity(new GoodsComment
-        //        {
-        //            CommentContent = man,
-        //            ContentRange = InputType,
-        //            CommentTime = Day(getdate()),
-        //            GoodsId = good.GoodsId,
-        //            UsersId = UsersId,
-        //            UserName = UserName
-        //        });
-        //        db.SaveChanges();
-        //        return Content("<script>alert('评价成功');history.go(-1);</script>");
-        //    }
-        //    else return Content("<script>alert('您还未登陆！！');history.go(-1);</script>");
-        //}
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
             return View();
         }
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
-
     }
 }

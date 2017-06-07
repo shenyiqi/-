@@ -131,6 +131,7 @@
             <PropertyRef Name="DetailId" />
           </Key>
           <Property Name="DetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="GoodsId" Type="int" Nullable="false" />
           <Property Name="DetailSum" Type="int" Nullable="false" />
           <Property Name="DetailCount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
@@ -347,6 +348,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OrderDetail_UserInfo">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
@@ -477,6 +490,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_Goods" Association="Self.FK_OrderDetail_Goods">
             <End Role="Goods" EntitySet="Goods" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="Order" EntitySet="Order" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_UserInfo" Association="Self.FK_OrderDetail_UserInfo">
@@ -632,6 +649,7 @@
           <Property Name="OrderState" Type="Boolean" Nullable="false" />
           <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_Order_UserInfo" FromRole="Order" ToRole="UserInfo" />
+          <NavigationProperty Name="OrderDetail" Relationship="MyPetsModel.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -646,6 +664,8 @@
           <Property Name="OrderState" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Goods" Relationship="Self.FK_OrderDetail_Goods" FromRole="OrderDetail" ToRole="Goods" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_OrderDetail_UserInfo" FromRole="OrderDetail" ToRole="UserInfo" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="MyPetsModel.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -1028,6 +1048,10 @@
             <End Role="Shop" EntitySet="Shop" />
           </AssociationSet>
           <EntitySet Name="BaikeActivity" EntityType="MyPetsModel.BaikeActivity" />
+          <AssociationSet Name="FK_OrderDetail_Order" Association="MyPetsModel.FK_OrderDetail_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="BaikeActivity">
           <Key>
@@ -1039,6 +1063,18 @@
           <Property Name="ActivedImg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ActicedDetail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_OrderDetail_Order">
+          <End Type="MyPetsModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="MyPetsModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1168,6 +1204,7 @@
           <EntitySetMapping Name="OrderDetail">
             <EntityTypeMapping TypeName="MyPetsModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="DetailId" ColumnName="DetailId" />
                 <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
                 <ScalarProperty Name="DetailSum" ColumnName="DetailSum" />
