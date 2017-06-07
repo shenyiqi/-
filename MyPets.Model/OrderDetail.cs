@@ -15,14 +15,18 @@ namespace MyPets.Model
     public partial class OrderDetail
     {
         public int DetailId { get; set; }
+        public int OrderId { get; set; }
         public int GoodsId { get; set; }
         public int DetailSum { get; set; }
         public decimal DetailCount { get; set; }
         public int UserId { get; set; }
         public string OrderNumber { get; set; }
         public bool OrderState { get; set; }
+        public int OrderId { get; set; }
     
         public virtual Goods Goods { get; set; }
+        public virtual Order Order { get; set; }
         public virtual UserInfo UserInfo { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

@@ -27,6 +27,7 @@ namespace MyPets.Model
     
         public virtual DbSet<Adminstrator> Adminstrator { get; set; }
         public virtual DbSet<Baike> Baike { get; set; }
+        public virtual DbSet<BaikeActivity> BaikeActivity { get; set; }
         public virtual DbSet<BaikeAnswer> BaikeAnswer { get; set; }
         public virtual DbSet<BaikeQuestion> BaikeQuestion { get; set; }
         public virtual DbSet<Collect> Collect { get; set; }
@@ -43,6 +44,5 @@ namespace MyPets.Model
         public virtual DbSet<ShopCart> ShopCart { get; set; }
         public virtual DbSet<ShopRecommend> ShopRecommend { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
-        public virtual DbSet<BaikeActivity> BaikeActivity { get; set; }
     }
 }

@@ -2,40 +2,42 @@
     ViewBag.Title = "Comment";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
-@model MyPets.Model.GoodsComment
+@model MyPets.Model.Goods
 @section jiesuan{
     <link href="~/Content/Home/css/GoodsComment.css" rel="stylesheet" />
 }
-
-<form id="form1">
+   @using (Html.BeginForm("AddToGoodsComment", "Home", FormMethod.Post))
+   {
     <div class="pingjia">
         <div id="pingjia1">商品评价</div>
         <div style="height:60px;border-bottom :1px solid #808080;border-top :1px solid #808080;">
             <div class="pingjia3">
-                <div style="float:left;">评价满意度:(1表示不满意，6表示非常棒！）</div>
-                <select class="form-control" id="InputType" name="InputType" style="width:100px;">
-                    <option>6</option>
-                    <option>5</option>
-                    <option>4</option>
-                    <option>3</option>
-                    <option>2</option>
-                    <option>1</option>
+                <div style="float:left;">评价满意度:</div>
+                <select class="form-control" id="InputType" name="InputType" style="width:100px;">                  
+                    <option>★★★★★</option>
+                    <option>★★★★</option>
+                    <option>★★★</option>
+                    <option>★★</option>
+                    <option>★</option>
                 </select>
             </div>
         </div>
+        @Html.Hidden("id",Model.GoodsId)
         <div style="height:185px;border-bottom :1px dashed  #808080;">
             <div class="pingjia4">
-                <div>商品图片</div>
-                <div>name</div>
+                <div><img src="@Url.Content(Model.GoodsImg1)" style="height:150px;width:150px;" /></div>
+                <div>@Html.DisplayFor(a => Model.GoodsName)</div>
             </div>
             <div class="pingjia5">
                 <div style="float:right;">@DateTime.Now</div>
                 <div class="neirong">
                     <input style="width:800px;height:160px;" id="Text1" type="text" name="man" placeholder="你的评价是对我们的肯定！" />
                 </div>
-
             </div>
         </div>
+        <div>
+            <input type="submit"value="提交" />
+        </div>
     </div>
-</form>
 
+   }

@@ -13,6 +13,8 @@ namespace MyPets.Controllers
         //
         // GET: /PersonalCenter/
         IBLL.IUserInfoServices UserInfo = new BLL.UserInfoServices();
+        IBLL.IOrderDetailServices OrderDetail = new BLL.OrderDetailServices();
+        IBLL.IOrderServices Order = new BLL.OrderServices();
         IDBSession db = new DBSession();
         public ActionResult Index(string user)
         {
@@ -26,7 +28,13 @@ namespace MyPets.Controllers
         }
         public ActionResult Comment()
         {
-            return View();
+              string name = Session["UserName"].ToString();
+              var x = UserInfo.LoadEntities(g => g.UserName == name).FirstOrDefault();
+              var Detail = OrderDetail.LoadEntities(g => g.UserId ==x.UserId ).ToList();
+              return View(Detail);
+          
+
+          
         }
         public ActionResult basicinformation()
         {

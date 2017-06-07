@@ -14,6 +14,12 @@ namespace MyPets.Model
     
     public partial class Order
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Order()
+        {
+            this.OrderDetail = new HashSet<OrderDetail>();
+        }
+    
         public int OrderId { get; set; }
         public decimal OrderCount { get; set; }
         public int UserId { get; set; }
@@ -24,5 +30,7 @@ namespace MyPets.Model
         public string OrderNumber { get; set; }
     
         public virtual UserInfo UserInfo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }
 }

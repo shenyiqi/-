@@ -4,11 +4,14 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 @section jiesuan{
+   
     <script src="~/Content/Home/js/area.js"></script>
     <link href="~/Content/Home/css/style.css" rel="stylesheet" />
     <script src="~/Content/Home/css/demo.js"></script>
     <script src="~/Content/Home/js/js.js"></script>
 }
+@using (Html.BeginForm("PayGoods", "Home", FormMethod.Post))
+{
 <div style="position:absolute;left:350px;margin-top:28px;">
     <div class="info">
         <div>
@@ -21,25 +24,24 @@
         <div id="show"></div>
         <script type="text/javascript">
             var Gid = document.getElementById;
-            var showArea = function () {
-                Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
-                Gid('s_city').value + " - 县/区" +
-                Gid('s_county').value + "</h3>"
+            var showArea = function ()
+            {
+                Gid('show').innerHTML = "<h3>省" + Gid('s_province').value +
+                    " - 市" + Gid('s_city').value +
+                    " - 县/区" + Gid('s_county').value + "</h3>"
             }
             Gid('s_county').setAttribute('onchange', 'showArea()');
         </script>
     </div>
     <div style="margin-top:28px;position:absolute;">
-        <input style="width:500px;" id="Text1" type="text" name="man" placeholder="请输入你的详细地址" />
+        <input style="width:500px;" id="Text1" type="text" name="address " placeholder="请输入你的详细地址" />
     </div>
 </div>
 <div style="position:absolute;left:1200px;margin-top:65px;">
     <a href="@Url.Action("Index")">继续购物》</a>
 </div>
 <div class="catbox">
-    @using (Html.BeginForm("PayGoods", "Home", FormMethod.Post))
-    {
-        <table id="cartTable">
+    <table id="cartTable">
             <thead>
                 <tr>
                     <th style="text-align:center">
