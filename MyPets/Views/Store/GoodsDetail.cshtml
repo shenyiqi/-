@@ -116,18 +116,17 @@
                                         <div role="tabpanel" class="tab-pane fade" id="profile">
                                             <h2>评论</h2>
                                             <div class="submit-review">
-                                                <div class="row">
-                                                    @foreach (MyPets.Model.GoodsComment a in Model.GoodsComment.Where(g => g.GoodsId == Model.GoodsId).ToList())
-                                                    {
+                                                @foreach (MyPets.Model.GoodsComment a in Model.GoodsComment.Where(g => g.GoodsId == Model.GoodsId).ToList())
+                                                { 
+                                                    <div class="row">
                                                         <div class="col-md-2"><img src="@Url.Content(a.UserInfo.UserImg)" alt="headphoto" /></div>
                                                         <div class="col-md-8">
                                                             @a.UserInfo.UserName |评论于 @a.CommentTime
                                                             <p>@a.CommentContent</p>
                                                         </div>
                                                         <div class="col-md-2">@a.ContentRange</div>
-                                                    }
-
-                                                </div>
+                                                    </div>
+                                                 }
                                             </div>
                                         </div>
                                     </div>

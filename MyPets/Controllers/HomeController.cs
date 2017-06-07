@@ -190,6 +190,8 @@ namespace MyPets.Controllers
                 OrderCount = count,
                 OrderNumber = ordernumber
             });
+            db.SaveChanges();
+            var orderid = OrderServices.LoadEntities(o => true).OrderByDescending(o => o.OrderId).Take(1).FirstOrDefault();
             for (int i = 0; i < goodsid.Length; i++)
             {
                 if (check[i] == "1")
@@ -210,6 +212,7 @@ namespace MyPets.Controllers
                     OrderDeailServices.AddEntity(new OrderDetail  //订单明细表
                     {
                         GoodsId = id,
+                        OrderId=orderid.OrderId,
                         DetailSum = sum,
                         UserId = user.UserId,
                         DetailCount = countprice,
@@ -251,7 +254,7 @@ namespace MyPets.Controllers
                     {
                         ShopId = good.GoodsId,
                         UserId = User.UserId,
-                        //Type = type
+                        Type = type
                     });
                     db.SaveChanges();
                     return Content("<script>alert('商品收藏成功！');history.go(-1);</script>");
