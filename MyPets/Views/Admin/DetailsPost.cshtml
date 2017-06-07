@@ -1,0 +1,67 @@
+﻿@model MyPets.Model.Post
+
+@{
+    ViewBag.Title = "帖子详细";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DetailsPost</h2>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PostType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsChoose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsChoose)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsTop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsTop)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PostId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

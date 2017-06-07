@@ -38,6 +38,9 @@
         var obj = document.getElementById("txtdisprice");
         if (!reg.test(obj.value)) {
             alert("请输入正确价格格式!");
+            setTimeout(function () {
+               $("#txtdisprice").focus();
+            }, 500);
         }
     }
 </script>

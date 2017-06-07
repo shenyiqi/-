@@ -167,7 +167,7 @@ namespace MyPets.Controllers
             //            select s).FirstOrDefault();
             //int id = shop.ShopId;
             int id = Convert.ToInt32(Session["ShopId"]);
-            List<Goods> goods = GoodsServices.LoadEntities(g => g.ShopId == id).ToList();
+            List<Goods> goods = GoodsServices.LoadEntities(g => g.ShopId == id&&g.IsDiscount==false).ToList();
             ViewData["setgoods"] = new SelectList(goods, "GoodsId", "GoodsName");
             return View();
         }

@@ -144,11 +144,13 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PostType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostTitle" Type="nvarchar(max)" Nullable="false" />
           <Property Name="PostContent" Type="nvarchar(max)" Nullable="false" />
           <Property Name="PostTime" Type="datetime" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PostType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsChoose" Type="bit" Nullable="false" />
+          <Property Name="IsTop" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PrivateMsg">
           <Key>
@@ -547,6 +549,16 @@
           <Property Name="BaikeContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BaikeTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="BaikeActivity">
+          <Key>
+            <PropertyRef Name="ActivedId" />
+          </Key>
+          <Property Name="ActivedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivedTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivedContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivedImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActicedDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="BaikeAnswer">
           <Key>
             <PropertyRef Name="AnswerId" />
@@ -649,13 +661,14 @@
           <Property Name="OrderState" Type="Boolean" Nullable="false" />
           <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_Order_UserInfo" FromRole="Order" ToRole="UserInfo" />
-          <NavigationProperty Name="OrderDetail" Relationship="MyPetsModel.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+          <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
             <PropertyRef Name="DetailId" />
           </Key>
           <Property Name="DetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="GoodsId" Type="Int32" Nullable="false" />
           <Property Name="DetailSum" Type="Int32" Nullable="false" />
           <Property Name="DetailCount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
@@ -663,9 +676,8 @@
           <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrderState" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Goods" Relationship="Self.FK_OrderDetail_Goods" FromRole="OrderDetail" ToRole="Goods" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_OrderDetail_UserInfo" FromRole="OrderDetail" ToRole="UserInfo" />
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="MyPetsModel.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -677,8 +689,10 @@
           <Property Name="PostTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="IsChoose" Type="Boolean" Nullable="false" />
+          <Property Name="IsTop" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_Post_UserInfo" FromRole="Post" ToRole="UserInfo" />
           <NavigationProperty Name="Response" Relationship="Self.FK_Response_Post" FromRole="Post" ToRole="Response" />
+          <Property Name="PostTitle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PrivateMsg">
           <Key>
@@ -916,6 +930,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OrderDetail_UserInfo">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
@@ -967,6 +993,7 @@
         <EntityContainer Name="MyPetsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adminstrator" EntityType="Self.Adminstrator" />
           <EntitySet Name="Baike" EntityType="Self.Baike" />
+          <EntitySet Name="BaikeActivity" EntityType="Self.BaikeActivity" />
           <EntitySet Name="BaikeAnswer" EntityType="Self.BaikeAnswer" />
           <EntitySet Name="BaikeQuestion" EntityType="Self.BaikeQuestion" />
           <EntitySet Name="Collect" EntityType="Self.Collect" />
@@ -1031,6 +1058,10 @@
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_UserInfo" Association="Self.FK_OrderDetail_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
@@ -1047,34 +1078,7 @@
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="Shop" EntitySet="Shop" />
           </AssociationSet>
-          <EntitySet Name="BaikeActivity" EntityType="MyPetsModel.BaikeActivity" />
-          <AssociationSet Name="FK_OrderDetail_Order" Association="MyPetsModel.FK_OrderDetail_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderDetail" EntitySet="OrderDetail" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="BaikeActivity">
-          <Key>
-            <PropertyRef Name="ActivedId" />
-          </Key>
-          <Property Name="ActivedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ActivedTitle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ActivedContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ActivedImg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ActicedDetail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK_OrderDetail_Order">
-          <End Type="MyPetsModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="MyPetsModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="OrderDetail">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1102,6 +1106,17 @@
                 <ScalarProperty Name="BaikeDescribe" ColumnName="BaikeDescribe" />
                 <ScalarProperty Name="BaikeContent" ColumnName="BaikeContent" />
                 <ScalarProperty Name="BaikeTime" ColumnName="BaikeTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaikeActivity">
+            <EntityTypeMapping TypeName="MyPetsModel.BaikeActivity">
+              <MappingFragment StoreEntitySet="BaikeActivity">
+                <ScalarProperty Name="ActivedId" ColumnName="ActivedId" />
+                <ScalarProperty Name="ActivedTitle" ColumnName="ActivedTitle" />
+                <ScalarProperty Name="ActivedContent" ColumnName="ActivedContent" />
+                <ScalarProperty Name="ActivedImg" ColumnName="ActivedImg" />
+                <ScalarProperty Name="ActicedDetail" ColumnName="ActicedDetail" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1204,8 +1219,8 @@
           <EntitySetMapping Name="OrderDetail">
             <EntityTypeMapping TypeName="MyPetsModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
                 <ScalarProperty Name="DetailSum" ColumnName="DetailSum" />
                 <ScalarProperty Name="DetailCount" ColumnName="DetailCount" />
@@ -1218,12 +1233,14 @@
           <EntitySetMapping Name="Post">
             <EntityTypeMapping TypeName="MyPetsModel.Post">
               <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
                 <ScalarProperty Name="PostType" ColumnName="PostType" />
                 <ScalarProperty Name="PostContent" ColumnName="PostContent" />
                 <ScalarProperty Name="PostTime" ColumnName="PostTime" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="IsChoose" ColumnName="IsChoose" />
+                <ScalarProperty Name="IsTop" ColumnName="IsTop" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1309,17 +1326,6 @@
                 <ScalarProperty Name="IsSeller" ColumnName="IsSeller" />
                 <ScalarProperty Name="Range" ColumnName="Range" />
                 <ScalarProperty Name="Score" ColumnName="Score" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BaikeActivity">
-            <EntityTypeMapping TypeName="MyPetsModel.BaikeActivity">
-              <MappingFragment StoreEntitySet="BaikeActivity">
-                <ScalarProperty Name="ActicedDetail" ColumnName="ActicedDetail" />
-                <ScalarProperty Name="ActivedImg" ColumnName="ActivedImg" />
-                <ScalarProperty Name="ActivedContent" ColumnName="ActivedContent" />
-                <ScalarProperty Name="ActivedTitle" ColumnName="ActivedTitle" />
-                <ScalarProperty Name="ActivedId" ColumnName="ActivedId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

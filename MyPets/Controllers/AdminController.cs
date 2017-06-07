@@ -26,6 +26,7 @@ namespace MyPets.Controllers
         IBLL.IOrderDetailServices OrderDetailServices = new BLL.OrderDetailServices();
         IBLL.IOrderServices OrderServices = new BLL.OrderServices();
         IBLL.IPostServices PostServices = new BLL.PostServices();
+        IBLL.IResponseServices ResponseServices = new BLL.ResponseServices();
         IBLL.IBaikeActivityServices BaikeActivityServices = new BLL.BaikeActivityServices();
         IDBSession db = new DBSession();
         public ActionResult Index()
@@ -270,5 +271,28 @@ namespace MyPets.Controllers
             }
             return Content("<script>alert('删除失败！')</script>");
         }
+        public ActionResult PostManagement()
+        {
+            var post = PostServices.LoadEntities(p => true).ToList();
+            return View(post);
+        }
+        public ActionResult DetailsPost(int id)
+        {
+            var post = PostServices.LoadEntities(p => p.PostId == id).FirstOrDefault();
+            return View(post);
+        }
+        public ActionResult DeletePost(int id)
+        {
+            var post = PostServices.LoadEntities(p => p.PostId == id).FirstOrDefault();
+            var reply = ResponseServices.LoadEntities(R => R.PostId == id).ToList();
+            foreach(var r in reply)
+            {
+                var item = ResponseServices.LoadEntities(R => R.ResponseId == r.ResponseId).FirstOrDefault();
+                ResponseServices.DeleteEntity(item);
+            }
+            PostServices.DeleteEntity(post);
+            return Content("<script>alert('删除成功');window.location.href=document.referrer;</script>");
+        }
+
     }
 }
