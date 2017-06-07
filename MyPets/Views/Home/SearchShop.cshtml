@@ -1,7 +1,32 @@
-﻿
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<MyPets.Model.Shop>
+
 @{
     ViewBag.Title = "searchShop";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
+@section jiesuan{<link href="~/Content/Home/css/searchShop.css" rel="stylesheet" />}
 
-<h2>searchShop</h2>
-
+<div id="Container">
+    <p style="margin-top:10px;">找到相关店铺(<span style="color:RGB(255,101,0);">@ViewBag.num</span>)家</p>
+    @foreach (MyPets.Model.Shop a in ViewData["searchShops"] as List<MyPets.Model.Shop>)
+    {
+        <div class="shopModel">
+            <div class="shopMsg">
+                <input type="hidden" name="shopId" /> 
+                <div ><img src="@Url.Content(a.ShopImg)" /></div>             
+                <div class="shopName"><a href="@Url.Action("Index","Store",new { shopid=a.ShopId })">店铺：@Html.DisplayFor(n => a.ShopName)</a></div>                
+                <div class="shopOwner">店长：@a.UserInfo.UserName</div>
+            </div>
+            <div class="shopGoods">
+                @foreach (MyPets.Model.Goods b in a.Goods.Where(item => item.ShopId == @a.ShopId).Take(4).ToList())
+                {
+                    <img src="@Url.Content(b.GoodsImg1)" />
+                }
+            </div>
+            <div class="toShop"><a href="@Url.Action("Index","Store",new { shopid=a.ShopId })">进入店铺>></a></div>
+        </div>
+    }
+    <div style="margin:0 auto;width:300px;text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("SearchShop", "Home", new { page, searchInput = @ViewData["searchInput"] }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 3 })</div>
+</div>

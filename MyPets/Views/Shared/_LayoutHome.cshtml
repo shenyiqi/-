@@ -13,6 +13,7 @@
 </head>
 <body>
     <div>
+        <!--首页顶部-->
         <div id="index_top">
             <div class="content">
                 <div class="favorite">收藏宠物之家</div>
@@ -73,7 +74,7 @@
                     </ul>
                 </div>
                 <div class="search_mid">
-                    @Html.Hidden("typeNum", "1")
+                    <input type="hidden" name="typeNum" id="typeNum" value="1" />
                     <input type="text" name="searchInput" id="searchTxtBox" value="" placeholder="狗粮" />
                     <input type="submit" name="searchBtn" id="searchBtn" value="搜索" />
                 </div>

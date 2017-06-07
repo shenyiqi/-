@@ -1,0 +1,64 @@
+﻿*{
+    padding:0;
+    margin:0;
+}
+#Container{
+    width:1190px;
+    margin:0 auto;
+    overflow:hidden;
+}
+#Container .shopModel div{
+    float:left;
+}
+.shopModel{
+    width:1090px;
+    height:230px;
+    margin-left:50px;
+    border-bottom:1px solid RGB(238,85,51);
+    float:left;
+    position:relative;
+}
+.shopModel .shopMsg{
+    width:300px;
+    height:180px;
+    margin-top:25px;
+    line-height:180px;
+}
+.shopModel img{
+    width:100px;
+    height:100px;
+    border:1px solid RGB(230,230,230);
+    margin-right:10px;
+
+}
+.shopModel .shopMsg .shopName{
+    width:188px;
+    height:30px;
+    color:RGB(0,99,220);
+    font-size:20px;
+    cursor:pointer;
+}
+.shopModel .shopMsg .shopName:hover{
+    color:RGB(255,102,0);
+}
+.shopModel .shopMsg .shopOwner{
+    width:188px;
+    height:30px;
+}
+.shopModel .toShop{
+    position:absolute;
+    right:20px;
+    bottom:5px;
+}
+.shopModel .shopGoods{
+    width:790px;
+    height:180px;
+    margin-top:25px;
+    /*background:greenyellow;*/
+}
+.shopModel .shopGoods img{
+    width:140px;
+    height:160px;
+    margin-top:10px;
+    margin-left:40px;
+}

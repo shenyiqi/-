@@ -59,7 +59,8 @@
                 </ul>
             </div>
             <div class="search_mid">
-                @Html.Hidden("typeNum", "1")
+                @*@Html.Hidden("typeNum", "1")*@
+                <input type="hidden" name="typeNum" id="typeNum" value="1" />
                 <input type="text" name="searchInput" id="searchTxtBox" value="" placeholder="狗粮" />
                 <input type="submit" name="searchBtn" id="searchBtn" value="搜索" />
             </div>
@@ -631,531 +632,531 @@
         </div>
         <div class="famousShop">
             @*@{ int count = 0;
-                foreach (MyPets.Model.Shop item in ViewData["shop"] as List<MyPets.Model.Shop>)
-                {
-                    if (count > 2) { count = 0; }
-                    if (count == 0)
+                    foreach (MyPets.Model.Shop item in ViewData["shop"] as List<MyPets.Model.Shop>)
                     {
-                        <div style="margin-left:0;">
+                        if (count > 2) { count = 0; }
+                        if (count == 0)
+                        {
+                            <div style="margin-left:0;">
+                                <a href="@Url.Action("Index","Store",new { shopid=item.ShopId })">
+                                    <img src="@Url.Content(item.ShopImg)" style="width:190px;height:270px;" />
+                                </a>
+                            </div>
+                        }
+                        @:<div style="width:200px;">
+                            if (count == 1)
+                        {
                             <a href="@Url.Action("Index","Store",new { shopid=item.ShopId })">
-                                <img src="@Url.Content(item.ShopImg)" style="width:190px;height:270px;" />
+                                <img src="@Url.Content(item.ShopImg)" style="width:190px;height:130px;" />
                             </a>
-                        </div>
+                        }
+                        if (count == 2)
+                        {
+                            <a href="@Url.Action("Index","Store",new { shopid=item.ShopId })">
+                                <img class="bottomShop" src="@Url.Content(item.ShopImg)" style="width:190px;height:130px;" />
+                            </a>
+                        }
+                        count++;
+                        continue;
+                        @:</div>
                     }
-                    @:<div style="width:200px;">
-                        if (count == 1)
-                    {
-                        <a href="@Url.Action("Index","Store",new { shopid=item.ShopId })">
-                            <img src="@Url.Content(item.ShopImg)" style="width:190px;height:130px;" />
-                        </a>
-                    }
-                    if (count == 2)
-                    {
-                        <a href="@Url.Action("Index","Store",new { shopid=item.ShopId })">
-                            <img class="bottomShop" src="@Url.Content(item.ShopImg)" style="width:190px;height:130px;" />
-                        </a>
-                    }
-                    count++;
-                    continue;
-                    @:</div>
-                }
 
 
 
-            }*@
-    
-   
-    <div style="margin-left:0;">
-            <a href="@Url.Action("Index","Store",new { shopid=1 })">
-                <img src="~/Content/Home/img/shopimg/shop1.jpg" />
-            </a>
-        </div>
-        <div>
-            <a href="@Url.Action("Index","Store",new { shopid=2 })">
-                <img src="~/Content/Home/img/shopimg/shop2.jpg" />
-            </a>
-            <a href="@Url.Action("Index","Store",new { shopid=3 })">
-                <img class="bottomShop" src="~/Content/Home/img/shopimg/shop3.jpg" />
-            </a>
-        </div>
-        <div>
-            <a href="@Url.Action("Index","Store",new { shopid=4 })">
-                <img src="~/Content/Home/img/shopimg/shop4.jpg" />
-            </a>
-        </div>
-        <div>
-            <a href="@Url.Action("Index","Store",new { shopid=5 })">
-                <img src="~/Content/Home/img/shopimg/shop5.jpg" />
-            </a>
-            <a href="@Url.Action("Index","Store",new { shopid=6 })">
-                <img class="bottomShop" src="~/Content/Home/img/shopimg/shop6.jpg" />
-            </a>
-        </div>
-        <div>
-            <a href="@Url.Action("Index","Store",new { shopid=7 })">
-                <img src="~/Content/Home/img/shopimg/shop7.jpg" />
-            </a>
-        </div>
-        <div>
-            <a href="@Url.Action("Index","Store",new { shopid=8 })">
-                <img src="~/Content/Home/img/shopimg/shop8.jpg" />
-            </a>
-            <a href="@Url.Action("Index","Store",new { shopid=9 })">
-                <img class="bottomShop" src="~/Content/Home/img/shopimg/shop9.jpg" />
-            </a>
-        </div>
-</div>
+                }*@
 
-<div class="boxOne">
-    <span class="boxTitle">
-        狗狗商品
-    </span>
-    <div class="ChoicePart">
-        <ul>
-            <li class="beChoiced">
-                <span>狗粮</span>
-                <div class="choiceBlock" style="display: block;">
-                    @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+
+            <div style="margin-left:0;">
+                <a href="@Url.Action("Index","Store",new { shopid=1 })">
+                    <img src="~/Content/Home/img/shopimg/shop1.jpg" />
+                </a>
+            </div>
+            <div>
+                <a href="@Url.Action("Index","Store",new { shopid=2 })">
+                    <img src="~/Content/Home/img/shopimg/shop2.jpg" />
+                </a>
+                <a href="@Url.Action("Index","Store",new { shopid=3 })">
+                    <img class="bottomShop" src="~/Content/Home/img/shopimg/shop3.jpg" />
+                </a>
+            </div>
+            <div>
+                <a href="@Url.Action("Index","Store",new { shopid=4 })">
+                    <img src="~/Content/Home/img/shopimg/shop4.jpg" />
+                </a>
+            </div>
+            <div>
+                <a href="@Url.Action("Index","Store",new { shopid=5 })">
+                    <img src="~/Content/Home/img/shopimg/shop5.jpg" />
+                </a>
+                <a href="@Url.Action("Index","Store",new { shopid=6 })">
+                    <img class="bottomShop" src="~/Content/Home/img/shopimg/shop6.jpg" />
+                </a>
+            </div>
+            <div>
+                <a href="@Url.Action("Index","Store",new { shopid=7 })">
+                    <img src="~/Content/Home/img/shopimg/shop7.jpg" />
+                </a>
+            </div>
+            <div>
+                <a href="@Url.Action("Index","Store",new { shopid=8 })">
+                    <img src="~/Content/Home/img/shopimg/shop8.jpg" />
+                </a>
+                <a href="@Url.Action("Index","Store",new { shopid=9 })">
+                    <img class="bottomShop" src="~/Content/Home/img/shopimg/shop9.jpg" />
+                </a>
+            </div>
+        </div>
+
+        <div class="boxOne">
+            <span class="boxTitle">
+                狗狗商品
+            </span>
+            <div class="ChoicePart">
+                <ul>
+                    <li class="beChoiced">
+                        <span>狗粮</span>
+                        <div class="choiceBlock" style="display: block;">
+                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </li>
-            <li>
-                <span>湿粮</span>
-                <div class="choiceBlock">
-                    @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                    </li>
+                    <li>
+                        <span>湿粮</span>
+                        <div class="choiceBlock">
+                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </li>
-            <li>
-                <span>零食</span>
-                <div class="choiceBlock">
-                    @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                    </li>
+                    <li>
+                        <span>零食</span>
+                        <div class="choiceBlock">
+                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </li>
-            <li>
-                <span>保健品</span>
-                <div class="choiceBlock">
-                    @foreach (MyPets.Model.Goods g in ViewData["dogbaojian"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                    </li>
+                    <li>
+                        <span>保健品</span>
+                        <div class="choiceBlock">
+                            @foreach (MyPets.Model.Goods g in ViewData["dogbaojian"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </li>
-            <li>
-                <span>医疗</span>
-                <div class="choiceBlock">
-                    @foreach (MyPets.Model.Goods g in ViewData["dogyiliao"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                    </li>
+                    <li>
+                        <span>医疗</span>
+                        <div class="choiceBlock">
+                            @foreach (MyPets.Model.Goods g in ViewData["dogyiliao"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </li>
-            <li>
-                <span>沐浴露</span>
-                <div class="choiceBlock">
-                    @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                    </li>
+                    <li>
+                        <span>沐浴露</span>
+                        <div class="choiceBlock">
+                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </li>
-            <li>
-                <span>日用品</span>
-                <div class="choiceBlock">
-                    @foreach (MyPets.Model.Goods g in ViewData["dogriyong"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                    </li>
+                    <li>
+                        <span>日用品</span>
+                        <div class="choiceBlock">
+                            @foreach (MyPets.Model.Goods g in ViewData["dogriyong"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </li>
-            <li>
-                <span>美容</span>
-                <div class="choiceBlock">
-                    @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                    </li>
+                    <li>
+                        <span>美容</span>
+                        <div class="choiceBlock">
+                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </li>
-            <li>
-                <span>玩具</span>
-                <div class="choiceBlock">
-                    @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                    </li>
+                    <li>
+                        <span>玩具</span>
+                        <div class="choiceBlock">
+                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </li>
-            <li>
-                <span>衣服窝</span>
-                <div class="choiceBlock">
-                    @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                    </li>
+                    <li>
+                        <span>衣服窝</span>
+                        <div class="choiceBlock">
+                            @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </li>
-        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="choiceDetail">
+            <img src="~/Content/Home/img/GoodsPart/dogGoods.jpg" />
+        </div>
+        <div class="boxOne">
+            <span class="boxTitle">
+                猫咪商品
+            </span>
+            <div class="ChoicePart">
+                <ul>
+                    <li class="beChoiced">
+                        猫粮
+                        <div class="choiceBlock" style="display: block;">
+                            @foreach (MyPets.Model.Goods g in ViewData["catfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
+                        </div>
+                    </li>
+                    <li>
+                        湿粮
+                        <div class="choiceBlock">
+                            选项卡2
+                        </div>
+                    </li>
+                    <li>
+                        零食
+                        <div class="choiceBlock">
+                            选项卡3
+                        </div>
+                    </li>
+                    <li>
+                        保健品
+                        <div class="choiceBlock">
+                            选项卡4
+                        </div>
+                    </li>
+                    <li>
+                        香波
+                        <div class="choiceBlock">
+                            选项卡5
+                        </div>
+                    </li>
+                    <li>
+                        医疗
+                        <div class="choiceBlock">
+                            选项卡6
+                        </div>
+                    </li>
+                    <li>
+                        日用品
+                        <div class="choiceBlock">
+                            选项卡7
+                        </div>
+                    </li>
+                    <li>
+                        美容
+                        <div class="choiceBlock">
+                            选项卡8
+                        </div>
+                    </li>
+                    <li>
+                        玩具
+                        <div class="choiceBlock">
+                            选项卡9
+                        </div>
+                    </li>
+                    <li>
+                        衣服窝
+                        <div class="choiceBlock">
+                            选项卡10
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="choiceDetail">
+            <img src="~/Content/Home/img/GoodsPart/catsGoods.jpg" />
+        </div>
+        <div class="boxOne">
+            <span class="boxTitle">
+                小宠商品
+            </span>
+            <div class="ChoicePart">
+                <ul>
+                    <li class="beChoiced">
+                        兔兔用品
+                        <div class="choiceBlock" style="display: block;">
+                            @foreach (MyPets.Model.Goods g in ViewData["smallpetfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
+                        </div>
+                    </li>
+                    <li>
+                        仓鼠用品
+                        <div class="choiceBlock">
+                            选项卡2
+                        </div>
+                    </li>
+                    <li>
+                        龙猫用品
+                        <div class="choiceBlock">
+                            选项卡3
+                        </div>
+                    </li>
+                    <li>
+                        天竺鼠用品
+                        <div class="choiceBlock">
+                            选项卡4
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="choiceDetail">
+            <img src="~/Content/Home/img/GoodsPart/smallpGoods.jpg" />
+        </div>
+        <div class="boxOne">
+            <span class="boxTitle">
+                水族商品
+            </span>
+            <div class="ChoicePart">
+                <ul>
+                    <li class="beChoiced">
+                        鱼缸
+                        <div class="choiceBlock" style="display: block;">
+                            @foreach (MyPets.Model.Goods g in ViewData["aquaticpetfood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
+                        </div>
+                    </li>
+                    <li>
+                        鱼饲料
+                        <div class="choiceBlock">
+                            选项卡2
+                        </div>
+                    </li>
+                    <li>
+                        药水
+                        <div class="choiceBlock">
+                            选项卡3
+                        </div>
+                    </li>
+                    <li>
+                        过滤材料
+                        <div class="choiceBlock">
+                            选项卡4
+                        </div>
+                    </li>
+                    <li>
+                        氧气泵
+                        <div class="choiceBlock">
+                            选项卡5
+                        </div>
+                    </li>
+                    <li>
+                        潜水泵
+                        <div class="choiceBlock">
+                            选项卡6
+                        </div>
+                    </li>
+                    <li>
+                        温控设备
+                        <div class="choiceBlock">
+                            选项卡7
+                        </div>
+                    </li>
+                    <li>
+                        造景装饰
+                        <div class="choiceBlock">
+                            选项卡8
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="choiceDetail">
+            <img src="~/Content/Home/img/GoodsPart/aquaticpGoods.jpg" />
+        </div>
+        <div class="boxOne">
+            <span class="boxTitle">
+                爬虫商品
+            </span>
+            <div class="ChoicePart">
+                <ul>
+                    <li class="beChoiced">
+                        陆龟用品
+                        <div class="choiceBlock" style="display: block;">
+                            @foreach (MyPets.Model.Goods g in ViewData["reptilefood"] as List<MyPets.Model.Goods>)
+                            {
+                                <div class="GoodsModel">
+                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <div class="aContainer">
+                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                    </div>
+                                    <div class="goodsPrice">
+                                        ￥@Html.DisplayFor(a => g.GoodsPrice)
+                                    </div>
+                                    <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
+                                </div>
+                            }
+                        </div>
+                    </li>
+                    <li>
+                        水龟用品
+                        <div class="choiceBlock">
+                            选项卡2
+                        </div>
+                    </li>
+                    <li>
+                        其他类
+                        <div class="choiceBlock">
+                            选项卡3
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="choiceDetail">
+            <img src="~/Content/Home/img/GoodsPart/reptilepGoods.jpg" />
+        </div>
     </div>
-</div>
-<div class="choiceDetail">
-    <img src="~/Content/Home/img/GoodsPart/dogGoods.jpg" />
-</div>
-<div class="boxOne">
-    <span class="boxTitle">
-        猫咪商品
-    </span>
-    <div class="ChoicePart">
-        <ul>
-            <li class="beChoiced">
-                猫粮
-                <div class="choiceBlock" style="display: block;">
-                    @foreach (MyPets.Model.Goods g in ViewData["catfood"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                        </div>
-                    }
-                </div>
-            </li>
-            <li>
-                湿粮
-                <div class="choiceBlock">
-                    选项卡2
-                </div>
-            </li>
-            <li>
-                零食
-                <div class="choiceBlock">
-                    选项卡3
-                </div>
-            </li>
-            <li>
-                保健品
-                <div class="choiceBlock">
-                    选项卡4
-                </div>
-            </li>
-            <li>
-                香波
-                <div class="choiceBlock">
-                    选项卡5
-                </div>
-            </li>
-            <li>
-                医疗
-                <div class="choiceBlock">
-                    选项卡6
-                </div>
-            </li>
-            <li>
-                日用品
-                <div class="choiceBlock">
-                    选项卡7
-                </div>
-            </li>
-            <li>
-                美容
-                <div class="choiceBlock">
-                    选项卡8
-                </div>
-            </li>
-            <li>
-                玩具
-                <div class="choiceBlock">
-                    选项卡9
-                </div>
-            </li>
-            <li>
-                衣服窝
-                <div class="choiceBlock">
-                    选项卡10
-                </div>
-            </li>
-        </ul>
+    <!--商品展示部分结束-->
+    <!--首页底部,暂时采用图片布局-->
+    <div id="footer">
+        <div class="footer_up">
+            <img src="~/Content/Home/img/index/footerImg1.png" />
+        </div>
+        <div class="footer_down">
+            <img src="~/Content/Home/img/index/footerImg2.png" />
+        </div>
     </div>
-</div>
-<div class="choiceDetail">
-    <img src="~/Content/Home/img/GoodsPart/catsGoods.jpg" />
-</div>
-<div class="boxOne">
-    <span class="boxTitle">
-        小宠商品
-    </span>
-    <div class="ChoicePart">
-        <ul>
-            <li class="beChoiced">
-                兔兔用品
-                <div class="choiceBlock" style="display: block;">
-                    @foreach (MyPets.Model.Goods g in ViewData["smallpetfood"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                        </div>
-                    }
-                </div>
-            </li>
-            <li>
-                仓鼠用品
-                <div class="choiceBlock">
-                    选项卡2
-                </div>
-            </li>
-            <li>
-                龙猫用品
-                <div class="choiceBlock">
-                    选项卡3
-                </div>
-            </li>
-            <li>
-                天竺鼠用品
-                <div class="choiceBlock">
-                    选项卡4
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="choiceDetail">
-    <img src="~/Content/Home/img/GoodsPart/smallpGoods.jpg" />
-</div>
-<div class="boxOne">
-    <span class="boxTitle">
-        水族商品
-    </span>
-    <div class="ChoicePart">
-        <ul>
-            <li class="beChoiced">
-                鱼缸
-                <div class="choiceBlock" style="display: block;">
-                    @foreach (MyPets.Model.Goods g in ViewData["aquaticpetfood"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                        </div>
-                    }
-                </div>
-            </li>
-            <li>
-                鱼饲料
-                <div class="choiceBlock">
-                    选项卡2
-                </div>
-            </li>
-            <li>
-                药水
-                <div class="choiceBlock">
-                    选项卡3
-                </div>
-            </li>
-            <li>
-                过滤材料
-                <div class="choiceBlock">
-                    选项卡4
-                </div>
-            </li>
-            <li>
-                氧气泵
-                <div class="choiceBlock">
-                    选项卡5
-                </div>
-            </li>
-            <li>
-                潜水泵
-                <div class="choiceBlock">
-                    选项卡6
-                </div>
-            </li>
-            <li>
-                温控设备
-                <div class="choiceBlock">
-                    选项卡7
-                </div>
-            </li>
-            <li>
-                造景装饰
-                <div class="choiceBlock">
-                    选项卡8
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="choiceDetail">
-    <img src="~/Content/Home/img/GoodsPart/aquaticpGoods.jpg" />
-</div>
-<div class="boxOne">
-    <span class="boxTitle">
-        爬虫商品
-    </span>
-    <div class="ChoicePart">
-        <ul>
-            <li class="beChoiced">
-                陆龟用品
-                <div class="choiceBlock" style="display: block;">
-                    @foreach (MyPets.Model.Goods g in ViewData["reptilefood"] as List<MyPets.Model.Goods>)
-                    {
-                        <div class="GoodsModel">
-                            <img src="@Url.Content(g.GoodsImg1)" />
-                            <div class="aContainer">
-                                <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
-                            </div>
-                            <div class="goodsPrice">
-                                ￥@Html.DisplayFor(a => g.GoodsPrice)
-                            </div>
-                            <div class="sales">已售<span>@Html.DisplayFor(s => g.SellNum)</span></div>
-                        </div>
-                    }
-                </div>
-            </li>
-            <li>
-                水龟用品
-                <div class="choiceBlock">
-                    选项卡2
-                </div>
-            </li>
-            <li>
-                其他类
-                <div class="choiceBlock">
-                    选项卡3
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="choiceDetail">
-    <img src="~/Content/Home/img/GoodsPart/reptilepGoods.jpg" />
-</div>
-    </div>
-<!--商品展示部分结束-->
-<!--首页底部,暂时采用图片布局-->
-<div id="footer">
-    <div class="footer_up">
-        <img src="~/Content/Home/img/index/footerImg1.png" />
-    </div>
-    <div class="footer_down">
-        <img src="~/Content/Home/img/index/footerImg2.png" />
-    </div>
-</div>
-<!--首页底部结束-->
+    <!--首页底部结束-->
 
 
 </body>
