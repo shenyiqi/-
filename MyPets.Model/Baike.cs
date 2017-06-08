@@ -11,16 +11,24 @@ namespace MyPets.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Baike
     {
         public int BaikeId { get; set; }
+        [Display(Name = "百科系列")]
         public string BaikeSeries { get; set; }
+        [Display(Name = "百科类别")]
         public string BaikeType { get; set; }
+        [Required(ErrorMessage ="标题不能为空")]
+        [Display(Name ="标题")]
         public string BaikeTitle { get; set; }
         public string BaikeImg { get; set; }
+        [Display(Name = "内容描述")]
         public string BaikeDescribe { get; set; }
+        [Display(Name = "具体内容")]
         public string BaikeContent { get; set; }
+        [Display(Name = "发布时间")]
         public System.DateTime BaikeTime { get; set; }
     }
 }

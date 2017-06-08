@@ -69,12 +69,12 @@
                             @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { id = "RegisterForm", enctype = "multipart/form-data" }))
                             {
                                 <div class="item item-username">
-                                    @Html.TextBoxFor(u => u.UserName, htmlAttributes: new { @class = "txt-input txt-username", @placeholder = "请输入用户名" })
+                                    @Html.EditorFor(u => u.UserName, new { htmlAttributes = new { @class = "txt-input txt-username", @placeholder = "请输入用户名" } })
                                     @Html.ValidationMessageFor(u => u.UserName)
                                     <b class="input-close" style="display: none;"></b>
                                 </div>
                                 <div class="item item-username">
-                                    @Html.TextBoxFor(u => u.UserEmail, htmlAttributes: new { @class = "txt-input txt-username", @placeholder = "请输入邮箱" })
+                                    @Html.EditorFor(u => u.UserEmail, new { htmlAttributes = new { @class = "txt-input txt-username", @placeholder = "请输入邮箱" } })
                                     @Html.ValidationMessageFor(u => u.UserEmail)
                                     <b class="input-close" style="display:none;"></b>
                                 </div>
@@ -83,18 +83,18 @@
                                         <div class="uploader orange">
                                             <input type="text" class="filename" readonly="readonly" style="width:370px;height:40px;" />
                                             <input type="button" name="file" class="button" value="选择头像" style="height:40px;" />
-                                            <input type="file" size="60"name="file" />
+                                            <input type="file" size="60" name="userhead" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="item item-password">
-                                    @Html.TextBoxFor(u => u.UserPwd, htmlAttributes: new { @class = "txt-input txt-password ciphertext", @placeholder = "请输入密码" })
+                                    @Html.EditorFor(u => u.UserPwd, new { htmlAttributes = new { @class = "txt-input txt-password ciphertext", @placeholder = "请输入密码" } })
                                     @Html.ValidationMessageFor(u => u.UserPwd)
                                     <input id="ptext" class="txt-input txt-password plaintext" type="text" placeholder="请输入密码" style="display: none;" name="ptext">
                                     <b class="tp-btn btn-off"></b>
                                 </div>
                                 <div class="item item-password">
-                                    @Html.TextBoxFor(u => u.ConfirmPwd, htmlAttributes: new { @class = "txt-input txt-password_PwdTwo ciphertext_PwdTwo", @placeholder = "确认密码" })
+                                    @Html.EditorFor(u => u.ConfirmPwd, new { htmlAttributes = new { @class = "txt-input txt-password_PwdTwo ciphertext_PwdTwo", @placeholder = "确认密码" } })
                                     @Html.ValidationMessageFor(u=>u.ConfirmPwd)
                                     <input id="ptext_PwdTwo" class="txt-input txt-password_PwdTwo plaintext_PwdTwo" type="text" placeholder="确认密码" style="display: none;" name="ptext_PwdTwo">
                                     <b class="tp-btn_PwdTwo btn-off_PwdTwo"></b>

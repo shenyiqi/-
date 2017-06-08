@@ -1,59 +1,75 @@
 ﻿@model IEnumerable<MyPets.Model.Post>
 
 @{
-    ViewBag.Title = "PostManagement";
+    ViewBag.Title = "帖子管理";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>PostManagement</h2>
+<h2>帖子管理</h2>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PostType)
+            标题
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PostContent)
+            发帖时间
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PostTime)
+            发帖人
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserId)
+            类别
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsChoose)
+            是否精选
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsTop)
+            是否置顶
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostContent)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsChoose)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsTop)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "DetailsPost", new { id=item.PostId }) |
-            @Html.ActionLink("Delete", "DeletePost", new { id=item.PostId }, new {onclick="return confirm('确定要删除该帖子吗？')" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostTitle)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PostTime)
+            </td>
+            <td>
+                @item.UserInfo.UserName
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostType)
+            </td>
+            <td>
+                @if (item.IsChoose)
+                {
+                    <p>是</p>
+                }
+                else
+                {
+                    <p>否</p>
+                }
+            </td>
+            <td>
+               @if (item.IsTop)
+               {
+                <p>是</p>
+               }
+               else
+               {
+                <p>否</p>
+               }
+            </td>
+            <td>
+                @Html.ActionLink("详细", "DetailsPost", new { id = item.PostId }) |
+                @Html.ActionLink("删除", "DeletePost", new { id = item.PostId }, new { onclick = "return confirm('确定要删除该帖子吗？')" })
+            </td>
+        </tr>
+    }
 
 </table>
