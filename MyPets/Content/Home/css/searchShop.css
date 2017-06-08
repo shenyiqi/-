@@ -6,6 +6,7 @@
     width:1190px;
     margin:0 auto;
     overflow:hidden;
+    background:RGB(240,240,240);
 }
 #Container .shopModel div{
     float:left;
@@ -54,7 +55,6 @@
     width:790px;
     height:180px;
     margin-top:25px;
-    /*background:greenyellow;*/
 }
 .shopModel .shopGoods img{
     width:140px;

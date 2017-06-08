@@ -93,6 +93,7 @@ namespace MyPets.Controllers
                 int pageSize = 15;
                 int pageNumber = (page ?? 1);
                 var searchGoods = goodsService.LoadEntities(g => g.GoodsName.Contains(searchInput) || g.TypeName.Contains(searchInput)).ToList();
+                ViewBag.num = searchGoods.Count();
                 ViewData["searchInput"] = searchInput;
                 return View(searchGoods.ToPagedList(pageNumber, pageSize));
             }
@@ -105,9 +106,9 @@ namespace MyPets.Controllers
             {
                 int pageSize = 5;
                 int pageNumber = (page ?? 1);
-                var searchShops = shopServices.LoadEntities(g => g.ShopName.Contains(searchInput)).ToList();
+                var searchShops = shopServices.LoadEntities(s => s.ShopName.Contains(searchInput)).ToList();
                 ViewBag.num = searchShops.Count();
-                ViewData["searchShops"] = searchShops;
+                //ViewData["searchShops"] = searchShops;
                 ViewData["searchInput"] = searchInput;
                 return View(searchShops.ToPagedList(pageNumber,pageSize));
             }

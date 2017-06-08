@@ -10,7 +10,7 @@
 
 <div id="Container">
     <p style="margin-top:10px;">找到相关店铺(<span style="color:RGB(255,101,0);">@ViewBag.num</span>)家</p>
-    @foreach (MyPets.Model.Shop a in ViewData["searchShops"] as List<MyPets.Model.Shop>)
+    @foreach (@*MyPets.Model.Shop a in ViewData["searchShops"] as List<MyPets.Model.Shop>*@ var a in Model)
     {
         <div class="shopModel">
             <div class="shopMsg">
