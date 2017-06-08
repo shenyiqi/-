@@ -11,7 +11,8 @@ namespace MyPets.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Shop
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,11 +23,22 @@ namespace MyPets.Model
         }
     
         public int ShopId { get; set; }
+
+        [Required(ErrorMessage ="请输入店铺名")]
         public string ShopName { get; set; }
+
         public string ShopImg { get; set; }
+
+        [Required(ErrorMessage ="请输入客服电话")]
         public string CustomerService { get; set; }
+
+        
         public string ShopEmail { get; set; }
+
+        [Required(ErrorMessage ="请输入身份验证")]
+        [RegularExpression(@"^\d{15}$|^\d{18}$|^\d{17}(\d|X|x)$", ErrorMessage ="身份证格式不正确")]
         public string SellerIdCard { get; set; }
+
         public Nullable<int> UserId { get; set; }
         public string StarLevel { get; set; }
     

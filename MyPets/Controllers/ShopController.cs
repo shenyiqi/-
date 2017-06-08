@@ -24,8 +24,6 @@ namespace MyPets.Controllers
         IDBSession db = new DBSession();
         public ActionResult Index(string user)
         {
-            user = "用户1";
-            Session["UserName"] = user;
             var id = UserServices.LoadEntities(u => u.UserName == user).FirstOrDefault();
             if (id.IsSeller == true)
             {
@@ -47,34 +45,41 @@ namespace MyPets.Controllers
         [HttpPost]
         public ActionResult Register(Shop shop)
         {
-            HttpPostedFileBase shopimg = Request.Files["ShopImg"];
-            string filepath = shopimg.FileName;
-            string user = Session["UserName"].ToString();
-            var id = UserServices.LoadEntities(u => u.UserName == user).FirstOrDefault();
-            if (filepath != "")
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                HttpPostedFileBase shopimg = Request.Files["ShopImg"];
+                string filepath = shopimg.FileName;
+                string user = Session["UserName"].ToString();
+                var id = UserServices.LoadEntities(u => u.UserName == user).FirstOrDefault();
+                if (filepath != "")
                 {
-                    string filename = filepath.Substring(filepath.LastIndexOf("//") + 1);
-                    string serverpath = Server.MapPath("~/Content/Shop/upload/Store/") + filename;
-                    string relativepath = @"~/Content/Shop/upload/Store/" + filename;
-                    shopimg.SaveAs(serverpath);
-                    shop.ShopImg = relativepath;
-                    ShopServices.AddEntity(new Shop()
+                    if (ModelState.IsValid)
                     {
-                        ShopName = shop.ShopName,
-                        ShopImg = shop.ShopImg,
-                        SellerIdCard = shop.SellerIdCard,
-                        CustomerService = shop.CustomerService,
-                        UserId = id.UserId,
-                        StarLevel = "0"
-                    });
-                    db.SaveChanges();
-                    return View();
+                        string filename = filepath.Substring(filepath.LastIndexOf("//") + 1);
+                        string serverpath = Server.MapPath("~/Content/Shop/upload/Store/") + filename;
+                        string relativepath = @"~/Content/Shop/upload/Store/" + filename;
+                        shopimg.SaveAs(serverpath);
+                        shop.ShopImg = relativepath;
+                        ShopServices.AddEntity(new Shop()
+                        {
+                            ShopName = shop.ShopName,
+                            ShopImg = shop.ShopImg,
+                            SellerIdCard = shop.SellerIdCard,
+                            CustomerService = shop.CustomerService,
+                            UserId = id.UserId,
+                            StarLevel = "0"
+                        });
+                        id.IsSeller = true;
+                        UserServices.EditEntity(id);
+                        db.SaveChanges();
+                        return Content("<script>;alert('注册成功!');window.open('"+Url.Action("Index","Shop",new {user=Session["UserName"].ToString() })+"','_self');</script>");
+                       
+                    }
+                    else return Content("<script>;alert('注册失败!')</script>");
                 }
-                else return Content("<script>;alert('注册失败!')</script>");
+                else return Content("<script>;alert('请上传图片!')</script>");
             }
-            else return Content("<script>;alert('请上传图片!')</script>");
+            return View(shop);
         }
         [HttpGet]
         public ActionResult UpGoods()
@@ -167,7 +172,7 @@ namespace MyPets.Controllers
             //            select s).FirstOrDefault();
             //int id = shop.ShopId;
             int id = Convert.ToInt32(Session["ShopId"]);
-            List<Goods> goods = GoodsServices.LoadEntities(g => g.ShopId == id&&g.IsDiscount==false).ToList();
+            List<Goods> goods = GoodsServices.LoadEntities(g => g.ShopId == id && g.IsDiscount == false).ToList();
             ViewData["setgoods"] = new SelectList(goods, "GoodsId", "GoodsName");
             return View();
         }

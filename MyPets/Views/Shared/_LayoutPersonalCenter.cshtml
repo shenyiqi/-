@@ -60,7 +60,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Shop",new { user=Session["UserName"]})">
+                        <a href="@Url.Action("Index","Shop",new { user=Session["UserName"].ToString()})">
                             <i class="pe-7s-map-marker"></i>
                             <p>我的店铺</p>
                         </a>

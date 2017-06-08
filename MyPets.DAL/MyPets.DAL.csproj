@@ -68,7 +68,7 @@
     <Compile Include="PrivateMsgDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponAnswerDal.cs" />
-    <Compile Include="ResponDal.cs" />
+    <Compile Include="ResponseDal.cs" />
     <Compile Include="ShopCartDal.cs" />
     <Compile Include="ShopDal.cs" />
     <Compile Include="ShopRecommendDal.cs" />
