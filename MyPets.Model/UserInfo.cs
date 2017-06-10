@@ -40,14 +40,14 @@ namespace MyPets.Model
         [Required(ErrorMessage ="用户名不能为空")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "密码不能为空")]
-        [StringLength(100,MinimumLength =6,ErrorMessage ="密码长度不能少于6个字符")]
-        [DataType(DataType.Password)]
+        //[Required(ErrorMessage = "密码不能为空")]
+        //[StringLength(100,MinimumLength =6,ErrorMessage ="密码长度不能少于6个字符")]
+        //[DataType(DataType.Password)]
         public string UserPwd { get; set; }
 
-        [Required(ErrorMessage = "请确认密码")]
-        [DataType(DataType.Password)]
-        [Compare("UserPwd",ErrorMessage ="密码与确认密码不一致")]
+        //[Required(ErrorMessage = "请确认密码")]
+        //[DataType(DataType.Password)]
+        //[Compare("UserPwd",ErrorMessage ="密码与确认密码不一致")]
         public string ConfirmPwd { get; set; }
 
 
