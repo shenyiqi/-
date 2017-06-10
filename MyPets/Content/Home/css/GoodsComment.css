@@ -10,7 +10,8 @@ body {
   margin-left:300px;
    border-top:2px solid red;
 }
-#pingjia1{ color :red;
+#pingjia1{ 
+    color :red;
     font-size:25px;
     margin-left:10px;   
     line-height:50px;
@@ -30,12 +31,11 @@ body {
 .pingjia5{
 float:left;
 margin-top:3px;
-/*border:1px solid #ccc;*/
 }
+
 .neirong{
 
 }
 #Text1{
     text-decoration:none;
 }
-

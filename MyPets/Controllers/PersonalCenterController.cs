@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyPets.Model;
+using MyPets.BLL;
+using System.Reflection;
 
 namespace MyPets.Controllers
 {
@@ -36,9 +39,14 @@ namespace MyPets.Controllers
 
           
         }
-        public ActionResult basicinformation()
+        public ActionResult basicinformation(int id)
         {
-            return View();
+
+            BLL.UserInfoServices server = new BLL.UserInfoServices();
+            // 查询数据库
+            var model = server.LoadEntities(o => o.UserId == id).FirstOrDefault();
+            return View(model);
+
         }
         public ActionResult goodsreview()
         {

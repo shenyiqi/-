@@ -1439,6 +1439,7 @@
     <Content Include="Content\PersonalCenter\js\demo.js" />
     <Content Include="Content\PersonalCenter\js\jquery-1.10.2.js" />
     <Content Include="Content\PersonalCenter\js\light-bootstrap-dashboard.js" />
+    <Content Include="Content\PersonalCenter\js\validateForm.js" />
     <Content Include="Content\Register\css\basic.css" />
     <Content Include="Content\Register\css\css.css" />
     <Content Include="Content\Register\css\Style.css" />
@@ -1736,6 +1737,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
