@@ -12,6 +12,7 @@
 
 
 <div id="Container">
+    <p style="margin-top:10px;">找到相关商品(<span style="color:RGB(255,101,0);">@ViewBag.num</span>)件</p>
     @foreach (var g in Model)
     {
         <div class="product">
@@ -35,5 +36,5 @@
             </div>
         </div>
     }
-    <div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("SearchGoods", "Home", new { page, searchInput = @ViewData["search"] }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 5 })</div>
+    <div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("SearchGoods", "Home", new { page, searchInput = @ViewData["searchInput"] }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 5 })</div>
 </div>

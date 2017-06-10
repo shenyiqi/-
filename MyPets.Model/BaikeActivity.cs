@@ -11,11 +11,14 @@ namespace MyPets.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class BaikeActivity
     {
         public int ActivedId { get; set; }
+        [Display(Name ="广告标题")]
         public string ActivedTitle { get; set; }
+        [Display(Name = "广告描述")]
         public string ActivedContent { get; set; }
         public string ActivedImg { get; set; }
         public string ActicedDetail { get; set; }

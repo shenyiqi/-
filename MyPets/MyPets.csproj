@@ -1395,6 +1395,7 @@
     <Content Include="Content\Home\css\LayoutHome.css" />
     <Content Include="Content\Home\css\pingjia.css" />
     <Content Include="Content\Home\css\searchGoods.css" />
+    <Content Include="Content\Home\css\searchShop.css" />
     <Content Include="Content\Home\css\shangpin.css" />
     <Content Include="Content\Home\css\style.css" />
     <Content Include="Content\Home\css\StyleSheet1.css" />
@@ -1859,6 +1860,8 @@
     <Content Include="Views\Admin\EditAd.cshtml" />
     <Content Include="Views\Admin\CreateAd.cshtml" />
     <Content Include="Views\PersonalCenter\Comment.cshtml" />
+    <Content Include="Views\Admin\DetailsPost.cshtml" />
+    <Content Include="Views\Admin\PostManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MyPetsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MyPetsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adminstrator">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -523,7 +523,8 @@
             <End Role="ShopCart" EntitySet="ShopCart" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyPetsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -684,15 +685,15 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PostType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PostContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PostTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PostType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsChoose" Type="Boolean" Nullable="false" />
           <Property Name="IsTop" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_Post_UserInfo" FromRole="Post" ToRole="UserInfo" />
           <NavigationProperty Name="Response" Relationship="Self.FK_Response_Post" FromRole="Post" ToRole="Response" />
-          <Property Name="PostTitle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PrivateMsg">
           <Key>
@@ -1233,12 +1234,12 @@
           <EntitySetMapping Name="Post">
             <EntityTypeMapping TypeName="MyPetsModel.Post">
               <MappingFragment StoreEntitySet="Post">
-                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
-                <ScalarProperty Name="PostType" ColumnName="PostType" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
                 <ScalarProperty Name="PostContent" ColumnName="PostContent" />
                 <ScalarProperty Name="PostTime" ColumnName="PostTime" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PostType" ColumnName="PostType" />
                 <ScalarProperty Name="IsChoose" ColumnName="IsChoose" />
                 <ScalarProperty Name="IsTop" ColumnName="IsTop" />
               </MappingFragment>

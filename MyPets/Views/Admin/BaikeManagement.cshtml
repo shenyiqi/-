@@ -10,23 +10,25 @@
 <h2>百科管理</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Baike")
+    @Html.ActionLink("发布百科", "Baike")
 </p>
 <table class="table">
     <tr>
-        <th>
-            BaikeType
+        <th style="width:85px;">
+            百科类别
+        </th>
+        <th style="width:85px;">
+            百科标题
         </th>
         <th>
-            BaikeTitle
+            百科描述
         </th>
         <th>
-            BaikeDescribe
+            发布时间
         </th>
-        <th>
-            BaikeTime
+        <th style="width:60px;text-align:center;">
+            操作
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -45,9 +47,9 @@
                 @Html.DisplayFor(modelItem => item.BaikeTime)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditBaike", new { id = item.BaikeId }) |
-                @Html.ActionLink("Details", "DetailsBaike", new { id = item.BaikeId }) |
-                @Html.ActionLink("Delete", "DeleteBaike", new { id = item.BaikeId }, new { onclick = "return confirm('确认删除吗？')" })
+                @Html.ActionLink("编辑", "EditBaike", new { id = item.BaikeId }) <br />
+                @Html.ActionLink("详细", "DetailsBaike", new { id = item.BaikeId }) <br />
+                @Html.ActionLink("删除", "DeleteBaike", new { id = item.BaikeId }, new { onclick = "return confirm('确认删除吗？')" })
             </td>
         </tr>
     }

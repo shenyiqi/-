@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyPets.DAL
 {
-    public class ResponDal : BaseDal<Response>, IResponseDal
+    public class ResponseDal : BaseDal<Response>, IResponseDal
     {
     }
 }

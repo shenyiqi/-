@@ -27,7 +27,6 @@ namespace MyPets.Controllers
 
         public ActionResult Index()
         {
-            Session["UserName"] = "用户1";
             //火爆商品
             var hotGoods = goodsService.LoadEntities(g => g.SellNum > 0).OrderByDescending(g => g.SellNum).Take(6).ToList();
             //促销商品
@@ -93,16 +92,26 @@ namespace MyPets.Controllers
                 int pageSize = 15;
                 int pageNumber = (page ?? 1);
                 var searchGoods = goodsService.LoadEntities(g => g.GoodsName.Contains(searchInput) || g.TypeName.Contains(searchInput)).ToList();
-                ViewData["search"] = searchInput;
+                ViewBag.num = searchGoods.Count();
+                ViewData["searchInput"] = searchInput;
                 return View(searchGoods.ToPagedList(pageNumber, pageSize));
             }
             else return Content("<script>alert('搜索不能为空！');history.go(-1);</script>");
 
         }
-        public ActionResult SearchShop(string typeNum, string searchInput)//搜索店铺展示页面
+        public ActionResult SearchShop(string typeNum, string searchInput,int? page)//搜索店铺展示页面
         {
-            var searchShops = shopServices.LoadEntities(g => g.ShopName.Contains(searchInput)).ToList();
-            return View(searchShops);
+            if (searchInput != null)
+            {
+                int pageSize = 5;
+                int pageNumber = (page ?? 1);
+                var searchShops = shopServices.LoadEntities(s => s.ShopName.Contains(searchInput)).ToList();
+                ViewBag.num = searchShops.Count();
+                //ViewData["searchShops"] = searchShops;
+                ViewData["searchInput"] = searchInput;
+                return View(searchShops.ToPagedList(pageNumber,pageSize));
+            }
+            else return Content("<script>alert('搜索不能为空！');history.go(-1);</script>");
         }
 
         public ActionResult Shangpin(string keyword, string type)
