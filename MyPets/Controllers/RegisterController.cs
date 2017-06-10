@@ -43,6 +43,7 @@ namespace MyPets.Controllers
                 var users = UserInfoServices.LoadEntities(o => o.UserName == user.UserName && o.UserPwd == user.UserPwd).FirstOrDefault();
                 if (users != null)
                 {
+                    Session["UserId"] = user.UserId;
                     Session["UserName"] = users.UserName;
                     if (!string.IsNullOrEmpty(Request["rememberpwd"]))
                     {

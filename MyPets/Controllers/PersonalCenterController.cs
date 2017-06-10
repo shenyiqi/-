@@ -28,7 +28,7 @@ namespace MyPets.Controllers
         public ActionResult myorder() 
         {
             return View();
-        }
+        }       
         public ActionResult Comment()
         {
               string name = Session["UserName"].ToString();
@@ -58,7 +58,29 @@ namespace MyPets.Controllers
         }
         public ActionResult goodsreview()
         {
+            MyPetsEntities db = new MyPetsEntities();
+            var mypet = db.Goods.Select(x => x);
+            int goodid = mypet.FirstOrDefault().GoodsId;
+            var myComment = db.GoodsComment.Select(x=>x);          
+            ViewBag.Comment = myComment;
+            ViewBag.MyPet = mypet;
             return View();
+        } 
+        [HttpPost]    
+        public ActionResult goodsComment(GoodsComment gc)
+        {
+            int id = int.Parse(Request["id"]);
+            MyPetsEntities db = new MyPetsEntities();
+            int userid = int.Parse(Session["UserId"].ToString());
+            gc.CommentTime = System.DateTime.Now;
+            gc.CommentContent = Request["content"];
+            gc.ContentRange = "好评";
+            gc.GoodsId = id;
+            gc.UsersId = 1;
+            gc.IsReply = false;
+            db.GoodsComment.Add(gc);
+            db.SaveChanges();        
+            return Content("<script>alert('评论成功！');history.go(-1);</script>");
         }
         public ActionResult myshop()
         {
