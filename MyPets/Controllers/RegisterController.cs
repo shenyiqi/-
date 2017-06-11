@@ -43,6 +43,7 @@ namespace MyPets.Controllers
                 var users = UserInfoServices.LoadEntities(o => o.UserName == user.UserName && o.UserPwd == user.UserPwd).FirstOrDefault();
                 if (users != null)
                 {
+                    Session["UserId"] = user.UserId;
                     Session["UserName"] = users.UserName;
                     if (!string.IsNullOrEmpty(Request["rememberpwd"]))
                     {
@@ -78,6 +79,7 @@ namespace MyPets.Controllers
                 {
                     return Content("<script>;alert('用户名密码有误，或该账号不存在!');history.go(-1)</script>");
                 }
+                //}
             }
             catch (Exception ex)
             {
@@ -92,48 +94,54 @@ namespace MyPets.Controllers
         [HttpPost]
         public ActionResult Register(UserInfo user)
         {
-            var chk_member = UserInfoServices.LoadEntities(o => o.UserName == user.UserName).FirstOrDefault();
-            if (!string.IsNullOrEmpty(Request["confirmtoread"]))
+            if (ModelState.IsValid)
             {
-                if (chk_member != null)
+                var chk_member = UserInfoServices.LoadEntities(o => o.UserName == user.UserName).FirstOrDefault();
+                if (!string.IsNullOrEmpty(Request["confirmtoread"]))
                 {
-                    return Content("<script>;alert('该账号已经有人注册了！');history.go(-1)</script>");
+                    if (chk_member != null)
+                    {
+                        return Content("<script>;alert('该账号已经有人注册了！');history.go(-1)</script>");
+                    }
+                    else
+                    {
+                        try
+                        {
+                            HttpPostedFileBase file = Request.Files["userhead"];
+                            string filepath = file.FileName;
+                            if (filepath != "")
+                            {
+                                string filename = filepath.Substring(filepath.LastIndexOf("//") + 1);
+                                string serverpath = Server.MapPath("~/Content/Register/img/headphoto/") + filename;
+                                string relativepath = @"~/Content/Register/img/headphoto/" + filename;
+                                file.SaveAs(serverpath);
+                                user.UserImg = relativepath;
+                                user.IsSeller = false;
+                                UserInfoServices.AddEntity(user);
+                                db.SaveChanges();
+                                Session["UserName"] = user.UserName;
+                                return RedirectToAction("Index", "Home");//跳到商城首页
+                            }
+                            else
+                            {
+                                return Content("<script>;alert('请先上传图片！');history.go(-1)</script>");
+                            }
+                        }
+                        catch (DbEntityValidationException ex)
+                        {
+                            return Content(ex.Message);
+                        }
+                    }
                 }
                 else
                 {
-                    try
-                    {
-                        if (Request.Files["file"] != null)
-                        {
-                            HttpPostedFileBase file = Request.Files["file"];
-                            string filepath = file.FileName;
-                            string filename = filepath.Substring(filepath.LastIndexOf("//") + 1);
-                            string serverpath = Server.MapPath("~/Content/Register/img/headphoto/") + filename;
-                            string relativepath = @"~/Content/Register/img/headphoto/" + filename;
-                            file.SaveAs(serverpath);
-                            user.UserImg = relativepath;
-                            user.IsSeller = false;
-                            UserInfoServices.AddEntity(user);
-                            db.SaveChanges();
-                            Session["UserName"] = user.UserName;
-                            RedirectToAction("Index", "Home");//跳到商城首页
-                        }
-                        else
-                        {
-                            return Content("<script>;alert('请先上传图片！');history.go(-1)</script>");
-                        }
-                    }
-                    catch (DbEntityValidationException ex)
-                    {
-                        return Content(ex.Message);
-                    }
+                    return Content("<script>alert('请确认阅读用户手册')<script>");
                 }
             }
             else
             {
-                return Content("<script>alert('请确认阅读用户手册')<script>");
+                return View(user);
             }
-            return View();
         }
         [HttpGet]
         public ActionResult RebackPwdStep1()
@@ -157,6 +165,7 @@ namespace MyPets.Controllers
             else
             {
                 Session["ValidateUserName"] = user.UserName;
+                Session["UserName"] = user.UserName;
                 return RedirectToAction("RebackPwdStep2", "Register");
             }
         }

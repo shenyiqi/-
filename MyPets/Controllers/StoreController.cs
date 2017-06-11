@@ -23,7 +23,8 @@ namespace MyPets.Controllers
             int id = (shopid ?? 1);
             var discountgoods = GoodsService.LoadEntities(g => g.IsDiscount == true && g.ShopId == id).ToList();
             ViewData["discountgoods"] = discountgoods; //促销商品
-            ViewBag.shopid = id;
+            var shop = ShopServices.LoadEntities(s => s.ShopId == id).FirstOrDefault();
+            ViewBag.Title = shop.ShopName;           
             Session["shopid"] = id;
             Session["hascollect"] = "no";  //判断是否收藏
             if (Session["UserName"] != null)

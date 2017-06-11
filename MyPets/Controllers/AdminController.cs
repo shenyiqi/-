@@ -293,6 +293,12 @@ namespace MyPets.Controllers
             PostServices.DeleteEntity(post);
             return Content("<script>alert('删除成功');window.location.href=document.referrer;</script>");
         }
-
+        public ActionResult DeletePostReply(int id)
+        {
+            var reply = ResponseServices.LoadEntities(r => r.ResponseId == id).FirstOrDefault();
+            ResponseServices.DeleteEntity(reply);
+            db.SaveChanges();
+            return Content("<script>window.location.href=document.referrer;</script>");
+        }
     }
 }

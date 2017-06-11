@@ -21,13 +21,13 @@ namespace MyPets.Model
         }
     
         public int PostId { get; set; }
-        public string PostType { get; set; }
+        public string PostTitle { get; set; }
         public string PostContent { get; set; }
         public System.DateTime PostTime { get; set; }
         public int UserId { get; set; }
+        public string PostType { get; set; }
         public bool IsChoose { get; set; }
         public bool IsTop { get; set; }
-        public string PostTitle { get; set; }
     
         public virtual UserInfo UserInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

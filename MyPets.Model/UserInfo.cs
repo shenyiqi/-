@@ -11,7 +11,8 @@ namespace MyPets.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class UserInfo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,11 +29,28 @@ namespace MyPets.Model
         }
     
         public int UserId { get; set; }
+
+        [Display(Name ="手机号")]
         public string UserPhone { get; set; }
+
+        [Required(ErrorMessage = "邮箱不能为空")]
+        [DataType(DataType.EmailAddress,ErrorMessage ="邮箱格式不正确")]
         public string UserEmail { get; set; }
+
+        [Required(ErrorMessage ="用户名不能为空")]
         public string UserName { get; set; }
+
+        //[Required(ErrorMessage = "密码不能为空")]
+        //[StringLength(100,MinimumLength =6,ErrorMessage ="密码长度不能少于6个字符")]
+        //[DataType(DataType.Password)]
         public string UserPwd { get; set; }
+
+        //[Required(ErrorMessage = "请确认密码")]
+        //[DataType(DataType.Password)]
+        //[Compare("UserPwd",ErrorMessage ="密码与确认密码不一致")]
         public string ConfirmPwd { get; set; }
+
+
         public string UserImg { get; set; }
         public bool IsSeller { get; set; }
         public string Range { get; set; }

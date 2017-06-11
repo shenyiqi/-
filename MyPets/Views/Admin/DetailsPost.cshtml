@@ -5,30 +5,20 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>DetailsPost</h2>
+<h2>帖子详细</h2>
 
 <div>
-    <h4>Post</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="width:1000px;">
         <dt>
-            @Html.DisplayNameFor(model => model.PostType)
+            帖子类型
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.PostType)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.PostContent)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PostContent)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PostTime)
+            发帖时间
         </dt>
 
         <dd>
@@ -36,32 +26,61 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserId)
+            发帖人
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserId)
+            @Model.UserInfo.UserName
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsChoose)
+            是否精选
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsChoose)
+            @if (Model.IsChoose)
+            {
+                @:是
+            }
+            else
+            {
+                @:否
+            }
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.IsTop)
+            是否置顶
+        </dt>
+        <dd>
+            @if (Model.IsTop)
+            {
+                @:是
+            }
+            else
+            {
+                @:否
+            }
+        </dd>
+        <dt>
+            帖子内容
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsTop)
+            @Html.DisplayFor(model => model.PostContent)
         </dd>
-
     </dl>
+    <h2>帖子评论</h2>
+    @foreach (MyPets.Model.Response r in Model.Response.Where(R => R.PostId == Model.PostId).ToList())
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @r.ResponseContent
+            </dt>
+            <dd>
+                @Html.ActionLink("删除", "DeletePostReply", new { id = r.ResponseId }, new { onclick = "return confirm('确定要删除吗？')" })
+            </dd>
+        </dl>
+    }
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PostId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "PostManagement")
 </p>

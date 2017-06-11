@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
     Layout = null;
 }
-
+@model IEnumerable<MyPets.Model.Post>
 <!DOCTYPE html>
 
 <html>
@@ -12,9 +12,18 @@
     <title></title>
 
     <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <link href="~/Content/Tribune/css/index.css" rel="stylesheet" />
     <script src="~/Content/Tribune/js/index.js"></script>
+
+    @*<script src="~/ckeditor/ckeditor.js"></script>
+        <script src="~/ckfinder/ckfinder.js"></script>
+        <script src="~/ckfinder/config.js"></script>
+        <script>
+            $(function(){
+
+                CKEDITOR.replace('AreaDescribe');
+            });
+        </script>*@
 </head>
 <body>
     <!--首页顶部-->
@@ -22,20 +31,28 @@
         <div class="content">
             <div class="favorite">收藏宠物之家</div>
             <ul class="index_topRight">
-                <li>
-                    <a href="">登录</a>
-                </li>
-                <li>
-                    <a href="">注册</a>
-                </li>
+                @if (Session["UserName"] == null)
+                {
+                    <li>
+                        <a href="@Url.Action("Login","Register")" id="registerState">登录</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Register", "Register")">注册</a>
+                    </li>
+                }
+                else
+                {
+                    <li><a href="javascript:;" style="color:#9C3;">@Session["UserName"]</a></li>
+                    <li><a href="@Url.Action("LoginOff")">退出登录</a></li>
+                }
                 <li>
                     <a href="">手机版</a>
                 </li>
                 <li>
-                    <a href="">宠物百科</a>
+                    <a href="@Url.Action("Index","Baike")">宠物百科</a>
                 </li>
                 <li>
-                    <a href="">商城首页</a>
+                    <a href="@Url.Action("Index","Home")">商城首页</a>
                 </li>
             </ul>
         </div>
@@ -59,65 +76,97 @@
             <!--小指南-->
             <div class="postingsGuide">推荐资讯【置顶】</div>
             <!--小指南-->
-            <div class="postingsModel">
-                <div class="postingsContent">
-                    <div class="UserPhotoContent">
-                        <img class="userPhoto" src="~/Content/Tribune/img/userPhoto.jpg" />
+            @foreach (MyPets.Model.Post p in ViewData["topPostings"] as List<MyPets.Model.Post>)
+            {
+                <div class="postingsModel">
+                    <div class="postingsContent">
+                        <div class="UserPhotoContent">
+                            <img class="userPhoto" src="@Url.Content(p.UserInfo.UserImg)" />
+                        </div>
+                        <div class="belongType">【@Html.DisplayFor(t => p.PostType)】</div>
+                        <div class="postingsTitle"><a href="@Url.Action("Postings","Tribune",new { id=p.PostId })">@Html.DisplayFor(t => p.PostTitle)</a></div>
+                        <div class="replyNum">7845</div>
+                        <div class="postingsDetail">
+                            <span class="postingsWriter">@Html.DisplayFor(n => p.UserInfo.UserName)</span>&nbsp;于&nbsp;<span class="postingsTime">@Html.DisplayFor(t => p.PostTime)</span>&nbsp;发表
+                        </div>
                     </div>
-                    <div class="belongType">【求助帖】</div>
-                    <div class="postingsTitle"><a href="">家里的狗狗突然不吃食了，怎么回事</a></div>
-                    <div class="replyNum">7845</div>
-                    <div class="postingsDetail">
-                        <span class="postingsWriter">古灵精怪</span>&nbsp;于&nbsp;<span class="postingsTime">2017-5-22</span>&nbsp;发表
-                    </div>
-
                 </div>
-            </div>
-            <div class="postingsModel">
-                <div class="postingsContent">
-                    <div class="UserPhotoContent">
-                        <img class="userPhoto" src="~/Content/Tribune/img/userPhoto.jpg" />
-                    </div>
-                    <div class="belongType">【求助帖】</div>
-                    <div class="postingsTitle"><a href="">家里的狗狗突然不吃食了，怎么回事</a></div>
-                    <div class="replyNum">7845</div>
-                    <div class="postingsDetail">
-                        <span class="postingsWriter">古灵精怪</span>&nbsp;于&nbsp;<span class="postingsTime">2017-5-22</span>&nbsp;发表
-                    </div>
+            }
 
-                </div>
-            </div>
             <!--小指南-->
             <div class="postingsGuide">最新发布</div>
             <!--小指南-->
-            <div class="postingsModel">
-                <div class="postingsContent">
-                    <div class="UserPhotoContent">
-                        <img class="userPhoto" src="~/Content/Tribune/img/userPhoto.jpg" />
+            @foreach (MyPets.Model.Post p in ViewData["newPostings"] as List<MyPets.Model.Post>)
+            {
+                <div class="postingsModel">
+                    <div class="postingsContent">
+                        <div class="UserPhotoContent">
+                            <img class="userPhoto" src="@Url.Content(p.UserInfo.UserImg)" />
+                        </div>
+                        <div class="belongType">【@Html.DisplayFor(t => p.PostType)】</div>
+                        <div class="postingsTitle"><a href="@Url.Action("Postings","Tribune",new { id=p.PostId })">@Html.DisplayFor(t => p.PostTitle)</a></div>
+                        <div class="replyNum">7845</div>
+                        <div class="postingsDetail">
+                            <span class="postingsWriter">@Html.DisplayFor(n => p.UserInfo.UserName)</span>&nbsp;于&nbsp;<span class="postingsTime">@Html.DisplayFor(t => p.PostTime)</span>&nbsp;发表
+                        </div>
                     </div>
-                    <div class="belongType">【求助帖】</div>
-                    <div class="postingsTitle"><a href="">家里的狗狗突然不吃食了，怎么回事</a></div>
-                    <div class="replyNum">7845</div>
-                    <div class="postingsDetail">
-                        <span class="postingsWriter">古灵精怪</span>&nbsp;于&nbsp;<span class="postingsTime">2017-5-22</span>&nbsp;发表
-                    </div>
-
                 </div>
-            </div>
-            <div class="postingsModel">
-                <div class="postingsContent">
-                    <div class="UserPhotoContent">
-                        <img class="userPhoto" src="~/Content/Tribune/img/userPhoto.jpg" />
-                    </div>
-                    <div class="belongType">【求助帖】</div>
-                    <div class="postingsTitle"><a href="">家里的狗狗突然不吃食了，怎么回事</a></div>
-                    <div class="replyNum">7845</div>
-                    <div class="postingsDetail">
-                        <span class="postingsWriter">古灵精怪</span>&nbsp;于&nbsp;<span class="postingsTime">2017-5-22</span>&nbsp;发表
-                    </div>
+            }
 
+            @*-----------------------------------------帖子模板静态--------------------------------------*@
+            @*<div class="postingsModel">
+                    <div class="postingsContent">
+                        <div class="UserPhotoContent">
+                            <img class="userPhoto" src="~/Content/Tribune/img/userPhoto.jpg" />
+                        </div>
+                        <div class="belongType">【求助帖】</div>
+                        <div class="postingsTitle"><a href="">家里的狗狗突然不吃食了，怎么回事</a></div>
+                        <div class="replyNum">7845</div>
+                        <div class="postingsDetail">
+                            <span class="postingsWriter">古灵精怪</span>&nbsp;于&nbsp;<span class="postingsTime">2017-5-22</span>&nbsp;发表
+                        </div>
+                    </div>
+                </div>*@
+            @*-----------------------------------------帖子模板静态--------------------------------------*@
+
+            <!--发帖框部分-->
+            @using (Html.BeginForm("Postings", "Tribune", FormMethod.Post))
+            {
+                <div id="publishPart">
+                    <div class="postTitleInputBox">帖子标题：<input id="txtPostTitle" type="text" name="postTitle" /></div>
+                    <div class="postTypeBox">
+                        @*<input type="radio" value="交流帖" checked="checked" name="postType" />交流帖
+                            <input type="radio" value="分享帖" name="postType" />分享帖
+                            <input type="radio" value="求助帖" name="postType" />求助帖
+                            <input type="radio" value="专家帖" name="postType" />专家帖*@
+                        <span>选择帖子类型：</span>
+                        <select id="postType" name="postType">
+                            <option>交流帖</option>
+                            <option>分享帖</option>
+                            <option>求助帖</option>
+                            <option>专家帖</option>
+                        </select>
+                    </div>
+                    <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入帖子内容..."></textarea>
+                    <div class="submitBox"><input type="submit" value="确认" /><a href="@Url.Action("Index")"><input type="button" value="取消" /></a></div>
+                    @*<div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-8" style="margin-top:-25px;"><input type="submit" class="btn btn-default" value="发表" /> <a href="@Url.Action("Index")" class="btn btn-info">取消</a></div>
+                        <div class="col-md-1"></div>
+                    </div>*@  
                 </div>
-            </div>
+            }
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            @*<script src="~/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+            <script src="~/Content/Baike/js/bootstrap3-wysihtml5.all.min.js"></script>
+            <script src="~/Content/Baike/js/bootstrap-wysihtml5.zh-CN.js"></script>
+            <script>
+                $('.textarea').wysihtml5({ locale: "zh-CN" });
+            </script>*@
+
+            <!--发帖框部分结束-->
+
+
         </div>
         <!--左边部分结束-->
         <!--右边部分-->
@@ -135,7 +184,7 @@
                 <!--帖子数-->
                 <div class="userPostCount">发帖数：120</div>
                 <!--我要发帖-->
-                <div class="publishPost">@Html.ActionLink("我要发帖","Publish","Tribune")</div>
+                <a href="#txtPostTitle"><div class="publishPost">我要发帖</div></a>
                 <!--去往个人中心-->
                 <div class="PersonalCenter">个人中心</div>
 
@@ -165,37 +214,16 @@
             </div>
             <div class="finePostingsContent">
                 <div class="finePoTop">精华帖</div>
-                <div class="finePositings">1.<span class="finePoTitle">如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗如何养狗</span></div>
-                <div class="finePositings">2.<span class="finePoTitle">如何养狗</span></div>
-                <div class="finePositings">3.<span class="finePoTitle">如何养狗</span></div>
-                <div class="finePositings">4.<span class="finePoTitle">如何养狗</span></div>
-                <div class="finePositings">5.<span class="finePoTitle">如何养狗</span></div>
-                <div class="finePositings">6.<span class="finePoTitle">如何养狗</span></div>
-                <div class="finePositings">7.<span class="finePoTitle">如何养狗</span></div>
-                <div class="finePositings">8.<span class="finePoTitle">如何养狗</span></div>
-                <div class="finePositings">9.<span class="finePoTitle">如何养狗</span></div>
-                <div class="finePositings" style="border-bottom: none;">10.<span class="finePoTitle">如何养狗</span></div>
+                @foreach (MyPets.Model.Post p in ViewData["goodPostings"] as List<MyPets.Model.Post>)
+                {
+                    <div class="finePositings"><a href="@Url.Action("Postings","Tribune",new { id=p.PostId })"><span class="finePoTitle">@Html.DisplayFor(t => p.PostTitle)</span></a></div>
+                }
             </div>
         </div>
         <!--右边部分结束-->
 
         <img id="toTop" src="~/Content/Tribune/img/toTop.png" alt="" />
 
-        <!--发帖框-->
-           <div id="publishPart">
-
-
-
-
-
-           </div>
-
-
-
-
-
-        <!--发帖框结束-->
-        
 
     </div>
 

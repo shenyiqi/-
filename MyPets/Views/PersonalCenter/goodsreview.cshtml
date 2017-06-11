@@ -106,8 +106,7 @@
             padding: 11px 20px;
             text-transform: uppercase;
         }
-    </style>
-
+    </style>   
 </head>
 <body>
 
@@ -119,39 +118,39 @@
 
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="#" class="simple-text">
+                    <a href="PersonalCenter/Index" class="simple-text">
                         个人中心
                     </a>
                 </div>
 
                 <ul class="nav">
                     <li>
-                        <a href="myorder.html">
+                        <a href="PersonalCenter/myorder">
                             <i class="pe-7s-graph"></i>
                             <p>我的订单</p>
                         </a>
                     </li>
                     <li>
-                        <a href="basicinformation.html">
+                        <a href="PersonalCenter/basicinformation">
                             <i class="pe-7s-user"></i>
                             <p>基本信息</p>
                         </a>
                     </li>
                     <li>
-                        <a href="privatenews.html">
+                        <a href="PersonalCenter/privatenews">
                             <i class="pe-7s-note2"></i>
                             <p>私信</p>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="goodsreview.html">
+                        <a href="PersonalCenter/goodsreview">
                             <i class="pe-7s-news-paper"></i>
                             <p>商品评论</p>
                         </a>
                     </li>
 
                     <li>
-                        <a href="myshop.html">
+                        <a href="PersonalCenter/myshop">
                             <i class="pe-7s-map-marker"></i>
                             <p>我的店铺</p>
                         </a>
@@ -183,7 +182,7 @@
 
             <div class="content">
 
-                <form method="post" action="#">
+              
                     <table cellspacing="0" class="shop_table cart">
                         <thead>
                             <tr>
@@ -196,129 +195,54 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach (var item in ViewBag.MyPet)
+                            {
                             <tr class="cart_item">
                                 <td class="product-remove">
-                                    <a title="Remove this item" class="remove" href="#">1</a>
+                                    <a title="Remove this item" class="remove" href="#"></a>
                                 </td>
 
                                 <td class="product-thumbnail">
-                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="assets/img/狗粮2.jpg"></a>
+                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="@item.GoodsImg1"></a>
                                 </td>
 
                                 <td class="product-name">
-                                    <a href="single-product.html">耐威克狗粮</a>
+                                    <a href="single-product.html">@item.GoodsName</a>
                                 </td>
 
                                 <td class="product-price">
-                                    <span class="amount">146.00</span>
+                                    <span class="amount">@item.GoodsPrice</span>
                                 </td>
 
                                 <td class="product-appraise">
                                     <div class="quantity buttons_added">
-                                        <span class="amount"> 好评</span>
-
+                                        @foreach (var item1 in ViewBag.Comment)
+                                        {   if (item.GoodsId == item1.GoodsId)
+                                            {
+                                             <span class="amount">@item1.CommentContent</span>   
+                                            }
+                                        }
                                     </div>
                                 </td>
 
                                 <td class="product-advice">
-                                    <span class="amount">  <form action=""><input type="text" placeholder="追加评价..."></span>
+                                    
+                                    
+                                    @using (Html.BeginForm("goodsComment", "PersonalCenter", FormMethod.Post, new { id = "MyFrom" }))
+                                    {<span class="amount">
+                                        <input type="hidden" value="@item.GoodsId" name="id" />
+                                        <input type="text" placeholder="追加评价..." value="" name="content" />
+                                       
+                                    </span>
+                                    <input type="submit" value="评论" />
+                                    }
+                                   
                                 </td>
-                            </tr>
-
-                            <tr class="cart_item">
-                                <td class="product-remove">
-                                    <a title="Remove this item" class="remove" href="#">2</a>
-                                </td>
-
-                                <td class="product-thumbnail">
-                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="assets/img/狗粮2.jpg"></a>
-                                </td>
-
-                                <td class="product-name">
-                                    <a href="single-product.html">耐威克狗粮</a>
-                                </td>
-
-                                <td class="product-price">
-                                    <span class="amount">146.00</span>
-                                </td>
-
-                                <td class="product-appraise">
-                                    <div class="quantity buttons_added">
-                                        <span class="amount"> 好评</span>
-
-                                    </div>
-                                </td>
-
-                                <td class="product-advice">
-                                    <span class="amount">  <form action=""><input type="text" placeholder="追加评价..."></span>
-                                </td>
-                            </tr>
-                            <tr class="cart_item">
-                                <td class="product-remove">
-                                    <a title="Remove this item" class="remove" href="#">3</a>
-                                </td>
-
-                                <td class="product-thumbnail">
-                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="assets/img/狗粮2.jpg"></a>
-                                </td>
-
-                                <td class="product-name">
-                                    <a href="single-product.html">耐威克狗粮</a>
-                                </td>
-
-                                <td class="product-price">
-                                    <span class="amount">146.00</span>
-                                </td>
-
-                                <td class="product-appraise">
-                                    <div class="quantity buttons_added">
-                                        <span class="amount">好评</span>
-
-                                    </div>
-                                </td>
-
-                                <td class="product-advice">
-                                    <span class="amount">  <form action=""><input type="text" placeholder="追加评价..."></span>
-                                </td>
-                            </tr>
-                            <tr class="cart_item">
-                                <td class="product-remove">
-                                    <a title="Remove this item" class="remove" href="#">4</a>
-                                </td>
-
-                                <td class="product-thumbnail">
-                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="assets/img/狗粮2.jpg"></a>
-                                </td>
-
-                                <td class="product-name">
-                                    <a href="single-product.html">耐威克狗粮</a>
-                                </td>
-
-                                <td class="product-price">
-                                    <span class="amount">146.00</span>
-                                </td>
-
-                                <td class="product-appraise">
-                                    <div class="quantity buttons_added">
-                                        <span class="amount">好评</span>
-
-                                    </div>
-                                </td>
-
-                                <td class="product-advice">
-                                    <span class="amount">  <form action=""><input type="text" placeholder="追加评价..."></span>
-                                </td>
-                            </tr>
-                            </tr>
-                            <tr>
-                                <td class="actions" colspan="6">
-                                    <input type="submit" value="发表评论" name="proceed" class="checkout-button button alt wc-forward">
-                                </td>
-                            </tr>
+                            </tr>  
+                            }
                         </tbody>
                     </table>
-                </form>
-
+                
 
             </div>
 

@@ -4,26 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bb970ac9bee44d24a7612793e3ebf22f" Name="Diagram1">
+      <Diagram DiagramId="b369eefc16094a02aae3a29e3666498f" Name="Diagram1">
         <EntityTypeShape EntityType="MyPetsModel.Adminstrator" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyPetsModel.Baike" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyPetsModel.BaikeActivity" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyPetsModel.BaikeAnswer" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MyPetsModel.BaikeQuestion" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.Collect" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.Goods" Width="1.5" PointX="5.25" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.GoodsComment" Width="1.5" PointX="7.5" PointY="19.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.GoodsResponseComment" Width="1.5" PointX="9.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.Collect" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.Goods" Width="1.5" PointX="5.25" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.GoodsComment" Width="1.5" PointX="7.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.GoodsResponseComment" Width="1.5" PointX="9.75" PointY="24.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MyPetsModel.Order" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.OrderDetail" Width="1.5" PointX="10.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.OrderDetail" Width="1.5" PointX="10.5" PointY="19.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MyPetsModel.Post" Width="1.5" PointX="3" PointY="21.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MyPetsModel.PrivateMsg" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyPetsModel.ResponAnswer" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.Response" Width="1.5" PointX="5.25" PointY="22" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.Shop" Width="1.5" PointX="3" PointY="26.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.ShopCart" Width="1.5" PointX="7.5" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.Response" Width="1.5" PointX="5.25" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.Shop" Width="1.5" PointX="3" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.ShopCart" Width="1.5" PointX="7.5" PointY="27" IsExpanded="true" />
         <EntityTypeShape EntityType="MyPetsModel.ShopRecommend" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyPetsModel.UserInfo" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyPetsModel.UserInfo" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
         <AssociationConnector Association="MyPetsModel.FK_BaikeAnswer_BaikeQuestion" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_ResponAnswer_BaikeAnswer" ManuallyRouted="false" />
         <AssociationConnector Association="MyPetsModel.FK_BaikeQuestion_UserInfo" ManuallyRouted="false" />

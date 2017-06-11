@@ -42,27 +42,27 @@
                 @*<img src="~/Content/Shop/img/iphone.png" alt="">*@
             </div>
             <div class="register span6 col-md-7">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Register","Shop",FormMethod.Post,new { enctype = "multipart/form-data" }))
                 {
                     @Html.ValidationSummary(true, "账户创建不成功，请跟正错误并重试")
                     <h2>注册 <span class="red"><strong>店铺</strong></span></h2>
                      <div class="form-group">
-                        @Html.LabelFor(m => m.ShopName)
+                        店铺名称
                         @Html.TextBoxFor(m => m.ShopName, htmlAttributes: new { @class = "form-control", @placeholder = "输入店铺名..." })
                         @Html.ValidationMessageFor(m => m.ShopName)
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.ShopImg)
+                        店铺图片
                         @Html.TextBoxFor(m => m.ShopImg, htmlAttributes: new { @type = "file" })
                         @Html.ValidationMessageFor(m => m.ShopImg)
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.SellerIdCard)
+                        身份验证
                         @Html.TextBoxFor(m => m.SellerIdCard, htmlAttributes: new { @class = "form-control", @placeholder = "输入身份证..." })
                         @Html.ValidationMessageFor(m => m.SellerIdCard)
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.CustomerService)
+                        后台客服
                         @Html.TextBoxFor(m => m.CustomerService, htmlAttributes: new { @class = "form-control", @placeholder = "输入客服号码..." })
                         @Html.ValidationMessageFor(m => m.CustomerService)
                     </div>

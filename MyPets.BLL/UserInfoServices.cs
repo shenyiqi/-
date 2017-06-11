@@ -23,6 +23,7 @@ namespace MyPets.BLL
         {
             return iuserinfo.SetPwd(name, pwd, confirmpwd);
         }
+
     }
 }
  

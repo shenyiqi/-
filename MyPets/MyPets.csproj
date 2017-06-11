@@ -1395,6 +1395,7 @@
     <Content Include="Content\Home\css\LayoutHome.css" />
     <Content Include="Content\Home\css\pingjia.css" />
     <Content Include="Content\Home\css\searchGoods.css" />
+    <Content Include="Content\Home\css\searchShop.css" />
     <Content Include="Content\Home\css\shangpin.css" />
     <Content Include="Content\Home\css\style.css" />
     <Content Include="Content\Home\css\StyleSheet1.css" />
@@ -1439,6 +1440,7 @@
     <Content Include="Content\PersonalCenter\js\demo.js" />
     <Content Include="Content\PersonalCenter\js\jquery-1.10.2.js" />
     <Content Include="Content\PersonalCenter\js\light-bootstrap-dashboard.js" />
+    <Content Include="Content\PersonalCenter\js\validateForm.js" />
     <Content Include="Content\Register\css\basic.css" />
     <Content Include="Content\Register\css\css.css" />
     <Content Include="Content\Register\css\Style.css" />
@@ -1736,6 +1738,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -1858,6 +1861,7 @@
     <Content Include="Views\Admin\CreateAd.cshtml" />
     <Content Include="Views\PersonalCenter\Comment.cshtml" />
     <Content Include="Views\Admin\DetailsPost.cshtml" />
+    <Content Include="Views\Admin\PostManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

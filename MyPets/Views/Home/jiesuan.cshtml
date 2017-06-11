@@ -3,15 +3,14 @@
     ViewBag.Title = "jiesuan";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
-@section jiesuan{
-   
+@section jiesuan{  
     <script src="~/Content/Home/js/area.js"></script>
     <link href="~/Content/Home/css/style.css" rel="stylesheet" />
     <script src="~/Content/Home/css/demo.js"></script>
     <script src="~/Content/Home/js/js.js"></script>
 }
-@using (Html.BeginForm("PayGoods", "Home", FormMethod.Post))
-{
+ @using (Html.BeginForm("PayGoods", "Home", FormMethod.Post))
+ {
 <div style="position:absolute;left:350px;margin-top:28px;">
     <div class="info">
         <div>
@@ -118,4 +117,5 @@
             </div>
     }
 </div>
+ }
 

@@ -124,7 +124,6 @@
 	overflow: hidden;
 	background: RGB(242,242,242);
 	border-radius: 5px;
-	height: 1200px;
 }
 #TribuneContent .postingsGuide{
 	font-size: 14px;
@@ -332,14 +331,47 @@
 
 /*---------------------------------发帖框部分-------------------------------------*/
 #publishPart{
-    width:800px;
-    height:500px;
-    position:fixed;
-    left:20%;
-    top:20%;
-    background:gray;
-    opacity:0.6;
-    display:none;
+    width:886px;
+    overflow:hidden;
+    margin-top:20px;
+    background:RGB(207,214,229);
+}
+#publishPart div{
+    float:left;
+}
+#publishPart .postTitleInputBox{
+    width:100%;
+    margin:15px 0 0 10px;
+}
+#publishPart .postTypeBox{
+    width:100%;
+    margin:15px 0 10px 10px;
+}
+#txtPostTitle{
+    width:600px;
+    height:30px;
+}
+#postType{
+    width:150px;
+    height:30px;
+}
+#publishPart .textarea{
+    width: 866px;
+    height: 200px;
+    font-size: 14px;
+    line-height: 18px;
+    margin:0 10px 10px 10px;
+}
+#publishPart .submitBox{
+    width:866px;
+    height:30px;
+    margin-left:15px;
+    margin-bottom:50px;
+}
+#publishPart .submitBox input{
+    width:50px;
+    height:30px;
+    margin-right:20px;
 }
 
 
