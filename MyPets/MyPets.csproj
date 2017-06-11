@@ -1857,6 +1857,7 @@
     <Content Include="Views\Admin\EditAd.cshtml" />
     <Content Include="Views\Admin\CreateAd.cshtml" />
     <Content Include="Views\PersonalCenter\Comment.cshtml" />
+    <Content Include="Views\Admin\DetailsPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
