@@ -71,16 +71,18 @@ namespace MyPets.Controllers
         {
             int id = int.Parse(Request["id"]);
             MyPetsEntities db = new MyPetsEntities();
-            int userid = int.Parse(Session["UserId"].ToString());
+            string name = Session["UserName"].ToString();
+            var x = UserInfo.LoadEntities(g => g.UserName == name).FirstOrDefault();
             gc.CommentTime = System.DateTime.Now;
             gc.CommentContent = Request["content"];
             gc.ContentRange = "好评";
             gc.GoodsId = id;
-            gc.UsersId = 1;
+            gc.UsersId = x.UserId;
             gc.IsReply = false;
             db.GoodsComment.Add(gc);
             db.SaveChanges();        
-            return Content("<script>alert('评论成功！');history.go(-1);</script>");
+            return Content("<script>alert('评论成功！');window.location.href='/PersonalCenterControllers/goodsreview';</script>");
+
         }
         public ActionResult myshop()
         {

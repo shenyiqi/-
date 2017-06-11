@@ -4,29 +4,78 @@
     Layout = "~/Views/Shared/_LayoutPersonalCenter.cshtml";
 }
 <br />
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-8">
-        <div class="row">
-            <div class="col-sm-3">
-                <img src="~/Content/Admin/images/sunset.jpg" style="width:200px;height:200px;" class="img img-circle" />
-            </div>
-            <div class="col-sm-5" style="margin-left:30px;">
-                <h4 style="border-bottom:dotted 1px #808080;">资料：描述描述</h4>
-                <h4 style="border-bottom:dotted 1px #808080;">资料：描述描述</h4>
-                <h4 style="border-bottom:dotted 1px #808080;">资料：描述描述</h4>
-            </div>
-            <div class="col-sm-4"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-9">
-                <h4 style="border-bottom:dotted 1px #808080;">资料：描述描述描述描述描述描述描述描述描述描述</h4>
-                <h4 style="border-bottom:dotted 1px #808080;">资料：描述描述描述描述描述描述描述描述描述描述</h4>
-                <h4 style="border-bottom:dotted 1px #808080;">资料：描述描述描述描述描述描述描述描述描述描述</h4>
-            </div>
-            <div class="col-sm-3"></div>
-        </div>
-    </div>
-    <div class="col-md-1"></div>
-</div>
+<div class="contact">
+    <form name="form1" method="post">
 
+        <ul>
+
+            <li>
+
+                <label>姓名：@Html.DisplayFor(a => a.UserName)</label>
+
+                <input type="button" value="修改" id="btnUserName">
+                <input type="text" name="yourname" id="txtUserName" placeholder="请输入用户名" onblur="checkna()" required /><span class="tips" id="divname">长度1~12个字符</span>
+
+            </li>
+            @*<li>
+
+                    <label>性别：女</label>
+                    <input type="submit" value="修改">
+
+                    <input type="text" name="yoursex" placeholder="请输入性别" onblur="checksex()" required /><span class="tips" id="divsex"></span>
+
+                </li>*@
+
+            <li>
+
+                <label>密码：@Html.DisplayFor(a => a.UserPwd)</label>
+                <input type="button" value="修改" id="btnUserPassword">
+
+                <input type="password" name="yourpass" id="txtUserPassword" placeholder="请输入你的密码" onblur="checkpsd1()" required /><span class="tips" id="divpassword1">密码必须由字母和数字组成</span>
+
+            </li>
+
+            <li>
+
+                <label>确认密码：@Html.DisplayFor(a => a.ConfirmPwd)</label>
+                @*<input type="submit" value="修改">*@
+
+                <input type="password" name="yourpass2" placeholder="请再次输入你的密码" onblur="checkpsd2()" required /><span class="tips" id="divpassword2">两次密码需要相同</span>
+
+            </li>
+            <li>
+
+                <label>手机号码：@Html.DisplayFor(a => a.UserPhone)<</label>
+                <input type="button" value="修改" id="btnUserPhone">
+
+                <input type="text" name="yourphone" id="txtUserPhone" placeholder="请输入手机号码" onblur="checktel()" required /><span class="tips" id="divphonenumber">长度11个字符</span>
+
+            </li>
+
+            <li>
+
+                <label>电子邮箱：@Html.DisplayFor(a => a.UserEmail)</label>
+                <input type="button" id="btnUserEmail" value="修改">
+
+                <input type="text" name="youremail" id="txtUserEmail" placeholder="请输入你的邮箱" onblur="checkmail()" required /><span class="tips" id="divmail">请输入正确的邮箱格式</span>
+
+            </li>
+            @*<li>
+
+                    <label>收货地址：瑶湖校区</label>
+                    <input type="submit" value="修改">
+
+                    <input type="text" name="youraddress" placeholder="请输入你地址" onblur="checkaddress()" required /><span class="tips" id="divaddressl"></span>
+
+                </li>*@
+
+        </ul>
+
+        <b class="btn">
+            <input type="submit" value="提交" />
+
+            <input type="reset" value="取消" />
+        </b>
+
+    </form>
+</div>
