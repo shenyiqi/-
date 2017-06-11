@@ -179,8 +179,6 @@ namespace MyPets.Controllers
             ViewBag.count = countsum;
             return PartialView();
         }
-
-
         public ActionResult LoginOff()
         {
             Session["UserName"] = null;
