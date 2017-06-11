@@ -3,14 +3,17 @@
     ViewBag.Title = "Index";
     Layout = null;
 }
-@model IEnumerable<MyPets.Model.Post>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<MyPets.Model.Post>
+@*@model IEnumerable<MyPets.Model.Post>*@
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta charset="utf-8">
     <title></title>
-
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Tribune/css/index.css" rel="stylesheet" />
     <script src="~/Content/Tribune/js/index.js"></script>
@@ -52,7 +55,7 @@
                     <a href="@Url.Action("Index","Baike")">宠物百科</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index","Home")">商城首页</a>
+                    <a href="@Url.Action("Index","Home")">宠物商城</a>
                 </li>
             </ul>
         </div>
@@ -85,7 +88,7 @@
                         </div>
                         <div class="belongType">【@Html.DisplayFor(t => p.PostType)】</div>
                         <div class="postingsTitle"><a href="@Url.Action("Postings","Tribune",new { id=p.PostId })">@Html.DisplayFor(t => p.PostTitle)</a></div>
-                        <div class="replyNum">7845</div>
+                        <div class="replyNum">@p.Response.Count()</div>
                         <div class="postingsDetail">
                             <span class="postingsWriter">@Html.DisplayFor(n => p.UserInfo.UserName)</span>&nbsp;于&nbsp;<span class="postingsTime">@Html.DisplayFor(t => p.PostTime)</span>&nbsp;发表
                         </div>
@@ -96,7 +99,7 @@
             <!--小指南-->
             <div class="postingsGuide">最新发布</div>
             <!--小指南-->
-            @foreach (MyPets.Model.Post p in ViewData["newPostings"] as List<MyPets.Model.Post>)
+            @foreach (@*MyPets.Model.Post p in ViewData["newPostings"] as List<MyPets.Model.Post>*@var p in Model)
             {
                 <div class="postingsModel">
                     <div class="postingsContent">
@@ -105,13 +108,14 @@
                         </div>
                         <div class="belongType">【@Html.DisplayFor(t => p.PostType)】</div>
                         <div class="postingsTitle"><a href="@Url.Action("Postings","Tribune",new { id=p.PostId })">@Html.DisplayFor(t => p.PostTitle)</a></div>
-                        <div class="replyNum">7845</div>
+                        <div class="replyNum">@p.Response.Count()</div>
                         <div class="postingsDetail">
                             <span class="postingsWriter">@Html.DisplayFor(n => p.UserInfo.UserName)</span>&nbsp;于&nbsp;<span class="postingsTime">@Html.DisplayFor(t => p.PostTime)</span>&nbsp;发表
                         </div>
                     </div>
                 </div>
             }
+            <div style="margin:0 auto;width:300px;text-align:center;float:none"> @Html.PagedListPager(Model, page => Url.Action("Index", "Tribune", new { page }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 5 })</div>
 
             @*-----------------------------------------帖子模板静态--------------------------------------*@
             @*<div class="postingsModel">
@@ -130,15 +134,12 @@
             @*-----------------------------------------帖子模板静态--------------------------------------*@
 
             <!--发帖框部分-->
+
             @using (Html.BeginForm("Postings", "Tribune", FormMethod.Post))
             {
                 <div id="publishPart">
                     <div class="postTitleInputBox">帖子标题：<input id="txtPostTitle" type="text" name="postTitle" /></div>
                     <div class="postTypeBox">
-                        @*<input type="radio" value="交流帖" checked="checked" name="postType" />交流帖
-                            <input type="radio" value="分享帖" name="postType" />分享帖
-                            <input type="radio" value="求助帖" name="postType" />求助帖
-                            <input type="radio" value="专家帖" name="postType" />专家帖*@
                         <span>选择帖子类型：</span>
                         <select id="postType" name="postType">
                             <option>交流帖</option>
@@ -149,20 +150,15 @@
                     </div>
                     <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入帖子内容..."></textarea>
                     <div class="submitBox"><input type="submit" value="确认" /><a href="@Url.Action("Index")"><input type="button" value="取消" /></a></div>
-                    @*<div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-8" style="margin-top:-25px;"><input type="submit" class="btn btn-default" value="发表" /> <a href="@Url.Action("Index")" class="btn btn-info">取消</a></div>
-                        <div class="col-md-1"></div>
-                    </div>*@  
                 </div>
             }
-            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
             @*<script src="~/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-            <script src="~/Content/Baike/js/bootstrap3-wysihtml5.all.min.js"></script>
-            <script src="~/Content/Baike/js/bootstrap-wysihtml5.zh-CN.js"></script>
-            <script>
-                $('.textarea').wysihtml5({ locale: "zh-CN" });
-            </script>*@
+                <script src="~/Content/Baike/js/bootstrap3-wysihtml5.all.min.js"></script>
+                <script src="~/Content/Baike/js/bootstrap-wysihtml5.zh-CN.js"></script>
+                <script>
+                    $('.textarea').wysihtml5({ locale: "zh-CN" });
+                </script>*@
 
             <!--发帖框部分结束-->
 
