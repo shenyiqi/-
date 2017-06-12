@@ -1,5 +1,7 @@
-﻿
+﻿@model IEnumerable<MyPets.Model.Order>
+@using MyPets.Model;
 @{
+    ViewBag.Title = "myorder";
     Layout = null;
 }
 
@@ -148,16 +150,16 @@
                             <p>私信</p>
                         </a>
                     </li>
-                    @*<li>
+                    <li>
                 <a href="@Url.Action("Comment",new {user=Session["UserName"] })">
                     <i class="pe-7s-news-paper"></i>
                     <p>商品评论</p>
                 </a>
-            </li>*@
+            </li>
                     <li>
                         <a href="@Url.Action("goodsreview",new {user=Session["UserName"] })">
                             <i class="pe-7s-news-paper"></i>
-                            <p>商品评论</p>
+                            <p>追加评论</p>
                         </a>
                     </li>
                     <li>
@@ -200,132 +202,54 @@
                 <form method="post" action="#">
                     <table cellspacing="0" class="shop_table cart">
                         <thead>
-                            <tr>
+                            @*<tr>
                                 <th class="product-remove">订单编号</th>
                                 <th class="product-thumbnail">&nbsp;</th>
                                 <th class="product-name"><input type="submit" value="所有订单"></th>
                                 <th class="product-quantity"><input type="submit" value="已完成订单"></th>
                                 <th class="product-price"><input type="submit" value="未完成订单"></th>
                                 <th class="product-appraise">评价</th>
-                            </tr>
-                        </thead>
+                            </tr>*@
                         <thead>
                             <tr>
                                 <th class="product-remove">&nbsp;</th>
                                 <th class="product-thumbnail">商品</th>
                                 <th class="product-name">单价</th>
-                                <th class="product-quantity">数量</th>
+                                <th class="product-quantity">收货地址</th>
                                 <th class="product-price">状态</th>
                                 <th class="product-appraise">评价</th>
                             </tr>
                         </thead>
+
                         <tbody>
+                         @foreach (Order item in Model)
+                         {
                             <tr class="cart_item">
                                 <td class="product-remove">
-                                    <a title="Remove this item" class="remove" href="#">1</a>
+                                    <a title="Remove this item" class="remove" href="#">@item.OrderId</a>
                                 </td>
 
                                 <td class="product-thumbnail">
-                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="assets/img/狗粮2.jpg"></a>
+                                    <a href="single-product.html">@item.OrderCount</a>
                                 </td>
 
                                 <td class="product-name">
-                                    <a href="single-product.html">146</a>
+                                    <a href="single-product.html">@item.OrderNumber</a>
                                 </td>
 
                                 <td class="product-quantity">
-                                    <span class="amount">1</span>
+                                    <span class="amount">@item.OrderAddress</span>
                                 </td>
 
                                 <td class="product-price">
-                                    <span class="amount">已完成</span>
+                                    <span class="amount">@item.OrderRemark</span>
                                 </td>
 
                                 <td class="product-appraise">
                                     <span class="amount">好评</span>
                                 </td>
                             </tr>
-
-
-
-                            </tr>
-                            <tr class="cart_item">
-                                <td class="product-remove">
-                                    <a title="Remove this item" class="remove" href="#">2</a>
-                                </td>
-
-                                <td class="product-thumbnail">
-                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="assets/img/狗粮2.jpg"></a>
-                                </td>
-
-                                <td class="product-name">
-                                    <a href="single-product.html">146</a>
-                                </td>
-
-                                <td class="product-quantity">
-                                    <span class="amount">1</span>
-                                </td>
-
-                                <td class="product-price">
-                                    <span class="amount">未完成</span>
-                                </td>
-
-                                <td class="product-appraise">
-                                    <span class="amount"><input type="submit" value="去评价"></span>
-                                </td>
-
-                            <tr class="cart_item">
-                                <td class="product-remove">
-                                    <a title="Remove this item" class="remove" href="#">3</a>
-                                </td>
-
-                                <td class="product-thumbnail">
-                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="assets/img/狗粮2.jpg"></a>
-                                </td>
-
-                                <td class="product-name">
-                                    <a href="single-product.html">146</a>
-                                </td>
-
-                                <td class="product-quantity">
-                                    <span class="amount">1</span>
-                                </td>
-
-                                <td class="product-price">
-                                    <span class="amount">已完成</span>
-                                </td>
-
-                                <td class="product-appraise">
-                                    <span class="amount"><input type="submit" value="去评价"></span>
-                                </td>
-                            </tr>
-
-                            <tr class="cart_item">
-                                <td class="product-remove">
-                                    <a title="Remove this item" class="remove" href="#">4</a>
-                                </td>
-
-                                <td class="product-thumbnail">
-                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="assets/img/狗粮2.jpg"></a>
-                                </td>
-
-                                <td class="product-name">
-                                    <a href="single-product.html">146</a>
-                                </td>
-
-                                <td class="product-quantity">
-                                    <span class="amount">1</span>
-                                </td>
-
-                                <td class="product-price">
-                                    <span class="amount">已完成</span>
-                                </td>
-
-                                <td class="product-appraise">
-                                    <span class="amount">中评</span>
-                                </td>
-                            </tr>
-
+                         }                    
                         </tbody>
                     </table>
                 </form>

@@ -146,7 +146,7 @@ namespace MyPets.Controllers
                 }
                 else
                 {
-                    return Content("<script>alert('商品已经加入购物车啦！');history.go(-1);</script>");
+                    return Content("<script>alert('购物车已经有了此商品了！');history.go(-1);</script>");
                 }
 
             }
@@ -155,7 +155,29 @@ namespace MyPets.Controllers
         public ActionResult goumai(int id)
         {
             var wupin = goodsService.LoadEntities(b => b.GoodsId == id).FirstOrDefault();
+
+
+
+            //好评数
+            var goodCommentsa = GoodsCommentServices.LoadEntities(gc => gc.GoodsId == id && gc.ContentRange == "好评").ToList();
+
+            ViewBag.goodComments = goodCommentsa.Count();
+           
+            //中评数
+            var goodCommentsb = GoodsCommentServices.LoadEntities(gc => gc.GoodsId == id && gc.ContentRange == "中评").ToList();
+            ViewBag.goodComments2 = goodCommentsb.Count();
+            
+            ////差评数
+            var goodCommentsc = GoodsCommentServices.LoadEntities(gc => gc.GoodsId == id && gc.ContentRange == "差评").ToList();
+            ViewBag.goodComments3 = goodCommentsc.Count();
+
+
+            var Comment = GoodsCommentServices.LoadEntities(gc => gc.GoodsId == id ).ToList();
+            ViewData["GoodsComment"] = Comment;  
             return View(wupin);
+
+
+
         }
         public ActionResult jiesuan() //购物车结算
         {
@@ -178,10 +200,9 @@ namespace MyPets.Controllers
         [HttpPost]
         public ActionResult PayGoods(string address_provinces, string s_city, string s_county, string address) //商品购买
         {
-            if (address_provinces == "" && s_city == "" && s_county == "" && address == "")
+            if (address_provinces =="" || s_city =="" || s_county ==""|| address =="")
             {
                 return Content("<script>alert('地址填写不完整！');history.go(-1);</script>");
-
             }
             else
             {
@@ -202,11 +223,11 @@ namespace MyPets.Controllers
                 OrderServices.AddEntity(new Order  //形成订单表
                 {
                     UserId = user.UserId,
-                    OrderAddress = "address_provinces" + "s_city" + "s_county" + " address",
+                    OrderAddress = address_provinces + s_city + s_county + address,
                     OrderTime = DateTime.Now,
                     OrderState = false,
                     OrderCount = count,
-                    OrderNumber = ordernumber
+                    OrderNumber = ordernumber                  
                 });
                 db.SaveChanges();
                 var orderid = OrderServices.LoadEntities(o => true).OrderByDescending(o => o.OrderId).Take(1).FirstOrDefault();
@@ -230,7 +251,7 @@ namespace MyPets.Controllers
                         OrderDeailServices.AddEntity(new OrderDetail  //订单明细表
                         {
                             GoodsId = id,
-                            OrderId=orderid.OrderId,
+                            OrderId = orderid.OrderId,
                             DetailSum = sum,
                             UserId = user.UserId,
                             DetailCount = countprice,
@@ -240,7 +261,7 @@ namespace MyPets.Controllers
                     }
                 }
                 db.SaveChanges();
-                return Content("<script>alert('成功购买！');history.go(-1);</script>");
+                return Content("<script>alert('成功购买！');window.open('"+Url.Action("ClearCart", "Home", new { name = Session["UserName"]})+"') ;</script>");
             }
         }
         public ActionResult LoginOff()  //退出登录
@@ -296,6 +317,7 @@ namespace MyPets.Controllers
                 var x = UserInfoServices.LoadEntities(g => g.UserName == name).FirstOrDefault();
             int f = Convert.ToInt32(id);
                 var good = GoodsCommentServices.LoadEntities(g => g.GoodsId ==f).FirstOrDefault();
+
             GoodsCommentServices.AddEntity(new GoodsComment
             {
                 CommentContent = man,

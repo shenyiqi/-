@@ -27,7 +27,10 @@ namespace MyPets.Controllers
 
         public ActionResult myorder() 
         {
-            return View();
+            MyPetsEntities db = new MyPetsEntities();
+            IEnumerable<Order> model = from s in db.Order select s;
+            //ViewBag.Order = model;
+            return View(model);
         }       
         public ActionResult Comment()
         {
@@ -75,7 +78,7 @@ namespace MyPets.Controllers
             var x = UserInfo.LoadEntities(g => g.UserName == name).FirstOrDefault();
             gc.CommentTime = System.DateTime.Now;
             gc.CommentContent = Request["content"];
-            gc.ContentRange = "好评";
+           
             gc.GoodsId = id;
             gc.UsersId = x.UserId;
             gc.IsReply = false;

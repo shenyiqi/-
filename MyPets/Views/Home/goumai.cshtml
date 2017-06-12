@@ -140,31 +140,33 @@
             </div>
             @*评价*@
 
+    
             <div class="pingjia">
                 <div id="pingjia1">商品评论</div>
                 <div style="height:110px;border-bottom :1px solid #808080;border-top :1px solid #808080;">
-                    <div class="pingjia2">
-                        <p><span style="font-size:50px;font-weight:600;color:red;">5.0</span> </p>
-                        <p>数量</p>
-                    </div>
                     <div class="pingjia3">
-                        <div>好评:</div>
-                        <div>中评:</div>
-                        <div>差评:</div>
+                        <div>好评:@ViewBag.goodComments</div>
+                        <div>中评:@ViewBag.goodComments2</div>
+                        <div>差评:@ViewBag.goodComments3</div>
                     </div>
                 </div>
+
+               @foreach (MyPets.Model.GoodsComment g in ViewData["GoodsComment"] as List<MyPets.Model.GoodsComment>)
+         {
                 <div style="height:150px;border-bottom :1px dashed  #808080;">
                     <div class="pingjia4">
-                        <div>用户头像</div>
-                        <div>name</div>
+                        <div> <img src="@Url.Content(g.UserInfo.UserImg)" /></div>
+                        <div>@Html.DisplayFor(a => g.UserInfo.UserName)</div>
                     </div>
                     <div class="pingjia5">
-                        <div style="height:25px">评分</div>
-                        <div style="height:80px;">评价内容</div>
-                        <div>时间</div>
+                        <div style="height:25px">@Html.DisplayFor(a => g.ContentRange)</div>
+                        <div style="height:80px;">@Html.DisplayFor(a => g.CommentContent)</div>
+                        <div>@Html.DisplayFor(a => g.CommentTime)</div>
                     </div>
                 </div>
+         }
             </div>
+        
         </div>
     </form>
 </body>
