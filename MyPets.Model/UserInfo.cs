@@ -25,19 +25,19 @@ namespace MyPets.Model
             this.Order = new HashSet<Order>();
             this.OrderDetail = new HashSet<OrderDetail>();
             this.Post = new HashSet<Post>();
+            this.Response = new HashSet<Response>();
             this.Shop = new HashSet<Shop>();
         }
     
         public int UserId { get; set; }
-
-        [Display(Name ="手机号")]
+        [Display(Name = "手机号")]
         public string UserPhone { get; set; }
 
         [Required(ErrorMessage = "邮箱不能为空")]
-        [DataType(DataType.EmailAddress,ErrorMessage ="邮箱格式不正确")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "邮箱格式不正确")]
         public string UserEmail { get; set; }
 
-        [Required(ErrorMessage ="用户名不能为空")]
+        [Required(ErrorMessage = "用户名不能为空")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "密码不能为空")]
@@ -49,7 +49,6 @@ namespace MyPets.Model
         [DataType(DataType.Password)]
         [Compare("UserPwd", ErrorMessage = "密码与确认密码不一致")]
         public string ConfirmPwd { get; set; }
-
 
         public string UserImg { get; set; }
         public bool IsSeller { get; set; }
@@ -70,6 +69,8 @@ namespace MyPets.Model
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Post { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Response> Response { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shop> Shop { get; set; }
     }

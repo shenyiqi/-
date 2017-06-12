@@ -52,7 +52,7 @@ namespace MyPets.Controllers
             ViewBag.userName = userName;
 
             //ViewData["postFloor"] = postFloor;
-            int pageSize = 10;//每十条一页
+            int pageSize = 6;//每六条一页
             int pageNumber = (page ?? 1);
             return View(postFloor.ToPagedList(pageNumber, pageSize));
         }

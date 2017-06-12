@@ -66,7 +66,7 @@
             </div>
 
             <div class="postingsFloorContent">
-                <div class="postingsFloor">
+                <div class="postingsFloor" style="border-bottom:4px solid RGB(225,228,230)">
                     <div class="postingsFloorLeft">
                         <div class="userPhoto">
                             <img src="@Url.Content(@ViewBag.userImg)" />
@@ -77,7 +77,7 @@
 
                     <div class="postingsFloorRight">
                         <div class="postingsText">
-                            @ViewBag.postContent
+                            <h2>楼主有话说：</h2>@ViewBag.postContent
                         </div>
                         @*<div class="postingsImg"><img src="~/Content/Tribune/img/postingsImg.jpg" /></div>*@
                     </div>
@@ -87,9 +87,9 @@
                     <div class="postingsFloor">
                         <div class="postingsFloorLeft">
                             <div class="userPhoto">
-                                <img src="@Url.Content(r.Post.UserInfo.UserImg)" />
+                                <img src="@Url.Content(r.UserInfo.UserImg)" />
                             </div>
-                            <div class="userName">@Html.DisplayFor(n => r.Post.UserInfo.UserName)</div>
+                            <div class="userName">@Html.DisplayFor(n => r.UserInfo.UserName)</div>
                             <div class="userLevel">Lv.10 以坛为家Ⅲ</div>
                         </div>
 

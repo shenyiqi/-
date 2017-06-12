@@ -410,6 +410,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Response_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Response" Type="Self.Response" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Response">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Shop_Shop">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
           <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
@@ -512,6 +524,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Response_Post" Association="Self.FK_Response_Post">
             <End Role="Post" EntitySet="Post" />
+            <End Role="Response" EntitySet="Response" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Response_UserInfo" Association="Self.FK_Response_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="Response" EntitySet="Response" />
           </AssociationSet>
           <AssociationSet Name="FK_Shop_Shop" Association="Self.FK_Shop_Shop">
@@ -729,6 +745,7 @@
           <Property Name="ResponseContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ResponseFloor" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Post" Relationship="Self.FK_Response_Post" FromRole="Response" ToRole="Post" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_Response_UserInfo" FromRole="Response" ToRole="UserInfo" />
         </EntityType>
         <EntityType Name="Shop">
           <Key>
@@ -785,6 +802,7 @@
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_UserInfo" FromRole="UserInfo" ToRole="Order" />
           <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetail_UserInfo" FromRole="UserInfo" ToRole="OrderDetail" />
           <NavigationProperty Name="Post" Relationship="Self.FK_Post_UserInfo" FromRole="UserInfo" ToRole="Post" />
+          <NavigationProperty Name="Response" Relationship="Self.FK_Response_UserInfo" FromRole="UserInfo" ToRole="Response" />
           <NavigationProperty Name="Shop" Relationship="Self.FK_Shop_Shop" FromRole="UserInfo" ToRole="Shop" />
         </EntityType>
         <Association Name="FK_BaikeAnswer_BaikeQuestion">
@@ -979,6 +997,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Response_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Response" Type="Self.Response" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Response">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Shop_Shop">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
           <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
@@ -1073,6 +1103,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Response_Post" Association="Self.FK_Response_Post">
             <End Role="Post" EntitySet="Post" />
+            <End Role="Response" EntitySet="Response" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Response_UserInfo" Association="Self.FK_Response_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="Response" EntitySet="Response" />
           </AssociationSet>
           <AssociationSet Name="FK_Shop_Shop" Association="Self.FK_Shop_Shop">
