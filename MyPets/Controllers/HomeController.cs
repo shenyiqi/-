@@ -31,7 +31,7 @@ namespace MyPets.Controllers
             //火爆商品
             var hotGoods = goodsService.LoadEntities(g => g.SellNum > 0).OrderByDescending(g => g.SellNum).Take(6).ToList();
             //促销商品
-            var discountGoods = goodsService.LoadEntities(g => g.IsDiscount == true).Take(6).ToList();
+            var discountGoods = goodsService.LoadEntities(g => g.IsDiscount == true).OrderBy(x => Guid.NewGuid()).Take(6).ToList();
             var randomGoods = goodsService.LoadEntities(g => true).OrderBy(x => Guid.NewGuid()).Take(6).ToList();
             //狗狗商品
             var dogFood = goodsService.LoadEntities(g => g.SeriesName == "狗狗商品" && g.TypeName == "粮食").OrderBy(x => Guid.NewGuid()).Take(10).ToList();
