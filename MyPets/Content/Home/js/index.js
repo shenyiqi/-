@@ -100,7 +100,7 @@ $(function(){
 	})
 
     //				给商品图片加鼠标移入事件
-	$(".GoodsModel>img").mouseenter(function () {
+	$(".GoodsModel img").mouseenter(function () {
 	    $(this).stop().animate({ 'top': '-12px' }, 300)
 	})
 	$(".GoodsModel>.aContainer").mouseenter(function () {
@@ -108,7 +108,7 @@ $(function(){
 	})
 
     //				给商品图片加鼠标移出事件
-	$(".GoodsModel>img").mouseleave(function () {
+	$(".GoodsModel img").mouseleave(function () {
 	    $(this).stop().animate({ 'top': '0px' }, 300)
 	})
 	$(".GoodsModel>.aContainer").mouseleave(function () {
