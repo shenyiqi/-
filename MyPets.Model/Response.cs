@@ -23,5 +23,6 @@ namespace MyPets.Model
         public int ResponseFloor { get; set; }
     
         public virtual Post Post { get; set; }
+        public virtual UserInfo UserInfo { get; set; }
     }
 }

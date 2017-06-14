@@ -27,7 +27,7 @@ namespace MyPets.Controllers
 
         public ActionResult Index()
         {
-            Session["UserName"] = "用户1";
+            Session["UserName"] = "用户5";
             //火爆商品
             var hotGoods = goodsService.LoadEntities(g => g.SellNum > 0).OrderByDescending(g => g.SellNum).Take(6).ToList();
             //促销商品

@@ -20,8 +20,8 @@ namespace MyPets.Model
         public string BaikeSeries { get; set; }
         [Display(Name = "百科类别")]
         public string BaikeType { get; set; }
-        [Required(ErrorMessage ="标题不能为空")]
-        [Display(Name ="标题")]
+        [Required(ErrorMessage = "标题不能为空")]
+        [Display(Name = "标题")]
         public string BaikeTitle { get; set; }
         public string BaikeImg { get; set; }
         [Display(Name = "内容描述")]

@@ -15,9 +15,9 @@ $(function(){
 		var scroH=$(this).scrollTop();
 		//滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
 		if(scroH>=rPartH){
-			$(".postingsTitle").css({"position":"fixed","top":"0"});
+		    $(".postingsTitlePart").css({ "position": "fixed", "top": "0" });
 		}else if(scroH<rPartH){
-			$(".postingsTitle").css({"position":"static"});
+		    $(".postingsTitlePart").css({ "position": "static" });
 		}
 	})
 	

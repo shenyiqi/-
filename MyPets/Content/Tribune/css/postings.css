@@ -96,6 +96,8 @@
 	border-bottom: 1px solid RGB(187,189,191);
 	border-left:  1px solid RGB(229,229,229);
 	border-right:  1px solid RGB(229,229,229);
+    position:relative;
+    z-index:10;
 }
 .postings .postingsTitlePart .postingsTitle{
     width:900px;
@@ -164,12 +166,31 @@
 	margin-top: 20px;
 	margin-left: 30px;
 	margin-bottom: 10px;
+    position:relative;
+}
+.postingsFloor .postingsFloorRight .postingsText .FloorDetails{
+    position:absolute;
+    top:200px;
+    right:10px;
 }
 .postingsFloor .postingsFloorRight .postingsImg{
 	width: 900px;
 	margin-left: 30px;
     margin-bottom:10px;
 }
+/*-----回复框------*/
+#replyBox{
+    width:500px;
+    height:220px;
+    margin-bottom:30px;
+}
+#replyBox .textarea{
+    width:500px;
+    height:200px;
+}
+
+
+
 
 
 /*---------------------------------小火箭标志--------------------------------*/

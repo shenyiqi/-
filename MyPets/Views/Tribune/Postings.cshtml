@@ -3,6 +3,10 @@
     ViewBag.Title = "Postings";
     Layout = null;
 }
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<MyPets.Model.Response>
+
 
 <!DOCTYPE html>
 
@@ -22,20 +26,28 @@
         <div class="content">
             <div class="favorite">收藏宠物之家</div>
             <ul class="index_topRight">
-                <li>
-                    <a href="">登录</a>
-                </li>
-                <li>
-                    <a href="">注册</a>
-                </li>
+                @if (Session["UserName"] == null)
+                {
+                    <li>
+                        <a href="@Url.Action("Login","Register")" id="registerState">登录</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Register", "Register")">注册</a>
+                    </li>
+                }
+                else
+                {
+                    <li><a href="javascript:;" style="color:#9C3;">@Session["UserName"]</a></li>
+                    <li><a href="@Url.Action("LoginOff")">退出登录</a></li>
+                }
                 <li>
                     <a href="">手机版</a>
                 </li>
                 <li>
-                    <a href="">关注宠物之家</a>
+                    <a href="@Url.Action("Index","Baike")">宠物百科</a>
                 </li>
                 <li>
-                    <a href="">首页</a>
+                    <a href="@Url.Action("Index","Home")">宠物商城</a>
                 </li>
             </ul>
         </div>
@@ -43,52 +55,86 @@
     <!--首页顶部结束-->
     <div class="postings">
         <div class="postingsTop">
-            <div class="paging">32回复贴，共1页</div><a href="#" style="float: right;margin-right: 20px;">«返回首页</a>            
+            <div class="paging"><span style="color:RGB(255,101,0);">@ViewBag.replyNum</span> 回复贴，共1页</div><a href="@Url.Action("Index","Tribune")" style="float: right;margin-right: 20px;">«返回论坛首页</a>
         </div>
         <div class="postingsReply">
             <div class="postingsTitlePart">
-                <div class="postingsTitle">狗狗为什么突然不吃狗粮了</div>               
+                <div class="postingsTitle">@ViewBag.postTitle</div>
                 <input type="button" name="onlyPoster" id="" value="只看楼主" />
                 <input type="button" name="favorite" id="" value="收藏" />
-                <input type="button" name="reply" id="" value="回复" />
+                <a href="#AreaDescribe"><input type="button" name="reply" id="" value="回复" /></a>
             </div>
+
             <div class="postingsFloorContent">
-                <div class="postingsFloor">
+                <div class="postingsFloor" style="border-bottom:4px solid RGB(225,228,230)">
                     <div class="postingsFloorLeft">
                         <div class="userPhoto">
-                            <img src="~/Content/Tribune/img/userPhoto.jpg" />
+                            <img src="@Url.Content(@ViewBag.userImg)" />
                         </div>
-                        <div class="userName">英雄所见略同</div>
+                        <div class="userName">@ViewBag.userName</div>
                         <div class="userLevel">Lv.10 以坛为家Ⅲ</div>
                     </div>
 
                     <div class="postingsFloorRight">
                         <div class="postingsText">
-                            央视网消息(新闻联播)：国家主席习近平28日就斯里兰卡洪水和山体滑坡灾害向斯里兰卡总统西里塞纳致慰问电，对遇难者表示深切的哀悼，向受灾民众和遇难者家属表示诚挚的慰问。习近平在慰问电中指出，中斯是传统友好邻邦，中国人民对斯里兰卡人民遭受灾害感同身受。中国政府愿全力支持斯里兰卡政府开展救灾工作，向斯方提供支持和帮助。相信斯里兰卡政府和人民一定能够战胜灾害，重建家园。同日，国务院总理李克强也向斯里兰卡总理维克拉马辛哈致慰问电。
+                            <h2>楼主有话说：</h2>@ViewBag.postContent
                         </div>
-                        <div class="postingsImg"><img src="~/Content/Tribune/img/postingsImg.jpg" /></div>
+                        @*<div class="postingsImg"><img src="~/Content/Tribune/img/postingsImg.jpg" /></div>*@
                     </div>
                 </div>
+                @foreach (@*MyPets.Model.Response r in ViewData["postFloor"] as List<MyPets.Model.Response>*@ var r in Model)
+                {
+                    <div class="postingsFloor">
+                        <div class="postingsFloorLeft">
+                            <div class="userPhoto">
+                                <img src="@Url.Content(r.UserInfo.UserImg)" />
+                            </div>
+                            <div class="userName">@Html.DisplayFor(n => r.UserInfo.UserName)</div>
+                            <div class="userLevel">Lv.10 以坛为家Ⅲ</div>
+                        </div>
+
+                        <div class="postingsFloorRight">
+                            <div class="postingsText">
+                                @Html.DisplayFor(txt => r.ResponseContent)
+                                <div class="FloorDetails">
+                                    <span>@Html.DisplayFor(n => r.ResponseTime)</span>&nbsp;
+                                    <span style="color:RGB(34,88,152)">@Html.DisplayFor(n => r.ResponseFloor)楼</span>
+                                </div>
+                            </div>
+                            @*<div class="postingsImg"><img src="~/Content/Tribune/img/postingsImg.jpg" /></div>*@
+                        </div>
+                    </div>
+                }
+                <div style="margin:0 auto;width:300px;text-align:center;float:none"> @Html.PagedListPager(Model, page => Url.Action("Postings", "Tribune", new { page }), new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 5 })</div>
+
+
 
                 <!-----------------------第一层结束---------------------->
-                <div class="postingsFloor">
-                    <div class="postingsFloorLeft">
-                        <div class="userPhoto">
-                            <img src="~/Content/Tribune/img/userPhoto.jpg" />
+                @*<div class="postingsFloor">
+                        <div class="postingsFloorLeft">
+                            <div class="userPhoto">
+                                <img src="~/Content/Tribune/img/userPhoto.jpg" />
+                            </div>
+                            <div class="userName">路人甲</div>
+                            <div class="userLevel">Lv.1 初来乍到</div>
                         </div>
-                        <div class="userName">路人甲</div>
-                        <div class="userLevel">Lv.1 初来乍到</div>
-                    </div>
 
-                    <div class="postingsFloorRight">
-                        <div class="postingsText">
-                           中国是个负责任的大国！
+                        <div class="postingsFloorRight">
+                            <div class="postingsText">
+                                中国是个负责任的大国！
+                            </div>
+                            <div class="postingsImg"></div>
                         </div>
-                        <div class="postingsImg"></div>
-                    </div>
-                </div>
+                    </div>*@
 
             </div>
+            @using (Html.BeginForm("ResponsePost", "Tribune",new { id= @ViewBag.postId }, FormMethod.Post))
+            {
+                <div id="replyBox">
+                    <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入回复内容..."></textarea>
+                    <div class="submitBox"><input type="submit" value="回复" /><a href="@Url.Action("Postings")"><input type="button" value="取消" /></a></div>
+                </div>
+            }
         </div>
 
 
@@ -97,4 +143,3 @@
     <img id="toTop" src="~/Content/Tribune/img/toTop.png" alt="" />
 </body>
 </html>
-

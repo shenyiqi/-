@@ -276,7 +276,7 @@ namespace MyPets.Controllers
             var post = PostServices.LoadEntities(p => true).ToList();
             return View(post);
         }
-        public ActionResult DetailsPost(int id)
+        public ActionResult DetailsPost(int id) //删除帖子
         {
             var post = PostServices.LoadEntities(p => p.PostId == id).FirstOrDefault();
             return View(post);
