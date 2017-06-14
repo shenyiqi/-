@@ -72,13 +72,12 @@ namespace MyPets.Controllers
         [HttpPost]    
         public ActionResult goodsComment(GoodsComment gc)
         {
-            int id = int.Parse(Request["id"]);
+            int id = int.Parse(Request["id"]);//获取前台隐藏标签的value值，即商品Id
             MyPetsEntities db = new MyPetsEntities();
-            string name = Session["UserName"].ToString();
+            string name = Session["UserName"].ToString();//用户登录成功后，进行存储的用户名
             var x = UserInfo.LoadEntities(g => g.UserName == name).FirstOrDefault();
             gc.CommentTime = System.DateTime.Now;
-            gc.CommentContent = Request["content"];
-           
+            gc.CommentContent = Request["content"];           
             gc.GoodsId = id;
             gc.UsersId = x.UserId;
             gc.IsReply = false;
