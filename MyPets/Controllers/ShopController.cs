@@ -143,7 +143,7 @@ namespace MyPets.Controllers
             }
             else
             {
-                return Content("<script>;alert('请不要漏掉图片哦!')</script>");
+                return Content("<script>;alert('请不要漏掉图片哦!');history.go(-1);</script>");
             }
         }
         public ActionResult Order() //显示订单
