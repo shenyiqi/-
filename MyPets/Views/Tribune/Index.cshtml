@@ -134,23 +134,29 @@
             @*-----------------------------------------帖子模板静态--------------------------------------*@
 
             <!--发帖框部分-->
-
-            @using (Html.BeginForm("Postings", "Tribune", FormMethod.Post))
+            @if (Session["UserName"] == null)
             {
-                <div id="publishPart">
-                    <div class="postTitleInputBox">帖子标题：<input id="txtPostTitle" type="text" name="postTitle" /></div>
-                    <div class="postTypeBox">
-                        <span>选择帖子类型：</span>
-                        <select id="postType" name="postType">
-                            <option>交流帖</option>
-                            <option>分享帖</option>
-                            <option>求助帖</option>
-                            <option>专家帖</option>
-                        </select>
+                <p>请 <a href="@Url.Action("Login","Register")">登录</a> 发表评论</p>
+            }
+            else
+            {
+                using (Html.BeginForm("Postings", "Tribune", FormMethod.Post))
+                {
+                    <div id="publishPart">
+                        <div class="postTitleInputBox">帖子标题：<input id="txtPostTitle" type="text" name="postTitle" /></div>
+                        <div class="postTypeBox">
+                            <span>选择帖子类型：</span>
+                            <select id="postType" name="postType">
+                                <option>交流帖</option>
+                                <option>分享帖</option>
+                                <option>求助帖</option>
+                                <option>专家帖</option>
+                            </select>
+                        </div>
+                        <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入帖子内容..."></textarea>
+                        <div class="submitBox"><input type="submit" value="确认" /><a href="@Url.Action("Index")"><input type="button" value="取消" /></a></div>
                     </div>
-                    <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入帖子内容..."></textarea>
-                    <div class="submitBox"><input type="submit" value="确认" /><a href="@Url.Action("Index")"><input type="button" value="取消" /></a></div>
-                </div>
+                }
             }
 
             @*<script src="~/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
@@ -168,25 +174,27 @@
         <!--右边部分-->
         <div class="RightPart">
             <!--个人部分-->
-            <div class="Personal">
-                <!--头像-->
-                <div class="PersonalPhoto">
-                    <img src="~/Content/Tribune/img/userPhoto.jpg" alt="" />
+            @if (Session["UserName"] != null)
+            {
+                <div class="Personal">
+                    <!--头像-->
+                    <div class="PersonalPhoto">
+                        <img src="~/Content/Tribune/img/userPhoto.jpg" alt="" />
+                    </div>
+                    <!--昵称-->
+                    <div class="userName">昵称：@Session["UserName"].ToString()</div>
+                    <!--等级-->
+                    <div class="userLevel">等级：Lv.10</div>
+                    <!--帖子数-->
+                    <div class="userPostCount">发帖数：@ViewBag.postingsNum</div>
+                    <!--我要发帖-->
+                    <a href="#txtPostTitle"><div class="publishPost">我要发帖</div></a>
+                    <!--去往个人中心-->
+                    <div class="PersonalCenter">个人中心</div>
+
                 </div>
-                <!--昵称-->
-                <div class="userName">昵称：古灵精怪</div>
-                <!--等级-->
-                <div class="userLevel">等级：Lv.10</div>
-                <!--帖子数-->
-                <div class="userPostCount">发帖数：120</div>
-                <!--我要发帖-->
-                <a href="#txtPostTitle"><div class="publishPost">我要发帖</div></a>
-                <!--去往个人中心-->
-                <div class="PersonalCenter">个人中心</div>
-
-            </div>
             <!--个人部分结束-->
-
+            }
 
 
 

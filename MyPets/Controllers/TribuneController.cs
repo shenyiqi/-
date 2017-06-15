@@ -19,21 +19,29 @@ namespace MyPets.Controllers
         // GET: Tribune
         public ActionResult Index(int? page)
         {
-            var goodPostings = postServices.LoadEntities(p => p.IsChoose == true).Take(10).ToList();
-            ViewData["goodPostings"] = goodPostings;
-            var topPostings = postServices.LoadEntities(p => p.IsTop == true).ToList();
-            ViewData["topPostings"] = topPostings;
+            if (Session["UserName"] != null)
+            {
+                var goodPostings = postServices.LoadEntities(p => p.IsChoose == true).Take(10).ToList();
+                ViewData["goodPostings"] = goodPostings;
+                var topPostings = postServices.LoadEntities(p => p.IsTop == true).ToList();
+                ViewData["topPostings"] = topPostings;
 
-            //分页控制最新发布的帖子
-            int pageSize = 5;
-            int pageNumber = (page ?? 1);
-            var newPostings = postServices.LoadEntities(p => p.IsChoose == false && p.IsTop == false).OrderByDescending(p => p.PostTime).ToList();
-            //ViewData["newPostings"] = newPostings;
-            return View(newPostings.ToPagedList(pageNumber, pageSize));
+                string userName = Session["UserName"].ToString();
+                int userId = Convert.ToInt32(userInfoServices.LoadEntities(u => u.UserName == userName).FirstOrDefault().UserId);
+                var postingsNum = postServices.LoadEntities(p => p.UserId == userId).ToList();
+                ViewBag.postingsNum = postingsNum.Count();
+                //分页控制最新发布的帖子
+                int pageSize = 5;
+                int pageNumber = (page ?? 1);
+                var newPostings = postServices.LoadEntities(p => p.IsChoose == false && p.IsTop == false).OrderByDescending(p => p.PostTime).ToList();
+                //ViewData["newPostings"] = newPostings;
+                return View(newPostings.ToPagedList(pageNumber, pageSize));
+            }
+            else return Content("<script>alert('您还未登陆！！');history.go(-1);</script>");
 
         }
 
-        public ActionResult Postings(int id,int? page)
+        public ActionResult Postings(int id, int? page)
         {
 
             var postFloor = responseServices.LoadEntities(r => r.PostId == id).ToList();
@@ -45,7 +53,7 @@ namespace MyPets.Controllers
             var userId = postServices.LoadEntities(p => p.PostId == id).FirstOrDefault().UserId;
             var userImg = userInfoServices.LoadEntities(u => u.UserId == userId).FirstOrDefault().UserImg;
             var userName = userInfoServices.LoadEntities(u => u.UserId == userId).FirstOrDefault().UserName;
-            
+
             ViewBag.postTitle = postTitle;
             ViewBag.postContent = postContent;
             ViewBag.userImg = userImg;
@@ -110,16 +118,16 @@ namespace MyPets.Controllers
                         ResponseTime = DateTime.Now,
                         SenderId = senderId,
                         ReceiverId = receiverId,
-                        ResponseFloor=floorNum
+                        ResponseFloor = floorNum
                     });
                     db.SaveChanges();
-                    return RedirectToAction("Postings", new { id=postId });
+                    return RedirectToAction("Postings", new { id = postId });
                 }
                 else return Content("<script>alert('内容不能为空！');history.go(-1);</script>");
             }
             else return Content("<script>alert('您还未登录呢？！');history.go(-1);</script>");
         }
 
-        
+
     }
 }

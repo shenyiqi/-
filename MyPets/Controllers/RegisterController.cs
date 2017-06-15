@@ -32,7 +32,7 @@ namespace MyPets.Controllers
         {
             string ValidateCode = Request["txtverifcode"];
 
-            if (ValidateCode != Session["ValidateCode"].ToString())
+            if (ValidateCode.ToUpper() != Session["ValidateCode"].ToString().ToUpper())
             {
                 return Content("<script>;alert('验证码错误！');history.go(-1)</script>");
             }

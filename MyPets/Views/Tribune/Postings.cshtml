@@ -6,7 +6,7 @@
 @using PagedList
 @using PagedList.Mvc
 @model PagedList.IPagedList<MyPets.Model.Response>
-@*@model IEnumerable<MyPets.Model.Response>*@
+
 
 <!DOCTYPE html>
 
@@ -96,6 +96,10 @@
                         <div class="postingsFloorRight">
                             <div class="postingsText">
                                 @Html.DisplayFor(txt => r.ResponseContent)
+                                <div class="FloorDetails">
+                                    <span>@Html.DisplayFor(n => r.ResponseTime)</span>&nbsp;
+                                    <span style="color:RGB(34,88,152)">@Html.DisplayFor(n => r.ResponseFloor)楼</span>
+                                </div>
                             </div>
                             @*<div class="postingsImg"><img src="~/Content/Tribune/img/postingsImg.jpg" /></div>*@
                         </div>
@@ -128,7 +132,7 @@
             {
                 <div id="replyBox">
                     <textarea class="textarea" id="AreaDescribe" name="AreaDescribe" placeholder="输入回复内容..."></textarea>
-                    <div class="submitBox"><input type="submit" value="确认" /><a href="@Url.Action("Postings")"><input type="button" value="取消" /></a></div>
+                    <div class="submitBox"><input type="submit" value="回复" /><a href="@Url.Action("Postings")"><input type="button" value="取消" /></a></div>
                 </div>
             }
         </div>

@@ -582,9 +582,9 @@
             @foreach (MyPets.Model.Goods g in ViewData["hotgoods"] as List<MyPets.Model.Goods>)
             {
                 <div class="GoodsModel">
-                    <img src="@Url.Content(g.GoodsImg1)" />
+                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                     <div class="aContainer">
-                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a=>g.GoodsName)</a>
                     </div>
                     <div class="goodsPrice">
                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -603,9 +603,9 @@
             @foreach (MyPets.Model.Goods g in ViewData["discountgoods"] as List<MyPets.Model.Goods>)
             {
                 <div class="GoodsModel">
-                    <img src="@Url.Content(g.GoodsImg1)" />
+                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                     <div class="aContainer">
-                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                     </div>
                     <div class="goodsPrice">
                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -718,9 +718,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -736,9 +736,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -754,9 +754,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -772,9 +772,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["dogbaojian"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -790,9 +790,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["dogyiliao"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -808,9 +808,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -826,9 +826,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["dogriyong"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -844,9 +844,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -862,9 +862,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -880,9 +880,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["dogfood"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -910,9 +910,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["catfood"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -994,9 +994,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["smallpetfood"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -1042,9 +1042,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["aquaticpetfood"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)
@@ -1114,9 +1114,9 @@
                             @foreach (MyPets.Model.Goods g in ViewData["reptilefood"] as List<MyPets.Model.Goods>)
                             {
                                 <div class="GoodsModel">
-                                    <img src="@Url.Content(g.GoodsImg1)" />
+                                    <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })"><img src="@Url.Content(g.GoodsImg1)" /></a>
                                     <div class="aContainer">
-                                        <a href="">@Html.ActionLink(g.GoodsName, "Index")</a>
+                                        <a href="@Url.Action("goumai","Home",new { id=g.GoodsId })">@Html.DisplayFor(a => g.GoodsName)</a>
                                     </div>
                                     <div class="goodsPrice">
                                         ￥@Html.DisplayFor(a => g.GoodsPrice)

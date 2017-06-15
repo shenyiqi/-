@@ -71,13 +71,15 @@ namespace MyPets.Controllers
                         });
                         id.IsSeller = true;
                         UserServices.EditEntity(id);
-                        db.SaveChanges();
+                        db.SaveChanges();   
+
+
                         return Content("<script>;alert('注册成功!');window.open('"+Url.Action("Index","Shop",new {user=Session["UserName"].ToString() })+"','_self');</script>");
                        
                     }
-                    else return Content("<script>;alert('注册失败!')</script>");
+                    else return Content("<script>;alert('注册失败!');history.go(-1);</script>");
                 }
-                else return Content("<script>;alert('请上传图片!')</script>");
+                else return Content("<script>;alert('请上传图片!');history.go(-1);</script>");
             }
             return View(shop);
         }
@@ -209,7 +211,7 @@ namespace MyPets.Controllers
                 }
                 else return Content("<script>;alert('发布失败!');history.go(-1)</script>");
             }
-            else return Content("<script>;alert('促销价不能大于原价!')</script>");
+            else return Content("<script>;alert('促销价不能大于原价!');history.go(-1);</script>");
 
         }
         public ActionResult GoodsType(string type, int? page)
@@ -314,7 +316,7 @@ namespace MyPets.Controllers
                     }
                     else return Content("<script>;alert('请选择图片');history.go(-1);</script>");
             }
-            return Content("<script>;alert('更改成功!')</script>");
+            return Content("<script>;alert('更改成功!');history.go(-1);</script>");
         }
         public ActionResult Message() //回复留言
         {

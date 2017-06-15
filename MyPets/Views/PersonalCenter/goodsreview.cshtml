@@ -125,32 +125,44 @@
 
                 <ul class="nav">
                     <li>
-                        <a href="PersonalCenter/myorder">
-                            <i class="pe-7s-graph"></i>
-                            <p>我的订单</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="PersonalCenter/basicinformation">
+                        <a href="@Url.Action("basicinformation",new {user=Session["UserName"] })">
                             <i class="pe-7s-user"></i>
                             <p>基本信息</p>
                         </a>
                     </li>
                     <li>
-                        <a href="PersonalCenter/privatenews">
-                            <i class="pe-7s-note2"></i>
-                            <p>私信</p>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="PersonalCenter/goodsreview">
-                            <i class="pe-7s-news-paper"></i>
-                            <p>商品评论</p>
+                        <a href="@Url.Action("myorder",new {user=Session["UserName"] })">
+                            <i class="pe-7s-graph"></i>
+                            <p>我的订单</p>
                         </a>
                     </li>
 
                     <li>
-                        <a href="PersonalCenter/myshop">
+                        <a href="#">
+                            <i class="pe-7s-note2"></i>
+                            <p>私信</p>
+                        </a>
+                    </li>
+                    <li>
+                 <a href="@Url.Action("Comment",new {user=Session["UserName"] })">
+                    <i class="pe-7s-news-paper"></i>
+                     <p>商品评论</p>
+                </a>
+                </li>
+                    <li class="active">
+                        <a href="@Url.Action("goodsreview",new {user=Session["UserName"] })">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>追加评论</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="pe-7s-science"></i>
+                            <p>帖子管理</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Shop",new { user=Session["UserName"].ToString()})">
                             <i class="pe-7s-map-marker"></i>
                             <p>我的店铺</p>
                         </a>
@@ -174,7 +186,7 @@
                     </div>
                     <div class="collapse navbar-collapse">
 
-                        </ul>
+                       
                     </div>
                 </div>
             </nav>
@@ -203,7 +215,7 @@
                                 </td>
 
                                 <td class="product-thumbnail">
-                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="@item.GoodsImg1"></a>
+                                    <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="@Url.Content(item.GoodsImg1)"></a>
                                 </td>
 
                                 <td class="product-name">
@@ -219,7 +231,8 @@
                                         @foreach (var item1 in ViewBag.Comment)
                                         {   if (item.GoodsId == item1.GoodsId)
                                             {
-                                             <span class="amount">@item1.CommentContent</span>   
+                                             <span class="amount">@item1.CommentContent</span>
+
                                             }
                                         }
                                     </div>
