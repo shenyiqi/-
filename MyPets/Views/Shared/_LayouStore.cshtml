@@ -33,7 +33,7 @@
                                 }
                                 else
                                 {
-                                    <a href="#"><i class="fa fa-user"></i>个人中心</a>
+                                    <a href="@Url.Action("Index","PersonalCenter",new {user=Session["UserName"].ToString()})"><i class="fa fa-user"></i>个人中心</a>
                                 }
                             </li>
                             <li>
