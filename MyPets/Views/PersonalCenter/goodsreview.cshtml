@@ -33,7 +33,7 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    
+
     <link href="~/Content/PersonalCenter/css/pe-icon-7-stroke.css" rel="stylesheet" />
     <style type="text/css">
         table.shop_table {
@@ -106,7 +106,7 @@
             padding: 11px 20px;
             text-transform: uppercase;
         }
-    </style>   
+    </style>
 </head>
 <body>
 
@@ -144,11 +144,11 @@
                         </a>
                     </li>
                     <li>
-                 <a href="@Url.Action("Comment",new {user=Session["UserName"] })">
-                    <i class="pe-7s-news-paper"></i>
-                     <p>商品评论</p>
-                </a>
-                </li>
+                        <a href="@Url.Action("Comment",new {user=Session["UserName"] })">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>商品评论</p>
+                        </a>
+                    </li>
                     <li class="active">
                         <a href="@Url.Action("goodsreview",new {user=Session["UserName"] })">
                             <i class="pe-7s-news-paper"></i>
@@ -186,7 +186,7 @@
                     </div>
                     <div class="collapse navbar-collapse">
 
-                       
+
                     </div>
                 </div>
             </nav>
@@ -194,71 +194,60 @@
 
             <div class="content">
 
-              
-                    <table cellspacing="0" class="shop_table cart">
-                        <thead>
-                            <tr>
-                                <th class="product-remove">&nbsp;</th>
-                                <th class="product-thumbnail">&nbsp;</th>
-                                <th class="product-name">商品</th>
-                                <th class="product-price">价格</th>
-                                <th class="product-quantity">评价</th>
-                                <th class="product-subtotal">追加评价</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in ViewBag.MyPet)
-                            {
+
+                <table cellspacing="0" class="shop_table cart">
+                    <thead>
+                        <tr>
+                            <th class="product-remove">&nbsp;</th>
+                            <th class="product-thumbnail">&nbsp;</th>
+                            <th class="product-name">商品</th>
+                            <th class="product-price">价格</th>
+                            <th class="product-quantity">评价</th>
+                            <th class="product-subtotal">追加评价</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.MyPet)
+                        {
                             <tr class="cart_item">
                                 <td class="product-remove">
                                     <a title="Remove this item" class="remove" href="#"></a>
                                 </td>
-
                                 <td class="product-thumbnail">
                                     <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="@Url.Content(item.GoodsImg1)"></a>
                                 </td>
-
                                 <td class="product-name">
                                     <a href="single-product.html">@item.GoodsName</a>
                                 </td>
-
                                 <td class="product-price">
                                     <span class="amount">@item.GoodsPrice</span>
                                 </td>
-
                                 <td class="product-appraise">
                                     <div class="quantity buttons_added">
                                         @foreach (var item1 in ViewBag.Comment)
-                                        {   if (item.GoodsId == item1.GoodsId)
+                                        {
+                                            if (item.GoodsId == item1.GoodsId)
                                             {
-                                             <span class="amount">@item1.CommentContent</span>
-
+                                                <span class="amount">@item1.CommentContent</span>
                                             }
                                         }
                                     </div>
                                 </td>
-
                                 <td class="product-advice">
-                                    
-                                    
                                     @using (Html.BeginForm("goodsComment", "PersonalCenter", FormMethod.Post, new { id = "MyFrom" }))
                                     {<span class="amount">
                                         <input type="hidden" value="@item.GoodsId" name="id" />
                                         <input type="text" placeholder="追加评价..." value="" name="content" />
-                                       
                                     </span>
                                     <input type="submit" value="评论" />
                                     }
-                                   
+
                                 </td>
-                            </tr>  
-                            }
-                        </tbody>
-                    </table>
-                
-
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
-
             <footer class="footer">
                 <div class="container-fluid">
                     <nav class="pull-left">
@@ -319,4 +308,3 @@
 <script src="~/Content/PersonalCenter/js/demo.js"></script>
 
 </html>
-
