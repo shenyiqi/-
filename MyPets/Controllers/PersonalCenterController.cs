@@ -84,7 +84,7 @@ namespace MyPets.Controllers
                 CommentContent = Request["content"],
                 GoodsId = id,
                 UsersId = x.UserId,
-                IsReply = false
+                IsReply =true
             });
 
             //db.GoodsComment.Add(gc);
