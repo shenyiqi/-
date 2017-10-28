@@ -109,7 +109,7 @@
 }
 #searchTxtBox{
 	width: 516px;
-	height: 38px;
+	height: 44px;
 	text-indent: 10px;
 	font-size: 16px;
 	color: RGB(51,51,51);
@@ -222,7 +222,7 @@
 
 .typeMenu {
 	width: 188px;
-	height: 448px;
+	height: 450px;
 	background: RGB(255, 255, 255);
 	border: solid 1px RGB(204,34,0);
 	border-top: none;
@@ -255,12 +255,12 @@ div.typeImgContainer{
 	border-left: solid 1px RGB(205,44,11);
 }
 .typeMenu .dogPart{
-	height: 111px;
+	height: 112px;
 	border-bottom: solid 1px RGB(204,204,204);
 	
 }
 .typeMenu .catPart{
-	height: 111px;
+	height: 112px;
 	border-bottom: solid 1px RGB(204,204,204);
 	
 }
@@ -275,7 +275,7 @@ div.typeImgContainer{
 	
 }
 .typeMenu .reptilePart{
-	height: 62px;
+	height: 68px;
 	
 }
 .menu_list{
@@ -296,10 +296,10 @@ div.typeImgContainer{
 }
 .typeMenu .details{
 	width: 654px;
-	height: 446px;
+	height: 450px;
 	position: absolute;
 	top: 0;
-	left: 189px;
+	left: 186px;
 	background: RGB(252,252,250);
 	z-index: 12;
 	display: none;
@@ -611,30 +611,22 @@ li.beChoiced{
 /*------------------商品展示部分结束--------------------*/
 
 /*------------------首页底部结束--------------------*/
-#footer{
-    width:100%;
-    height:270px;
-}
-#footer .footer_up{
-    width:100%;
-    height:120px;
-    background:RGB(238,85,51);
-}
-#footer .footer_up>img{
-    display:block;
-    width:908px;
-    margin:0 auto;
-}
-#footer .footer_down{
-    width:100%;
-    height:150px;
-    background:RGB(243,243,243);
-}
-#footer .footer_down>img{
-    display:block;
-    width:970px;
-    margin:0 auto;
-}
+			*,*:before,*:after{box-sizing: border-box;}
+			a,a:active,a:hover,a:focus,a:visited{text-decoration:none;}
+			a,img{-webkit-touch-callout:none}
+			.f20{font-size: 45px;}
+			.footer{height: 120px;width: 100%;background: #EE5533;color: #FFF;text-align: center;padding: 15px 0;font-size: 12px;}
+			.footer-body{width: 1000px;margin: 0 auto;overflow: hidden;}
+			.footer-body dl{width: 25%;border-right: 1px dashed #FFB3AA;float: left;}
+			.name{font-size: 16px;}
+			dl.no-border{border: none;}
+			.small-tips{height: 160px;width: 100%;background: #F3F3F3;border-bottom: 1px solid #DDD;}
+			.st-body{width: 990px;margin: 0 auto;font-size: 12px;padding: 15px 0;overflow: hidden;}
+			.st-body dl{float: left;width: 70px;margin: 0 0 0 110px;}
+			.st-body dt{font-size: 14px;font-weight: bold;color: #464646;}
+			.st-body dd{padding: 6px 0 0;}
+			.st-body dd a{color: #666;}
+			.st-body dd a:hover{color: #EE5533;
 
 
 
