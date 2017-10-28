@@ -52,10 +52,10 @@
                     <a href="">手机版</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index","Baike")">宠物百科</a>
+                    <a href="@Url.Action("Index","Baike",new { user=Session["UserName"]})">宠物百科</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index","Home")">宠物商城</a>
+                    <a href="@Url.Action("Index","Home",new { user=Session["UserName"]})">宠物商城</a>
                 </li>
             </ul>
         </div>
@@ -190,7 +190,7 @@
                     <!--我要发帖-->
                     <a href="#txtPostTitle"><div class="publishPost">我要发帖</div></a>
                     <!--去往个人中心-->
-                    <div class="PersonalCenter">个人中心</div>
+                    <div class="PersonalCenter"><a href="@Url.Action("Index","PersonalCenter",new { user=Session["UserName"]})">个人中心</a></div>
 
                 </div>
             <!--个人部分结束-->
