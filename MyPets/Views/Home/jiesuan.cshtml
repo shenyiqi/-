@@ -13,7 +13,7 @@
  @using (Html.BeginForm("PayGoods", "Home", FormMethod.Post))
  {
 <div style="position:absolute;left:345px;margin-top:-65px;">
-    <div class="info">
+    @*<div class="info">
         <div>
             您的地址：
             <select id="s_province" name="s_province"></select>&nbsp;&nbsp;
@@ -32,7 +32,7 @@
             }
             Gid('s_county').setAttribute('onchange', 'showArea()');
         </script>
-    </div>
+    </div>*@
     <div style="margin-top:28px;position:absolute;">
         <input style="width:500px;" id="Text1" type="text" name="address " placeholder="请输入你的详细地址" />
     </div>
@@ -103,7 +103,8 @@
         </table>
             <div class="foot" id="foot">
                 <label class="fl select-all"><input type="checkbox" class="check-all check" />&nbsp;&nbsp;全选</label>
-                <a class="fl delete" id="deleteAll" href="javascript:;">@Html.ActionLink("删除", "ClearCart", new { name = Session["UserName"].ToString() }, new { onclick = "return confirm('确定要清空购物车吗？')" })</a>
+                <a class="fl delete" id="deleteAll" href="javascript:;">
+                @Html.ActionLink("删除", "ClearCart", new { name = Session["UserName"].ToString() }, new { onclick = "return confirm('确定要清空购物车吗？')" })</a>
                 <div class="fr closing"><input type="submit" value="结 算" class="btn btn-danger" id="subbtn" /></div>
                 <input type="hidden" id="cartTotalPrice" />
                 <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>

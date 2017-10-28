@@ -6,22 +6,22 @@
 @section jiesuan{
     <link href="~/Content/Home/css/GoodsComment.css" rel="stylesheet" />
 }
-   @using (Html.BeginForm("AddToGoodsComment", "Home", FormMethod.Post))
-   {
+@using (Html.BeginForm("AddToGoodsComment", "Home", FormMethod.Post))
+{
     <div class="pingjia">
         <div id="pingjia1">商品评价</div>
         <div style="height:60px;border-bottom :1px solid #808080;border-top :1px solid #808080;">
             <div class="pingjia3">
                 <div style="float:left;">评价满意度:</div>
-                <select class="form-control" id="InputType" name="InputType" style="width:130px; margin-left:100px;">                  
+                <select class="form-control" id="InputType" name="InputType" style="width:130px; margin-left:100px;">
                     <option>好评</option>
                     <option>中评</option>
-                    <option>差评</option>           
+                    <option>差评</option>
                 </select>
             </div>
         </div>
-        @Html.Hidden("id",Model.GoodsId)
-        <div style="height:200px;">
+        @Html.Hidden("id", Model.GoodsId)
+        <div style="height:230px;">
             <div class="pingjia4">
                 <div><img src="@Url.Content(Model.GoodsImg1)" style="height:150px;width:150px;" /></div>
                 <div>@Html.DisplayFor(a => Model.GoodsName)</div>
@@ -29,12 +29,12 @@
             <div class="pingjia5">
                 <div style="float:right;">@DateTime.Now</div>
                 <div class="neirong">
-                    <input style="width:800px;height:160px;" id="Text1" type="text" name="man" placeholder="你的评价是对我们的肯定！" />
+                    <input style="width:800px;height:160px;" id="Text1" type="text" name="content" placeholder="你的评价是对我们的肯定！" />
                 </div>
             </div>
         </div>
         <div style="margin-left:400px;">
-            <input type="submit"value="提交" id="sbt"style="width:100px;height:30px;" />
-        </div>    
+            <input type="submit" value="提交" id="sbt" style="width:100px;height:30px;" />
+        </div>
     </div>
-   }
+}

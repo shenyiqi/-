@@ -28,7 +28,7 @@
         <div class="num">@Html.DisplayFor(a => g.OrderNumber)</div>
         <div class="time">@Html.DisplayFor(a => g.Order.OrderTime)</div>
         <div class="qupingjia ">
-        <a  href="@Url.Action("Comment","Home",new{ id=g.GoodsId})"> 去评价</a>
+        <a  href="@Url.Action("Comment","Home",new{ id=g.GoodsId,detailid=g.DetailId})"> 去评价</a>
         </div>
     </div>
     }

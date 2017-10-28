@@ -13,6 +13,7 @@
     <link href="~/Content/Home/css/StyleSheet1.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Content/Home/js/goods.js"></script>
+    <script src="~/Content/Home/js/js.js"></script>
 </head>
 <body>
     <form id="form1">
@@ -66,25 +67,32 @@
                                 </div>
                             </div>
                             <div class="num">
-                                <div style="float:left;">
+                                @*<div style="float:left;">
                                     数量:
-                                    <input class="reduc" type="button" value="-" />
+                                    @*<input class="reduc" type="button" value="-" />
                                     <input type="text" value="1" class="multil" name="sum" />
                                     <input class="add" type="button" value="+" />
-                                </div>
-                                <div style="margin-left:180px;margin-top:40px;color:#808080">
-                                    库存:@Html.DisplayFor(a => Model.GoodsStock)
+                                 
+                                        <span class="reduce"type="button">-</span>
+                                        <input class="multil" type="text" value="1" name="multil"  />
+                                        <span class="add"type="button">+</span>
+                                    
+                                </div>*@
+                                <div style="margin-left:100px;margin-top:40px;color:#808080">
+                                    库存：充足
                                 </div>
                             </div>
-                            @*@Html.Hidden("id", @Model.GoodsId)*@
+                       
                             <div style="margin-top:50px;">
                                 <div style="float:left">
-                                    <a href="@Url.Action("jiesuan")">
-                                        <input id="Button1" type="button" value="立即购买" />
-                                    </a>
+                             
+                                        <a href="@Url.Action("Buynow",new {id=Model.GoodsId})">
+                                            <input id="Button1" type="button" value="立即购买" />
+                                        </a>
                                 </div>
                                 <div style="float:left;">
                                     <a href="@Url.Action("AddToCart",new {id=Model.GoodsId})">
+                                        
                                         <input id="Button2" type="button" value="▲加入购物车" />
                                     </a>
                                 </div>
@@ -153,7 +161,7 @@
 
                @foreach (MyPets.Model.GoodsComment g in ViewData["GoodsComment"] as List<MyPets.Model.GoodsComment>)
          {
-                <div style="height:150px;border-bottom :1px dashed  #808080;">
+                <div style="height:170px;border-bottom :1px dashed  #808080;">
                     <div class="pingjia4">
                         <div> <img src="@Url.Content(g.UserInfo.UserImg)" /></div>
                         <div>@Html.DisplayFor(a => g.UserInfo.UserName)</div>

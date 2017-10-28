@@ -1258,6 +1258,7 @@
     <Content Include="Content\Admin\images\start-rateh2.png" />
     <Content Include="Content\Admin\images\sunset-big.jpg" />
     <Content Include="Content\Admin\images\sunset.jpg" />
+    <Content Include="Content\Admin\images\tick-button-image.jpg" />
     <Content Include="Content\Admin\images\user-pic.png" />
     <Content Include="Content\Admin\jqvmap\data\jquery.vmap.sampledata.js" />
     <Content Include="Content\Admin\jqvmap\jquery.vmap.js" />
@@ -1862,6 +1863,8 @@
     <Content Include="Views\PersonalCenter\Comment.cshtml" />
     <Content Include="Views\Admin\DetailsPost.cshtml" />
     <Content Include="Views\Admin\PostManagement.cshtml" />
+    <Content Include="Views\Home\Buynow.cshtml" />
+    <Content Include="Views\Home\zhifu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
