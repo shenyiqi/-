@@ -10,6 +10,8 @@ using MyPets.DAL;
 using System.Data.Entity.Validation;
 using MyPets.IDAL;
 using System.IO;
+using MyPets.BLL;
+
 namespace MyPets.Controllers
 {
     public class RegisterController : Controller
@@ -153,7 +155,7 @@ namespace MyPets.Controllers
         public ActionResult RebackPwdStep1(UserInfo user) //找回密码
         {
             string ValidateCode = Request["txtverifcode"];
-            if (ValidateCode != Session["ValidateCode"].ToString())
+            if (ValidateCode.ToUpper() != Session["ValidateCode"].ToString().ToUpper())
             {
                 return Content("<script>;alert('验证码错误！');history.go(-1)</script>");
             }
@@ -205,6 +207,12 @@ namespace MyPets.Controllers
             }
             else
             {
+                //BLL.UserInfoServices userInfoService = new UserInfoServices();
+                //var model = userInfoService.LoadEntities(o => o.UserName == name).FirstOrDefault();
+                //model.UserPwd = pwd;
+                //model.ConfirmPwd = confirmpwd;
+                //userInfoService.EditEntity(model);
+                //return Json("ok", JsonRequestBehavior.AllowGet);
                 var update = UserInfoServices.SetPwd(name, pwd, confirmpwd);
                 if (update > 0)
                 {
@@ -212,7 +220,6 @@ namespace MyPets.Controllers
                 }
                 else return Content("<script>alert('密码重置失败');history.go(-1)</script>");
             }
-
         }
         public ActionResult RebackPwdStep4() //找回密码 
         {

@@ -87,7 +87,9 @@
 			.pet-box dl:hover a{color: #77BB00;}
 			.pet-box dl img{width: 180px;height: 135px;display: block;}
 			.pet-box dl dd{background: #efefef;border-top: none;text-align: center;height: 34px;font: 14px/34px "Microsoft YaHei";overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding: 0 5px;}
-
+            /*友情链接*/
+            .friendLink div{display:inline-block;width:95px;font-size:16px;}
+            .friendLink a{text-decoration:none;cursor:pointer;display:inline-block;margin-right:20px}
     </style>
 </head>
 <body>
@@ -157,9 +159,9 @@
         <div class="col-md-7">
             <div class="pgmiddle">
                 <div id="example">
-                    <div id="ribbon_1"></div>
+                    <div id="ribbon_1" style="display:none;"></div>
                     <div id="ribbon_2"></div>
-                    <div id="slides">
+                    <div id="slides">s
                         @{ int count = 0;}
                         @foreach (MyPets.Model.BaikeActivity baike in ViewData["active"] as List<MyPets.Model.BaikeActivity>)
                         {
@@ -368,13 +370,13 @@
                 <div class="minus"></div>
             </div>
         </div>
-        <div class="col-md-5" style="margin-left:-50px;">
+        <div class="col-md-5">
             <div class="row" style="height:350px;">
                 @foreach (MyPets.Model.Baike a in ViewData["dog"] as List<MyPets.Model.Baike>)
                 {
                     <table class="col-md-6" style="height:100px;margin-bottom:20px;">
                         <tr>
-                            <td><img src="@Url.Content(a.BaikeImg)" style="width:150px;height:100px;" alt="img" /></td>
+                            <td><img src="@Url.Content(a.BaikeImg)" style="width:150px;height:100px;margin-right:5px" alt="img" /></td>
                             <td>@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</td>
                         </tr>
                     </table>
@@ -384,7 +386,7 @@
         <div class="col-md-2">
             @foreach (MyPets.Model.Baike a in ViewData["dogtitle"] as List<MyPets.Model.Baike>)
             {
-                <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 20px Microsoft YaHei;margin-left:50px;">@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</div>
+                <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 20px Microsoft YaHei;">@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</div>
             }
         </div>
         <div class="col-md-1"></div>
@@ -445,13 +447,13 @@
                 <div class="minus"></div>
             </div>
         </div>
-        <div class="col-md-5" style="margin-left:-50px;">
+        <div class="col-md-5">
             <div class="row" style="height:350px;">
                 @foreach (MyPets.Model.Baike a in ViewData["dog"] as List<MyPets.Model.Baike>)
                 {
                 <table class="col-md-6" style="height:100px;margin-bottom:20px;">
                     <tr>
-                        <td><img src="@Url.Content(a.BaikeImg)" style="width:150px;height:100px;" alt="img" /></td>
+                        <td><img src="@Url.Content(a.BaikeImg)" style="width:150px;height:100px;margin-right:5px" alt="img" /></td>
                         <td>@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</td>
                     </tr>
                 </table>
@@ -461,7 +463,7 @@
         <div class="col-md-2">
             @foreach (MyPets.Model.Baike a in ViewData["dogtitle"] as List<MyPets.Model.Baike>)
             {
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 20px Microsoft YaHei;margin-left:50px;">@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 20px Microsoft YaHei;">@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</div>
             }
         </div>
         <div class="col-md-1"></div>
@@ -522,13 +524,13 @@
                 <div class="minus"></div>
             </div>
         </div>
-        <div class="col-md-5" style="margin-left:-50px;">
+        <div class="col-md-5">
             <div class="row" style="height:350px;">
                 @foreach (MyPets.Model.Baike a in ViewData["dog"] as List<MyPets.Model.Baike>)
                 {
                 <table class="col-md-6" style="height:100px;margin-bottom:20px;">
                     <tr>
-                        <td><img src="@Url.Content(a.BaikeImg)" style="width:150px;height:100px;" alt="img" /></td>
+                        <td><img src="@Url.Content(a.BaikeImg)" style="width:150px;height:100px;margin-right:5px" alt="img" /></td>
                         <td>@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</td>
                     </tr>
                 </table>
@@ -538,7 +540,7 @@
         <div class="col-md-2">
             @foreach (MyPets.Model.Baike a in ViewData["dogtitle"] as List<MyPets.Model.Baike>)
             {
-            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 20px Microsoft YaHei;margin-left:50px;">@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</div>
+            <div class="col-sm-12" style="height:58px;line-height:58px;color:#808080; font: 20px Microsoft YaHei;">@Html.ActionLink(@a.BaikeTitle, "Show", new { id = a.BaikeId })</div>
             }
         </div>
         <div class="col-md-1"></div>
@@ -552,39 +554,39 @@
         </div>
         <div class="row">
             <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <div style="margin-right:20px;display:inline-block;width:50px;">金毛犬</div>
-                <div style="margin-right:20px;display:inline-block;width:50px;">泰迪熊</div>
-                <div style="margin-right:20px;display:inline-block;width:50px;">哈士奇</div>
-                <div style="margin-right:20px;display:inline-block;width:140px;">七夕送什么礼物好</div>
-                <div style="margin-right:20px;display:inline-block;width:60px;">家居图片</div>
-                <div style="margin-right:20px;display:inline-block;width:60px;">爱问宠物</div>
-                <div style="margin-right:20px;display:inline-block;width:100px;">玛莎拉蒂手表</div>
-                <div style="margin-right:20px;display:inline-block;width:60px;">浪琴手表</div>
-                <div style="margin-right:20px;display:inline-block;width:50px;">宠物猫</div>
-                <div style="margin-right:20px;display:inline-block;width:70px;">长沙宠物网</div>
-                <div style="margin-right:20px;display:inline-block;width:60px;">南昌企业</div>
-                <div style="margin-right:20px;display:inline-block;width:50px;">巴巴</div>
-                <div style="margin-right:20px;display:inline-block;width:70px;">边境牧羊犬</div><br /><br />
-                <div style="margin-right:20px;display:inline-block;width:60px;">东营房产</div>
-                <div style="margin-right:20px;display:inline-block;width:50px;">返程票</div>
-                <div style="margin-right:20px;display:inline-block;width:70px;">阳光狗狗网</div>
-                <div style="margin-right:20px;display:inline-block;width:60px;">波奇商城</div>
+            <div class="col-md-10 friendLink">
+                <a>金毛犬</a>
+                <a>泰迪熊</a>
+                <a>哈士奇</a>
+                <a>七夕送什么礼物好</a>
+                <a>家居图片</a>
+                <a>爱问宠物</a>
+                <a>玛莎拉蒂手表</a>
+                <a>浪琴手表</a>
+                <a>宠物猫</a>
+                <a>长沙宠物网</a>
+                <a>南昌企业</a>
+                <a>巴巴</a>
+                <a>边境牧羊犬</a><br /><br />
+                <a>东营房产</a>
+                <a>返程票</a>
+                <a>阳光狗狗网</a>
+                <a>波奇商城</a>
             </div>
             <div class="col-md-1"></div>
          </div>
         <hr style="background:#000000;color:#000000;" />
         <div class="row">
             <div class="col-md-1"></div>
-            <div class="col-md-10" style="text-align:center;">
-                <div style="display:inline-block;width:95px;font-size:22px;"><p>关于网站</p></div>|
-                <div style="display:inline-block;width:95px;font-size:22px;"><p>友情链接</p></div>|
-                <div style="display:inline-block;width:95px;font-size:22px;"><p>诚聘英才</p></div>|
-                <div style="display:inline-block;width:95px;font-size:22px;"><p>联系我们</p></div>|
-                <div style="display:inline-block;width:95px;font-size:22px;"><p>网站地图</p></div>|
-                <div style="display:inline-block;width:95px;font-size:22px;"><p>意见反馈</p></div>|
-                <div style="display:inline-block;width:95px;font-size:22px;"><p>帮助中心</p></div>|
-                <div style="display:inline-block;width:95px;font-size:22px;"><p>最新文章</p></div>
+            <div class="col-md-10 friendLink" style="text-align:center;">
+                <div><p>关于网站</p></div>|
+                <div><p>友情链接</p></div>|
+                <div><p>诚聘英才</p></div>|
+                <div><p>联系我们</p></div>|
+                <div><p>网站地图</p></div>|
+                <div><p>意见反馈</p></div>|
+                <div><p>帮助中心</p></div>|
+                <div><p>最新文章</p></div>
             </div>
             <div class="col-md-1"></div>
         </div>

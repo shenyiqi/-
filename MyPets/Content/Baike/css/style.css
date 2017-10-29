@@ -82,9 +82,9 @@ a:hover {
 }
 
 #next {
-    margin-left:-90px;
+    /*margin-left:-90px;*/
 	background-position:-162px -150px;
-	left:977px;
+	left:750px;
 }
 #next:hover {
 	background-position:-212px -150px;

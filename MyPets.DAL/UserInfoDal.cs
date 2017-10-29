@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,7 +25,7 @@ namespace MyPets.DAL
                 name.UserName = name.UserName;
                 name.IsSeller = name.IsSeller;
                 name.UserPwd = newpwd;
-                name.ConfirmPwd = confirmpwd;
+                name.ConfirmPwd = confirmpwd;                
             }
             db.Entry(name).State = EntityState.Modified;
             return db.SaveChanges();
