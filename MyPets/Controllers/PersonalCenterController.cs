@@ -39,25 +39,13 @@ namespace MyPets.Controllers
             var x = UserInfo.LoadEntities(g => g.UserName == name).FirstOrDefault();
             var Detail = OrderDetail.LoadEntities(g => g.UserId == x.UserId).ToList();
             return View(Detail);
-
-
-
         }
         public ActionResult basicinformation()
         {
             BLL.UserInfoServices server = new BLL.UserInfoServices();
             string userName = Session["UserName"].ToString();
-            // 查询数据库
-            //if (userName != null)
-            //{
             var model = server.LoadEntities(o => o.UserName == userName).FirstOrDefault();
-
             return View(model);
-            // }
-            //else
-            //{
-            //    return Redirect("Home/Index");
-            //}
 
         }
         public ActionResult goodsreview()
@@ -84,7 +72,7 @@ namespace MyPets.Controllers
                 CommentContent = Request["content"],
                 GoodsId = id,
                 UsersId = x.UserId,
-                IsReply =true
+                IsReply = true
             });
 
             //db.GoodsComment.Add(gc);
