@@ -207,7 +207,7 @@ namespace MyPets.Controllers
             return Content("<script>alert('删除成功');window.location.href=document.referrer;</script>");
         }
         [HttpPost]
-        public ActionResult PayGoods(string address) //结算商品购买
+        public ActionResult PayGoods(string content) //结算商品购买
         {
             if (Session["UserName"] != null)
             {
@@ -228,7 +228,7 @@ namespace MyPets.Controllers
                 OrderServices.AddEntity(new Order  //形成订单表
                 {
                     UserId = user.UserId,
-                    OrderAddress = "skdjf",
+                    OrderAddress = content,
                     OrderTime = DateTime.Now,
                     OrderState = false,
                     OrderCount = count,
@@ -273,8 +273,9 @@ namespace MyPets.Controllers
             }
             else return Content("<script>alert('您还未登陆！！');history.go(-1);</script>");
         }
+
         [HttpPost]
-        public ActionResult Buy(int id) //立即购买
+        public ActionResult AddBuy(int id,string content) //立即购买
         {
             var name = Session["UserName"].ToString();
             var goods = goodsService.LoadEntities(g => g.GoodsId == id).FirstOrDefault();
@@ -291,10 +292,10 @@ namespace MyPets.Controllers
             OrderServices.AddEntity(new Order  //形成订单表
             {
                 UserId = user.UserId,
-                OrderAddress = "2",
+                OrderAddress = content,
                 OrderTime = DateTime.Now,
                 OrderState = false,
-                OrderCount = 1,
+                OrderCount = price,
                 OrderNumber = ordernumber
             });
             db.SaveChanges();
@@ -315,7 +316,7 @@ namespace MyPets.Controllers
         public ActionResult LoginOff()  //退出登录
         {
             Session["UserName"] = null;
-            return RedirectToAction("Index");
+            return RedirectToAction("Index"); 
         }
         public ActionResult Comment(int id)//评价
         {
