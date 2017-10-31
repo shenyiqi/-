@@ -74,26 +74,33 @@
                 </div>
             </div>
         </div>
+@using (Html.BeginForm("AddBuy", "Home", FormMethod.Post))
+{
+    @Html.Hidden("id", Model.GoodsId)
         <div>
             <div style="border-color:red ;width:500px;border:solid 2px red ;margin-top:10px;float:left">
                 <div style="height:50px;line-height:50px;margin-left:10px">
                     实付款：   ￥@Html.DisplayFor(a => Model.GoodsPrice)
                 </div>
                 <div style="height:50px;line-height:50px;margin-left:10px">
-                    <input style="width:400px;height:50px;" id="Text1" type="text" name="address" placeholder="请填写地址！" />
+                    <input style="width:400px;height:50px;" id="Text1" type="text" name="content" placeholder="请填写地址！" />
                 </div>
                 <div style="height:50px;line-height:50px;margin-left:10px">
                     收货人：@Session["UserName"]
                     电话：@ViewData["Tel"]
                 </div>
-
             </div>
             <div style="margin-left:550px;margin-top:50px;position:absolute;">
-                <a href="Home/Buy" ,new { id=Model.GoodsId"}>
-                    <input type="button" value="结算" />
-                </a>
+                @*<a href="@Url.Action("AddBuy","Home",new { id=Model.GoodsId})">
+                    <input type="button" value="加入购物车" class="goumai" />
+                </a>*@
+                @*<a href="@Url.Action("AddBuy","Home",new { id=Model.GoodsId})">付款</a>*@
+
+                <input type="submit" value="付款" id="sbt" style="width:100px;height:30px;" />
             </div>
         </div>
+}
     </div>
+
 </body>
 </html>
