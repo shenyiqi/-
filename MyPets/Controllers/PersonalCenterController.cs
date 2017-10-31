@@ -37,7 +37,7 @@ namespace MyPets.Controllers
         {
             string name = Session["UserName"].ToString();
             var x = UserInfo.LoadEntities(g => g.UserName == name).FirstOrDefault();
-            var Detail = OrderDetail.LoadEntities(g => g.UserId == x.UserId).ToList();
+            var Detail = OrderDetail.LoadEntities(g => g.UserId == x.UserId && g.OrderState==false).ToList();
             return View(Detail);
         }
         public ActionResult basicinformation()

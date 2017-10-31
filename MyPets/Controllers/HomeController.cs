@@ -389,8 +389,11 @@ namespace MyPets.Controllers
             }
             );
             db.SaveChanges();
+            var Detail = OrderDeailServices.LoadEntities(g => g.UserId == x.UserId && g.OrderState == false && g.GoodsId==f).FirstOrDefault();
+            Detail.OrderState = true;
+            db.SaveChanges();
 
-            return Content("<script>alert('评价成功');history.go(-1);</script>");
+            return Content("<script>alert('评价成功');history.go(-2);</script>");
         }
         public ActionResult About()
         {
