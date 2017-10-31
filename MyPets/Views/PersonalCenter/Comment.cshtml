@@ -2,7 +2,7 @@
     ViewBag.Title = "Comment";
     Layout = "~/Views/Shared/_LayoutPersonalCenter.cshtml";
 }
- @model IEnumerable<MyPets.Model.OrderDetail>
+@model IEnumerable<MyPets.Model.OrderDetail>
 
 @section Comment{
     <link href="~/Content/Home/css/Comment.css" rel="stylesheet" />
@@ -12,24 +12,24 @@
         <div class="goods">商品</div>
         <div class="name">名字</div>
 
-        <div class="price">价格</div>  
+        <div class="price">价格</div>
         <div class="num">订单号</div>
         <div class="time">时间</div>
-        
+
         <div class="qupingjia ">操作</div>
     </div>
     @foreach (var g in Model)
     {
-    <div class="mbody">
-        <div class="goods"><img src="@Url.Content(g.Goods.GoodsImg1)" style="width: 100px; height: 100px" /></div>
-        <div class="name">@Html.DisplayFor(a => g.Goods.GoodsName)</div>
+        <div class="mbody">
+            <div class="goods"><img src="@Url.Content(g.Goods.GoodsImg1)" style="width: 100px; height: 100px" /></div>
+            <div class="name">@Html.DisplayFor(a => g.Goods.GoodsName)</div>
 
-        <div class="price">@Html.DisplayFor(a => g.Goods.GoodsPrice)</div>
-        <div class="num">@Html.DisplayFor(a => g.OrderNumber)</div>
-        <div class="time">@Html.DisplayFor(a => g.Order.OrderTime)</div>
-        <div class="qupingjia ">
-        <a  href="@Url.Action("Comment","Home",new{ id=g.GoodsId,detailid=g.DetailId})"> 去评价</a>
+            <div class="price">@Html.DisplayFor(a => g.Goods.GoodsPrice)</div>
+            <div class="num">@Html.DisplayFor(a => g.OrderNumber)</div>
+            <div class="time">@Html.DisplayFor(a => g.Order.OrderTime)</div>
+            <div class="qupingjia ">
+                <a href="@Url.Action("Comment","Home",new{ id=g.GoodsId,detailid=g.DetailId})"> 去评价</a>
+            </div>
         </div>
-    </div>
     }
 </div>

@@ -1,20 +1,20 @@
-﻿@model IEnumerable<MyPets.Model.ShopCart>
+﻿@model MyPets.Model.Order
 @{
     ViewBag.Title = "zhifu";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 <div style="position:absolute;left:450px;margin-top:30px;border:solid 1px ;width:290px;">
     <div style="margin-left:20px;margin-top:13px">
-       
-        <img src="~/Content/Admin/images/tick-button-image.jpg "style="width:250px;height:250px;" />
+
+        <img src="~/Content/Admin/images/tick-button-image.jpg " style="width:250px;height:250px;" />
     </div>
     <div style="margin-left:20px;height:50px;line-height:50px;">
-        <span style="font-size:larger;color:#00ffff;"> 恭喜！订单提交成功</span>
+        <span style="font-size:larger;color:#00ffff;"> 恭喜！购买成功</span>
     </div>
     <div style="margin-left:20px;height:50px;line-height:50px;">
-        订单金额：
+        订单金额：@Model.OrderCount
     </div>
     <div style="margin-left:20px;height:50px;line-height:50px;">
-        订单号：
+        订单号：@Model.OrderNumber
     </div>
 </div>

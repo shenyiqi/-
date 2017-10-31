@@ -6,8 +6,6 @@
 @using PagedList
 @using PagedList.Mvc
 @*@model PagedList.IPagedList<MyPets.Model.Goods>*@
-
-
 @model IEnumerable<MyPets.Model.Goods>
 <!DOCTYPE html>
 
@@ -186,29 +184,29 @@
                 }
             </div>
             <div class="right">
-                    @foreach (var g in Model)
-                    {
-                        <div class="product">
-                            <div class="tupian">
-                                <a href="@Url.Action("goumai",new { id=g.GoodsId})">
-                                    <img src="@Url.Content(g.GoodsImg1)" style="width: 150px; height: 170px" />
-                                </a>
-                            </div>
-                            <div class="jiage"><span style="color:red;font-size:20px;">￥@Html.DisplayFor(a => g.GoodsPrice)</span></div>
-                            <div class="name">
-                                <a href="">@Html.DisplayFor(a => g.GoodsName)</a>
-                            </div>
-                            <div style="height: 15px">
-                                <div class="yishou">已售：@Html.DisplayFor(s => g.SellNum)</div>
-                                <div class="pingjia">已有：<a href="">@Html.DisplayFor(s => g.SellNum)</a>人评价</div>
-                            </div>
-                            <div class="gouwu">
-                                <a href="@Url.Action("AddToCart",new { id=@g.GoodsId})">
-                                    <input type="button" value="加入购物车" class="goumai" />
-                                </a>
-                            </div>
+                @foreach (var g in Model)
+                {
+                    <div class="product">
+                        <div class="tupian">
+                            <a href="@Url.Action("goumai",new { id=g.GoodsId})">
+                                <img src="@Url.Content(g.GoodsImg1)" style="width: 150px; height: 170px" />
+                            </a>
                         </div>
-                    }
+                        <div class="jiage"><span style="color:red;font-size:20px;">￥@Html.DisplayFor(a => g.GoodsPrice)</span></div>
+                        <div class="name">
+                            <a href="">@Html.DisplayFor(a => g.GoodsName)</a>
+                        </div>
+                        <div style="height: 15px">
+                            <div class="yishou">已售：@Html.DisplayFor(s => g.SellNum)</div>
+                            <div class="pingjia">已有：<a href="">@Html.DisplayFor(s => g.SellNum)</a>人评价</div>
+                        </div>
+                        <div class="gouwu">
+                            <a href="@Url.Action("AddToCart",new { id=@g.GoodsId})">
+                                <input type="button" value="加入购物车" class="goumai" />
+                            </a>
+                        </div>
+                    </div>
+                }
                 @*<div style="text-align:center;"> @Html.PagedListPager(Model, page => Url.Action("GetType", "goods", new { page, txttype = @ViewData["type"] }))</div>*@
             </div>
 

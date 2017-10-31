@@ -1,78 +1,99 @@
-﻿
-@model MyPets.Model.Goods
-
+﻿@model MyPets.Model.Goods
 @{
     ViewBag.Title = "Buynow";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
-@section Buynow{
-   
-    <link href="~/Content/Home/css/style.css" rel="stylesheet" />
-    <script src="~/Content/Home/css/demo.js"></script>
-    <script src="~/Content/Home/js/js.js"></script>
+<!DOCTYPE html>
 
-}
-@using (Html.BeginForm("Buy", "Home", FormMethod.Post))
-{
-<div style="position:absolute;left:250px;margin-top:50px;">
-<div style="border:solid 1px ;height:160px;">
-    <div style="line-height:150px;float:left;width:350px;margin-left:20px;">
-        <div style="line-height:50px;height:50px;">
-            商品名
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="~/Content/Home/js/jquery.1.4.2-min.js"></script>
+    <script src="~/Content/Home/js/payfor.js"></script>
+    <style type="text/css">
+        .add_chose a {
+            float: left;
+            margin: 5px 0 0 0;
+            display: block;
+            width: 15px;
+            height: 15px;
+            line-height: 99em;
+        }
+
+        .add_chose .text {
+            float: left;
+            margin: 0 5px;
+            display: inline;
+            border: solid 1px #ccc;
+            padding: 4px 3px 4px 8px;
+            width: 40px;
+            line-height: 18px;
+            font-size: 14px;
+            color: #990000;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+    <div style="position:absolute;left:250px;margin-top:50px;">
+        <div style="border:solid 1px ;height:160px;">
+            <div style="line-height:150px;float:left;width:350px;margin-left:20px;">
+                <div style="line-height:50px;height:50px;">
+                    商品名
+                </div>
+                <div>
+                    @Html.DisplayFor(a => Model.GoodsName)
+                </div>
+            </div>
+            <div style="line-height:150px;float:left;width:150px;">
+                <div style="line-height:50px;height:50px;">
+                    数量
+                </div>
+                1
+                @*<div class="f_l add_chose">
+                        <a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)"> - </a>
+                        <input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" />
+                        <a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)"> +</a>
+                    </div>*@
+            </div>
+            <div style="line-height:150px;float:left;width:150px;">
+                <div style="line-height:50px;height:50px;">
+                    价格
+                </div>
+                <div>
+                    @Html.DisplayFor(a => Model.GoodsPrice)
+                </div>
+            </div>
+            <div style="line-height:150px;float:left;width:150px;">
+                <div style="line-height:50px;height:50px;">
+                    总价
+                </div>
+                <div class="list_sum">
+                    <p class="sum_price">@Html.DisplayFor(a => Model.GoodsPrice)</p>
+                </div>
+            </div>
         </div>
         <div>
-        @Html.DisplayFor(a => Model.GoodsName)
-        </div>
-    </div>
-    <div style="line-height:150px;float:left;width:150px;">
-        <div style="line-height:50px;height:50px;">
-            数量
-        </div>
-        <div class="count">
-            <span class="reduce">-</span>
-            <input class="input" type="text" value="1" name="goodssum" style="width:35px;text-align:center;" />
-            <span class="add">+</span>
-        </div>
-    </div>
-    <div style="line-height:150px;float:left;width:150px;">
-        <div style="line-height:50px;height:50px;">
-            价格
-        </div>
-        <div>
-           @Html.DisplayFor(a => Model.GoodsPrice)
-        </div>
-    </div>
-    <div style="line-height:150px;float:left;width:150px;">
-        <div style="line-height:50px;height:50px;">
-            总价
-        </div>
-        <div>
-            <input type="hidden" id="TotalPrice" name="TotalPrice" value="" />
-        </div>
-    </div>
-   </div>
-    <div>
-    <div style="border-color:red ;width:500px;border:solid 2px red ;margin-top:10px;float:left">
-        <div style="height:50px;line-height:50px;margin-left:10px">
-            实付款：￥<input type="hidden" id="TotalPrice" name="TotalPrice" value="" />
-        </div>
-        <div style="height:50px;line-height:50px;margin-left:10px">
-            <input style="width:800px;height:160px;" id="Text1" type="text" name="address" placeholder="请填写地址！" />
-        </div>
-        <div style="height:50px;line-height:50px;margin-left:10px">
-            收货人：@Session["UserName"]
-            电话：@ViewData["Tel"]
-        </div>
-       
-    </div>
-        <div style="margin-left:550px;margin-top:50px;position:absolute;">
-            <div class="fr closing">
-                <a href="@Url.Action("zhifu",new {id=Model.OrderDetail})">
-                    <input type="submit" value="结 算" class="btn btn-danger" id="subbtn" />
+            <div style="border-color:red ;width:500px;border:solid 2px red ;margin-top:10px;float:left">
+                <div style="height:50px;line-height:50px;margin-left:10px">
+                    实付款：   ￥@Html.DisplayFor(a => Model.GoodsPrice)
+                </div>
+                <div style="height:50px;line-height:50px;margin-left:10px">
+                    <input style="width:400px;height:50px;" id="Text1" type="text" name="address" placeholder="请填写地址！" />
+                </div>
+                <div style="height:50px;line-height:50px;margin-left:10px">
+                    收货人：@Session["UserName"]
+                    电话：@ViewData["Tel"]
+                </div>
+
+            </div>
+            <div style="margin-left:550px;margin-top:50px;position:absolute;">
+                <a href="Home/Buy" ,new { id=Model.GoodsId"}>
+                    <input type="button" value="结算" />
                 </a>
-</div>
-           </div>
-
+            </div>
+        </div>
     </div>
-</div>
-}
+</body>
+</html>
