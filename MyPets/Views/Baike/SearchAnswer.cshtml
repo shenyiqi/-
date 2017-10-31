@@ -13,18 +13,39 @@
     <title>百科问答</title>
     <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Admin/css/StyleBar.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Admin/js/jquery-1.11.2.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/Baike/js/bootstrap3-wysihtml5.all.min.js"></script>
+    <script src="~/Content/Baike/js/bootstrap-wysihtml5.zh-CN.js"></script>
 </head>
 <body>
     <div class="row" style="border-bottom:1px solid #a5a0a0;line-height:50px;">
         <div class="col-md-1"></div>
-        <div class="col-md-1">@Html.ActionLink("宠物之家", "Index", "Home")</div>
-        <div class="col-md-1">@Html.ActionLink("宠物商城", "Index", "Shop")</div>
-        <div class="col-md-1">@Html.ActionLink("宠物论坛", "Index", "Forum")</div>
+        <div class="col-md-1">@Html.ActionLink("宠物商城", "Index", "Home")</div>
+        <div class="col-md-1">@Html.ActionLink("宠物论坛", "Index", "Tribune")</div>
         <div class="col-md-1" style="border-bottom:2px solid #9C3"><a href="javascript:;">宠物百科</a></div>
-        <div class="col-md-5"></div>
-        <div class="col-md-1">@Html.ActionLink("登录", "Login", "Register")|@Html.ActionLink("注册", "Register", "Register")</div>
+        <div class="col-md-1">@Html.ActionLink("我的店铺", "Index", "Shop")</div>
+         <div class="col-md-4"></div>
+        <div class="col-md-2">
+            @if (Session["UserName"] == null)
+            {
+                <div><a href="@Url.Action("Login", "Register")">登录</a> | <a href="@Url.Action("Register", "Register")">注册</a></div>
+            }
+            else
+            {
+                <div class="dropdown">
+                    <div id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <a href="javascript:;" style="color:#9C3;">@Session["UserName"]</a>
+                        <span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="@Url.Action("Index","PersonalCenter",new { user=Session["UserName"]})">个人中心</a></li>
+                        <li><a href="@Url.Action("LoginOff")">退出登录</a></li>
+                    </ul>
+                </div>
+            }
+        </div>       
         <div class="col-md-1"></div>
     </div>
     <br /><br />

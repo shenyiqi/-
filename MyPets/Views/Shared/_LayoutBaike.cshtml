@@ -27,10 +27,10 @@
 <body>
     <div class="row" style="border-bottom:1px solid #a5a0a0;line-height:50px;">
         <div class="col-md-1"></div>
-        <div class="col-md-1">@Html.ActionLink("宠物之家", "Index", "Home")</div>
         <div class="col-md-1">@Html.ActionLink("宠物商城", "Index", "Home")</div>
-        <div class="col-md-1">@Html.ActionLink("宠物论坛", "Index", "Forum")</div>
+        <div class="col-md-1">@Html.ActionLink("宠物论坛", "Index", "Tribune")</div>
         <div class="col-md-1" style="border-bottom:2px solid #9C3"><a href="javascript:;">宠物百科</a></div>
+        <div class="col-md-1">@Html.ActionLink("我的店铺", "Index", "Shop")</div>
         <div class="col-md-4"></div>
         <div class="col-md-2">
             @if (Session["UserName"] == null)

@@ -28,7 +28,8 @@
             <div class="col-sm-3">
                 <img src="@Url.Content(a.BaikeImg)" style="height:200px;width:250px;margin-bottom:20px;"/>
             </div>
-              <div class="col-sm-9">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-8">
                   <h3>@Html.ActionLink(a.BaikeType, "GetType", new { txttype = a.BaikeType })</h3>
                   <strong>标题</strong>：@Html.ActionLink(a.BaikeTitle, "Show", new { id = a.BaikeId })<br />
                   <strong>简介</strong>：<br />

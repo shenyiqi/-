@@ -30,9 +30,7 @@ namespace MyPets.Controllers
                 var shop = ShopServices.LoadEntities(s => s.UserId == id.UserId).FirstOrDefault();
                 Session["ShopId"] = shop.ShopId;
                 return View(shop);
-            }
-            else
-            {
+            }else{
                 return RedirectToAction("Register", "Shop");
             }
 
